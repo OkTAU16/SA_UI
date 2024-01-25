@@ -13,7 +13,7 @@ def DateandTime(s):
     pattern2='^([0-9]+)(.)([0-9]+)(.)([0-9][0-9][0-9][0-9])'
     result1=re.match(pattern1,s)
     if result1:
-        return True
+        return False
     elif not result1:
         result2=re.match(pattern2,s)
         if result2:
