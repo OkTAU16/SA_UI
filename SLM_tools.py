@@ -49,7 +49,8 @@ class SLM_tools:
             plot_object (tuple): output of rb.plot(o)
         output:
             vertical_line_locs (list): a sorted list of the x locations of the vertical lines """
-        # TODO: talk with micheal to check this function
+
+        # TODO: talk with micheal to check this function,do we need the loc of the lines or the values?
         try:
             fig, axes = plot_object
             vertical_line_locs = [line.get_xdata()[0] for ax in axes for line in ax.get_lines()
@@ -69,6 +70,7 @@ class SLM_tools:
         outputs:
             change_points (list): sorted list of change points index
             ver_locs (list): sorted list of the vertical lines in the plot"""
+        # TODO: check that beast plot doesn't pop
         try:
             o = rb.beast(data, 0, tseg_minlength=0.1 * data.shape[1], season="none")
             plt.switch_backend('Agg')
