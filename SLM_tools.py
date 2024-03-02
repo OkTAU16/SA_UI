@@ -1,7 +1,6 @@
 import Rbeast as rb
 import numpy as np
 from scipy import interpolate
-import scipy.io as sio
 from scipy import signal
 import matplotlib.pyplot as plt
 
@@ -13,7 +12,7 @@ class SLM_tools:
         """interpolate data over a regularly spaced time vector
             inputs:
                 data (np.array): time series data
-                sample_rate (int): optional
+                sample_rate [Hz] (int): optional
             outputs:
                 time_vec (np.array): regularly spaced time vector
                 data_new (np.array): interpolated data over the regularly spaced time vector"""
@@ -36,7 +35,7 @@ class SLM_tools:
 
         try:
             downsampled_data = signal.decimate(data, downsampling_factor)
-            downsampled_time = signal.resample(time_vec, downsampling_factor)
+            downsampled_time = signal.decimate(time_vec, downsampling_factor)
             return downsampled_data, downsampled_time
         except Exception as e:
             print(e)
@@ -50,7 +49,7 @@ class SLM_tools:
         output:
             vertical_line_locs (list): a sorted list of the x locations of the vertical lines """
 
-        # TODO: talk with micheal to check this function,do we need the loc of the lines or the values?
+        # TODO: talk with micheal to check this function,do we need the loc of the lines or the values? (line 170 in Gather)
         try:
             fig, axes = plot_object
             vertical_line_locs = [line.get_xdata()[0] for ax in axes for line in ax.get_lines()
@@ -78,7 +77,7 @@ class SLM_tools:
             ver_locs = SLM_tools.extract_vertical_line_locs(x)
             cp = np.sort(o.trend.cp[0:int(o.trend.ncp_median)])
             cp = cp[~np.isnan(cp)]
-            cp.insert(0, 0)  # TODO: check with micheal if were adding the firts index or time 0 sec?
+            cp.insert(0, 0)  # TODO: check with micheal if were adding the first index or time 0 sec?
             plt.switch_backend('default')
             return cp, ver_locs
         except Exception as e:
