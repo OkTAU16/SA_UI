@@ -2,10 +2,46 @@ import Rbeast as rb
 import numpy as np
 from scipy import interpolate
 from scipy import signal
+import scipy.io as sio
 import matplotlib.pyplot as plt
+import pandas as pd
 
 
 class SLM_tools:
+    @staticmethod
+    def load_data(data_path: str, target_num, data_type='csv', time_vec_exists=False):
+        # TODO: incomplete
+        try:
+            if data_type == 'csv':
+                values_vec = pd.read_csv(data_path, usecols=[0]).to_numpy()
+                if time_vec_exists:
+                    time_vec = pd.read_csv(data_path, usecols=[1]).to_numpy()
+                    distance_columns = list(range(2, 2 + target_num))
+                    distance = pd.read_csv(data_path, usecols=distance_columns).to_numpy()
+                    return values_vec, time_vec, distance
+                distance_columns = list(range(1, 1 + target_num))
+                distance = pd.read_csv(data_path, usecols=distance_columns).to_numpy()
+                return values_vec, distance
+            elif data_type == 'excel':
+                values_vec = pd.read_excel(data_path, usecols=[0]).to_numpy()
+                if time_vec_exists:
+                    time_vec = pd.read_excel(data_path, usecols=[1]).to_numpy()
+                    distance_columns = list(range(2, 2 + target_num))
+                    distance = pd.read_excel(data_path, usecols=distance_columns).to_numpy()
+                    return values_vec, time_vec, distance
+                distance_columns = list(range(1, 1 + target_num))
+                distance = pd.read_excel(data_path, usecols=distance_columns)
+                # return np.array([values_vec,distance])
+                return values_vec, distance
+            elif data_type == '.mat':
+                dict_data = sio.loadmat(data_path)
+                values_vec = dict_data['foo'][:, 0]
+            if time_vec_exists:
+                time_vec = dict_data['foo'][:, 1]
+                distance = dict_data['foo'][:, 2:2 + target_num]
+        except Exception as e:
+            print(e)
+
     @staticmethod
     def interpolate_data_over_regular_time(data: np.array, sample_rate: int = 1):
 
