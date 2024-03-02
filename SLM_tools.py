@@ -37,7 +37,7 @@ class SLM_tools:
         try:
             downsampled_data = signal.decimate(data, downsampling_factor)
             downsampled_time = signal.resample(time_vec, downsampling_factor)
-            return downsampled_data , downsampled_time
+            return downsampled_data, downsampled_time
         except Exception as e:
             print(e)
 
@@ -78,6 +78,7 @@ class SLM_tools:
             ver_locs = SLM_tools.extract_vertical_line_locs(x)
             cp = np.sort(o.trend.cp[0:int(o.trend.ncp_median)])
             cp = cp[~np.isnan(cp)]
+            cp.insert(0, 0)  # TODO: check with micheal if were adding the firts index or time 0 sec?
             plt.switch_backend('default')
             return cp, ver_locs
         except Exception as e:
