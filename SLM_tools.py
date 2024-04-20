@@ -82,7 +82,7 @@ class SLM_tools:
 
     @staticmethod
     def extract_vertical_line_locs(plot_object: tuple):
-
+        # TODO: check is this function is necessary
         """
         extract vertical lines x location from plot_beast
         input:
@@ -104,7 +104,7 @@ class SLM_tools:
 
     @staticmethod
     def beast(data: np.array):
-
+        # TODO: check this function
         """call the BEAST algorithm and extract the change points
         input:
             data (np.array):time series data for analysis
@@ -123,25 +123,49 @@ class SLM_tools:
             print(e)
 
     @staticmethod
-    def segment_data(data: np.array, mean_trend: np.array, cp: np.array):
-        # TODO: complete according to giv_vecs(),missing distance
+    def segment_data(energy: np.array, distance: np.array, mean_trend: np.array, cp: np.array, N=None):
+        # TODO: check this function
+        length = len(cp) - 1
+        mu = np.zeros(length)
+        std = np.zeros(length)
+        skew = np.zeros(length)
+        trend_vec = np.zeros(length)
+        times_vec = np.zeros(length)
+        sa_vec = np.zeros(length)
+        cumulated_time_vec = np.zeros(length)
+        assembly_mat = np.zeros((len(energy), 2 if N is None else N))
         mean_trend = np.floor(mean_trend)
-        mu = np.zeros_like(data)
-        std = np.zeros_like(data)
-        median = np.zeros_like(data)
-        skew = np.zeros_like(data)
-        trend = np.zeros_like(data)
-        time = np.zeros_like(data)
-        for i in range(0, data.shape[1]):
-            mu[i] = np.mean(data[:, cp[i]:cp[i + 1]])
-            std[i] = np.std(data[:, cp[i]:cp[i + 1]])
-            median[i] = np.median(data[:, cp[i]:cp[i + 1]])
-            skew[i] = (mu[i] - median) / (3 * std[i])
-            fitted_trend = np.polyfit([cp[i], cp[i + 1]], mean_trend[cp[i]: cp[i + 1]],
-                                      1)  # TODO: check if we need this
-            trend[i] = fitted_trend[1]
-            time[i] = cp[i + 1] - cp[i]
-        return mu, std, median, skew, trend, time
+        for i in range(2 if N is None else N):
+            assembly = np.zeros(len(energy))
+            mimic = np.where(distance[:, i] == 0)
+            assembly[mimic] = 1
+            assembly_mat[:, i] = assembly
+
+        for i in range(length):
+            mu[i] = np.mean(energy[cp[i]:cp[i + 1]])
+            std[i] = np.std(energy[cp[i]:cp[i + 1]])
+            median = np.median(energy[cp[i]:cp[i + 1]])
+            skew[i] = (mu[i] - median) / 3 * std[i]
+            abc = np.polyfit(range(cp[i], cp[i + 1]), mean_trend[cp[i]:cp[i + 1]], 1)  # TODO: is this necessary?
+            trend_vec[i] = abc[0]
+            times_vec[i] = cp[i + 1] - cp[i]
+            for j in range(2 if N is None else N):
+                sa_vec[i] += np.sum(assembly_mat[cp[i]:cp[i + 1], j])
+        sa_vec[sa_vec > 1] = 1
+
+        for i in range(length):
+            aa = np.where(sa_vec == 1)[0]
+            if len(aa) == 0 or i not in aa:
+                try:
+                    II = np.where(aa > i)[0][0]
+                    omega = np.cumsum(times_vec[i:aa[II] - 1])
+                    cumulated_time_vec[i] = omega[-1]
+                except Exception:
+                    cumulated_time_vec[i] = np.nan
+            else:
+                cumulated_time_vec[i] = 0
+
+        return mu, std, skew, trend_vec, times_vec, sa_vec, cumulated_time_vec
 
 
 if __name__ == "__main__":
