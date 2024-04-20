@@ -10,7 +10,7 @@ import pandas as pd
 class SLM_tools:
     @staticmethod
     def load_data(data_path: str, target_num, data_type='csv', time_vec_exists=False):
-        # TODO: incomplete
+        # TODO: incomplete, try with more then two targets
         try:
             if data_type == 'csv':
                 values_vec = pd.read_csv(data_path, usecols=[0]).to_numpy()
@@ -31,14 +31,18 @@ class SLM_tools:
                     return values_vec, time_vec, distance
                 distance_columns = list(range(1, 1 + target_num))
                 distance = pd.read_excel(data_path, usecols=distance_columns)
-                # return np.array([values_vec,distance])
                 return values_vec, distance
             elif data_type == '.mat':
                 dict_data = sio.loadmat(data_path)
                 values_vec = dict_data['foo'][:, 0]
-            if time_vec_exists:
-                time_vec = dict_data['foo'][:, 1]
-                distance = dict_data['foo'][:, 2:2 + target_num]
+                if time_vec_exists:
+                    time_vec = dict_data['foo'][:, 1]
+                    distance = dict_data['foo'][:, 2:2 + target_num]
+                    return values_vec, time_vec, distance
+                distance = dict_data['foo'][:, 1:1 + target_num]
+                return values_vec, distance
+            else:
+                raise Exception("file type is not supported")
         except Exception as e:
             print(e)
 
@@ -79,11 +83,13 @@ class SLM_tools:
     @staticmethod
     def extract_vertical_line_locs(plot_object: tuple):
 
-        """extract vertical lines x location from plot_beast
+        """
+        extract vertical lines x location from plot_beast
         input:
             plot_object (tuple): output of rb.plot(o)
         output:
-            vertical_line_locs (list): a sorted list of the x locations of the vertical lines """
+            vertical_line_locs (list): a sorted list of the x locations of the vertical lines
+        """
 
         # TODO: talk with micheal to check this function,do we need the loc of the lines or the values? (line 170 in Gather)
         try:
