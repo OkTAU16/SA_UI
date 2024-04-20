@@ -74,8 +74,8 @@ class SLM_tools:
             data (np.array): downsampled data"""
 
         try:
-            downsampled_data = signal.decimate(data, downsampling_factor)
-            downsampled_time = signal.decimate(time_vec, downsampling_factor)
+            downsampled_data = signal.decimate(data, downsampling_factor, ftype='fir')
+            downsampled_time = signal.decimate(time_vec, downsampling_factor, ftype='fir')
             return downsampled_data, downsampled_time
         except Exception as e:
             print(e)
@@ -111,19 +111,37 @@ class SLM_tools:
         outputs:
             change_points (list): sorted list of change points index
             ver_locs (list): sorted list of the vertical lines in the plot"""
-        # TODO: check that beast plot doesn't pop
         try:
             o = rb.beast(data, 0, tseg_minlength=0.1 * data.shape[1], season="none", torder_minmax=[1, 1.01])
-            plt.switch_backend('Agg')
-            x = rb.plot(o)
-            ver_locs = SLM_tools.extract_vertical_line_locs(x)
+            mean_trend = o.trend.Y
             cp = np.sort(o.trend.cp[0:int(o.trend.ncp_median)])
             cp = cp[~np.isnan(cp)]
-            cp.insert(0, 0)  # TODO: check with micheal if were adding the first index or time 0 sec?
+            cp.insert(0, 0)
             plt.switch_backend('default')
-            return cp, ver_locs
+            return o, cp, mean_trend
         except Exception as e:
             print(e)
+
+    @staticmethod
+    def segment_data(data: np.array, mean_trend: np.array, cp: np.array):
+        # TODO: complete according to giv_vecs(),missing distance
+        mean_trend = np.floor(mean_trend)
+        mu = np.zeros_like(data)
+        std = np.zeros_like(data)
+        median = np.zeros_like(data)
+        skew = np.zeros_like(data)
+        trend = np.zeros_like(data)
+        time = np.zeros_like(data)
+        for i in range(0, data.shape[1]):
+            mu[i] = np.mean(data[:, cp[i]:cp[i + 1]])
+            std[i] = np.std(data[:, cp[i]:cp[i + 1]])
+            median[i] = np.median(data[:, cp[i]:cp[i + 1]])
+            skew[i] = (mu[i] - median) / (3 * std[i])
+            fitted_trend = np.polyfit([cp[i], cp[i + 1]], mean_trend[cp[i]: cp[i + 1]],
+                                      1)  # TODO: check if we need this
+            trend[i] = fitted_trend[1]
+            time[i] = cp[i + 1] - cp[i]
+        return mu, std, median, skew, trend, time
 
 
 if __name__ == "__main__":
