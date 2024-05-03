@@ -154,7 +154,7 @@ class SLM_tools:
         sa_vec[sa_vec > 1] = 1
 
         for i in range(len_cp):
-            temp1 = np.where(sa_vec == 1)[0]
+            temp1 = np.where(sa_vec == 1)[0] # lated in the matlab code if temp1 is empty none of the data is saved, ask michael
             if i not in temp1:
                 try:
                     temp2 = np.where(temp1 > i)[0][0]
