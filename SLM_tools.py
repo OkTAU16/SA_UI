@@ -64,7 +64,7 @@ class SLM_tools:
             print(e)
 
     @staticmethod
-    def downsample(data: np.array, time_vec: np.array, downsampling_factor: int):
+    def downsample(data: np.array,  downsampling_factor: int,time_vec: np.array = None):
 
         """downsample the data by a user input downsampling_factor
         inputs:
@@ -75,32 +75,32 @@ class SLM_tools:
 
         try:
             downsampled_data = signal.decimate(data, downsampling_factor, ftype='fir')
-            downsampled_time = signal.decimate(time_vec, downsampling_factor, ftype='fir')
-            return downsampled_data, downsampled_time
+            downsampled_time = signal.decimate(time_vec, downsampling_factor, ftype='fir') if time_vec else None
+            return downsampled_data, downsampled_time if time_vec else None
         except Exception as e:
             print(e)
 
-    @staticmethod
-    def extract_vertical_line_locs(plot_object: tuple):
-        # TODO: check is this function is necessary
-        """
-        extract vertical lines x location from plot_beast
-        input:
-            plot_object (tuple): output of rb.plot(o)
-        output:
-            vertical_line_locs (list): a sorted list of the x locations of the vertical lines
-        """
-
-        # TODO: talk with micheal to check this function,do we need the loc of the lines or the values? -->the values
-        try:
-            fig, axes = plot_object
-            vertical_line_locs = [line.get_xdata()[0] for ax in axes for line in ax.get_lines()
-                                  if len(line.get_xdata()) == 2 and line.get_xdata()[0] == line.get_xdata()[1]]
-            vertical_line_locs = list(set(vertical_line_locs))
-            vertical_line_locs.sort()
-            return vertical_line_locs
-        except Exception as e:
-            print(e)
+    # @staticmethod
+    # def extract_vertical_line_locs(plot_object: tuple):
+    #     # TODO: check is this function is necessary
+    #     """
+    #     extract vertical lines x location from plot_beast
+    #     input:
+    #         plot_object (tuple): output of rb.plot(o)
+    #     output:
+    #         vertical_line_locs (list): a sorted list of the x locations of the vertical lines
+    #     """
+    #
+    #     # TODO: talk with micheal to check this function,do we need the loc of the lines or the values? -->the values
+    #     try:
+    #         fig, axes = plot_object
+    #         vertical_line_locs = [line.get_xdata()[0] for ax in axes for line in ax.get_lines()
+    #                               if len(line.get_xdata()) == 2 and line.get_xdata()[0] == line.get_xdata()[1]]
+    #         vertical_line_locs = list(set(vertical_line_locs))
+    #         vertical_line_locs.sort()
+    #         return vertical_line_locs
+    #     except Exception as e:
+    #         print(e)
 
     @staticmethod
     def beast(data: np.array):
@@ -109,15 +109,14 @@ class SLM_tools:
         input:
             data (np.array):time series data for analysis
         outputs:
-            change_points (list): sorted list of change points index
-            ver_locs (list): sorted list of the vertical lines in the plot"""
+            change_points (np.array): sorted np.array of change points index
+            mean_trend (np.array): mean trend from BEAST"""
         try:
             o = rb.beast(data, 0, tseg_minlength=0.1 * data.shape[1], season="none", torder_minmax=[1, 1.01])
             mean_trend = o.trend.Y
             cp = np.sort(o.trend.cp[0:int(o.trend.ncp_median)])
             cp = cp[~np.isnan(cp)]
-            cp.insert(0, 0)
-            plt.switch_backend('default')
+            cp = np.insert(cp, 0, 0)
             return o, cp, mean_trend
         except Exception as e:
             print(e)
@@ -125,40 +124,41 @@ class SLM_tools:
     @staticmethod
     def segment_data(energy: np.array, distance: np.array, mean_trend: np.array, cp: np.array, N=None):
         # TODO: check this function
-        length = len(cp) - 1
-        mu = np.zeros(length)
-        std = np.zeros(length)
-        skew = np.zeros(length)
-        trend_vec = np.zeros(length)
-        times_vec = np.zeros(length)
-        sa_vec = np.zeros(length)
-        cumulated_time_vec = np.zeros(length)
-        assembly_mat = np.zeros((len(energy), 2 if N is None else N))
+        len_cp = len(cp) - 1
+        mu = np.zeros(len_cp)
+        std = np.zeros(len_cp)
+        skew = np.zeros(len_cp)
+        trend_vec = np.zeros(len_cp)
+        times_vec = np.zeros(len_cp)
+        sa_vec = np.zeros(len_cp)
+        cumulated_time_vec = np.zeros(len_cp)
+        assembly_mat = np.zeros((energy.shape[1], 2 if N is None else N))
         mean_trend = np.floor(mean_trend)
+        cp_int = np.vectorize(int)(cp)
         for i in range(2 if N is None else N):
-            assembly = np.zeros(len(energy))
+            assembly = np.zeros(energy.shape[1])
             mimic = np.where(distance[:, i] == 0)
             assembly[mimic] = 1
             assembly_mat[:, i] = assembly
 
-        for i in range(length):
-            mu[i] = np.mean(energy[cp[i]:cp[i + 1]])
-            std[i] = np.std(energy[cp[i]:cp[i + 1]])
-            median = np.median(energy[cp[i]:cp[i + 1]])
+        for i in range(len_cp):
+            mu[i] = np.nanmean(energy[:, cp_int[i]:cp_int[i + 1]])
+            std[i] = np.std(energy[:, cp_int[i]:cp_int[i + 1]])
+            median = np.median(energy[:, cp_int[i]:cp_int[i + 1]])
             skew[i] = (mu[i] - median) / 3 * std[i]
-            abc = np.polyfit(range(cp[i], cp[i + 1]), mean_trend[cp[i]:cp[i + 1]], 1)  # TODO: is this necessary?
+            abc = np.polyfit(range(cp_int[i], cp_int[i + 1]), mean_trend[cp_int[i]:cp_int[i + 1]], 1)  # TODO: is this necessary?
             trend_vec[i] = abc[0]
-            times_vec[i] = cp[i + 1] - cp[i]
+            times_vec[i] = cp_int[i + 1] - cp_int[i]
             for j in range(2 if N is None else N):
-                sa_vec[i] += np.sum(assembly_mat[cp[i]:cp[i + 1], j])
+                sa_vec[i] += np.sum(assembly_mat[cp_int[i]:cp_int[i + 1], j])
         sa_vec[sa_vec > 1] = 1
 
-        for i in range(length):
-            aa = np.where(sa_vec == 1)[0]
-            if len(aa) == 0 or i not in aa:
+        for i in range(len_cp):
+            temp1 = np.where(sa_vec == 1)[0]
+            if i not in temp1:
                 try:
-                    II = np.where(aa > i)[0][0]
-                    omega = np.cumsum(times_vec[i:aa[II] - 1])
+                    temp2 = np.where(temp1 > i)[0][0]
+                    omega = np.cumsum(times_vec[i:temp1[temp2]])
                     cumulated_time_vec[i] = omega[-1]
                 except Exception:
                     cumulated_time_vec[i] = np.nan
