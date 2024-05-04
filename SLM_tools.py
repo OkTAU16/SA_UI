@@ -34,12 +34,14 @@ class SLM_tools:
                 return values_vec, distance
             elif data_type == '.mat':
                 dict_data = sio.loadmat(data_path)
-                values_vec = dict_data['foo'][:, 0]
+                keys_lst = list(dict_data.keys())
+                key = keys_lst[-1]
+                values_vec = dict_data[key][:, 0]
                 if time_vec_exists:
-                    time_vec = dict_data['foo'][:, 1]
-                    distance = dict_data['foo'][:, 2:2 + target_num]
+                    time_vec = dict_data[key][:, 1]
+                    distance = dict_data[key][:, 2:2 + target_num]
                     return values_vec, time_vec, distance
-                distance = dict_data['foo'][:, 1:1 + target_num]
+                distance = dict_data[key][:, 1:1 + target_num]
                 return values_vec, distance
             else:
                 raise Exception("file type is not supported")
