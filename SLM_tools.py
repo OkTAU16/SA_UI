@@ -8,6 +8,11 @@ import pandas as pd
 
 
 class SLM_tools:
+    # def __init__(self): # TODO: think if and how should we save data along the process
+    #     self.data = None
+    #     self.input_directory_path = None
+    #     self.output_directory_path = None
+    #     self.files = []
     @staticmethod
     def load_data(data_path: str, target_num, data_type='csv', time_vec_exists=False):
         # TODO: incomplete, try with more then two targets
@@ -48,7 +53,7 @@ class SLM_tools:
 
     @staticmethod
     def interpolate_data_over_regular_time(data: np.array, sample_rate: int = 1):
-
+        # checked
         """interpolate data over a regularly spaced time vector
             inputs:
                 data (np.array): time series data
@@ -64,8 +69,8 @@ class SLM_tools:
             print(e)
 
     @staticmethod
-    def downsample(data: np.array,  downsampling_factor: int,time_vec: np.array = None):
-
+    def downsample(data: np.array, downsampling_factor: int, time_vec: np.array = None):
+        # checked
         """downsample the data by a user input downsampling_factor
         inputs:
             data (np.array): data to downsample
@@ -104,13 +109,14 @@ class SLM_tools:
 
     @staticmethod
     def beast(data: np.array):
-        # TODO: check this function
+        # checked
         """call the BEAST algorithm and extract the change points
         input:
             data (np.array):time series data for analysis
         outputs:
             change_points (np.array): sorted np.array of change points index
             mean_trend (np.array): mean trend from BEAST"""
+
         try:
             o = rb.beast(data, 0, tseg_minlength=0.1 * data.shape[1], season="none", torder_minmax=[1, 1.01])
             mean_trend = o.trend.Y
@@ -123,7 +129,7 @@ class SLM_tools:
 
     @staticmethod
     def segment_data(energy: np.array, distance: np.array, mean_trend: np.array, cp: np.array, N=None):
-        # TODO: check this function
+        # checked
         len_cp = len(cp) - 1
         mu = np.zeros(len_cp)
         std = np.zeros(len_cp)
@@ -146,7 +152,7 @@ class SLM_tools:
             std[i] = np.std(energy[:, cp_int[i]:cp_int[i + 1]])
             median = np.median(energy[:, cp_int[i]:cp_int[i + 1]])
             skew[i] = (mu[i] - median) / 3 * std[i]
-            abc = np.polyfit(range(cp_int[i], cp_int[i + 1]), mean_trend[cp_int[i]:cp_int[i + 1]], 1)  # TODO: is this necessary?
+            abc = np.polyfit(range(cp_int[i], cp_int[i + 1]), mean_trend[cp_int[i]:cp_int[i + 1]], 1)
             trend_vec[i] = abc[0]
             times_vec[i] = cp_int[i + 1] - cp_int[i]
             for j in range(2 if N is None else N):
@@ -154,7 +160,7 @@ class SLM_tools:
         sa_vec[sa_vec > 1] = 1
 
         for i in range(len_cp):
-            temp1 = np.where(sa_vec == 1)[0] # lated in the matlab code if temp1 is empty none of the data is saved, ask michael
+            temp1 = np.where(sa_vec == 1)[0]  # translated in the matlab code if temp1 is empty none of the data is saved, ask michael
             if i not in temp1:
                 try:
                     temp2 = np.where(temp1 > i)[0][0]
@@ -164,9 +170,12 @@ class SLM_tools:
                     cumulated_time_vec[i] = np.nan
             else:
                 cumulated_time_vec[i] = 0
+        # if not np.any(sa_vec == 1):
+        #     return []
+        else:
+            return np.column_stack((mu, std, skew, trend_vec, times_vec, sa_vec, cumulated_time_vec))
 
-        return mu, std, skew, trend_vec, times_vec, sa_vec, cumulated_time_vec
+    @staticmethod
+    def post_beast_processing(segment_data_return: list):
+        pass
 
-
-if __name__ == "__main__":
-    print('hello world')
