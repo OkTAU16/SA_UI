@@ -3,8 +3,10 @@ import numpy as np
 from scipy import interpolate
 from scipy import signal
 import scipy.io as sio
-import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn.decomposition import PCA
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
 
 
 class SLM_tools:
@@ -160,7 +162,8 @@ class SLM_tools:
         sa_vec[sa_vec > 1] = 1
 
         for i in range(len_cp):
-            temp1 = np.where(sa_vec == 1)[0]  # translated in the matlab code if temp1 is empty none of the data is saved, ask michael
+            temp1 = np.where(sa_vec == 1)[
+                0]  # translated in the matlab code if temp1 is empty none of the data is saved, ask michael
             if i not in temp1:
                 try:
                     temp2 = np.where(temp1 > i)[0][0]
@@ -170,12 +173,92 @@ class SLM_tools:
                     cumulated_time_vec[i] = np.nan
             else:
                 cumulated_time_vec[i] = 0
-        # if not np.any(sa_vec == 1):
+        # if not np.any(sa_vec == 1):  # current testing file doesn't have assembly return after tests, should be above the second loop?
         #     return []
-        else:
-            return np.column_stack((mu, std, skew, trend_vec, times_vec, sa_vec, cumulated_time_vec))
+        # else:
+        return np.column_stack(
+            (mu, std, skew, np.cumsum(times_vec), trend_vec, sa_vec, cumulated_time_vec))  # look with michael, order
+
+        # TODO: all returns of segment_data of all files should v_stack before post processing and model building
 
     @staticmethod
-    def post_beast_processing(segment_data_return: list):
-        pass
+    def post_beast_processing(segment_data_aggregated_output: np.array):
+        c_reduced = []
+        for i in range(len(segment_data_aggregated_output)):
+            x = segment_data_aggregated_output[i][0]  # mean_vec
+            y = segment_data_aggregated_output[i][1]  # std_vec
+            z = segment_data_aggregated_output[i][4]  # trend
+            w = segment_data_aggregated_output[i][2]  # skew
+            v = segment_data_aggregated_output[i][3]  # total_trajectory_time
+            c = segment_data_aggregated_output[i][5]  # time_to_self_assembly
+            ending_theme = np.where(c == 0)[0][0] if np.any(c == 0) else len(c)
+            x = x[:ending_theme]
+            y = y[:ending_theme]
+            z = z[:ending_theme]
+            c = c[:ending_theme]
+            w = w[:ending_theme]
+            v = v[:ending_theme]
+            d_reduced = np.vstack((x, y, z, w, v, c)).T
+            c_reduced.append(d_reduced)
+        c_reduced = np.vstack(tuple(c_reduced))
+        return c_reduced
 
+    @staticmethod
+    def pca(data: np.array, n_components: int):
+        data = data[:, :n_components]
+        data_mean = np.mean(data, axis=0)
+        data_std = np.std(data, axis=0)
+        norm_data = (data - data_mean) / data_std
+        pca = PCA(n_components=n_components)
+        score = pca.fit_transform(norm_data)
+        principal_components = pca.components_
+        latent = pca.explained_variance_
+        return principal_components, score, latent
+
+    @staticmethod
+    def post_pca_processing(score: np.array, c_reduced: np.array, n_components: int = 3):
+        a_reduced = []
+        if n_components == 3:
+            for i in range(score.shape[0]):
+                x = score[i, 0]  # mean_vec
+                y = score[i, 1]  # std_vec
+                z = score[i, 2]  # trend
+                c = c_reduced[i, 6]  # TODO:??
+                b_reduced = list(np.array([x, y, z, c]).T)  # TODO: check stacking
+                a_reduced.append(b_reduced)
+            return np.array(a_reduced)
+        else:  # n_components == 5
+            for i in range(score.shape[0]):
+                x = score[i, 0]  # mean_vec
+                y = score[i, 1]  # std_vec
+                z = score[i, 4]  # trend
+                w = score[i, 2]  # skew
+                v = score[i, 3]  # total_trajectory_time
+                c = c_reduced[i, 6]  # TODO:??
+                b_reduced = list(np.array([x, y, z, w, v, c]).T) # TODO: check stacking
+                a_reduced.append(b_reduced)
+            return np.array(a_reduced)
+
+    @staticmethod
+    def trajectory_plot_vecs(mean_vec, std_vec, trend, time_to_self_assembly, save_path: str, bottom=0, top=3000):
+        sz = 40
+        fig = plt.figure()
+        ax = fig.add_subplot(111, projection='3d')
+        ax.scatter(mean_vec.T, std_vec.T, trend.T, s=sz, c=time_to_self_assembly, cmap='jet', marker='o')
+        ax.set_xlim(bottom, top)
+        ax.set_ylim(bottom, top)
+        ax.set_zlim(bottom, top)
+        d = (np.vstack((mean_vec[1:], std_vec[1:], trend[1:])) - np.vstack((mean_vec[:-1], std_vec[:-1], trend[:-1]))) / 2
+        color_triplet = np.random.rand(1, 3)
+        ax.quiver(mean_vec[:-1], std_vec[:-1], trend[:-1], d[0], d[1], d[2], color=color_triplet, length=0.1, normalize=True)
+        ax.scatter(mean_vec[0], std_vec[0], trend[0], s=1 * sz, c=time_to_self_assembly[0], marker='^', label='Start Point')
+        ax.scatter(mean_vec[-1], std_vec[-1], trend[-1], s=1 * sz, c=time_to_self_assembly[-1], marker='d', label='Finish Point')
+        ax.legend(['Points', 'Arrows', 'Trajectory', 'Start Point', 'Finish Point'])
+        ax.set_xlabel('Mean')
+        ax.set_ylabel('Standard Deviation')
+        ax.set_zlabel('Trend')
+        ax.set_title('Object Position')
+        ax.grid(True)
+        plt.show() # TODO: check with UI
+        plt.savefig(save_path, bbox_inches='tight', )
+        return fig
