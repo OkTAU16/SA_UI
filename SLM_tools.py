@@ -87,28 +87,6 @@ class SLM_tools:
         except Exception as e:
             print(e)
 
-    # @staticmethod
-    # def extract_vertical_line_locs(plot_object: tuple):
-    #     # TODO: check is this function is necessary
-    #     """
-    #     extract vertical lines x location from plot_beast
-    #     input:
-    #         plot_object (tuple): output of rb.plot(o)
-    #     output:
-    #         vertical_line_locs (list): a sorted list of the x locations of the vertical lines
-    #     """
-    #
-    #     # TODO: talk with micheal to check this function,do we need the loc of the lines or the values? -->the values
-    #     try:
-    #         fig, axes = plot_object
-    #         vertical_line_locs = [line.get_xdata()[0] for ax in axes for line in ax.get_lines()
-    #                               if len(line.get_xdata()) == 2 and line.get_xdata()[0] == line.get_xdata()[1]]
-    #         vertical_line_locs = list(set(vertical_line_locs))
-    #         vertical_line_locs.sort()
-    #         return vertical_line_locs
-    #     except Exception as e:
-    #         print(e)
-
     @staticmethod
     def beast(data: np.array):
         # checked
@@ -131,7 +109,7 @@ class SLM_tools:
 
     @staticmethod
     def segment_data(energy: np.array, distance: np.array, mean_trend: np.array, cp: np.array, N=None):
-        # checked
+        # checked, original give_vecs.m
         len_cp = len(cp) - 1
         mu = np.zeros(len_cp)
         std = np.zeros(len_cp)
@@ -163,7 +141,7 @@ class SLM_tools:
 
         for i in range(len_cp):
             temp1 = np.where(sa_vec == 1)[
-                0]  # translated in the matlab code if temp1 is empty none of the data is saved, ask michael
+                0]  # if temp1 is empty none of the data is saved, ask michael
             if i not in temp1:
                 try:
                     temp2 = np.where(temp1 > i)[0][0]
@@ -177,12 +155,16 @@ class SLM_tools:
         #     return []
         # else:
         return np.column_stack(
-            (mu, std, skew, np.cumsum(times_vec), trend_vec, sa_vec, cumulated_time_vec))  # look with michael, order
+            (mu, std, skew, np.cumsum(times_vec), trend_vec, sa_vec, cumulated_time_vec))  # TODO: look with michael, order
+
+        # TODO: Idan, look at the return order of give_vecs.m compered to it's call in Gather_Tfas_Single_Drive.m
+        #  line 186, and cc decleration in line 188, I suspect the order is wrong.
 
         # TODO: all returns of segment_data of all files should v_stack before post processing and model building
 
     @staticmethod
     def post_beast_processing(segment_data_aggregated_output: np.array):
+        # not checked
         c_reduced = []
         for i in range(len(segment_data_aggregated_output)):
             x = segment_data_aggregated_output[i][0]  # mean_vec
@@ -205,6 +187,7 @@ class SLM_tools:
 
     @staticmethod
     def pca(data: np.array, n_components: int):
+        # not checked
         data = data[:, :n_components]
         data_mean = np.mean(data, axis=0)
         data_std = np.std(data, axis=0)
@@ -217,13 +200,14 @@ class SLM_tools:
 
     @staticmethod
     def post_pca_processing(score: np.array, c_reduced: np.array, n_components: int = 3):
+        # not checked
         a_reduced = []
         if n_components == 3:
             for i in range(score.shape[0]):
                 x = score[i, 0]  # mean_vec
                 y = score[i, 1]  # std_vec
                 z = score[i, 2]  # trend
-                c = c_reduced[i, 6]  # TODO:??
+                c = c_reduced[i, 6]  # TODO: what's in here?
                 b_reduced = list(np.array([x, y, z, c]).T)  # TODO: check stacking
                 a_reduced.append(b_reduced)
             return np.array(a_reduced)
@@ -234,13 +218,14 @@ class SLM_tools:
                 z = score[i, 4]  # trend
                 w = score[i, 2]  # skew
                 v = score[i, 3]  # total_trajectory_time
-                c = c_reduced[i, 6]  # TODO:??
-                b_reduced = list(np.array([x, y, z, w, v, c]).T) # TODO: check stacking
+                c = c_reduced[i, 6]  # TODO: what's in here?
+                b_reduced = list(np.array([x, y, z, w, v, c]).T)  # TODO: check stacking
                 a_reduced.append(b_reduced)
             return np.array(a_reduced)
 
     @staticmethod
     def trajectory_plot_vecs(mean_vec, std_vec, trend, time_to_self_assembly, save_path: str, bottom=0, top=3000):
+        # not checked
         sz = 40
         fig = plt.figure()
         ax = fig.add_subplot(111, projection='3d')
@@ -259,6 +244,6 @@ class SLM_tools:
         ax.set_zlabel('Trend')
         ax.set_title('Object Position')
         ax.grid(True)
-        plt.show() # TODO: check with UI
+        plt.show()  # TODO: check with UI
         plt.savefig(save_path, bbox_inches='tight', )
         return fig
