@@ -151,14 +151,11 @@ class SLM_tools:
                     cumulated_time_vec[i] = np.nan
             else:
                 cumulated_time_vec[i] = 0
-        # if not np.any(sa_vec == 1):  # current testing file doesn't have assembly return after tests, should be above the second loop?
+        # if not np.any(sa_vec == 1):  # TODO: uncomment after testing
         #     return []
         # else:
         return np.column_stack(
-            (mu, std, skew, np.cumsum(times_vec), trend_vec, sa_vec, cumulated_time_vec))  # TODO: look with michael, order
-
-        # TODO: Idan, look at the return order of give_vecs.m compered to it's call in Gather_Tfas_Single_Drive.m
-        #  line 186, and cc decleration in line 188, I suspect the order is wrong.
+            (mu, std, skew, np.cumsum(times_vec), trend_vec, sa_vec, cumulated_time_vec))
 
         # TODO: all returns of segment_data of all files should v_stack before post processing and model building
 
@@ -186,9 +183,9 @@ class SLM_tools:
         return c_reduced
 
     @staticmethod
-    def pca(data: np.array, n_components: int):
+    def pca(c_reduced: np.array, n_components: int):
         # not checked
-        data = data[:, :n_components]
+        data = c_reduced[:, :n_components]
         data_mean = np.mean(data, axis=0)
         data_std = np.std(data, axis=0)
         norm_data = (data - data_mean) / data_std
@@ -196,6 +193,12 @@ class SLM_tools:
         score = pca.fit_transform(norm_data)
         principal_components = pca.components_
         latent = pca.explained_variance_
+        # TODO: ask michael if necessary (line 230 single drive)
+        # cov = np.cov(score, rowvar=False)
+        # diag_cov = np.diag(cov)
+        # diag_mat = np.tile(diag_cov, (n_components, 1))
+        # score = score / diag_mat
+        # score = score.T
         return principal_components, score, latent
 
     @staticmethod
@@ -210,7 +213,8 @@ class SLM_tools:
                 c = c_reduced[i, 6]  # TODO: what's in here?
                 b_reduced = list(np.array([x, y, z, c]).T)  # TODO: check stacking
                 a_reduced.append(b_reduced)
-            return np.array(a_reduced)
+                a_reduced = np.array(a_reduced)
+            return a_reduced
         else:  # n_components == 5
             for i in range(score.shape[0]):
                 x = score[i, 0]  # mean_vec
@@ -221,7 +225,8 @@ class SLM_tools:
                 c = c_reduced[i, 6]  # TODO: what's in here?
                 b_reduced = list(np.array([x, y, z, w, v, c]).T)  # TODO: check stacking
                 a_reduced.append(b_reduced)
-            return np.array(a_reduced)
+                a_reduced = np.array(a_reduced)
+            return a_reduced
 
     @staticmethod
     def trajectory_plot_vecs(mean_vec, std_vec, trend, time_to_self_assembly, save_path: str, bottom=0, top=3000):
@@ -233,11 +238,15 @@ class SLM_tools:
         ax.set_xlim(bottom, top)
         ax.set_ylim(bottom, top)
         ax.set_zlim(bottom, top)
-        d = (np.vstack((mean_vec[1:], std_vec[1:], trend[1:])) - np.vstack((mean_vec[:-1], std_vec[:-1], trend[:-1]))) / 2
+        d = (np.vstack((mean_vec[1:], std_vec[1:], trend[1:])) - np.vstack(
+            (mean_vec[:-1], std_vec[:-1], trend[:-1]))) / 2
         color_triplet = np.random.rand(1, 3)
-        ax.quiver(mean_vec[:-1], std_vec[:-1], trend[:-1], d[0], d[1], d[2], color=color_triplet, length=0.1, normalize=True)
-        ax.scatter(mean_vec[0], std_vec[0], trend[0], s=1 * sz, c=time_to_self_assembly[0], marker='^', label='Start Point')
-        ax.scatter(mean_vec[-1], std_vec[-1], trend[-1], s=1 * sz, c=time_to_self_assembly[-1], marker='d', label='Finish Point')
+        ax.quiver(mean_vec[:-1], std_vec[:-1], trend[:-1], d[0], d[1], d[2], color=color_triplet, length=0.1,
+                  normalize=True)
+        ax.scatter(mean_vec[0], std_vec[0], trend[0], s=1 * sz, c=time_to_self_assembly[0], marker='^',
+                   label='Start Point')
+        ax.scatter(mean_vec[-1], std_vec[-1], trend[-1], s=1 * sz, c=time_to_self_assembly[-1], marker='d',
+                   label='Finish Point')
         ax.legend(['Points', 'Arrows', 'Trajectory', 'Start Point', 'Finish Point'])
         ax.set_xlabel('Mean')
         ax.set_ylabel('Standard Deviation')
@@ -247,3 +256,6 @@ class SLM_tools:
         plt.show()  # TODO: check with UI
         plt.savefig(save_path, bbox_inches='tight', )
         return fig
+
+    def pre_model_processing(self, a_reduced):
+        pass
