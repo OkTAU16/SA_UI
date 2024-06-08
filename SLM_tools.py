@@ -254,7 +254,7 @@ class SLM_tools:
         ax.set_title('Object Position')
         ax.grid(True)
         plt.show()  # TODO: check with UI
-        plt.savefig(save_path, bbox_inches='tight', )
+        plt.savefig(save_path, bbox_inches='tight')
         return fig
 
     def pre_model_processing(self, a_reduced):
