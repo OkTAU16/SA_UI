@@ -268,4 +268,10 @@ class SLM_tools:
         points = np.linspace(min, max, 1000)
         f_x = scipy.stats.gaussian_kde(points)  # line 60 matlab
         p_x = f_x[xw]
+        yo = np.sort(mapx[:, 3])
+        aop = int(np.ceil((0.16*len(yo)))) - 1
+        std_fit = np.median(mapx[:, 3], axis=0)-yo[aop]
+        x = np.copy(mapx)
+        np.random.seed(42)
+        random_x = x[np.random.permutation(x.shape[0]), :]  # line 89 matlab
         pass
