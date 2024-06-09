@@ -1,7 +1,7 @@
 import Rbeast as rb
 import numpy as np
-from scipy import interpolate
-from scipy import signal
+import scipy.stats
+from scipy import interpolate, stats, signal
 import scipy.io as sio
 import pandas as pd
 from sklearn.decomposition import PCA
@@ -140,8 +140,7 @@ class SLM_tools:
         sa_vec[sa_vec > 1] = 1
 
         for i in range(len_cp):
-            temp1 = np.where(sa_vec == 1)[
-                0]  # if temp1 is empty none of the data is saved, ask michael
+            temp1 = np.where(sa_vec == 1)[0]
             if i not in temp1:
                 try:
                     temp2 = np.where(temp1 > i)[0][0]
@@ -183,7 +182,7 @@ class SLM_tools:
         return c_reduced
 
     @staticmethod
-    def pca(c_reduced: np.array, n_components: int):
+    def pca(c_reduced: np.array, n_components: int = 3):
         # not checked
         data = c_reduced[:, :n_components]
         data_mean = np.mean(data, axis=0)
@@ -257,5 +256,16 @@ class SLM_tools:
         plt.savefig(save_path, bbox_inches='tight')
         return fig
 
-    def pre_model_processing(self, a_reduced):
+    @staticmethod
+    def pre_model_processing(a_reduced: np.array, n_components: int = 3):
+        idn = np.where(a_reduced[:, n_components + 1] != 0)
+        mapx = a_reduced[idn, :]
+        mapx = np.hstack((mapx[:, 0:2], np.log(mapx[:, 3])))
+        median_fit_vec = np.median(mapx[:, 3], axis=0)  # line 54 matlab
+        min = np.min(mapx[:, 3], axis=0)
+        max = np.max(mapx[:, 3], axis=0)
+        xw = mapx[:, 3]
+        points = np.linspace(min, max, 1000)
+        f_x = scipy.stats.gaussian_kde(points)  # line 60 matlab
+        p_x = f_x[xw]
         pass
