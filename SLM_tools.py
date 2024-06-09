@@ -258,6 +258,7 @@ class SLM_tools:
 
     @staticmethod
     def pre_model_processing(a_reduced: np.array, n_components: int = 3):
+        # pre_processing from LogTfas....
         idn = np.where(a_reduced[:, n_components + 1] != 0)
         mapx = a_reduced[idn, :]
         mapx = np.hstack((mapx[:, 0:2], np.log(mapx[:, 3])))
