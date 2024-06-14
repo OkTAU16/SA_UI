@@ -4,22 +4,17 @@ from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.widget import Widget
-from kivy.uix.textinput import TextInput
 from kivy.uix.behaviors import DragBehavior
 from kivy.core.window import Window
 from kivy.graphics import Rectangle, Color, Line, Ellipse
 from kivy.uix.togglebutton import ToggleButton
-from kivy.uix.filechooser import FileChooserIconView
 from kivy.uix.checkbox import CheckBox
-from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.textinput import TextInput
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.spinner import Spinner
 # from SLM_UI_graphs_window import *
 import os
-
-
-# from kivy.graphics import Color, Ellipse, Line
-# from random import random
+from random import random
 
 class ColorCheckBox(CheckBox):
     def __init__(self, color=(1, 0, 0, 1), **kwargs):
@@ -44,6 +39,7 @@ class ColorCheckBox(CheckBox):
 class FileDropApp(App):
     def __init__(self, **kwargs):
         super().__init__()
+        self.file_path = None
         self.drop_area_height = None
         self.drop_area_width = None
         self.drop_area_y = None
@@ -51,48 +47,11 @@ class FileDropApp(App):
         self.cluster_num = None
         self.CV_num = None
         self.target_num = None
+        self.particle_clusters = 2
 
     def build(self):
         layout = FloatLayout()
-        """
-        playing around. not for usage
-        
-        
-        self.label_checkbox = Label(text="CheckBox lookout", size_hint=(None, None), pos_hint={'center_x': 0.9, 'center_y': 0.95})
-        self.label_radio = Label(text="radio lookout", size_hint=(None, None),
-                                    pos_hint={'center_x': 0.9, 'center_y': 0.8})
-        self.checkbox = ColorCheckBox(active=False, size_hint=(None, None), size=(50, 50),
-                                      pos_hint={'right': 0.9, 'top': 0.9}, color=(1, 0, 0, 1))
-        layout.add_widget(self.label_checkbox)
-        layout.add_widget(self.checkbox)
-        self.radio1 = ColorCheckBox(group='options', size_hint=(None, None), size=(50, 50), pos_hint={'x': 0.8, 'top': 0.7})
 
-        self.radio2 = ColorCheckBox(group='options', size_hint=(None, None), size=(50, 50), pos_hint={'x': 0.9, 'top': 0.7})
-        layout.add_widget(self.radio1)
-        layout.add_widget(self.radio2)
-        layout.add_widget(self.label_radio)
-
-        self.label_toggle = Label(text="toggle lookout", size_hint=(None, None),
-                                    pos_hint={'center_x': 0.9, 'center_y': 0.55})
-        self.toggle_button = ToggleButton(text='Toggle', size_hint=(None, None), size=(100, 50), pos_hint={'center_x': 0.9, 'top': 0.4})
-
-        layout.add_widget(self.label_toggle)
-        layout.add_widget(self.toggle_button)
-        """
-        '''
-        # Create a CheckBox
-        self.checkbox = CheckBox(active=False, size_hint=(None, None), size=(50, 50), pos_hint={'right': 0.9, 'top': 0.9})
-        layout.add_widget(self.label_checkbox)
-        layout.add_widget(self.checkbox)
-
-        self.label_radio = Label(text="radio lookout", size_hint=(None, None),
-                                    pos_hint={'center_x': 0.9, 'center_y': 0.8})
-        self.radio1 = CheckBox(group='options', size_hint=(None, None), size=(50, 50), pos_hint={'x': 0.9, 'top': 0.7})
-
-        self.radio2 = CheckBox(group='options', size_hint=(None, None), size=(50, 50), pos_hint={'x': 0.9, 'top': 0.5})
-        layout.add_widget(self.radio1)
-        layout.add_widget(self.radio2)
-        '''
         self.label_time_series = Label(text="Added Time Series", size_hint=(None, None),
                                     pos_hint={'center_x': 0.7, 'center_y': 0.9})
         #self.label_time_series_Yes = Label(text="Yes", size_hint=(None, None),
@@ -156,15 +115,28 @@ class FileDropApp(App):
         self.CV_input.bind(text=self.text_size_change)
 
         self.label_targets = Label(text="Number of targets", size_hint=(None, None),
-                                    pos_hint={'center_x': 0.7, 'center_y': 0.5})
+                                    pos_hint={'center_x': 0.7, 'center_y': 0.42})
         layout.add_widget(self.label_targets)
         self.target_input = TextInput(hint_text="Enter number of parameters", font_size=15, input_filter='int',multiline=True,
-                                    size_hint=(0.09, 0.06),pos_hint={'x': 0.63, 'top': 0.46})
-        self.button_targets_submit = Button(text="✓", size_hint=(None, None), font_name='DejaVuSans.ttf', size=(53, 53), pos_hint={'x': 0.73, 'top': 0.46})
+                                    size_hint=(0.09, 0.06),pos_hint={'x': 0.63, 'top': 0.38})
+        self.button_targets_submit = Button(text="✓", size_hint=(None, None), font_name='DejaVuSans.ttf', size=(53, 53), pos_hint={'x': 0.73, 'top': 0.38})
         layout.add_widget(self.target_input)
         layout.add_widget(self.button_targets_submit)
         self.target_input.bind(text=self.text_size_change)
         self.button_targets_submit.bind(on_press=self.target_submit)
+
+        self.label_Partical_clusters = Label(text="Number of Partical Clusters:", size_hint=(None, None),
+                                    pos_hint={'center_x': 0.67, 'center_y': 0.48})
+        layout.add_widget(self.label_Partical_clusters)
+        self.spinner_particle_clusters = Spinner(
+            text='Default',
+            values=('2', '3', '5'),
+            size_hint=(0.08, 0.05),
+            pos_hint={'x': 0.79, 'top': 0.5},
+            #background_color = (0.784, 0.443, 0.216, 1)
+        )
+        layout.add_widget(self.spinner_particle_clusters)
+        self.spinner_particle_clusters.bind(text=self.particle_clusters_select)
 
 
         # Create a label to display dropped file path
@@ -257,11 +229,11 @@ class FileDropApp(App):
             print(x)
             print(y)
             # Handle the dropped file
-            file_path = file_path.decode('utf-8')  # Convert bytes to string
+            self.file_path = file_path.decode('utf-8')  # Convert bytes to string
             self.file_label.text = f'Dropped file: {file_path}'
             self.test_label.text = 'File dropped!'
             EXTENTIONS = (".xlsx", ".xlsm", ".xltx", ".xltm")
-            print(file_path.endswith(EXTENTIONS))
+            print(self.file_path.endswith(EXTENTIONS))
             print(os.path.isfile(file_path))
             # Call a function to process the dropped file
             self.process_dropped_file(file_path)
@@ -272,24 +244,87 @@ class FileDropApp(App):
         # Implement your file processing logic here
         print(f"Processing file: {file_path}")
 
-    def test_dropped_file(self, file_path):
+    def test_dropped_file(self, *args):
+        # Check if a file is dropped
+        if self.file_path is None:
+            self.test_label.text = "No file dropped."
+            self.test_label.color = (1, 0, 0, 1)  # Red color for errors
+            return
+        #elif os.path.isdir(self.file_path):
 
-        """
-        test that all files are of known format
-            inputs:
-                file_path: dropped file path
-            outputs:
-        """
-        self.fill_all_data()
-        pass
 
-    def fill_all_data(self,button=None):
+        # Check if user input data is filled correctly
+        errors = self.fill_all_data()
+        if not errors:
+            self.test_label.text = "Please fill all required fields."
+            self.test_label.color = (1, 0, 0, 1)  # Red color for errors
+            return
+
+        # Check the type of the dropped file or folder
+        path = self.file_path
+        valid_extensions = ['.mat', '.csv', '.xls', '.xlsx']
+        if os.path.isfile(path):
+            if not any(path.endswith(ext) for ext in valid_extensions):
+                self.test_label.text = "Invalid file type. Only .mat, .csv, and Excel files are allowed."
+                self.test_label.color = (1, 0, 0, 1)  # Red color for errors
+                return
+        elif os.path.isdir(path):
+            for root, dirs, files in os.walk(path):
+                for file in files:
+                    if not any(file.endswith(ext) for ext in valid_extensions):
+                        self.test_label.text = "Folder contains invalid file types. Only .mat, .csv, and Excel files are allowed."
+                        self.test_label.color = (1, 0, 0, 1)  # Red color for errors
+                        return
+        else:
+            self.test_label.text = "Invalid path. Please drop a file or a folder."
+            self.test_label.color = (1, 0, 0, 1)  # Red color for errors
+            return
+
+        self.test_label.text = "File or folder validated successfully!"
+        self.test_label.color = (0, 1, 0, 1)  # Green color for success
+        print("File or folder validated successfully!")
+
+    def fill_all_data(self):
         """
         making sure that all user data and buttons are pressed
         """
+        errors = []
 
+        # Check Time Series
+        if not (self.button_time_series_yes.state == 'down' or self.button_time_series_no.state == 'down'):
+            errors.append("Time Series option not selected.")
 
-        pass
+        # Check PCA
+        if not (self.button_PCA_yes.state == 'down' or self.button_PCA_no.state == 'down'):
+            errors.append("PCA option not selected.")
+        elif self.button_PCA_yes.state == 'down' and self.cluster_num is None:
+            errors.append("Number of clusters for PCA not entered.")
+        #self.cluster_num = None
+        #self.CV_num = None
+        #self.target_num = None
+        # Check CV
+        if not (self.button_CV_yes.state == 'down' or self.button_CV_no.state == 'down'):
+            errors.append("CV option not selected.")
+        elif self.button_CV_yes.state == 'down' and self.CV_num is None:
+            errors.append("Number of ??? for CV not entered.")
+
+        # Check Number of Targets
+        if self.target_num is None:
+            errors.append("Number of targets not entered.")
+
+        # Check Particle Clusters
+        # if not self.spinner_particle_clusters.text or self.spinner_particle_clusters.text == "Default":
+        #    errors.append("Number of particle clusters not selected.")
+
+        if errors:
+            self.test_label.text = "Errors:\n" + "\n".join(errors)
+            self.test_label.color = (1, 0, 0, 1)  # Red color for errors
+            print(errors)  # For debugging
+            return False
+        else:
+            self.test_label.text = "All data filled correctly!"
+            self.test_label.color = (0, 1, 0, 1)  # Green color for success
+            return True
 
     def next_window(self, *args):
         """
@@ -379,6 +414,13 @@ class FileDropApp(App):
             print(self.target_num)
             self.target_input.foreground_color = (0, 0, 0, 1)  # RGBA for default color
             self.target_input.background_color = (1, 1, 1, 1)
+
+    def particle_clusters_select(self, spinner, text):
+        if text == "Default":
+            self.particle_clusters = 2
+        else:
+            self.particle_clusters = int(text)
+        print(f"Selected number of clusters: {self.particle_clusters}")
 
     def text_size_change(self, instance, value):
         print(f"Text changed to: {value}")  # Debug statement
