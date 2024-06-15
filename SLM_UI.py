@@ -10,12 +10,108 @@ from kivy.graphics import Rectangle, Color, Line, Ellipse
 from kivy.uix.togglebutton import ToggleButton
 from kivy.uix.checkbox import CheckBox
 from kivy.uix.textinput import TextInput
-from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.screenmanager import ScreenManager, Screen,FadeTransition
 from kivy.uix.spinner import Spinner
-# from SLM_UI_graphs_window import *
 import os
 from random import random
 
+###### SCREENS SETTINGS ######
+
+class IntroScreen(Screen):
+    def __init__(self, **kwargs):
+        super(IntroScreen, self).__init__(**kwargs)
+        self.title = None
+        self.build()
+
+    def build(self):
+        layout = FloatLayout()
+        self.title = 'Intro'
+        #layout.add_widget(self.title)
+        next_button = Button(text='Next', size_hint=(None, None), size=(100, 50), pos_hint={'center_x': 0.93, 'center_y': 0.07})
+        layout.add_widget(next_button)
+        next_button.bind(on_press=self.switch_to_main_screen)
+
+        self.add_widget(layout)
+
+    def switch_to_main_screen(self, instance):
+        self.manager.current = 'main'
+
+
+
+class MainScreen(Screen):
+    def __init__(self, **kwargs):
+        super(MainScreen, self).__init__(**kwargs)
+        self.build()
+
+    def build(self):
+        layout = FloatLayout()
+
+        self.file_label = Label(text='Drop files here', size_hint=(None, None),
+                                pos_hint={'center_x': 0.25, 'center_y': 0.9})
+        layout.add_widget(self.file_label)
+
+        next_button = Button(text='Next', size_hint=(None, None), size=(100, 50), pos_hint={'center_x': 0.93, 'center_y': 0.07})
+        layout.add_widget(next_button)
+        next_button.bind(on_press=self.switch_to_graph_screen)
+
+        back_button = Button(text='back', size_hint=(None, None), size=(100, 50), pos_hint={'center_x': 0.07, 'center_y': 0.07})
+        layout.add_widget(back_button)
+        next_button.bind(on_press=self.switch_to_intro_screen)
+        self.add_widget(layout)
+
+
+    def switch_to_graph_screen(self, instance):
+        self.manager.current = 'graph'
+
+    def switch_to_intro_screen(self, instance):
+        self.manager.current = 'intro'
+
+class GraphScreen(Screen):
+    def __init__(self, **kwargs):
+        super(GraphScreen, self).__init__(**kwargs)
+        self.build()
+
+    def build(self):
+        layout = BoxLayout(orientation='vertical')
+        layout.add_widget(Label(text='This is the second screen!'))
+
+        back_button = Button(text='Go Back')
+        back_button.bind(on_press=self.switch_to_main_screen)
+        layout.add_widget(back_button)
+
+        self.add_widget(layout)
+
+    def switch_to_main_screen(self, instance):
+        self.manager.current = 'main'
+
+
+
+####### GUI CLASS #####
+
+
+class GuiApp(App):
+    def __init__(self, **kwargs):
+        super().__init__()
+        self.sm = None
+
+    def build(self):
+        self.sm = ScreenManager(transition=FadeTransition())
+        self.sm.add_widget(IntroScreen(name='intro'))
+        self.sm.add_widget(MainScreen(name='main'))
+        self.sm.add_widget(GraphScreen(name='graph'))
+
+        return self.sm
+
+
+if __name__ == '__main__':
+    GuiApp().run()
+
+
+
+'''
+
+
+##### COLOR MODIFICATION CLASS #####
 class ColorCheckBox(CheckBox):
     def __init__(self, color=(1, 0, 0, 1), **kwargs):
         super(ColorCheckBox, self).__init__(**kwargs)
@@ -36,6 +132,9 @@ class ColorCheckBox(CheckBox):
 
     def on_state(self, instance, value):
         self.marker_color.rgba = [1, 1, 1, 1] if value == 'normal' else self.color
+
+
+##### GUI CLASS #####
 class FileDropApp(App):
     def __init__(self, **kwargs):
         super().__init__()
@@ -45,7 +144,7 @@ class FileDropApp(App):
         self.drop_area_y = None
         self.drop_area_x = None
         self.cluster_num = None
-        self.CV_num = None
+        self.CV_num = 3
         self.target_num = None
         self.particle_clusters = 2
 
@@ -133,7 +232,6 @@ class FileDropApp(App):
             values=('2', '3', '5'),
             size_hint=(0.08, 0.05),
             pos_hint={'x': 0.79, 'top': 0.5},
-            #background_color = (0.784, 0.443, 0.216, 1)
         )
         layout.add_widget(self.spinner_particle_clusters)
         self.spinner_particle_clusters.bind(text=self.particle_clusters_select)
@@ -432,3 +530,4 @@ class FileDropApp(App):
 
 if __name__ == '__main__':
     FileDropApp().run()
+'''
