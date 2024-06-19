@@ -225,7 +225,7 @@ class SLM_tools:
     def trajectory_plot_vecs(mean_vec, std_vec, trend, time_to_self_assembly, save_path: str, bottom=0, top=3000):
         # not checked
         sz = 40
-        fig = plt.figure()
+        plt.figure()
         ax = fig.add_subplot(111, projection='3d')
         ax.scatter(mean_vec.T, std_vec.T, trend.T, s=sz, c=time_to_self_assembly, cmap='jet', marker='o')
         ax.set_xlim(bottom, top)
@@ -248,7 +248,6 @@ class SLM_tools:
         ax.grid(True)
         plt.show()  # TODO: replace with plt.save()?
         # plt.savefig(save_path, bbox_inches='tight')
-        return fig
 
     @staticmethod
     def replace_nan_with_rounded_mean(array):
@@ -332,33 +331,34 @@ class SLM_tools:
             tfas_real = np.zeros((validation_set.shape[0], 1))
             tfas_predict = np.zeros((validation_set.shape[0], 1))
             for j in range(validation_set.shape[0]):
-                    tfas_real[j] = validation_set[j,n_components + 1]
-                    if n_components == 3:
-                        tfas_predict[j] = YI[Ix[j], Iy[j], Iz[j]]
-                    else:
-                        tfas_predict[j] = YI[Ix[j], Iy[j], Iz[j], Iw[j], Iv[j]]
-                    if np.isnan(tfas_predict[j]):
-                        tfas_predict[j] = np.mean(Y)
+                tfas_real[j] = validation_set[j, n_components + 1]
+                if n_components == 3:
+                    tfas_predict[j] = YI[Ix[j], Iy[j], Iz[j]]
+                else:
+                    tfas_predict[j] = YI[Ix[j], Iy[j], Iz[j], Iw[j], Iv[j]]
+                if np.isnan(tfas_predict[j]):
+                    tfas_predict[j] = np.mean(Y)
 
             tfas_predict_mat[i, :] = tfas_predict
             tfas_actually_mat[i, :] = tfas_real
             mean_error_mat[i, :] = np.abs(tfas_real - tfas_predict)
-        return YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat, train_index
+        return YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat, train_index, random_x, validation_index
 
     @staticmethod
-    def model_eval(YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat, train_index, cv_num: int = 3):
+    def model_eval(tfas_predict_mat, tfas_actually_mat, train_index, cv_num: int = 3):
         bin_width = 0.5  # TODO: where are these values from?
-        smooth_win = 0   # TODO: where are these values from?
+        smooth_win = 0  # TODO: where are these values from?
         x_ticks = np.arange(3.5, 7.5 + 0.5, 0.5)  # TODO: where are these values from?
         y_ticks = np.arange(3, 9 + 2, 2)  # TODO: where are these values from?
         color_map = plt.cm.jet(np.linspace(0, 1, cv_num))
         red = len(range(1, train_index + 1))
         min_of_all = np.min(tfas_predict_mat)
         max_of_all = np.max(tfas_predict_mat)
-        hist_space = np.linspace(bin_width * np.floor(min_of_all / bin_width), bin_width * np.ceil(max_of_all / bin_width),
-                            int((np.ceil(max_of_all / bin_width) - np.floor(min_of_all / bin_width)) + 1))
-        mean = np.zeros((cv_num,len(hist_space)-1))
-        std = np.zeros((cv_num,len(hist_space)-1))
+        hist_space = np.linspace(bin_width * np.floor(min_of_all / bin_width),
+                                 bin_width * np.ceil(max_of_all / bin_width),
+                                 int((np.ceil(max_of_all / bin_width) - np.floor(min_of_all / bin_width)) + 1))
+        mean = np.zeros((cv_num, len(hist_space) - 1))
+        std = np.zeros((cv_num, len(hist_space) - 1))
         plt.figure()
         for i in range(cv_num):
             x = tfas_predict_mat[i, :]
@@ -409,7 +409,8 @@ class SLM_tools:
                 i_4 = len(mean_hista)
 
             plt.subplot(4, 1, 2)
-            plt.scatter(x_hist_space[:i_4], mean_hista[:i_4], edgecolors=color_map[i], facecolors=color_map[i], marker='s')
+            plt.scatter(x_hist_space[:i_4], mean_hista[:i_4], edgecolors=color_map[i], facecolors=color_map[i],
+                        marker='s')
             plt.hold(True)
             # Store results
             mean[i, :len(mean_hista)] = mean_hista
@@ -445,8 +446,17 @@ class SLM_tools:
             else:
                 mean_vec[row] = np.nan
                 std_vec[row] = np.nan
-
-
-
-
+        plt.subplot(4, 1, 2)
+        plt.plot(x_hist_space[:i_4], x_hist_space[:i_4], 'k--')
+        plt.errorbar(x_hist_space, mean_vec, yerr=std_vec, fmt='k', ecolor='k', elinewidth=1, capsize=2)
+        plt.gca().set_xticklabels([])
+        plt.yticks(y_ticks)
+        plt.xlim([x_ticks[0], x_ticks[-1]])
+        plt.ylim([y_ticks[0], y_ticks[-1]])
+        plt.box(False)
+        plt.gca().tick_params(axis='both', which='both', length=0)
+        plt.gca().set_fontsize(24)
+        plt.show()  # TODO: replace with plt.save()?
+        # plt.savefig(save_path, bbox_inches='tight')
+        # line 498 MATLAB
 
