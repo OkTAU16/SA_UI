@@ -1,7 +1,7 @@
 import Rbeast as rb
 import numpy as np
 import scipy.stats
-from scipy import interpolate, stats, signal
+from scipy import interpolate, stats, signal, ndimage
 import scipy.io as sio
 import pandas as pd
 from sklearn.decomposition import PCA
@@ -162,7 +162,7 @@ class SLM_tools:
     def post_beast_processing(segment_data_aggregated_output: np.array):
         # not checked
         c_reduced = []
-        for i in range(len(segment_data_aggregated_output)):
+        for i in range(segment_data_aggregated_output.shape[0]):
             x = segment_data_aggregated_output[i][0]  # mean_vec
             y = segment_data_aggregated_output[i][1]  # std_vec
             z = segment_data_aggregated_output[i][4]  # trend
@@ -192,12 +192,6 @@ class SLM_tools:
         score = pca.fit_transform(norm_data)
         principal_components = pca.components_
         latent = pca.explained_variance_
-        # TODO: ask michael if necessary (line 230 single drive)
-        # cov = np.cov(score, rowvar=False)
-        # diag_cov = np.diag(cov)
-        # diag_mat = np.tile(diag_cov, (n_components, 1))
-        # score = score / diag_mat
-        # score = score.T
         return principal_components, score, latent
 
     @staticmethod
@@ -209,10 +203,10 @@ class SLM_tools:
                 x = score[i, 0]  # mean_vec
                 y = score[i, 1]  # std_vec
                 z = score[i, 2]  # trend
-                c = c_reduced[i, 6]  # TODO: what's in here?
-                b_reduced = list(np.array([x, y, z, c]).T)  # TODO: check stacking
+                c = c_reduced[i, 6]  # TODO: should be 3?
+                b_reduced = list(np.array([x, y, z, c]).T)
                 a_reduced.append(b_reduced)
-                a_reduced = np.array(a_reduced)
+            # a_reduced = np.array(a_reduced)
             return a_reduced
         else:  # n_components == 5
             for i in range(score.shape[0]):
@@ -222,9 +216,9 @@ class SLM_tools:
                 w = score[i, 2]  # skew
                 v = score[i, 3]  # total_trajectory_time
                 c = c_reduced[i, 6]  # TODO: what's in here?
-                b_reduced = list(np.array([x, y, z, w, v, c]).T)  # TODO: check stacking
+                b_reduced = list(np.array([x, y, z, w, v, c]).T)
                 a_reduced.append(b_reduced)
-                a_reduced = np.array(a_reduced)
+            # a_reduced = np.array(a_reduced)
             return a_reduced
 
     @staticmethod
@@ -252,13 +246,20 @@ class SLM_tools:
         ax.set_zlabel('Trend')
         ax.set_title('Object Position')
         ax.grid(True)
-        plt.show()  # TODO: check with UI
-        plt.savefig(save_path, bbox_inches='tight')
+        plt.show()  # TODO: replace with plt.save()?
+        # plt.savefig(save_path, bbox_inches='tight')
         return fig
 
     @staticmethod
-    def pre_model_processing(a_reduced: np.array, n_components: int = 3):
-        # pre_processing from LogTfas....
+    def replace_nan_with_rounded_mean(array):
+        mean_val = np.nanmean(array)
+        array[np.isnan(array)] = np.round(mean_val)
+        return array
+
+    @staticmethod
+    def model_training_with_cv(a_reduced: np.array, n_components: int = 3, cv_num: int = 3):
+        # from LogTfas....
+        np.random.seed(42)
         idn = np.where(a_reduced[:, n_components + 1] != 0)
         mapx = a_reduced[idn, :]
         mapx = np.hstack((mapx[:, 0:2], np.log(mapx[:, 3])))
@@ -270,9 +271,182 @@ class SLM_tools:
         f_x = scipy.stats.gaussian_kde(points)  # line 60 matlab
         p_x = f_x[xw]
         yo = np.sort(mapx[:, 3])
-        aop = int(np.ceil((0.16*len(yo)))) - 1
-        std_fit = np.median(mapx[:, 3], axis=0)-yo[aop]
+        aop = int(np.ceil((0.16 * len(yo)))) - 1
+        std_fit = np.median(mapx[:, 3], axis=0) - yo[aop]
         x = np.copy(mapx)
-        np.random.seed(42)
         random_x = x[np.random.permutation(x.shape[0]), :]  # line 89 matlab
-        pass
+        train_index = int(np.floor(0.6 * random_x.shape[0]))
+        validation_index = int(np.floor(0.8 * random_x.shape[0]))
+        size_validation_set = len(range(train_index, validation_index))
+        tfas_predict_mat = np.zeros((cv_num, size_validation_set))
+        tfas_actually_mat = np.zeros((cv_num, size_validation_set))
+        mean_error_mat = np.zeros((cv_num, size_validation_set))
+        training_set = x[:train_index - 1, :]
+        validation_set = x[train_index:validation_index, :]
+        for i in range(cv_num):
+            min_1 = np.min(random_x[:, 0])
+            max_1 = np.max(random_x[:, 0])
+            min_2 = np.min(random_x[:, 1])
+            max_2 = np.max(random_x[:, 1])
+            min_3 = np.min(random_x[:, 2])
+            max_3 = np.max(random_x[:, 2])
+            if n_components == 5:
+                min_4 = np.min(random_x[:, 3])
+                max_4 = np.max(random_x[:, 3])
+                min_5 = np.min(random_x[:, 4])
+                max_5 = np.max(random_x[:, 4])
+                d4 = np.linspace(np.floor(min_4), np.ceil(max_4), 10)
+                d5 = np.linspace(np.floor(min_5), np.ceil(max_5), 10)
+                x0, y0, z0, w0, v0 = np.meshgrid(d1, d2, d3, d4, d5, indexing='ij')
+                X = training_set[:, :4]
+                Y = training_set[:, 5]
+                XI = np.column_stack((x0.ravel(), y0.ravel(), z0.ravel(), w0.ravel(), v0.ravel()))
+            # Create linearly spaced vectors for each coordinate
+            else:
+                d1 = np.linspace(np.floor(min_1), np.ceil(max_1), 150)
+                d2 = np.linspace(np.floor(min_2), np.ceil(max_2), 150)
+                d3 = np.linspace(np.floor(min_3), np.ceil(max_3), 150)
+                x0, y0, z0 = np.meshgrid(d1, d2, d3, indexing='ij')
+                X = training_set[:, :2]
+                Y = training_set[:, 3]
+                XI = np.column_stack((x0.ravel(), y0.ravel(), z0.ravel()))
+
+            YI = scipy.interpolate.griddata(X, Y, XI, method='linear')
+            YI.reshape(x0.shape)
+            intergal_dist = 2  # TODO: ask michael!
+            k = np.ones((intergal_dist, intergal_dist)) / (intergal_dist * intergal_dist - 1)
+            k[intergal_dist // 2, intergal_dist // 2] = 0
+            averageIntensities = scipy.ndimage.convolve(YI, k, mode='constant', cval=0.0)
+            YI = averageIntensities
+            Ix = pd.cut(validation_set[:, 0], bins=d1, labels=False, include_lowest=True)
+            Iy = pd.cut(validation_set[:, 1], bins=d2, labels=False, include_lowest=True)
+            Iz = pd.cut(validation_set[:, 2], bins=d3, labels=False, include_lowest=True)
+            Ix = SLM_tools.replace_nan_with_rounded_mean(Ix.to_numpy(dtype=float))
+            Iy = SLM_tools.replace_nan_with_rounded_mean(Iy.to_numpy(dtype=float))
+            Iz = SLM_tools.replace_nan_with_rounded_mean(Iz.to_numpy(dtype=float))
+            if n_components == 5:
+                Iw = pd.cut(validation_set[:, 3], bins=d4, labels=False, include_lowest=True)
+                Iv = pd.cut(validation_set[:, 4], bins=d5, labels=False, include_lowest=True)
+                Iw = SLM_tools.replace_nan_with_rounded_mean(Iw.to_numpy(dtype=float))
+                Iv = SLM_tools.replace_nan_with_rounded_mean(Iv.to_numpy(dtype=float))
+            tfas_real = np.zeros((validation_set.shape[0], 1))
+            tfas_predict = np.zeros((validation_set.shape[0], 1))
+            for j in range(validation_set.shape[0]):
+                    tfas_real[j] = validation_set[j,n_components + 1]
+                    if n_components == 3:
+                        tfas_predict[j] = YI[Ix[j], Iy[j], Iz[j]]
+                    else:
+                        tfas_predict[j] = YI[Ix[j], Iy[j], Iz[j], Iw[j], Iv[j]]
+                    if np.isnan(tfas_predict[j]):
+                        tfas_predict[j] = np.mean(Y)
+
+            tfas_predict_mat[i, :] = tfas_predict
+            tfas_actually_mat[i, :] = tfas_real
+            mean_error_mat[i, :] = np.abs(tfas_real - tfas_predict)
+        return YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat, train_index
+
+    @staticmethod
+    def model_eval(YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat, train_index, cv_num: int = 3):
+        bin_width = 0.5  # TODO: where are these values from?
+        smooth_win = 0   # TODO: where are these values from?
+        x_ticks = np.arange(3.5, 7.5 + 0.5, 0.5)  # TODO: where are these values from?
+        y_ticks = np.arange(3, 9 + 2, 2)  # TODO: where are these values from?
+        color_map = plt.cm.jet(np.linspace(0, 1, cv_num))
+        red = len(range(1, train_index + 1))
+        min_of_all = np.min(tfas_predict_mat)
+        max_of_all = np.max(tfas_predict_mat)
+        hist_space = np.linspace(bin_width * np.floor(min_of_all / bin_width), bin_width * np.ceil(max_of_all / bin_width),
+                            int((np.ceil(max_of_all / bin_width) - np.floor(min_of_all / bin_width)) + 1))
+        mean = np.zeros((cv_num,len(hist_space)-1))
+        std = np.zeros((cv_num,len(hist_space)-1))
+        plt.figure()
+        for i in range(cv_num):
+            x = tfas_predict_mat[i, :]
+            y = tfas_actually_mat[i, :]
+            sorted_indices = np.argsort(x)
+            x = x[sorted_indices]
+            y = y[sorted_indices]
+            plt.subplot(4, 1, 1)
+            plt.scatter(x, y, edgecolors=color_map[i], facecolors=color_map[i])
+            plt.gca().set_xticklabels([])
+            plt.yticks(y_ticks)
+            plt.ylabel(r'$\hat{Y}$', fontsize=24)
+            plt.xlim([x_ticks[0], x_ticks[-1]])
+            plt.ylim([y_ticks[0], y_ticks[-1]])
+            plt.gca().tick_params(axis='both', which='both', length=0)
+            plt.box(False)
+            std_hista = np.zeros(len(hist_space) - 1)
+            mean_hista = np.zeros(len(hist_space) - 1)
+            for j in range(len(hist_space) - 1):
+                indices = np.where((hist_space[j] - smooth_win < x) and (x < (hist_space[j + 1]) + smooth_win))[0]
+                if len(indices) < 5:
+                    std_hista[j] = np.nan
+                    mean_hista[j] = np.nan
+                else:
+                    yo = np.sort(y[indices])
+                    mean_hista[j] = np.median(y[indices])
+                    aop = int(np.ceil(0.16 * len(yo)))
+                    std_hista[j] = mean_hista[j] - yo[aop]
+
+            x_hist_space = (hist_space[1:] + hist_space[:-1]) / 2
+            i_9 = np.where(~np.isnan(mean_hista) & (x_hist_space > 0))[0][0] if np.any(
+                ~np.isnan(mean_hista) & (x_hist_space > 0)) else len(mean_hista)
+            i_2 = np.where(np.isnan(mean_hista) & (x_hist_space > 0))[0][0] if np.any(
+                np.isnan(mean_hista) & (x_hist_space > 0)) else len(mean_hista)
+            i_3 = np.where(np.isnan(std_hista) & (x_hist_space > 0))[0][0] if np.any(
+                np.isnan(std_hista) & (x_hist_space > 0)) else len(mean_hista)
+            i_4 = min(i_2, i_3)
+
+            if i_9 < i_4:
+                i_4 = min(i_2, i_3)
+            else:
+                i_2 = np.where(np.isnan(mean_hista) & (x_hist_space > 0), i_9)[0][-1] if np.any(
+                    np.isnan(mean_hista) & (x_hist_space > 0)) else len(mean_hista)
+                i_3 = np.where(np.isnan(std_hista) & (x_hist_space > 0), i_9)[0][-1] if np.any(
+                    np.isnan(std_hista) & (x_hist_space > 0)) else len(mean_hista)
+                i_4 = min(i_2, i_3)
+            if i_4 is None:
+                i_4 = len(mean_hista)
+
+            plt.subplot(4, 1, 2)
+            plt.scatter(x_hist_space[:i_4], mean_hista[:i_4], edgecolors=color_map[i], facecolors=color_map[i], marker='s')
+            plt.hold(True)
+            # Store results
+            mean[i, :len(mean_hista)] = mean_hista
+            std[i, :len(std_hista)] = std_hista
+            i_5 = np.argmin(np.abs(x - x_hist_space[i_4]))
+            # Update first subplot
+            plt.subplot(4, 1, 1)
+            plt.scatter(x[:i_5], y[:i_5], edgecolors=color_map[i], facecolors=color_map[i])
+            plt.hold(True)
+            if i == 0:
+                plt.ylabel(r'${Y}_{CV}$', fontsize=24, labelpad=20)
+                plt.gca().set_xticklabels([])
+                plt.yticks(y_ticks)
+                plt.xlim([x_ticks[0], x_ticks[-1]])
+                plt.ylim([y_ticks[0], y_ticks[-1]])
+                plt.gca().tick_params(axis='both', which='both', length=0)
+                plt.box(False)
+        plt.show()  # TODO: replace with plt.save()?
+        # plt.savefig(save_path, bbox_inches='tight')
+        mean_vec = np.zeros(len(hist_space) - 1)
+        std_vec = np.zeros(len(hist_space) - 1)
+        mean[mean == 0] = np.nan
+        std[std == 0] = np.nan
+        for row in range(mean.shape[1]):
+            mean_row = mean[:, row]
+            std_row = std[:, row]
+            nan = ~np.isnan(mean_row)
+            mean_row = mean_row[nan]
+            std_row = std_row[nan]
+            if np.sum(~np.isnan(mean_row)) > 0:
+                mean_vec[row] = np.mean(mean_row)
+                std_vec[row] = np.std(mean_row)
+            else:
+                mean_vec[row] = np.nan
+                std_vec[row] = np.nan
+
+
+
+
+
