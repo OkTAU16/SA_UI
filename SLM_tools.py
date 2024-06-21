@@ -225,7 +225,7 @@ class SLM_tools:
     def trajectory_plot_vecs(mean_vec, std_vec, trend, time_to_self_assembly, save_path: str, bottom=0, top=3000):
         # not checked
         sz = 40
-        plt.figure()
+        fig = plt.figure()
         ax = fig.add_subplot(111, projection='3d')
         ax.scatter(mean_vec.T, std_vec.T, trend.T, s=sz, c=time_to_self_assembly, cmap='jet', marker='o')
         ax.set_xlim(bottom, top)
@@ -280,8 +280,8 @@ class SLM_tools:
         tfas_predict_mat = np.zeros((cv_num, size_validation_set))
         tfas_actually_mat = np.zeros((cv_num, size_validation_set))
         mean_error_mat = np.zeros((cv_num, size_validation_set))
-        training_set = x[:train_index - 1, :]
-        validation_set = x[train_index:validation_index, :]
+        training_set = random_x[:train_index - 1, :]
+        validation_set = random_x[train_index:validation_index, :]
         for i in range(cv_num):
             min_1 = np.min(random_x[:, 0])
             max_1 = np.max(random_x[:, 0])
@@ -289,6 +289,9 @@ class SLM_tools:
             max_2 = np.max(random_x[:, 1])
             min_3 = np.min(random_x[:, 2])
             max_3 = np.max(random_x[:, 2])
+            d1 = np.linspace(np.floor(min_1), np.ceil(max_1), 150)
+            d2 = np.linspace(np.floor(min_2), np.ceil(max_2), 150)
+            d3 = np.linspace(np.floor(min_3), np.ceil(max_3), 150)
             if n_components == 5:
                 min_4 = np.min(random_x[:, 3])
                 max_4 = np.max(random_x[:, 3])
@@ -300,11 +303,7 @@ class SLM_tools:
                 X = training_set[:, :4]
                 Y = training_set[:, 5]
                 XI = np.column_stack((x0.ravel(), y0.ravel(), z0.ravel(), w0.ravel(), v0.ravel()))
-            # Create linearly spaced vectors for each coordinate
             else:
-                d1 = np.linspace(np.floor(min_1), np.ceil(max_1), 150)
-                d2 = np.linspace(np.floor(min_2), np.ceil(max_2), 150)
-                d3 = np.linspace(np.floor(min_3), np.ceil(max_3), 150)
                 x0, y0, z0 = np.meshgrid(d1, d2, d3, indexing='ij')
                 X = training_set[:, :2]
                 Y = training_set[:, 3]
@@ -342,10 +341,10 @@ class SLM_tools:
             tfas_predict_mat[i, :] = tfas_predict
             tfas_actually_mat[i, :] = tfas_real
             mean_error_mat[i, :] = np.abs(tfas_real - tfas_predict)
-        return YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat, train_index, random_x, validation_index
+        return YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat, train_index, random_x, validation_index,median_fit_vec
 
     @staticmethod
-    def model_eval(tfas_predict_mat, tfas_actually_mat, train_index, cv_num: int = 3):
+    def model_eval(tfas_predict_mat, tfas_actually_mat, train_index, save_path, cv_num: int = 3):
         bin_width = 0.5  # TODO: where are these values from?
         smooth_win = 0  # TODO: where are these values from?
         x_ticks = np.arange(3.5, 7.5 + 0.5, 0.5)  # TODO: where are these values from?
@@ -458,5 +457,128 @@ class SLM_tools:
         plt.gca().set_fontsize(24)
         plt.show()  # TODO: replace with plt.save()?
         # plt.savefig(save_path, bbox_inches='tight')
-        # line 498 MATLAB
+        return mean_vec, y_ticks, x_ticks, hist_space,x_hist_space
 
+    @staticmethod
+    def train_again_on_validation_and_test(random_x, validation_index, n_components=3):
+        np.random.seed(42)
+        random_x = random_x[np.random.permutation(random_x.shape[0]), :]
+        test_set = random_x[validation_index:, :]
+        training_set = random_x[:validation_index - 1, :]
+        min_1 = np.min(random_x[:, 0])
+        max_1 = np.max(random_x[:, 0])
+        min_2 = np.min(random_x[:, 1])
+        max_2 = np.max(random_x[:, 1])
+        min_3 = np.min(random_x[:, 2])
+        max_3 = np.max(random_x[:, 2])
+        d1 = np.linspace(np.floor(min_1), np.ceil(max_1), 150)
+        d2 = np.linspace(np.floor(min_2), np.ceil(max_2), 150)
+        d3 = np.linspace(np.floor(min_3), np.ceil(max_3), 150)
+        if n_components == 5:
+            min_4 = np.min(random_x[:, 3])
+            max_4 = np.max(random_x[:, 3])
+            min_5 = np.min(random_x[:, 4])
+            max_5 = np.max(random_x[:, 4])
+            d4 = np.linspace(np.floor(min_4), np.ceil(max_4), 10)
+            d5 = np.linspace(np.floor(min_5), np.ceil(max_5), 10)
+            x0, y0, z0, w0, v0 = np.meshgrid(d1, d2, d3, d4, d5, indexing='ij')
+            X = training_set[:, :4]
+            Y = training_set[:, 5]
+            XI = np.column_stack((x0.ravel(), y0.ravel(), z0.ravel(), w0.ravel(), v0.ravel()))
+        # Create linearly spaced vectors for each coordinate
+        else:
+            x0, y0, z0 = np.meshgrid(d1, d2, d3, indexing='ij')
+            X = training_set[:, :2]
+            Y = training_set[:, 3]
+            XI = np.column_stack((x0.ravel(), y0.ravel(), z0.ravel()))
+
+        YI = scipy.interpolate.griddata(X, Y, XI, method='linear')
+        YI.reshape(x0.shape)
+        intergal_dist = 2  # TODO: ask michael!
+        k = np.ones((intergal_dist, intergal_dist)) / (intergal_dist * intergal_dist - 1)
+        k[intergal_dist // 2, intergal_dist // 2] = 0
+        averageIntensities = scipy.ndimage.convolve(YI, k, mode='constant', cval=0.0)
+        YI = averageIntensities
+        Ix = pd.cut(test_set[:, 0], bins=d1, labels=False, include_lowest=True)
+        Iy = pd.cut(test_set[:, 1], bins=d2, labels=False, include_lowest=True)
+        Iz = pd.cut(test_set[:, 2], bins=d3, labels=False, include_lowest=True)
+        Ix = SLM_tools.replace_nan_with_rounded_mean(Ix.to_numpy(dtype=float))
+        Iy = SLM_tools.replace_nan_with_rounded_mean(Iy.to_numpy(dtype=float))
+        Iz = SLM_tools.replace_nan_with_rounded_mean(Iz.to_numpy(dtype=float))
+        if n_components == 5:
+            Iw = pd.cut(test_set[:, 3], bins=d4, labels=False, include_lowest=True)
+            Iv = pd.cut(test_set[:, 4], bins=d5, labels=False, include_lowest=True)
+            Iw = SLM_tools.replace_nan_with_rounded_mean(Iw.to_numpy(dtype=float))
+            Iv = SLM_tools.replace_nan_with_rounded_mean(Iv.to_numpy(dtype=float))
+        tfas_real = np.zeros((test_set.shape[0], 1))
+        tfas_predict = np.zeros((test_set.shape[0], 1))
+        for j in range(test_set.shape[0]):
+            tfas_real[j] = test_set[j, n_components + 1]
+            if n_components == 3:
+                tfas_predict[j] = YI[Ix[j], Iy[j], Iz[j]]
+            else:
+                tfas_predict[j] = YI[Ix[j], Iy[j], Iz[j], Iw[j], Iv[j]]
+            if np.isnan(tfas_predict[j]):
+                tfas_predict[j] = np.mean(Y)
+
+        tfas_predict_mat_2 = tfas_predict
+        tfas_actually_mat_2 = tfas_real
+        mean_error_mat_2 = np.abs(tfas_real - tfas_predict)
+        return tfas_predict_mat_2, tfas_actually_mat_2, mean_error_mat_2
+
+    @staticmethod
+    def after_training_2(tfas_predict_mat_2, tfas_actually_mat_2, y_ticks, x_ticks, hist_space, mean_vec, x_hist_space, median_fit_vec, save_path):
+        smooth_win = 0
+        tfas_predict_mat_2_sorted = np.sort(tfas_predict_mat_2)
+        tfas_predict_mat_2_sorted_indices = np.argsort(tfas_predict_mat_2_sorted)
+        x = tfas_predict_mat_2_sorted
+        y_new = tfas_actually_mat_2[tfas_predict_mat_2_sorted_indices]
+        fig, ax = plt.subplots(4, 1, figsize=(10, 8))
+        nn3 = ax[2]
+        nn3.scatter(x, edgecolor=[.7, .7, .7], facecolor=[.7, .7, .7])
+        nn3.set_xticklabels([])  # Remove x-axis tick labels
+        nn3.set_yticks(y_ticks)
+        nn3.set_ylabel(r'${Y_{test}}$', fontsize=14)
+        nn3.set_xlim([x_ticks[0], x_ticks[-1]])
+        nn3.set_ylim([x_ticks[0], x_ticks[-1]])
+        nn3.tick_params(axis='both', which='major', labelsize=24)
+        nn3.spines['top'].set_visible(False)
+        nn3.spines['right'].set_visible(False)
+        nn3.spines['bottom'].set_visible(False)
+        nn3.spines['left'].set_visible(False)
+        nn3.xaxis.set_tick_params(length=0)
+        plt.show()  # TODO: replace with plt.save()?
+        # plt.savefig(save_path, bbox_inches='tight')
+        std_hista_origin = np.full(len(hist_space) - 1, np.nan)
+        mean_hista_origin = np.full(len(hist_space) - 1, np.nan)
+        mean_hista_last_fig = np.full(len(hist_space) - 1, np.nan)
+        std_hista = np.full(len(hist_space) - 1, np.nan)
+        mean_hista = np.full(len(hist_space) - 1, np.nan)
+        mean_vec_pre = np.append(mean_vec[1:], np.nan)
+        cutofflength = len(mean_vec)
+        occurrence_probability = np.zeros((1, cutofflength))
+        CV_offset = mean_vec - x_hist_space
+        CV_offset = np.nan_to_num(CV_offset)
+        for i in range(cutofflength):
+            Ind = np.where((hist_space[i] - smooth_win < x) and (x < hist_space[i+1]+smooth_win))[0]
+            occurrence_probability[0, i] = len(Ind)
+            if len(Ind) < max(1, int(0.01*len(x))):
+                std_hista[i] = np.nan
+                mean_hista[i] = np.nan
+            else:
+                yo = np.sort(y[Ind])
+                yo_logged = yo  # TODO: ask michael if should be np.log(yo) Line 704 LogTfas
+                aop = np.ceil(0.16 * len(yo)).astype(int)
+                aop2 = np.ceil(0.84 * len(yo)).astype(int)
+                z0 = median_fit_vec - yo
+                z1 = x_hist_space[i] - yo_logged + CV_offset[i]
+                mean_hista[i] = np.median(z1)
+                std_hista[i] = np.sqrt(np.sum((z1 - np.median(z1)) ** 2) / len(yo_logged))
+                mean_hista_origin[i] = np.median(z0)
+                mean_hista_last_fig[i] = np.median(yo)
+                plt.subplot(4, 1, 3)
+                plt.scatter(x[Ind] + CV_offset[i], y_new[Ind], marker='s', edgecolor='k', facecolor='k')
+                plt.hold(True)
+        plt.show()  # TODO: replace with plt.save()?
+        # plt.savefig(save_path, bbox_inches='tight')
+        # Line 732 Matlab
