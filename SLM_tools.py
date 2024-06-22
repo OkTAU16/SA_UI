@@ -457,7 +457,7 @@ class SLM_tools:
         plt.gca().set_fontsize(24)
         plt.show()  # TODO: replace with plt.save()?
         # plt.savefig(save_path, bbox_inches='tight')
-        return mean_vec, y_ticks, x_ticks, hist_space,x_hist_space
+        return mean_vec, y_ticks, x_ticks, hist_space, x_hist_space
 
     @staticmethod
     def train_again_on_validation_and_test(random_x, validation_index, n_components=3):
@@ -566,7 +566,7 @@ class SLM_tools:
                 std_hista[i] = np.nan
                 mean_hista[i] = np.nan
             else:
-                yo = np.sort(y[Ind])
+                yo = np.sort(y_new[Ind])
                 yo_logged = yo  # TODO: ask michael if should be np.log(yo) Line 704 LogTfas
                 aop = np.ceil(0.16 * len(yo)).astype(int)
                 aop2 = np.ceil(0.84 * len(yo)).astype(int)
