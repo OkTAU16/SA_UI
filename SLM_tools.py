@@ -7,6 +7,8 @@ import pandas as pd
 from sklearn.decomposition import PCA
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
+import pickle as pkl
+import os
 
 
 class SLM_tools:
@@ -341,7 +343,16 @@ class SLM_tools:
             tfas_predict_mat[i, :] = tfas_predict
             tfas_actually_mat[i, :] = tfas_real
             mean_error_mat[i, :] = np.abs(tfas_real - tfas_predict)
-        return YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat, train_index, random_x, validation_index,median_fit_vec
+        return YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat, train_index, random_x, validation_index, median_fit_vec
+
+    @staticmethod
+    def save_model(YI, save_path, save_as_text=False, save_as_m=True):
+        if save_as_m:
+            sio.savemat(f"{os.path.join(save_path, 'YI.txt')}",{"model": YI})
+        elif save_as_text:
+            np.savetxt(f"{os.path.join(save_path, 'YI.txt')}", YI)
+        else:
+            np.save(f"{os.path.join(save_path, 'YI.npy')}", YI)
 
     @staticmethod
     def model_eval(tfas_predict_mat, tfas_actually_mat, train_index, save_path, cv_num: int = 3):
@@ -527,7 +538,8 @@ class SLM_tools:
         return tfas_predict_mat_2, tfas_actually_mat_2, mean_error_mat_2
 
     @staticmethod
-    def after_training_2(tfas_predict_mat_2, tfas_actually_mat_2, y_ticks, x_ticks, hist_space, mean_vec, x_hist_space, median_fit_vec, save_path):
+    def after_training_2(tfas_predict_mat_2, tfas_actually_mat_2, y_ticks, x_ticks, hist_space, mean_vec, x_hist_space,
+                         median_fit_vec, save_path):
         smooth_win = 0
         tfas_predict_mat_2_sorted = np.sort(tfas_predict_mat_2)
         tfas_predict_mat_2_sorted_indices = np.argsort(tfas_predict_mat_2_sorted)
@@ -560,9 +572,9 @@ class SLM_tools:
         CV_offset = mean_vec - x_hist_space
         CV_offset = np.nan_to_num(CV_offset)
         for i in range(cutofflength):
-            Ind = np.where((hist_space[i] - smooth_win < x) and (x < hist_space[i+1]+smooth_win))[0]
+            Ind = np.where((hist_space[i] - smooth_win < x) and (x < hist_space[i + 1] + smooth_win))[0]
             occurrence_probability[0, i] = len(Ind)
-            if len(Ind) < max(1, int(0.01*len(x))):
+            if len(Ind) < max(1, int(0.01 * len(x))):
                 std_hista[i] = np.nan
                 mean_hista[i] = np.nan
             else:
