@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import Rbeast as rb
 import numpy as np
 import scipy.stats
@@ -348,13 +350,9 @@ class SLM_tools:
         return YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat, train_index, random_x, validation_index, median_fit_vec
 
     @staticmethod
-    def save_model(YI, save_path, save_as_text=False, save_as_m=True):
-        if save_as_m:
-            sio.savemat(f"{os.path.join(save_path, 'YI.m')}", {"model": YI})
-        elif save_as_text:
-            np.savetxt(f"{os.path.join(save_path, 'YI.txt')}", YI)
-        else:
-            np.save(f"{os.path.join(save_path, 'YI.npy')}", YI)
+    def save_model(YI, save_path):
+        current_date = datetime.now().date()
+        sio.savemat(os.path.join(save_path, f"SLM_model_{current_date.day}_{current_date.month}.mat"), {"model": YI})
 
     @staticmethod
     def model_eval(tfas_predict_mat, tfas_actually_mat, train_index, save_path, cv_num: int = 3):
