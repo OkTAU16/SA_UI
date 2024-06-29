@@ -13,8 +13,19 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition
 from kivy.uix.spinner import Spinner
 from kivy.uix.image import Image
+from kivy.uix.popup import Popup
 import os
-from random import random
+
+
+##### IMAGE POPPING CALSS #####
+class ImagePopup(Popup):
+    def __init__(self, image_source, **kwargs):
+        super().__init__(**kwargs)
+        self.title = 'SLM result'
+        self.size_hint = (0.8, 0.8)
+        layout = BoxLayout(orientation='vertical')
+        layout.add_widget(Image(source=image_source))
+        self.content = layout
 
 
 ##### COLOR MODIFICATION CLASS #####
@@ -314,8 +325,14 @@ class GraphScreen(Screen):
     def build(self):
         layout = FloatLayout()
         self.title = 'Intro'
-        #layout = BoxLayout(orientation='vertical')
-       # layout.add_widget(Label(text='This is the second screen!'))
+
+
+        first_graph_button = Button(text="Graph 1", size_hint=(0.3, 0.3), pos_hint={'center_x': 0.3, 'top': 0.65})
+        second_graph_button = Button(text="Graph 2", size_hint=(0.3, 0.3), pos_hint={'center_x': 0.7, 'top': 0.65})
+        layout.add_widget(first_graph_button)
+        layout.add_widget(second_graph_button)
+        first_graph_button.bind(on_release=lambda btn: self.show_image_popup(0))
+        second_graph_button.bind(on_release=lambda btn: self.show_image_popup(1))
 
         back_button = Button(text='back', size_hint=(None, None), size=(100, 50),
                              pos_hint={'center_x': 0.07, 'center_y': 0.07})
@@ -326,6 +343,15 @@ class GraphScreen(Screen):
 
         self.add_widget(layout)
 
+    # Connections function to GuiApp functions
+
+    def show_image_popup(self, graph_index):
+        app = App.get_running_app()
+        img = os.path.join(app.save_path, app.graph_names[graph_index])
+        popup = ImagePopup(image_source=img)
+        popup.open()
+
+    # Graphs screen functions
     def switch_to_main_screen(self, instance):
         self.manager.current = 'main'
 
@@ -345,8 +371,10 @@ class GuiApp(App):
         self.cluster_num = None
         self.CV_num = 3
         self.target_num = None
-        self.particle_clusters = 2
+        self.particle_clusters = 3
         self.save_path = None
+        self.graph_names = ['table1.png', 'table1.png']
+        #TODO: CHANGE TO REAL GRAPHS NAMES
 
     def build(self):
         # Allow the window to receive file drops
@@ -529,9 +557,7 @@ class GuiApp(App):
             errors.append("PCA option not selected.")
         elif main_screen.button_PCA_yes.state == 'down' and self.cluster_num is None:
             errors.append("Number of clusters for PCA not entered.")
-        #self.cluster_num = None
-        #self.CV_num = None
-        #self.target_num = None
+
         # Check CV
         if not (main_screen.button_CV_yes.state == 'down' or main_screen.button_CV_no.state == 'down'):
             errors.append("CV option not selected.")
@@ -586,30 +612,14 @@ class GuiApp(App):
         else:
             main_screen.file_label.text = 'Drop files only within the specified area!'
 
-    # Updating the dropping area due to window size change
-    """
-    def update_drop_area(self, Window, *args):
-        main_screen = self.sm.get_screen('main')
-
-        main_screen.window_width, main_screen.window_height = Window.size
-        main_screen.drop_area_x = main_screen.window_width // 16
-        main_screen.drop_area_y = 5 * main_screen.window_height // 8
-        main_screen.drop_area_width = 3 * main_screen.window_width // 8
-        main_screen.drop_area_height = main_screen.window_height // 4
-        main_screen.root.canvas.remove(main_screen.line)
-        with main_screen.root.canvas:
-            Color(1, 1, 1, 1)
-
-            main_screen.line = Line(points=[main_screen.drop_area_x, main_screen.drop_area_y,
-                                main_screen.drop_area_x + main_screen.drop_area_width, main_screen.drop_area_y,
-                                main_screen.drop_area_x + main_screen.drop_area_width, main_screen.drop_area_y + main_screen.drop_area_height,
-                                main_screen.drop_area_x, main_screen.drop_area_y + main_screen.drop_area_height,
-                                main_screen.drop_area_x, main_screen.drop_area_y], width=1)
-    """
-
     def process_dropped_file(self, file_path):
         # Implement your file processing logic here
         print(f"Processing file: {file_path}")
+
+    # Graph screen functions
+    def show_image_popup(self, image_source):
+        popup = ImagePopup(image_source)
+        popup.open()
 
 
 if __name__ == '__main__':
