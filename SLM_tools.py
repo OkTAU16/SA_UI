@@ -350,7 +350,7 @@ class SLM_tools:
     @staticmethod
     def save_model(YI, save_path, save_as_text=False, save_as_m=True):
         if save_as_m:
-            sio.savemat(f"{os.path.join(save_path, 'YI.txt')}",{"model": YI})
+            sio.savemat(f"{os.path.join(save_path, 'YI.m')}", {"model": YI})
         elif save_as_text:
             np.savetxt(f"{os.path.join(save_path, 'YI.txt')}", YI)
         else:
