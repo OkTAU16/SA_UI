@@ -60,6 +60,11 @@ class IntroScreen(Screen):
             Color(0.2, 0.2, 0.2, 1)  # Set the desired color (R, G, B, A)
             self.rect = Rectangle(size=self.size, pos=self.pos)
             self.bind(size=self._update_rect, pos=self._update_rect)
+
+        background = Image(source=r"C:\Users\USER\Desktop\לימודים\שנה ד\חישה רציפה\MMR\SLM_logo.png", allow_stretch=True, keep_ratio=False)
+
+        # Add the background image to the screen
+        self.add_widget(background)
         self.title = None
         self.build()
 
@@ -89,6 +94,10 @@ class MainScreen(Screen):
             Color(0.2, 0.2, 0.2, 1)  # Set the desired color (R, G, B, A)
             self.rect = Rectangle(size=self.size, pos=self.pos)
             self.bind(size=self._update_rect, pos=self._update_rect)
+        background = Image(source=r"C:\Users\USER\Desktop\לימודים\שנה ד\חישה רציפה\MMR\SLM_logo.png", allow_stretch=True, keep_ratio=False)
+
+        # Add the background image to the screen
+        self.add_widget(background)
         self.build()
 
     def _update_rect(self, instance, value):
@@ -102,7 +111,7 @@ class MainScreen(Screen):
         self.title = 'Main'
         # Time series label and buttons
         self.label_time_series = Label(text="Added Time Series", font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
-                                       pos_hint={'center_x': 0.7, 'center_y': 0.9})
+                                       pos_hint={'center_x': 0.7, 'center_y': 0.9}, color=(0.2, 0.2, 0.2, 1))
 
         layout.add_widget(self.label_time_series)
 
@@ -116,7 +125,7 @@ class MainScreen(Screen):
 
         # PCA labels and buttons
         self.label_PCA = Label(text="PCA", font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
-                               pos_hint={'center_x': 0.7, 'center_y': 0.77})
+                               pos_hint={'center_x': 0.7, 'center_y': 0.77}, color=(0.2, 0.2, 0.2, 1))
         layout.add_widget(self.label_PCA)
 
         self.button_PCA_yes = ColorCheckBox(group='PCA', size_hint=(None, None), color=(0.13, 0.55, 0.13, 1), size=(50, 50),
@@ -143,7 +152,7 @@ class MainScreen(Screen):
 
         #Cross validation labels and buttons
         self.label_CV = Label(text="CV", font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
-                              pos_hint={'center_x': 0.7, 'center_y': 0.64})
+                              pos_hint={'center_x': 0.7, 'center_y': 0.64}, color=(0.2, 0.2, 0.2, 1))
         layout.add_widget(self.label_CV)
 
         self.button_CV_yes = ColorCheckBox(group='CV', size_hint=(None, None), color=(0.13, 0.55, 0.13, 1), size=(50, 50),
@@ -169,7 +178,7 @@ class MainScreen(Screen):
 
         # particle clusters labels and buttons
         self.label_particle_clusters = Label(text="Number of particle Clusters:", font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
-                                             pos_hint={'center_x': 0.67, 'center_y': 0.48})
+                                             pos_hint={'center_x': 0.67, 'center_y': 0.48}, color=(0.2, 0.2, 0.2, 1))
         layout.add_widget(self.label_particle_clusters)
         self.spinner_particle_clusters = Spinner(
             text='Default',
@@ -183,7 +192,7 @@ class MainScreen(Screen):
 
         # Targets labels and buttons
         self.label_targets = Label(text="Number of targets",font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
-                                   pos_hint={'center_x': 0.7, 'center_y': 0.42})
+                                   pos_hint={'center_x': 0.7, 'center_y': 0.42}, color=(0.2, 0.2, 0.2, 1))
         layout.add_widget(self.label_targets)
         self.target_input = TextInput(hint_text="Enter number of parameters",font_name='times.ttf', font_size=15, input_filter='int',
                                       multiline=True,
@@ -195,18 +204,17 @@ class MainScreen(Screen):
         self.target_input.bind(text=self.text_size_change)
         self.button_targets_submit.bind(on_press=self.target_submit)
 
-        self.label_save_path = Label(text="Saving path",font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
-                                   pos_hint={'center_x': 0.7, 'center_y': 0.30})
+        self.label_save_path = Label(text="Output directory path",font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
+                                   pos_hint={'center_x': 0.7, 'center_y': 0.30}, color=(0.2, 0.2, 0.2, 1))
         layout.add_widget(self.label_save_path)
-        self.save_input = TextInput(hint_text="Enter saving path here",font_name='times.ttf', font_size=22, input_filter=None,
+        self.save_input = TextInput(hint_text="Enter Output directory path here:", font_name='times.ttf', font_size=22, input_filter=None,
                                       multiline=True,
                                       size_hint=(0.3, 0.06), pos_hint={'x': 0.55, 'top': 0.24})
-        #TODO: new text size change for this input
         self.button_save_submit = Button(text="✓", size_hint=(None, None), font_name='DejaVuSans.ttf', size=(53, 53),
                                             pos_hint={'x': 0.86, 'top': 0.239})
         layout.add_widget(self.save_input)
         layout.add_widget(self.button_save_submit)
-        self.save_input.bind(text=self.text_size_change)
+        self.save_input.bind(text=self.text_size_change_for_path)
         self.button_save_submit.bind(on_press=self.save_path_submit)
 
 
@@ -215,23 +223,19 @@ class MainScreen(Screen):
 
         # Create a label to display dropped file path
         self.file_label = Label(text='Drop files here',font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
-                                pos_hint={'center_x': 0.25, 'center_y': 0.9})
+                                pos_hint={'center_x': 0.25, 'center_y': 0.9}, color=(0.2, 0.2, 0.2, 1))
         self.file_label.bind(size=self.file_label.setter('text_size'))
         layout.add_widget(self.file_label)
         # Create a test and submit buttons for the process
         test_button = Button(text='Test',font_name='times.ttf', bold=True, size_hint=(None, None), size=(150, 50),
                              pos_hint={'center_x': 0.15, 'center_y': 0.58})
         test_button.bind(on_press=self.test_dropped_file)
-        #TODO: drop the test label
-        self.test_submit_label = Label(text='test', size_hint=(None, None),
-                                       pos_hint={'center_x': 0.25, 'center_y': 0.52})
         self.file_label.bind(size=self.file_label.setter('text_size'))
-        layout.add_widget(self.test_submit_label)
         layout.add_widget(test_button)
 
         submit_button = Button(text='Submit', font_name='times.ttf', bold=True, size_hint=(None, None), size=(150, 50),
                                pos_hint={'center_x': 0.35, 'center_y': 0.58})
-        #submit_button.bind(on_press=???)
+        submit_button.bind(on_press=self.submit_dropped_file)
         layout.add_widget(submit_button)
 
         # Setting the dropping area
@@ -241,7 +245,7 @@ class MainScreen(Screen):
         self.drop_area_width = 3 * self.window_width // 8
         self.drop_area_height = self.window_height // 4
         with layout.canvas:
-            Color(1, 1, 1, 1)
+            Color(0.2, 0.2, 0.2, 1)
 
             self.line = Line(points=[self.drop_area_x, self.drop_area_y,
                                      self.drop_area_x + self.drop_area_width, self.drop_area_y,
@@ -251,7 +255,7 @@ class MainScreen(Screen):
 
             #Add a label for testing below the drop area
         self.test_label = Label(text='',font_name='times.ttf', bold=True, size_hint=(None, None),
-                                pos_hint={'center_x': 0.25, 'center_y': 0.45})
+                                pos_hint={'center_x': 0.25, 'center_y': 0.52}, color=(0.2, 0.2, 0.2, 1))
         layout.add_widget(self.test_label)
 
         ##### actual buttons of the Main screen #####
@@ -306,9 +310,17 @@ class MainScreen(Screen):
         app = App.get_running_app()
         app.text_size_change(instance, value)
 
+    def text_size_change_for_path(self, instance, value):
+        app = App.get_running_app()
+        app.text_size_change_for_path(instance, value)
+
     def test_dropped_file(self, *args):
         app = App.get_running_app()
         app.test_dropped_file(*args)
+
+    def submit_dropped_file(self, *args):
+        app = App.get_running_app()
+        app.submit_dropped_file(*args)
 
     def fill_all_data(self):
         app = App.get_running_app()
@@ -327,7 +339,7 @@ class MainScreen(Screen):
             self.layout.canvas.remove(self.line)
         with self.layout.canvas:
             #with self.line.canvas:
-            Color(1, 1, 1, 1)
+            Color(0.2, 0.2, 0.2, 1)
 
             self.line = Line(points=[self.drop_area_x, self.drop_area_y,
                                      self.drop_area_x + self.drop_area_width, self.drop_area_y,
@@ -402,6 +414,7 @@ class GuiApp(App):
         self.save_path = None
         self.graph_names = ['table1.png', 'table1.png']
         #TODO: CHANGE TO REAL GRAPHS NAMES
+        self.submit_flag = 0
 
     def build(self):
         # Allow the window to receive file drops
@@ -513,14 +526,18 @@ class GuiApp(App):
             main_screen.target_input.background_color = (1, 1, 1, 1)
 
     def save_path_submit(self, instance):
-        # TODO: ADD CHECKPOINT TO VALIDATE THE PATH
         main_screen = self.sm.get_screen('main')
-        user_input = main_screen.save_input.text
+        user_input = os.path.abspath(main_screen.save_input.text)
         if user_input:
-            self.save_path = os.path.abspath(user_input)
-            print(self.save_path)
-            main_screen.save_input.foreground_color = (0, 0.6, 0, 1)  # RGBA for green
-            main_screen.save_input.background_color = (0.6, 1, 0.9, 1)
+            if os.path.exists(user_input):
+                self.save_path = user_input
+                print(self.save_path)
+                main_screen.save_input.foreground_color = (0, 0.6, 0, 1)  # RGBA for green
+                main_screen.save_input.background_color = (0.6, 1, 0.9, 1)
+            else:
+                main_screen.test_label.text = "Path provided does not exist"
+                main_screen.test_label.color = (1, 0, 0, 1)  # Red color for errors
+
         else:
             self.save_path = None
             print(main_screen.save_input)
@@ -542,6 +559,7 @@ class GuiApp(App):
         if not errors:
             main_screen.test_label.text = "Please fill all required fields."
             main_screen.test_label.color = (1, 0, 0, 1)  # Red color for errors
+            self.submit_flag = 0
             return
 
         # Check the type of the dropped file or folder
@@ -551,6 +569,7 @@ class GuiApp(App):
             if not any(path.endswith(ext) for ext in valid_extensions):
                 main_screen.test_label.text = "Invalid file type. Only .mat, .csv, and Excel files are allowed."
                 main_screen.test_label.color = (1, 0, 0, 1)  # Red color for errors
+                self.submit_flag = 0
                 return
         elif os.path.isdir(path):
             for root, dirs, files in os.walk(path):
@@ -558,15 +577,26 @@ class GuiApp(App):
                     if not any(file.endswith(ext) for ext in valid_extensions):
                         main_screen.test_label.text = "Folder contains invalid file types. Only .mat, .csv, and Excel files are allowed."
                         main_screen.test_label.color = (1, 0, 0, 1)  # Red color for errors
+                        self.submit_flag = 0
                         return
         else:
             main_screen.test_label.text = "Invalid path. Please drop a file or a folder."
             main_screen.test_label.color = (1, 0, 0, 1)  # Red color for errors
+            self.submit_flag = 0
             return
 
         main_screen.test_label.text = "File or folder validated successfully!"
         main_screen.test_label.color = (0, 1, 0, 1)  # Green color for success
+        self.submit_flag = 1
         print("File or folder validated successfully!")
+
+    def submit_dropped_file(self, instance):
+        main_screen = self.sm.get_screen('main')
+        if self.submit_flag == 0:
+            main_screen.test_label.text = "Testing is required. please fill all required fields and press the test button"
+            main_screen.test_label.color = (1, 0, 0, 1)  # Red color for errors
+        elif self.submit_flag == 1:
+            pass
 
     def fill_all_data(self):
         """
@@ -609,13 +639,27 @@ class GuiApp(App):
             main_screen.test_label.color = (0, 1, 0, 1)  # Green color for success
             return True
 
+
+
     def text_size_change(self, instance, value, *args):
         print(f"Text changed to: {value}")  # Debug statement
         if value:
             instance.font_size = 28  # Larger font size for user input
+            instance.bold = True
 
         else:
-            instance.font_size = 8  # same size as before
+            instance.font_size = 15  # same size as before
+            instance.bold = False
+
+    def text_size_change_for_path(self, instance, value, *args):
+        print(f"Text changed to: {value}")  # Debug statement
+        if value:
+            instance.font_size = 14 # Larger font size for user input
+            instance.bold = True
+
+        else:
+            instance.font_size = 22  # same size as before
+            instance.bold = False
 
     ##### Handeling the dropped file or folder #####
     def on_drop_file(self, window, file_path, x, y):
