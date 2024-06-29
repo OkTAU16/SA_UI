@@ -56,14 +56,22 @@ class ColorCheckBox(CheckBox):
 class IntroScreen(Screen):
     def __init__(self, **kwargs):
         super(IntroScreen, self).__init__(**kwargs)
+        with self.canvas.before:
+            Color(0.2, 0.2, 0.2, 1)  # Set the desired color (R, G, B, A)
+            self.rect = Rectangle(size=self.size, pos=self.pos)
+            self.bind(size=self._update_rect, pos=self._update_rect)
         self.title = None
         self.build()
+
+    def _update_rect(self, instance, value):
+        self.rect.size = instance.size
+        self.rect.pos = instance.pos
 
     def build(self):
         layout = FloatLayout()
         self.title = 'Intro'
         #layout.add_widget(self.title)
-        next_button = Button(text='Next', size_hint=(None, None), size=(100, 50),
+        next_button = Button(text='Next',font_name='times.ttf', bold=True, size_hint=(None, None), size=(100, 50),
                              pos_hint={'center_x': 0.93, 'center_y': 0.07})
         layout.add_widget(next_button)
         next_button.bind(on_press=self.switch_to_main_screen)
@@ -77,7 +85,15 @@ class IntroScreen(Screen):
 class MainScreen(Screen):
     def __init__(self, **kwargs):
         super(MainScreen, self).__init__(**kwargs)
+        with self.canvas.before:
+            Color(0.2, 0.2, 0.2, 1)  # Set the desired color (R, G, B, A)
+            self.rect = Rectangle(size=self.size, pos=self.pos)
+            self.bind(size=self._update_rect, pos=self._update_rect)
         self.build()
+
+    def _update_rect(self, instance, value):
+        self.rect.size = instance.size
+        self.rect.pos = instance.pos
 
     def build(self):
         Window.bind(on_resize=self.update_drop_area)
@@ -85,12 +101,12 @@ class MainScreen(Screen):
         self.layout = layout
         self.title = 'Main'
         # Time series label and buttons
-        self.label_time_series = Label(text="Added Time Series", size_hint=(None, None),
+        self.label_time_series = Label(text="Added Time Series", font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
                                        pos_hint={'center_x': 0.7, 'center_y': 0.9})
 
         layout.add_widget(self.label_time_series)
 
-        self.button_time_series_yes = ColorCheckBox(group='time_series', size_hint=(None, None), color=(0, 1, 1, 1),
+        self.button_time_series_yes = ColorCheckBox(group='time_series', size_hint=(None, None), color=(0.13, 0.55, 0.13, 1),
                                                     size=(50, 50), pos_hint={'x': 0.63, 'top': 0.87})
 
         self.button_time_series_no = ColorCheckBox(group='time_series', size_hint=(None, None), size=(50, 50),
@@ -99,11 +115,11 @@ class MainScreen(Screen):
         layout.add_widget(self.button_time_series_no)
 
         # PCA labels and buttons
-        self.label_PCA = Label(text="PCA", size_hint=(None, None),
+        self.label_PCA = Label(text="PCA", font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
                                pos_hint={'center_x': 0.7, 'center_y': 0.77})
         layout.add_widget(self.label_PCA)
 
-        self.button_PCA_yes = ColorCheckBox(group='PCA', size_hint=(None, None), color=(0, 1, 1, 1), size=(50, 50),
+        self.button_PCA_yes = ColorCheckBox(group='PCA', size_hint=(None, None), color=(0.13, 0.55, 0.13, 1), size=(50, 50),
                                             pos_hint={'x': 0.63, 'top': 0.74})
 
         self.button_PCA_no = ColorCheckBox(group='PCA', size_hint=(None, None), size=(50, 50),
@@ -113,7 +129,7 @@ class MainScreen(Screen):
         self.button_PCA_yes.bind(on_press=self.PCA_show)
         self.button_PCA_no.bind(on_press=self.PCA_show)
 
-        self.PCA_input = TextInput(hint_text="Enter number of clusters", font_size=16, input_filter='int',
+        self.PCA_input = TextInput(hint_text="Enter number of clusters", font_name='times.ttf', font_size=16, input_filter='int',
                                    multiline=True,
                                    size_hint=(0.1, 0.06), pos_hint={'x': 0.79, 'top': 0.74})
         self.button_PCA_submit = Button(text="✓", size_hint=(None, None), font_name='DejaVuSans.ttf', size=(53, 53),
@@ -126,11 +142,11 @@ class MainScreen(Screen):
         self.PCA_input.bind(text=self.text_size_change)
 
         #Cross validation labels and buttons
-        self.label_CV = Label(text="CV", size_hint=(None, None),
+        self.label_CV = Label(text="CV", font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
                               pos_hint={'center_x': 0.7, 'center_y': 0.64})
         layout.add_widget(self.label_CV)
 
-        self.button_CV_yes = ColorCheckBox(group='CV', size_hint=(None, None), color=(0, 1, 1, 1), size=(50, 50),
+        self.button_CV_yes = ColorCheckBox(group='CV', size_hint=(None, None), color=(0.13, 0.55, 0.13, 1), size=(50, 50),
                                            pos_hint={'x': 0.63, 'top': 0.60})
         self.button_CV_no = ColorCheckBox(group='CV', size_hint=(None, None), size=(50, 50),
                                           pos_hint={'x': 0.73, 'top': 0.60})
@@ -139,7 +155,7 @@ class MainScreen(Screen):
         self.button_CV_yes.bind(on_press=self.CV_show)
         self.button_CV_no.bind(on_press=self.CV_show)
 
-        self.CV_input = TextInput(hint_text="Enter number of cross validation", font_size=16, input_filter='int',
+        self.CV_input = TextInput(hint_text="Enter number of cross validation",font_name='times.ttf', font_size=16, input_filter='int',
                                   multiline=True,
                                   size_hint=(0.1, 0.06), pos_hint={'x': 0.79, 'top': 0.60})
         self.button_CV_submit = Button(text="✓", size_hint=(None, None), font_name='DejaVuSans.ttf', size=(53, 53),
@@ -152,23 +168,24 @@ class MainScreen(Screen):
         self.CV_input.bind(text=self.text_size_change)
 
         # particle clusters labels and buttons
-        self.label_particle_clusters = Label(text="Number of particle Clusters:", size_hint=(None, None),
+        self.label_particle_clusters = Label(text="Number of particle Clusters:", font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
                                              pos_hint={'center_x': 0.67, 'center_y': 0.48})
         layout.add_widget(self.label_particle_clusters)
         self.spinner_particle_clusters = Spinner(
             text='Default',
-            values=('2', '3', '5'),
+            values=( '3', '5'),
             size_hint=(0.08, 0.05),
             pos_hint={'x': 0.79, 'top': 0.5},
+            font_name='times.ttf'
         )
         layout.add_widget(self.spinner_particle_clusters)
         self.spinner_particle_clusters.bind(text=self.particle_clusters_select)
 
         # Targets labels and buttons
-        self.label_targets = Label(text="Number of targets", size_hint=(None, None),
+        self.label_targets = Label(text="Number of targets",font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
                                    pos_hint={'center_x': 0.7, 'center_y': 0.42})
         layout.add_widget(self.label_targets)
-        self.target_input = TextInput(hint_text="Enter number of parameters", font_size=15, input_filter='int',
+        self.target_input = TextInput(hint_text="Enter number of parameters",font_name='times.ttf', font_size=15, input_filter='int',
                                       multiline=True,
                                       size_hint=(0.09, 0.06), pos_hint={'x': 0.63, 'top': 0.38})
         self.button_targets_submit = Button(text="✓", size_hint=(None, None), font_name='DejaVuSans.ttf', size=(53, 53),
@@ -178,12 +195,13 @@ class MainScreen(Screen):
         self.target_input.bind(text=self.text_size_change)
         self.button_targets_submit.bind(on_press=self.target_submit)
 
-        self.label_save_path = Label(text="Saving path", size_hint=(None, None),
+        self.label_save_path = Label(text="Saving path",font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
                                    pos_hint={'center_x': 0.7, 'center_y': 0.30})
         layout.add_widget(self.label_save_path)
-        self.save_input = TextInput(hint_text="Enter saving path here", font_size=22, input_filter=None,
+        self.save_input = TextInput(hint_text="Enter saving path here",font_name='times.ttf', font_size=22, input_filter=None,
                                       multiline=True,
                                       size_hint=(0.3, 0.06), pos_hint={'x': 0.55, 'top': 0.24})
+        #TODO: new text size change for this input
         self.button_save_submit = Button(text="✓", size_hint=(None, None), font_name='DejaVuSans.ttf', size=(53, 53),
                                             pos_hint={'x': 0.86, 'top': 0.239})
         layout.add_widget(self.save_input)
@@ -196,21 +214,22 @@ class MainScreen(Screen):
 
 
         # Create a label to display dropped file path
-        self.file_label = Label(text='Drop files here', size_hint=(None, None),
+        self.file_label = Label(text='Drop files here',font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
                                 pos_hint={'center_x': 0.25, 'center_y': 0.9})
         self.file_label.bind(size=self.file_label.setter('text_size'))
         layout.add_widget(self.file_label)
         # Create a test and submit buttons for the process
-        test_button = Button(text='Test', size_hint=(None, None), size=(150, 50),
+        test_button = Button(text='Test',font_name='times.ttf', bold=True, size_hint=(None, None), size=(150, 50),
                              pos_hint={'center_x': 0.15, 'center_y': 0.58})
         test_button.bind(on_press=self.test_dropped_file)
+        #TODO: drop the test label
         self.test_submit_label = Label(text='test', size_hint=(None, None),
                                        pos_hint={'center_x': 0.25, 'center_y': 0.52})
         self.file_label.bind(size=self.file_label.setter('text_size'))
         layout.add_widget(self.test_submit_label)
         layout.add_widget(test_button)
 
-        submit_button = Button(text='Submit', size_hint=(None, None), size=(150, 50),
+        submit_button = Button(text='Submit', font_name='times.ttf', bold=True, size_hint=(None, None), size=(150, 50),
                                pos_hint={'center_x': 0.35, 'center_y': 0.58})
         #submit_button.bind(on_press=???)
         layout.add_widget(submit_button)
@@ -231,17 +250,17 @@ class MainScreen(Screen):
                                      self.drop_area_x, self.drop_area_y], width=1)
 
             #Add a label for testing below the drop area
-        self.test_label = Label(text='', size_hint=(None, None),
+        self.test_label = Label(text='',font_name='times.ttf', bold=True, size_hint=(None, None),
                                 pos_hint={'center_x': 0.25, 'center_y': 0.45})
         layout.add_widget(self.test_label)
 
         ##### actual buttons of the Main screen #####
-        next_button = Button(text='Next', size_hint=(None, None), size=(100, 50),
+        next_button = Button(text='Next', font_name='times.ttf', bold=True, size_hint=(None, None), size=(100, 50),
                              pos_hint={'center_x': 0.93, 'center_y': 0.07})
         layout.add_widget(next_button)
         next_button.bind(on_press=self.switch_to_graph_screen)
 
-        back_button = Button(text='back', size_hint=(None, None), size=(100, 50),
+        back_button = Button(text='back', font_name='times.ttf', bold=True, size_hint=(None, None), size=(100, 50),
                              pos_hint={'center_x': 0.07, 'center_y': 0.07})
         layout.add_widget(back_button)
         back_button.bind(on_press=self.switch_to_intro_screen)
@@ -320,21 +339,29 @@ class MainScreen(Screen):
 class GraphScreen(Screen):
     def __init__(self, **kwargs):
         super(GraphScreen, self).__init__(**kwargs)
+        with self.canvas.before:
+            Color(0.2, 0.2, 0.2, 1)  # Set the desired color (R, G, B, A)
+            self.rect = Rectangle(size=self.size, pos=self.pos)
+            self.bind(size=self._update_rect, pos=self._update_rect)
         self.build()
+
+    def _update_rect(self, instance, value):
+        self.rect.size = instance.size
+        self.rect.pos = instance.pos
 
     def build(self):
         layout = FloatLayout()
         self.title = 'Intro'
 
 
-        first_graph_button = Button(text="Graph 1", size_hint=(0.3, 0.3), pos_hint={'center_x': 0.3, 'top': 0.65})
-        second_graph_button = Button(text="Graph 2", size_hint=(0.3, 0.3), pos_hint={'center_x': 0.7, 'top': 0.65})
+        first_graph_button = Button(text="Graph 1",font_name='times.ttf', bold=True, size_hint=(0.3, 0.3), pos_hint={'center_x': 0.3, 'top': 0.65})
+        second_graph_button = Button(text="Graph 2", font_name='times.ttf', bold=True, size_hint=(0.3, 0.3), pos_hint={'center_x': 0.7, 'top': 0.65})
         layout.add_widget(first_graph_button)
         layout.add_widget(second_graph_button)
         first_graph_button.bind(on_release=lambda btn: self.show_image_popup(0))
         second_graph_button.bind(on_release=lambda btn: self.show_image_popup(1))
 
-        back_button = Button(text='back', size_hint=(None, None), size=(100, 50),
+        back_button = Button(text='back', font_name='times.ttf', bold=True, size_hint=(None, None), size=(100, 50),
                              pos_hint={'center_x': 0.07, 'center_y': 0.07})
 
         # back_button = Button(text='Go Back')
