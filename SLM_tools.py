@@ -275,16 +275,18 @@ class SLM_tools:
         aop = int(np.ceil((0.16 * len(yo)))) - 1
         std_fit = np.median(mapx[:, 3], axis=0) - yo[aop]
         x = np.copy(mapx)
-        random_x = x[np.random.permutation(x.shape[0]), :]  # line 89 matlab
-        train_index = int(np.floor(0.6 * random_x.shape[0]))
-        validation_index = int(np.floor(0.8 * random_x.shape[0]))
+        train_index = int(np.floor(0.6 * x.shape[0]))
+        validation_index = int(np.floor(0.8 * x.shape[0]))
         size_validation_set = len(range(train_index, validation_index))
         tfas_predict_mat = np.zeros((cv_num, size_validation_set))
         tfas_actually_mat = np.zeros((cv_num, size_validation_set))
         mean_error_mat = np.zeros((cv_num, size_validation_set))
-        training_set = random_x[:train_index - 1, :]
-        validation_set = random_x[train_index:validation_index, :]
         for i in range(cv_num):
+            random_x = x[np.random.permutation(x.shape[0]), :]  # line 89 matlab
+            train_index = int(np.floor(0.6 * random_x.shape[0]))
+            validation_index = int(np.floor(0.8 * random_x.shape[0]))
+            training_set = random_x[:train_index - 1, :]
+            validation_set = random_x[train_index:validation_index, :]
             min_1 = np.min(random_x[:, 0])
             max_1 = np.max(random_x[:, 0])
             min_2 = np.min(random_x[:, 1])
@@ -313,7 +315,7 @@ class SLM_tools:
 
             YI = scipy.interpolate.griddata(X, Y, XI, method='linear')
             YI.reshape(x0.shape)
-            intergal_dist = 2  # TODO: ask michael!
+            intergal_dist = 2  # TODO: maby user input
             k = np.ones((intergal_dist, intergal_dist)) / (intergal_dist * intergal_dist - 1)
             k[intergal_dist // 2, intergal_dist // 2] = 0
             averageIntensities = scipy.ndimage.convolve(YI, k, mode='constant', cval=0.0)
@@ -345,21 +347,21 @@ class SLM_tools:
             mean_error_mat[i, :] = np.abs(tfas_real - tfas_predict)
         return YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat, train_index, random_x, validation_index, median_fit_vec
 
-    @staticmethod
-    def save_model(YI, save_path, save_as_text=False, save_as_m=True):
-        if save_as_m:
-            sio.savemat(f"{os.path.join(save_path, 'YI.txt')}",{"model": YI})
-        elif save_as_text:
-            np.savetxt(f"{os.path.join(save_path, 'YI.txt')}", YI)
-        else:
-            np.save(f"{os.path.join(save_path, 'YI.npy')}", YI)
+    # @staticmethod
+    # def save_model(YI, save_path, save_as_text=False, save_as_m=True):
+    #     if save_as_m:
+    #         sio.savemat(f"{os.path.join(save_path, 'YI.txt')}",{"model": YI})
+    #     elif save_as_text:
+    #         np.savetxt(f"{os.path.join(save_path, 'YI.txt')}", YI)
+    #     else:
+    #         np.save(f"{os.path.join(save_path, 'YI.npy')}", YI)
 
     @staticmethod
     def model_eval(tfas_predict_mat, tfas_actually_mat, train_index, save_path, cv_num: int = 3):
-        bin_width = 0.5  # TODO: where are these values from?
-        smooth_win = 0  # TODO: where are these values from?
-        x_ticks = np.arange(3.5, 7.5 + 0.5, 0.5)  # TODO: where are these values from?
-        y_ticks = np.arange(3, 9 + 2, 2)  # TODO: where are these values from?
+        bin_width = 0.5  # TODO: where are these values from? abs(min-max)/num_bins
+        smooth_win = 0  # TODO: where are these values from? leave it
+        x_ticks = np.arange(3.5, 7.5 + 0.5, 0.5)  # TODO: where are these values from? (min, max tfas predict)
+        y_ticks = np.arange(3, 9 + 2, 2)  # TODO: where are these values from? (min, max tfas predict)
         color_map = plt.cm.jet(np.linspace(0, 1, cv_num))
         red = len(range(1, train_index + 1))
         min_of_all = np.min(tfas_predict_mat)
@@ -376,15 +378,6 @@ class SLM_tools:
             sorted_indices = np.argsort(x)
             x = x[sorted_indices]
             y = y[sorted_indices]
-            plt.subplot(4, 1, 1)
-            plt.scatter(x, y, edgecolors=color_map[i], facecolors=color_map[i])
-            plt.gca().set_xticklabels([])
-            plt.yticks(y_ticks)
-            plt.ylabel(r'$\hat{Y}$', fontsize=24)
-            plt.xlim([x_ticks[0], x_ticks[-1]])
-            plt.ylim([y_ticks[0], y_ticks[-1]])
-            plt.gca().tick_params(axis='both', which='both', length=0)
-            plt.box(False)
             std_hista = np.zeros(len(hist_space) - 1)
             mean_hista = np.zeros(len(hist_space) - 1)
             for j in range(len(hist_space) - 1):
@@ -397,7 +390,6 @@ class SLM_tools:
                     mean_hista[j] = np.median(y[indices])
                     aop = int(np.ceil(0.16 * len(yo)))
                     std_hista[j] = mean_hista[j] - yo[aop]
-
             x_hist_space = (hist_space[1:] + hist_space[:-1]) / 2
             i_9 = np.where(~np.isnan(mean_hista) & (x_hist_space > 0))[0][0] if np.any(
                 ~np.isnan(mean_hista) & (x_hist_space > 0)) else len(mean_hista)
@@ -406,7 +398,6 @@ class SLM_tools:
             i_3 = np.where(np.isnan(std_hista) & (x_hist_space > 0))[0][0] if np.any(
                 np.isnan(std_hista) & (x_hist_space > 0)) else len(mean_hista)
             i_4 = min(i_2, i_3)
-
             if i_9 < i_4:
                 i_4 = min(i_2, i_3)
             else:
@@ -417,29 +408,9 @@ class SLM_tools:
                 i_4 = min(i_2, i_3)
             if i_4 is None:
                 i_4 = len(mean_hista)
-
-            plt.subplot(4, 1, 2)
-            plt.scatter(x_hist_space[:i_4], mean_hista[:i_4], edgecolors=color_map[i], facecolors=color_map[i],
-                        marker='s')
-            plt.hold(True)
-            # Store results
             mean[i, :len(mean_hista)] = mean_hista
             std[i, :len(std_hista)] = std_hista
             i_5 = np.argmin(np.abs(x - x_hist_space[i_4]))
-            # Update first subplot
-            plt.subplot(4, 1, 1)
-            plt.scatter(x[:i_5], y[:i_5], edgecolors=color_map[i], facecolors=color_map[i])
-            plt.hold(True)
-            if i == 0:
-                plt.ylabel(r'${Y}_{CV}$', fontsize=24, labelpad=20)
-                plt.gca().set_xticklabels([])
-                plt.yticks(y_ticks)
-                plt.xlim([x_ticks[0], x_ticks[-1]])
-                plt.ylim([y_ticks[0], y_ticks[-1]])
-                plt.gca().tick_params(axis='both', which='both', length=0)
-                plt.box(False)
-        plt.show()  # TODO: replace with plt.save()?
-        # plt.savefig(save_path, bbox_inches='tight')
         mean_vec = np.zeros(len(hist_space) - 1)
         std_vec = np.zeros(len(hist_space) - 1)
         mean[mean == 0] = np.nan
@@ -456,26 +427,14 @@ class SLM_tools:
             else:
                 mean_vec[row] = np.nan
                 std_vec[row] = np.nan
-        plt.subplot(4, 1, 2)
-        plt.plot(x_hist_space[:i_4], x_hist_space[:i_4], 'k--')
-        plt.errorbar(x_hist_space, mean_vec, yerr=std_vec, fmt='k', ecolor='k', elinewidth=1, capsize=2)
-        plt.gca().set_xticklabels([])
-        plt.yticks(y_ticks)
-        plt.xlim([x_ticks[0], x_ticks[-1]])
-        plt.ylim([y_ticks[0], y_ticks[-1]])
-        plt.box(False)
-        plt.gca().tick_params(axis='both', which='both', length=0)
-        plt.gca().set_fontsize(24)
-        plt.show()  # TODO: replace with plt.save()?
-        # plt.savefig(save_path, bbox_inches='tight')
-        return mean_vec, y_ticks, x_ticks, hist_space, x_hist_space
+        return mean_vec, std_vec, y_ticks, x_ticks, hist_space, x_hist_space
 
     @staticmethod
     def train_again_on_validation_and_test(random_x, validation_index, n_components=3):
         np.random.seed(42)
         random_x = random_x[np.random.permutation(random_x.shape[0]), :]
-        test_set = random_x[validation_index:, :]
         training_set = random_x[:validation_index - 1, :]
+        test_set = random_x[validation_index:, :]
         min_1 = np.min(random_x[:, 0])
         max_1 = np.max(random_x[:, 0])
         min_2 = np.min(random_x[:, 1])
@@ -569,7 +528,7 @@ class SLM_tools:
         mean_vec_pre = np.append(mean_vec[1:], np.nan)
         cutofflength = len(mean_vec)
         occurrence_probability = np.zeros((1, cutofflength))
-        CV_offset = mean_vec - x_hist_space
+        CV_offset = mean_vec - x_hist_space # TODO: added to x to fix prediction
         CV_offset = np.nan_to_num(CV_offset)
         for i in range(cutofflength):
             Ind = np.where((hist_space[i] - smooth_win < x) and (x < hist_space[i + 1] + smooth_win))[0]
@@ -579,7 +538,7 @@ class SLM_tools:
                 mean_hista[i] = np.nan
             else:
                 yo = np.sort(y_new[Ind])
-                yo_logged = yo  # TODO: ask michael if should be np.log(yo) Line 704 LogTfas
+                yo_logged = yo  # TODO: should be logged
                 aop = np.ceil(0.16 * len(yo)).astype(int)
                 aop2 = np.ceil(0.84 * len(yo)).astype(int)
                 z0 = median_fit_vec - yo
