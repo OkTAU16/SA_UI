@@ -14,6 +14,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition
 from kivy.uix.spinner import Spinner
 from kivy.uix.image import Image
 from kivy.uix.popup import Popup
+from kivy.metrics import sp
 import os
 
 
@@ -60,8 +61,9 @@ class IntroScreen(Screen):
             Color(0.2, 0.2, 0.2, 1)  # Set the desired color (R, G, B, A)
             self.rect = Rectangle(size=self.size, pos=self.pos)
             self.bind(size=self._update_rect, pos=self._update_rect)
-
-        background = Image(source=r"C:\Users\USER\Desktop\לימודים\שנה ד\חישה רציפה\MMR\SLM_logo.png", allow_stretch=True, keep_ratio=False)
+        # TODO: change to the git path for the background
+        background = Image(source=r"C:\Users\USER\Desktop\לימודים\שנה ד\חישה רציפה\MMR\SLM_logo.png",
+                           allow_stretch=True, keep_ratio=False,opacity=0.7)
 
         # Add the background image to the screen
         self.add_widget(background)
@@ -76,8 +78,31 @@ class IntroScreen(Screen):
         layout = FloatLayout()
         self.title = 'Intro'
         #layout.add_widget(self.title)
+        self.title_label = Label(text='[u]SLM Algorithm - Intro Screen[/u]',font_name='times.ttf', bold=True, markup=True,
+                                 size_hint=(None, None), font_size='24sp',
+                                 pos_hint={'center_x': 0.5, 'top': 0.995}, color=(0.2, 0.2, 0.2, 1))
+
+        layout.add_widget(self.title_label)
+
+        self.instruction_label = Label(text="Welcome to the SLM algorithm! \n"
+                                            "The algorithm provides an analysis of trends in a  time series. \n"
+                                            "To use the algorithm, please upload your data as [u]'.mat'[/u], [u]'.csv'[/u] or [u]'.xslx'[/u] files.\n"
+                                            "Uploading multiple files in a folder is possible as well\n"
+                                            "The data should contain the following columns:\n"
+                                            "1. [u]Time Series[/u] (optional): time stamp for each sample.\n"
+                                            "Not needed for evenly spaced measurements.\n"
+                                            "2. [u]Total Energy[/u]: The observable variable of the experiment.\n"
+                                            "3. [u]Distance[/u]: distance from final target. At the final target, the distance should be equal to 0.\n"
+                                            "A distance column is needed for each target. \n"
+                                            "Click on the 'next' button at the bottom right corner to continue.",
+                                       font_name='times.ttf', bold=True, size_hint=(None, None),
+                                       font_size='18sp', markup=True,
+                                       pos_hint={'center_x': 0.5, 'top': 0.65}, color=(0, 0, 0, 1), line_height=sp(0.9))
+
+        layout.add_widget(self.instruction_label)
+
         next_button = Button(text='Next',font_name='times.ttf', bold=True, size_hint=(None, None), size=(100, 50),
-                             pos_hint={'center_x': 0.93, 'center_y': 0.07})
+                             pos_hint={'center_x': 0.93, 'center_y': 0.07},background_color=(0.25, 0.41, 0.88, 1))
         layout.add_widget(next_button)
         next_button.bind(on_press=self.switch_to_main_screen)
 
@@ -94,7 +119,9 @@ class MainScreen(Screen):
             Color(0.2, 0.2, 0.2, 1)  # Set the desired color (R, G, B, A)
             self.rect = Rectangle(size=self.size, pos=self.pos)
             self.bind(size=self._update_rect, pos=self._update_rect)
-        background = Image(source=r"C:\Users\USER\Desktop\לימודים\שנה ד\חישה רציפה\MMR\SLM_logo.png", allow_stretch=True, keep_ratio=False)
+        #TODO: change to the git path for the background
+        background = Image(source=r"C:\Users\USER\Desktop\לימודים\שנה ד\חישה רציפה\MMR\SLM_logo.png",
+                           allow_stretch=True, keep_ratio=False,opacity=0.85)
 
         # Add the background image to the screen
         self.add_widget(background)
@@ -125,14 +152,14 @@ class MainScreen(Screen):
 
         # PCA labels and buttons
         self.label_PCA = Label(text="PCA", font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
-                               pos_hint={'center_x': 0.7, 'center_y': 0.77}, color=(0.2, 0.2, 0.2, 1))
+                               pos_hint={'center_x': 0.7, 'center_y': 0.79}, color=(0.2, 0.2, 0.2, 1))
         layout.add_widget(self.label_PCA)
 
         self.button_PCA_yes = ColorCheckBox(group='PCA', size_hint=(None, None), color=(0.13, 0.55, 0.13, 1), size=(50, 50),
-                                            pos_hint={'x': 0.63, 'top': 0.74})
+                                            pos_hint={'x': 0.63, 'top': 0.76})
 
         self.button_PCA_no = ColorCheckBox(group='PCA', size_hint=(None, None), size=(50, 50),
-                                           pos_hint={'x': 0.73, 'top': 0.74})
+                                           pos_hint={'x': 0.73, 'top': 0.76})
         layout.add_widget(self.button_PCA_yes)
         layout.add_widget(self.button_PCA_no)
         self.button_PCA_yes.bind(on_press=self.PCA_show)
@@ -140,9 +167,9 @@ class MainScreen(Screen):
 
         self.PCA_input = TextInput(hint_text="Enter number of clusters", font_name='times.ttf', font_size=16, input_filter='int',
                                    multiline=True,
-                                   size_hint=(0.1, 0.06), pos_hint={'x': 0.79, 'top': 0.74})
+                                   size_hint=(0.1, 0.06), pos_hint={'x': 0.79, 'top': 0.76})
         self.button_PCA_submit = Button(text="✓", size_hint=(None, None), font_name='DejaVuSans.ttf', size=(53, 53),
-                                        pos_hint={'x': 0.9, 'top': 0.74})
+                                        pos_hint={'x': 0.9, 'top': 0.76}, background_color=(0.25, 0.41, 0.88, 1))
         layout.add_widget(self.PCA_input)
         layout.add_widget(self.button_PCA_submit)
         self.PCA_input.opacity = 0
@@ -152,13 +179,13 @@ class MainScreen(Screen):
 
         #Cross validation labels and buttons
         self.label_CV = Label(text="CV", font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
-                              pos_hint={'center_x': 0.7, 'center_y': 0.64}, color=(0.2, 0.2, 0.2, 1))
+                              pos_hint={'center_x': 0.7, 'center_y': 0.68}, color=(0.2, 0.2, 0.2, 1))
         layout.add_widget(self.label_CV)
 
         self.button_CV_yes = ColorCheckBox(group='CV', size_hint=(None, None), color=(0.13, 0.55, 0.13, 1), size=(50, 50),
-                                           pos_hint={'x': 0.63, 'top': 0.60})
+                                           pos_hint={'x': 0.63, 'top': 0.64})
         self.button_CV_no = ColorCheckBox(group='CV', size_hint=(None, None), size=(50, 50),
-                                          pos_hint={'x': 0.73, 'top': 0.60})
+                                          pos_hint={'x': 0.73, 'top': 0.64})
         layout.add_widget(self.button_CV_yes)
         layout.add_widget(self.button_CV_no)
         self.button_CV_yes.bind(on_press=self.CV_show)
@@ -166,9 +193,9 @@ class MainScreen(Screen):
 
         self.CV_input = TextInput(hint_text="Enter number of cross validation",font_name='times.ttf', font_size=16, input_filter='int',
                                   multiline=True,
-                                  size_hint=(0.1, 0.06), pos_hint={'x': 0.79, 'top': 0.60})
+                                  size_hint=(0.1, 0.06), pos_hint={'x': 0.79, 'top': 0.64})
         self.button_CV_submit = Button(text="✓", size_hint=(None, None), font_name='DejaVuSans.ttf', size=(53, 53),
-                                       pos_hint={'x': 0.9, 'top': 0.60})
+                                       pos_hint={'x': 0.9, 'top': 0.64}, background_color=(0.25, 0.41, 0.88, 1))
         layout.add_widget(self.CV_input)
         layout.add_widget(self.button_CV_submit)
         self.CV_input.opacity = 0
@@ -178,48 +205,45 @@ class MainScreen(Screen):
 
         # particle clusters labels and buttons
         self.label_particle_clusters = Label(text="Number of particle Clusters:", font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
-                                             pos_hint={'center_x': 0.67, 'center_y': 0.48}, color=(0.2, 0.2, 0.2, 1))
+                                             pos_hint={'center_x': 0.67, 'center_y': 0.52}, color=(0.2, 0.2, 0.2, 1))
         layout.add_widget(self.label_particle_clusters)
         self.spinner_particle_clusters = Spinner(
             text='Default',
             values=( '3', '5'),
             size_hint=(0.08, 0.05),
-            pos_hint={'x': 0.79, 'top': 0.5},
-            font_name='times.ttf'
+            pos_hint={'x': 0.79, 'top': 0.54},
+            font_name='times.ttf',
+            background_color=(0.25, 0.41, 0.88, 1)
         )
         layout.add_widget(self.spinner_particle_clusters)
         self.spinner_particle_clusters.bind(text=self.particle_clusters_select)
 
         # Targets labels and buttons
         self.label_targets = Label(text="Number of targets",font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
-                                   pos_hint={'center_x': 0.7, 'center_y': 0.42}, color=(0.2, 0.2, 0.2, 1))
+                                   pos_hint={'center_x': 0.7, 'center_y': 0.46}, color=(0.2, 0.2, 0.2, 1))
         layout.add_widget(self.label_targets)
         self.target_input = TextInput(hint_text="Enter number of parameters",font_name='times.ttf', font_size=15, input_filter='int',
                                       multiline=True,
-                                      size_hint=(0.09, 0.06), pos_hint={'x': 0.63, 'top': 0.38})
+                                      size_hint=(0.09, 0.06), pos_hint={'x': 0.63, 'top': 0.42})
         self.button_targets_submit = Button(text="✓", size_hint=(None, None), font_name='DejaVuSans.ttf', size=(53, 53),
-                                            pos_hint={'x': 0.73, 'top': 0.38})
+                                            pos_hint={'x': 0.73, 'top': 0.42}, background_color=(0.25, 0.41, 0.88, 1))
         layout.add_widget(self.target_input)
         layout.add_widget(self.button_targets_submit)
         self.target_input.bind(text=self.text_size_change)
         self.button_targets_submit.bind(on_press=self.target_submit)
 
         self.label_save_path = Label(text="Output directory path",font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
-                                   pos_hint={'center_x': 0.7, 'center_y': 0.30}, color=(0.2, 0.2, 0.2, 1))
+                                   pos_hint={'center_x': 0.7, 'center_y': 0.32}, color=(0.2, 0.2, 0.2, 1))
         layout.add_widget(self.label_save_path)
         self.save_input = TextInput(hint_text="Enter Output directory path here:", font_name='times.ttf', font_size=22, input_filter=None,
                                       multiline=True,
-                                      size_hint=(0.3, 0.06), pos_hint={'x': 0.55, 'top': 0.24})
+                                      size_hint=(0.3, 0.06), pos_hint={'x': 0.55, 'top': 0.28})
         self.button_save_submit = Button(text="✓", size_hint=(None, None), font_name='DejaVuSans.ttf', size=(53, 53),
-                                            pos_hint={'x': 0.86, 'top': 0.239})
+                                            pos_hint={'x': 0.86, 'top': 0.279}, background_color=(0.25, 0.41, 0.88, 1))
         layout.add_widget(self.save_input)
         layout.add_widget(self.button_save_submit)
         self.save_input.bind(text=self.text_size_change_for_path)
         self.button_save_submit.bind(on_press=self.save_path_submit)
-
-
-
-
 
         # Create a label to display dropped file path
         self.file_label = Label(text='Drop files here',font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
@@ -228,13 +252,13 @@ class MainScreen(Screen):
         layout.add_widget(self.file_label)
         # Create a test and submit buttons for the process
         test_button = Button(text='Test',font_name='times.ttf', bold=True, size_hint=(None, None), size=(150, 50),
-                             pos_hint={'center_x': 0.15, 'center_y': 0.58})
+                             pos_hint={'center_x': 0.15, 'center_y': 0.58}, background_color=(0.25, 0.41, 0.88, 1))
         test_button.bind(on_press=self.test_dropped_file)
         self.file_label.bind(size=self.file_label.setter('text_size'))
         layout.add_widget(test_button)
 
         submit_button = Button(text='Submit', font_name='times.ttf', bold=True, size_hint=(None, None), size=(150, 50),
-                               pos_hint={'center_x': 0.35, 'center_y': 0.58})
+                               pos_hint={'center_x': 0.35, 'center_y': 0.58}, background_color=(0.25, 0.41, 0.88, 1))
         submit_button.bind(on_press=self.submit_dropped_file)
         layout.add_widget(submit_button)
 
@@ -260,16 +284,28 @@ class MainScreen(Screen):
 
         ##### actual buttons of the Main screen #####
         next_button = Button(text='Next', font_name='times.ttf', bold=True, size_hint=(None, None), size=(100, 50),
-                             pos_hint={'center_x': 0.93, 'center_y': 0.07})
+                             pos_hint={'center_x': 0.93, 'center_y': 0.07}, background_color=(0.25, 0.41, 0.88, 1))
         layout.add_widget(next_button)
         next_button.bind(on_press=self.switch_to_graph_screen)
 
         back_button = Button(text='back', font_name='times.ttf', bold=True, size_hint=(None, None), size=(100, 50),
-                             pos_hint={'center_x': 0.07, 'center_y': 0.07})
+                             pos_hint={'center_x': 0.07, 'center_y': 0.07}, background_color=(0.25, 0.41, 0.88, 1))
         layout.add_widget(back_button)
         back_button.bind(on_press=self.switch_to_intro_screen)
         self.add_widget(layout)
 
+
+        self.instruction_label = Label(text="1. Set model parameters on the right. \n2. Fill in values as necessary and submit, if the value is valid the box will turn green \n3. Drop the file or folder in the drop zone and press the 'test' button. \n4. Submit the data, the results will appear when ready in the next screen.",
+                                       font_name='DejaVuSans.ttf', bold=True, size_hint=(None, None),
+                                       text_size=(Window.width/2.5, None),markup=True,
+                                       pos_hint={'center_x': 0.255, 'top': 0.35}, color=(0.2, 0.2, 0.2, 1))
+
+        layout.add_widget(self.instruction_label)
+        self.title_label = Label(text='[u]SLM Algorithm - Main Screen[/u]',font_name='times.ttf', bold=True, markup=True,
+                                 size_hint=(None, None), font_size='24sp',
+                                 pos_hint={'center_x': 0.5, 'top': 0.995}, color=(0.2, 0.2, 0.2, 1))
+
+        layout.add_widget(self.title_label)
     # Main screen functions
     def switch_to_graph_screen(self, instance):
         self.manager.current = 'graph'
@@ -347,6 +383,18 @@ class MainScreen(Screen):
                                      self.drop_area_x, self.drop_area_y + self.drop_area_height,
                                      self.drop_area_x, self.drop_area_y], width=1)
 
+        if self.instruction_label in self.layout.children:
+            self.layout.remove_widget(self.instruction_label)
+
+    # Recreate the instruction label with updated position and size
+        self.instruction_label = Label(
+        text="1. Set model parameters on the right. \n2. Fill in values as necessary and submit, if the value is valid the box will turn green \n3. Drop the file or folder in the drop zone and press the 'test' button. \n4. Submit the data, the results will appear when ready in the next screen.",
+        font_name='DejaVuSans.ttf', bold=True, size_hint=(None, None),
+        text_size=(self.window_width / 2.5, None), markup=True,
+        pos_hint={'center_x': 0.255, 'top': 0.35}, color=(0.2, 0.2, 0.2, 1))
+
+    # Add the updated instruction label back to the layout
+        self.layout.add_widget(self.instruction_label)
 
 class GraphScreen(Screen):
     def __init__(self, **kwargs):
@@ -355,6 +403,11 @@ class GraphScreen(Screen):
             Color(0.2, 0.2, 0.2, 1)  # Set the desired color (R, G, B, A)
             self.rect = Rectangle(size=self.size, pos=self.pos)
             self.bind(size=self._update_rect, pos=self._update_rect)
+        #TODO: change to the git path for the background
+        background = Image(source=r"C:\Users\USER\Desktop\לימודים\שנה ד\חישה רציפה\MMR\SLM_logo.png", allow_stretch=True, keep_ratio=False)
+
+        # Add the background image to the screen
+        self.add_widget(background)
         self.build()
 
     def _update_rect(self, instance, value):
@@ -366,12 +419,16 @@ class GraphScreen(Screen):
         self.title = 'Intro'
 
 
-        first_graph_button = Button(text="Graph 1",font_name='times.ttf', bold=True, size_hint=(0.3, 0.3), pos_hint={'center_x': 0.3, 'top': 0.65})
-        second_graph_button = Button(text="Graph 2", font_name='times.ttf', bold=True, size_hint=(0.3, 0.3), pos_hint={'center_x': 0.7, 'top': 0.65})
+        first_graph_button = Button(text="Graph 1",font_name='times.ttf', bold=True, size_hint=(0.3, 0.3), pos_hint={'center_x': 0.3, 'top': 0.65}, background_color=(0.25, 0.41, 0.88, 1))
+        second_graph_button = Button(text="Graph 2", font_name='times.ttf', bold=True, size_hint=(0.3, 0.3), pos_hint={'center_x': 0.7, 'top': 0.65}, background_color=(0.25, 0.41, 0.88, 1))
         layout.add_widget(first_graph_button)
         layout.add_widget(second_graph_button)
         first_graph_button.bind(on_release=lambda btn: self.show_image_popup(0))
         second_graph_button.bind(on_release=lambda btn: self.show_image_popup(1))
+
+       # model_button = Button(text="SLM model", font_name='times.ttf', bold=True, size_hint=(0.36, 0.1),
+        #                            pos_hint={'center_x': 0.5, 'top': 0.4})
+        #layout.add_widget(model_button)
 
         back_button = Button(text='back', font_name='times.ttf', bold=True, size_hint=(None, None), size=(100, 50),
                              pos_hint={'center_x': 0.07, 'center_y': 0.07})
@@ -586,14 +643,14 @@ class GuiApp(App):
             return
 
         main_screen.test_label.text = "File or folder validated successfully!"
-        main_screen.test_label.color = (0, 1, 0, 1)  # Green color for success
+        main_screen.test_label.color = (0, 0.7, 0, 1)  # Green color for success
         self.submit_flag = 1
         print("File or folder validated successfully!")
 
     def submit_dropped_file(self, instance):
         main_screen = self.sm.get_screen('main')
         if self.submit_flag == 0:
-            main_screen.test_label.text = "Testing is required. please fill all required fields and press the test button"
+            main_screen.test_label.text = "Testing is required. \n please fill all required fields and press the test button"
             main_screen.test_label.color = (1, 0, 0, 1)  # Red color for errors
         elif self.submit_flag == 1:
             pass
