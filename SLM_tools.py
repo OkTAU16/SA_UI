@@ -370,21 +370,21 @@ class SLM_tools:
         mean = np.zeros((cv_num, len(hist_space) - 1))
         std = np.zeros((cv_num, len(hist_space) - 1))
         for i in range(cv_num):
-            x = tfas_predict_mat[i, :]
-            y = tfas_actually_mat[i, :]
+            x = np.squeeze(tfas_predict_mat[i, :])
+            y = np.squeeze(tfas_actually_mat[i, :])
             sorted_indices = np.argsort(x)
             x = x[sorted_indices]
             y = y[sorted_indices]
             std_hista = np.zeros(len(hist_space) - 1)
             mean_hista = np.zeros(len(hist_space) - 1)
-            for j in range(len(hist_space) - 1):
-                indices = np.where((hist_space[j] - smooth_win < x) and (x < (hist_space[j + 1]) + smooth_win))[0]
-                if len(indices) < 5:
+            for j in range(len(hist_space)):
+                Ind = np.where((hist_space[j] - smooth_win < x) and (x < (hist_space[j + 1]) + smooth_win))[0]
+                if len(Ind) < 5:
                     std_hista[j] = np.nan
                     mean_hista[j] = np.nan
                 else:
-                    yo = np.sort(y[indices])
-                    mean_hista[j] = np.median(y[indices])
+                    yo = np.sort(y[Ind])
+                    mean_hista[j] = np.median(y[Ind])
                     aop = int(np.ceil(0.16 * len(yo)))
                     std_hista[j] = mean_hista[j] - yo[aop]
             x_hist_space = (hist_space[1:] + hist_space[:-1]) / 2
@@ -420,7 +420,7 @@ class SLM_tools:
             std_row = std_row[nan]
             if np.sum(~np.isnan(mean_row)) > 0:
                 mean_vec[row] = np.mean(mean_row)
-                std_vec[row] = np.std(mean_row)
+                std_vec[row] = np.std(std_row)
             else:
                 mean_vec[row] = np.nan
                 std_vec[row] = np.nan
@@ -494,29 +494,13 @@ class SLM_tools:
         return tfas_predict_mat_2, tfas_actually_mat_2, mean_error_mat_2
 
     @staticmethod
-    def after_training_2(tfas_predict_mat_2, tfas_actually_mat_2, y_ticks, x_ticks, hist_space, mean_vec, x_hist_space,
-                         median_fit_vec, save_path):
+    def cv_bias_correction(tfas_predict_mat_2, tfas_actually_mat_2, hist_space, mean_vec, x_hist_space,
+                           median_fit_vec):
         smooth_win = 0
         tfas_predict_mat_2_sorted = np.sort(tfas_predict_mat_2)
-        tfas_predict_mat_2_sorted_indices = np.argsort(tfas_predict_mat_2_sorted)
+        tfas_predict_mat_2_sorted_indices = np.argsort(tfas_predict_mat_2)
         x = tfas_predict_mat_2_sorted
         y_new = tfas_actually_mat_2[tfas_predict_mat_2_sorted_indices]
-        fig, ax = plt.subplots(4, 1, figsize=(10, 8))
-        nn3 = ax[2]
-        nn3.scatter(x, edgecolor=[.7, .7, .7], facecolor=[.7, .7, .7])
-        nn3.set_xticklabels([])  # Remove x-axis tick labels
-        nn3.set_yticks(y_ticks)
-        nn3.set_ylabel(r'${Y_{test}}$', fontsize=14)
-        nn3.set_xlim([x_ticks[0], x_ticks[-1]])
-        nn3.set_ylim([x_ticks[0], x_ticks[-1]])
-        nn3.tick_params(axis='both', which='major', labelsize=24)
-        nn3.spines['top'].set_visible(False)
-        nn3.spines['right'].set_visible(False)
-        nn3.spines['bottom'].set_visible(False)
-        nn3.spines['left'].set_visible(False)
-        nn3.xaxis.set_tick_params(length=0)
-        plt.show()  # TODO: replace with plt.save()?
-        # plt.savefig(save_path, bbox_inches='tight')
         std_hista_origin = np.full(len(hist_space) - 1, np.nan)
         mean_hista_origin = np.full(len(hist_space) - 1, np.nan)
         mean_hista_last_fig = np.full(len(hist_space) - 1, np.nan)
@@ -525,8 +509,8 @@ class SLM_tools:
         mean_vec_pre = np.append(mean_vec[1:], np.nan)
         cutofflength = len(mean_vec)
         occurrence_probability = np.zeros((1, cutofflength))
-        CV_offset = mean_vec - x_hist_space # TODO: added to x to fix prediction
-        CV_offset = np.nan_to_num(CV_offset)
+        cv_offset = mean_vec - x_hist_space
+        cv_offset = np.nan_to_num(cv_offset)
         for i in range(cutofflength):
             Ind = np.where((hist_space[i] - smooth_win < x) and (x < hist_space[i + 1] + smooth_win))[0]
             occurrence_probability[0, i] = len(Ind)
@@ -538,15 +522,38 @@ class SLM_tools:
                 yo_logged = yo  # TODO: should be logged
                 aop = np.ceil(0.16 * len(yo)).astype(int)
                 aop2 = np.ceil(0.84 * len(yo)).astype(int)
-                z0 = median_fit_vec - yo
-                z1 = x_hist_space[i] - yo_logged + CV_offset[i]
+                z0 = median_fit_vec - yo  # predictor error
+                z1 = x_hist_space[i] - yo_logged + cv_offset[i]  # cv_corrected predictor error
                 mean_hista[i] = np.median(z1)
                 std_hista[i] = np.sqrt(np.sum((z1 - np.median(z1)) ** 2) / len(yo_logged))
                 mean_hista_origin[i] = np.median(z0)
                 mean_hista_last_fig[i] = np.median(yo)
-                plt.subplot(4, 1, 3)
-                plt.scatter(x[Ind] + CV_offset[i], y_new[Ind], marker='s', edgecolor='k', facecolor='k')
-                plt.hold(True)
-        plt.show()  # TODO: replace with plt.save()?
-        # plt.savefig(save_path, bbox_inches='tight')
-        # Line 732 Matlab
+        x_hist_space_priv = x_hist_space
+        x_hist_space_cv_corrected = x_hist_space + cv_offset
+        x_hist_space_cv_corrected_sorted = np.sort(x_hist_space_cv_corrected)
+        x_hist_space_cv_corrected_sorted_indices = np.argsort(x_hist_space_cv_corrected)
+        mean_hista_cv_corrected = mean_hista[x_hist_space_cv_corrected_sorted_indices]
+        mean_hista_origin_cv_corrected = mean_hista_origin[x_hist_space_cv_corrected_sorted_indices]
+        std_hista_cv_corrected = std_hista[x_hist_space_cv_corrected_sorted_indices]
+        std_hista_origin_cv_corrected = std_hista_origin[x_hist_space_cv_corrected_sorted_indices]
+        occurrence_probability_cv_corrected = occurrence_probability[x_hist_space_cv_corrected_sorted_indices]
+        mean_hista_last_fig_cv_corrected = mean_hista_last_fig[x_hist_space_cv_corrected_sorted_indices]
+        occurrence_probability_cv_corrected = occurrence_probability_cv_corrected / np.sum(
+            occurrence_probability_cv_corrected)
+        return x, y_new, cv_offset, occurrence_probability_cv_corrected, mean_hista_last_fig_cv_corrected, x_hist_space_cv_corrected_sorted, x_hist_space_cv_corrected_sorted_indices, mean_hista_cv_corrected, mean_hista_origin_cv_corrected, std_hista_cv_corrected, std_hista_origin_cv_corrected
+
+    @staticmethod
+    def plot_graphs(x, cv_offset, y_new):
+        # x_cv_corrected = x + cv_offset
+        # plt.figure(1)
+        # plt.subplots(3, 1, sharex=True)
+        # plt.scatter(x, y_new, marker='o', c=[0.7, 0.7, 0.7],edgecolors=[0.7, 0.7, 0.7], s=50)
+        # plt.xticks([])
+        # plt.yticks(ticking_bomby)
+        # plt.ylabel(r'${Y_{test}}$', fontsize=24)  # LaTeX interpreter
+        # plt.xlim([ticking_bomb[0], ticking_bomb[-1]])
+        # plt.ylim([ticking_bomby[0], ticking_bomby[-1]])
+        # plt.gca().set_box_aspect(1)  # Equivalent to 'box', 'off'
+        # plt.gca().tick_params(axis='x', which='both', bottom=False, top=False)
+        # plt.show()
+        pass
