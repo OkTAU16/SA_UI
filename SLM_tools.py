@@ -102,7 +102,7 @@ class SLM_tools:
             mean_trend (np.array): mean trend from BEAST"""
 
         try:
-            o = rb.beast(data, 0, tseg_minlength=0.1 * data.shape[1], season="none", torder_minmax=[1, 1.01])
+            o = rb.beast(data, 0, tseg_minlength=0.1 * data.shape[0], season="none", torder_minmax=[1, 1.01])
             mean_trend = o.trend.Y
             cp = np.sort(o.trend.cp[0:int(o.trend.ncp_median)])
             cp = cp[~np.isnan(cp)]
@@ -132,9 +132,9 @@ class SLM_tools:
             assembly_mat[:, i] = assembly
 
         for i in range(len_cp):
-            mu[i] = np.nanmean(energy[:, cp_int[i]:cp_int[i + 1]])
-            std[i] = np.std(energy[:, cp_int[i]:cp_int[i + 1]])
-            median = np.median(energy[:, cp_int[i]:cp_int[i + 1]])
+            mu[i] = np.nanmean(energy[cp_int[i]:cp_int[i + 1], :], axis=0)
+            std[i] = np.std(energy[cp_int[i]:cp_int[i + 1], :], axis=0)
+            median = np.median(energy[cp_int[i]:cp_int[i + 1], :], axis=0)
             skew[i] = (mu[i] - median) / 3 * std[i]
             abc = np.polyfit(range(cp_int[i], cp_int[i + 1]), mean_trend[cp_int[i]:cp_int[i + 1]], 1)
             trend_vec[i] = abc[0]
@@ -157,8 +157,15 @@ class SLM_tools:
         # if not np.any(sa_vec == 1):  # TODO: uncomment after testing
         #     return []
         # else:
-        return np.column_stack(
-            (mu, std, skew, np.cumsum(times_vec), trend_vec, sa_vec, cumulated_time_vec))
+        mu = np.reshape(mu, (len(mu), 1))
+        std = np.reshape(std, (len(std), 1))
+        cumsum_vec = np.cumsum(times_vec)
+        cumsum_vec = np.reshape(cumsum_vec, (len(cumsum_vec), 1))
+        trend_vec = np.reshape(trend_vec, (len(trend_vec), 1))
+        sa_vec = np.reshape(sa_vec, (len(sa_vec), 1))
+        cumulated_time_vec = np.reshape(cumulated_time_vec, (len(cumulated_time_vec), 1))
+        return np.concatenate(
+            (mu, std, skew, cumsum_vec, trend_vec, sa_vec, cumulated_time_vec), axis=1)
 
         # TODO: all returns of segment_data of all files should v_stack before post processing and model building
 
@@ -557,3 +564,18 @@ class SLM_tools:
         # plt.gca().tick_params(axis='x', which='both', bottom=False, top=False)
         # plt.show()
         pass
+
+
+if __name__ == "__main__":
+    data = np.loadtxt(
+        r'C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\testing data\energy_distance_mu_0.0_run_num_1.csv',
+        delimiter=',')
+    energy = data[:, 0]
+    distance = data[:, 1:]
+    energy_length = energy.shape[0]
+    t = np.linspace(0, energy_length - 1, energy_length // 1000, dtype=int)
+    energy = energy[t]
+    distance = distance[t, :]
+    energy = np.reshape(energy, (len(energy), 1))
+    o, cp, mean_trend = SLM_tools.beast(energy)
+    A = SLM_tools.segment_data(energy, distance, mean_trend, cp)
