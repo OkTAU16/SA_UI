@@ -62,8 +62,11 @@ class IntroScreen(Screen):
             self.rect = Rectangle(size=self.size, pos=self.pos)
             self.bind(size=self._update_rect, pos=self._update_rect)
         # TODO: change to the git path for the background
-        background = Image(source=r"C:\Users\USER\Desktop\לימודים\שנה ד\חישה רציפה\MMR\SLM_logo.png",
-                           allow_stretch=True, keep_ratio=False,opacity=0.7)
+        #GIT_DIR = str(os.path(__file__).parent.parent)
+
+
+        background = Image(source=r"C:\Users\USER\Desktop\לימודים\שנה ד\חישה רציפה\MMR\SLM_logo_adjusted.png",
+                           allow_stretch=True, keep_ratio=False,opacity=0.85)
 
         # Add the background image to the screen
         self.add_widget(background)
@@ -120,8 +123,8 @@ class MainScreen(Screen):
             self.rect = Rectangle(size=self.size, pos=self.pos)
             self.bind(size=self._update_rect, pos=self._update_rect)
         #TODO: change to the git path for the background
-        background = Image(source=r"C:\Users\USER\Desktop\לימודים\שנה ד\חישה רציפה\MMR\SLM_logo.png",
-                           allow_stretch=True, keep_ratio=False,opacity=0.85)
+        background = Image(source=r"C:\Users\USER\Desktop\לימודים\שנה ד\חישה רציפה\MMR\SLM_logo_adjusted.png",
+                           allow_stretch=True, keep_ratio=False,opacity=0.9)
 
         # Add the background image to the screen
         self.add_widget(background)
@@ -136,8 +139,11 @@ class MainScreen(Screen):
         layout = FloatLayout()
         self.layout = layout
         self.title = 'Main'
+        self.label_files_dropped_num = Label(text='', font_name='times.ttf', bold=True, size_hint=(None, None),
+                                       pos_hint={'center_x': 0.25, 'center_y': 0.75}, color=(0.2, 0.2, 0.2, 1))
+        layout.add_widget(self.label_files_dropped_num)
         # Time series label and buttons
-        self.label_time_series = Label(text="Added Time Series", font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
+        self.label_time_series = Label(text="Added Time Series", font_name='times.ttf', bold=True, underline=True, size_hint=(None,None),
                                        pos_hint={'center_x': 0.7, 'center_y': 0.9}, color=(0.2, 0.2, 0.2, 1))
 
         layout.add_widget(self.label_time_series)
@@ -150,32 +156,32 @@ class MainScreen(Screen):
         layout.add_widget(self.button_time_series_yes)
         layout.add_widget(self.button_time_series_no)
 
-        # PCA labels and buttons
-        self.label_PCA = Label(text="PCA", font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
+        # Down sample factor labels and buttons
+        self.label_down_sample = Label(text="Down Sample", font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
                                pos_hint={'center_x': 0.7, 'center_y': 0.79}, color=(0.2, 0.2, 0.2, 1))
-        layout.add_widget(self.label_PCA)
+        layout.add_widget(self.label_down_sample)
 
-        self.button_PCA_yes = ColorCheckBox(group='PCA', size_hint=(None, None), color=(0.13, 0.55, 0.13, 1), size=(50, 50),
+        self.button_down_sample_yes = ColorCheckBox(group='down_sample', size_hint=(None, None), color=(0.13, 0.55, 0.13, 1), size=(50, 50),
                                             pos_hint={'x': 0.63, 'top': 0.76})
 
-        self.button_PCA_no = ColorCheckBox(group='PCA', size_hint=(None, None), size=(50, 50),
+        self.button_down_sample_no = ColorCheckBox(group='down_sample', size_hint=(None, None), size=(50, 50),
                                            pos_hint={'x': 0.73, 'top': 0.76})
-        layout.add_widget(self.button_PCA_yes)
-        layout.add_widget(self.button_PCA_no)
-        self.button_PCA_yes.bind(on_press=self.PCA_show)
-        self.button_PCA_no.bind(on_press=self.PCA_show)
+        layout.add_widget(self.button_down_sample_yes)
+        layout.add_widget(self.button_down_sample_no)
+        self.button_down_sample_yes.bind(on_press=self.down_sample_show)
+        self.button_down_sample_no.bind(on_press=self.down_sample_show)
 
-        self.PCA_input = TextInput(hint_text="Enter number of clusters", font_name='times.ttf', font_size=16, input_filter='int',
+        self.down_sample_input = TextInput(hint_text="Enter Down Sample Factor", font_name='times.ttf', font_size=16, input_filter='int',
                                    multiline=True,
                                    size_hint=(0.1, 0.06), pos_hint={'x': 0.79, 'top': 0.76})
-        self.button_PCA_submit = Button(text="✓", size_hint=(None, None), font_name='DejaVuSans.ttf', size=(53, 53),
+        self.button_down_sample_submit = Button(text="✓", size_hint=(None, None), font_name='DejaVuSans.ttf', size=(53, 53),
                                         pos_hint={'x': 0.9, 'top': 0.76}, background_color=(0.25, 0.41, 0.88, 1))
-        layout.add_widget(self.PCA_input)
-        layout.add_widget(self.button_PCA_submit)
-        self.PCA_input.opacity = 0
-        self.button_PCA_submit.opacity = 0
-        self.button_PCA_submit.bind(on_press=self.PCA_submit)
-        self.PCA_input.bind(text=self.text_size_change)
+        layout.add_widget(self.down_sample_input)
+        layout.add_widget(self.button_down_sample_submit)
+        self.down_sample_input.opacity = 0
+        self.button_down_sample_submit.opacity = 0
+        self.button_down_sample_submit.bind(on_press=self.down_sample_submit)
+        self.down_sample_input.bind(text=self.text_size_change)
 
         #Cross validation labels and buttons
         self.label_CV = Label(text="CV", font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
@@ -314,13 +320,13 @@ class MainScreen(Screen):
         self.manager.current = 'intro'
 
     # Connections function to GuiApp functions
-    def PCA_show(self, instance):
+    def down_sample_show(self, instance):
         app = App.get_running_app()
-        app.PCA_show(instance)
+        app.down_sample_show(instance)
 
-    def PCA_submit(self, instance):
+    def down_sample_submit(self, instance):
         app = App.get_running_app()
-        app.PCA_submit(instance)
+        app.down_sample_submit(instance)
 
     def CV_show(self, instance):
         app = App.get_running_app()
@@ -486,42 +492,42 @@ class GuiApp(App):
         return self.sm
 
     #practicals functions
-    def PCA_show(self, instance):
+    def down_sample_show(self, instance):
         # Show or hide TextInput and V button based on selected radio button
         main_screen = self.sm.get_screen('main')
-        if instance == main_screen.button_PCA_yes and instance.state == 'down':
-            main_screen.PCA_input.opacity = 1
-            main_screen.button_PCA_submit.opacity = 1
-        elif instance == main_screen.button_PCA_no and instance.state == 'down':
-            main_screen.PCA_input.opacity = 0
-            main_screen.button_PCA_submit.opacity = 0
-            self.cluster_num = None
-            main_screen.PCA_input.foreground_color = (0, 0, 0, 1)  # RGBA for default color
-            main_screen.PCA_input.background_color = (1, 1, 1, 1)
-            main_screen.PCA_input.text = ''
-            main_screen.PCA_input.font_size = 16
+        if instance == main_screen.button_down_sample_yes and instance.state == 'down':
+            main_screen.down_sample_input.opacity = 1
+            main_screen.button_down_sample_submit.opacity = 1
+        elif instance == main_screen.button_down_sample_no and instance.state == 'down':
+            main_screen.down_sample_input.opacity = 0
+            main_screen.button_down_sample_submit.opacity = 0
+            self.down_sample_factor = None
+            main_screen.down_sample_input.foreground_color = (0, 0, 0, 1)  # RGBA for default color
+            main_screen.down_sample_input.background_color = (1, 1, 1, 1)
+            main_screen.down_sample_input.text = ''
+            main_screen.down_sample_input.font_size = 16
         else:
-            main_screen.PCA_input.opacity = 0
-            main_screen.button_PCA_submit.opacity = 0
-            self.cluster_num = None
-            main_screen.PCA_input.foreground_color = (0, 0, 0, 1)  # RGBA for default color
-            main_screen.PCA_input.background_color = (1, 1, 1, 1)
-            main_screen.PCA_input.text = ''
-            main_screen.PCA_input.font_size = 16
+            main_screen.down_sample_input.opacity = 0
+            main_screen.button_down_sample_submit.opacity = 0
+            self.down_sample_factor = None
+            main_screen.down_sample_input.foreground_color = (0, 0, 0, 1)  # RGBA for default color
+            main_screen.down_sample_input.background_color = (1, 1, 1, 1)
+            main_screen.down_sample_input.text = ''
+            main_screen.down_sample_input.font_size = 16
 
-    def PCA_submit(self, instance):
-        # Logging in the PCA input
+    def down_sample_submit(self, instance):
+        # Logging in the down_sample input
         main_screen = self.sm.get_screen('main')
-        user_input = main_screen.PCA_input.text
+        user_input = main_screen.down_sample_input.text
         if user_input:
             self.cluster_num = user_input
             print(self.cluster_num)
-            main_screen.PCA_input.foreground_color = (0, 0.6, 0, 1)  # RGBA for green
-            main_screen.PCA_input.background_color = (0.6, 1, 0.9, 1)
+            main_screen.down_sample_input.foreground_color = (0, 0.6, 0, 1)  # RGBA for green
+            main_screen.down_sample_input.background_color = (0.6, 1, 0.9, 1)
         else:
             self.cluster_num = None
             print(self.cluster_num)
-            main_screen.PCA_input.foreground_color = (0, 0, 0, 1)  # RGBA for default color
+            main_screen.down_sample_input.foreground_color = (0, 0, 0, 1)  # RGBA for default color
 
     def CV_show(self, instance):
         # Show or hide TextInput and V button based on selected radio button
@@ -666,11 +672,11 @@ class GuiApp(App):
         if not (main_screen.button_time_series_yes.state == 'down' or main_screen.button_time_series_no.state == 'down'):
             errors.append("Time Series option not selected.")
 
-        # Check PCA
-        if not (main_screen.button_PCA_yes.state == 'down' or main_screen.button_PCA_no.state == 'down'):
-            errors.append("PCA option not selected.")
-        elif main_screen.button_PCA_yes.state == 'down' and self.cluster_num is None:
-            errors.append("Number of clusters for PCA not entered.")
+        # Check down_sample
+        if not (main_screen.button_down_sample_yes.state == 'down' or main_screen.button_down_sample_no.state == 'down'):
+            errors.append("down_sample option not selected.")
+        elif main_screen.button_down_sample_yes.state == 'down' and self.cluster_num is None:
+            errors.append("Number of clusters for down_sample not entered.")
 
         # Check CV
         if not (main_screen.button_CV_yes.state == 'down' or main_screen.button_CV_no.state == 'down'):
@@ -681,10 +687,6 @@ class GuiApp(App):
         # Check Number of Targets
         if self.target_num is None:
             errors.append("Number of targets not entered.")
-
-        # Check Particle Clusters
-        # if not self.spinner_particle_clusters.text or self.spinner_particle_clusters.text == "Default":
-        #    errors.append("Number of particle clusters not selected.")
 
         if errors:
             main_screen.test_label.text = "Errors:\n" + "\n".join(errors)
@@ -730,10 +732,10 @@ class GuiApp(App):
             print(y)
             # Handle the dropped file
             self.file_path = file_path.decode('utf-8')  # Convert bytes to string
-            main_screen.file_label.text = f'Dropped file: {file_path}'
+            #main_screen.file_label.text = f'Dropped file: {file_path}'
             main_screen.test_label.text = 'File dropped!'
-            EXTENTIONS = (".xlsx", ".xlsm", ".xltx", ".xltm")
-            print(self.file_path.endswith(EXTENTIONS))
+            #EXTENTIONS = (".xlsx", ".xlsm", ".xltx", ".xltm")
+            #print(self.file_path.endswith(EXTENTIONS))
             print(os.path.isfile(file_path))
             # Call a function to process the dropped file
             self.process_dropped_file(file_path)
@@ -742,7 +744,37 @@ class GuiApp(App):
 
     def process_dropped_file(self, file_path):
         # Implement your file processing logic here
+        main_screen = self.sm.get_screen('main')
         print(f"Processing file: {file_path}")
+        file_path = file_path.decode('utf-8')
+        EXTENSIONS = (".xlsx", ".xlsm", ".xltx", ".xltm", ".csv", ".mat")
+
+        if os.path.isfile(file_path):
+            if file_path.endswith(EXTENSIONS):
+                number_of_files = 1
+                main_screen.label_files_dropped_num.color = (0.2, 0.2, 0.2, 1)
+                main_screen.label_files_dropped_num.text = f'Number of files detected: {number_of_files}'
+            else:
+                number_of_files = 0
+                main_screen.label_files_dropped_num.color = (1, 0, 0, 1)  # Set color to red
+                main_screen.label_files_dropped_num.text = 'Warning: Not supported file was detected'
+        elif os.path.isdir(file_path):
+            files = os.listdir(file_path)
+            valid_files = [f for f in files if f.endswith(EXTENSIONS)]
+            invalid_files = [f for f in files if not f.endswith(EXTENSIONS)]
+            number_of_files = len(valid_files)
+            number_of_bad_files = len(invalid_files)
+            if number_of_bad_files > 0:
+                main_screen.label_files_dropped_num.color = (1, 0, 0, 1)  # Set color to red
+                main_screen.label_files_dropped_num.text = f'Warning: {number_of_bad_files} not supported files were detected'
+            else:
+                main_screen.label_files_dropped_num.color =(0.2, 0.2, 0.2, 1)
+                main_screen.label_files_dropped_num.text = f'Number of files detected: {number_of_files}'
+        else:
+            number_of_files = 0
+            main_screen.label_files_dropped_num.color = (1, 0, 0, 1)  # Set color to red
+            main_screen.label_files_dropped_num.text = 'Warning: Not supported file was detected'
+
 
     # Graph screen functions
     def show_image_popup(self, image_source):
