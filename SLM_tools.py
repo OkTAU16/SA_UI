@@ -1,9 +1,11 @@
+import pickle
 from datetime import datetime
 
 import Rbeast as rb
 import numpy as np
 import scipy.stats
-from scipy import interpolate, stats, signal, ndimage,linregress
+from scipy import interpolate, stats, signal, ndimage
+from scipy.stats import linregress
 import scipy.io as sio
 import pandas as pd
 from sklearn.decomposition import PCA
@@ -24,24 +26,24 @@ class SLM_tools:
         # TODO: incomplete, try with more then two targets
         try:
             if data_type == 'csv':
-                values_vec = pd.read_csv(data_path, usecols=[0]).to_numpy()
+                values_vec = pd.read_csv(data_path, usecols=[0], header=None).to_numpy()
                 if time_vec_exists:
                     time_vec = pd.read_csv(data_path, usecols=[1]).to_numpy()
                     distance_columns = list(range(2, 2 + target_num))
-                    distance = pd.read_csv(data_path, usecols=distance_columns).to_numpy()
+                    distance = pd.read_csv(data_path, usecols=distance_columns, header=None).to_numpy()
                     return values_vec, time_vec, distance
                 distance_columns = list(range(1, 1 + target_num))
-                distance = pd.read_csv(data_path, usecols=distance_columns).to_numpy()
+                distance = pd.read_csv(data_path, usecols=distance_columns, header=None).to_numpy()
                 return values_vec, distance
             elif data_type == 'excel':
-                values_vec = pd.read_excel(data_path, usecols=[1]).to_numpy()
+                values_vec = pd.read_excel(data_path, usecols=[1], header=None).to_numpy()
                 if time_vec_exists:
-                    time_vec = pd.read_excel(data_path, usecols=[0]).to_numpy()
+                    time_vec = pd.read_excel(data_path, usecols=[0], header=None).to_numpy()
                     distance_columns = list(range(2, 2 + target_num))
-                    distance = pd.read_excel(data_path, usecols=distance_columns).to_numpy()
+                    distance = pd.read_excel(data_path, usecols=distance_columns, header=None).to_numpy()
                     return values_vec, time_vec, distance
                 distance_columns = list(range(1, 1 + target_num))
-                distance = pd.read_excel(data_path, usecols=distance_columns)
+                distance = pd.read_excel(data_path, usecols=distance_columns, header=None).to_numpy()
                 return values_vec, distance
             elif data_type == '.mat':
                 dict_data = sio.loadmat(data_path)
@@ -57,22 +59,22 @@ class SLM_tools:
         except Exception as e:
             print(e)
 
-    # @staticmethod
-    # def interpolate_data_over_regular_time(data: np.array, sample_rate: int = 1):
-    #     # checked
-    #     """interpolate data over a regularly spaced time vector
-    #         inputs:
-    #             data (np.array): time series data
-    #             sample_rate [Hz] (int): optional
-    #         outputs:
-    #             time_vec (np.array): regularly spaced time vector
-    #             data_new (np.array): interpolated data over the regularly spaced time vector"""
-    #     try:
-    #         t = np.arange(0, np.shape(data)[1], 1 / sample_rate)
-    #         data_new = interpolate.interp1d(t, data, kind="linear")
-    #         return data_new.y, t
-    #     except Exception as e:
-    #         print(e)
+    @staticmethod
+    def interpolate_data_over_regular_time(data: np.array, sample_rate: int = 1):
+        # checked
+        """interpolate data over a regularly spaced time vector
+            inputs:
+                data (np.array): time series data
+                sample_rate [Hz] (int): optional
+            outputs:
+                time_vec (np.array): regularly spaced time vector
+                data_new (np.array): interpolated data over the regularly spaced time vector"""
+        try:
+            t = np.arange(0, np.shape(data)[0], 1 / sample_rate)
+            data_new = interpolate.interp1d(t, data, kind="linear")
+            return data_new.y, t
+        except Exception as e:
+            print(e)
 
     @staticmethod
     def downsample(data: np.array, distance: np.array, downsampling_factor: int):
@@ -98,7 +100,6 @@ class SLM_tools:
 
     @staticmethod
     def beast(data: np.array):
-        # checked
         """call the BEAST algorithm and extract the change points
         input:
             data (np.array):time series data for analysis
@@ -107,7 +108,8 @@ class SLM_tools:
             mean_trend (np.array): mean trend from BEAST"""
 
         try:
-            o = rb.beast(data, 0, tseg_minlength=0.1 * data.shape[0], season="none", torder_minmax=[1, 1.01])
+            o = rb.beast(data, 0, tseg_minlength=0.1 * data.shape[0], season="none", torder_minmax=[1, 1.01],
+                         print_options=False,print_progress=False)
             mean_trend = o.trend.Y
             cp = np.sort(o.trend.cp[0:int(o.trend.ncp_median)])
             cp = cp[~np.isnan(cp)]
@@ -117,8 +119,9 @@ class SLM_tools:
             print(e)
 
     @staticmethod
-    def segment_data(energy: np.array, distance: np.array, mean_trend: np.array, cp: np.array, N=None):
+    def segment_data(energy: np.array, distance: np.array, mean_trend: np.array, cp: np.array, Number_of_targets=None):
         # checked, original give_vecs.m
+        Number_of_targets = 2 if Number_of_targets is None else Number_of_targets
         len_cp = len(cp) - 1
         mu = np.zeros(len_cp)
         std = np.zeros(len_cp)
@@ -127,25 +130,29 @@ class SLM_tools:
         times_vec = np.zeros(len_cp)
         sa_vec = np.zeros(len_cp)
         cumulated_time_vec = np.zeros(len_cp)
-        assembly_mat = np.zeros((energy.shape[1], 2 if N is None else N))
+        assembly_mat = np.zeros((energy.shape[0], Number_of_targets))
         mean_trend = np.floor(mean_trend)
         cp_int = np.vectorize(int)(cp)
-        for i in range(2 if N is None else N):
-            assembly = np.zeros(energy.shape[1])
-            mimic = np.where(distance[:, i] == 0)
+        for i in range(Number_of_targets):
+            assembly = np.zeros(energy.shape[0])
+            mimic = np.where(distance[:, i] == 0)[0]
             assembly[mimic] = 1
             assembly_mat[:, i] = assembly
 
         for i in range(len_cp):
-            mu[i] = np.nanmean(energy[cp_int[i]:cp_int[i + 1], :], axis=0)
-            std[i] = np.std(energy[cp_int[i]:cp_int[i + 1], :], axis=0)
-            median = np.median(energy[cp_int[i]:cp_int[i + 1], :], axis=0)
+            start = cp_int[i]
+            end = cp_int[i + 1]
+            segment = energy[start:end, :]
+            mu[i] = np.nanmean(segment, axis=0)
+            std[i] = np.std(segment, axis=0)
+            median = np.median(segment, axis=0)
             skew[i] = (mu[i] - median) / 3 * std[i]
-            abc = np.polyfit(range(cp_int[i], cp_int[i + 1]), mean_trend[cp_int[i]:cp_int[i + 1]], 1)
+            x = np.arange(start, end)
+            abc = np.polyfit(x, mean_trend[cp_int[i]:cp_int[i + 1]], 1)
             trend_vec[i] = abc[0]
-            times_vec[i] = cp_int[i + 1] - cp_int[i]
-            for j in range(2 if N is None else N):
-                sa_vec[i] += np.sum(assembly_mat[cp_int[i]:cp_int[i + 1], j])
+            times_vec[i] = end - start
+            for j in range(Number_of_targets):
+                sa_vec[i] += np.any(assembly_mat[start:end, j])
         sa_vec[sa_vec > 1] = 1
 
         for i in range(len_cp):
@@ -155,51 +162,53 @@ class SLM_tools:
                     temp2 = np.where(temp1 > i)[0][0]
                     omega = np.cumsum(times_vec[i:temp1[temp2]])
                     cumulated_time_vec[i] = omega[-1]
-                except Exception:
+                except IndexError:
                     cumulated_time_vec[i] = np.nan
             else:
                 cumulated_time_vec[i] = 0
-        # if not np.any(sa_vec == 1):  # TODO: uncomment after testing
-        #     return []
-        # else:
-        mu = np.reshape(mu, (len(mu), 1))
-        std = np.reshape(std, (len(std), 1))
-        cumsum_vec = np.cumsum(times_vec)
-        cumsum_vec = np.reshape(cumsum_vec, (len(cumsum_vec), 1))
-        trend_vec = np.reshape(trend_vec, (len(trend_vec), 1))
-        sa_vec = np.reshape(sa_vec, (len(sa_vec), 1))
-        cumulated_time_vec = np.reshape(cumulated_time_vec, (len(cumulated_time_vec), 1))
-        return np.concatenate(
-            (mu, std, skew, cumsum_vec, trend_vec, sa_vec, cumulated_time_vec), axis=1)
+        if not np.any(sa_vec == 1):
+            return []
+        else:
+            mu = np.reshape(mu, (len(mu), 1))
+            std = np.reshape(std, (len(std), 1))
+            skew = np.reshape(skew, (len(skew), 1))
+            cumsum_vec = np.cumsum(times_vec)
+            cumsum_vec = np.reshape(cumsum_vec, (len(cumsum_vec), 1))
+            trend_vec = np.reshape(trend_vec, (len(trend_vec), 1))
+            sa_vec = np.reshape(sa_vec, (len(sa_vec), 1))
+            cumulated_time_vec = np.reshape(cumulated_time_vec, (len(cumulated_time_vec), 1))
+            return [mu, std, skew, cumsum_vec, trend_vec, sa_vec, cumulated_time_vec]
 
         # TODO: all returns of segment_data of all files should v_stack before post processing and model building
 
     @staticmethod
     def post_beast_processing(segment_data_aggregated_output: np.array):
-        # not checked
         c_reduced = []
-        for i in range(segment_data_aggregated_output.shape[0]):
-            x = segment_data_aggregated_output[i][0]  # mean_vec
-            y = segment_data_aggregated_output[i][1]  # std_vec
-            z = segment_data_aggregated_output[i][4]  # trend
-            w = segment_data_aggregated_output[i][2]  # skew
-            v = segment_data_aggregated_output[i][3]  # total_trajectory_time
-            c = segment_data_aggregated_output[i][5]  # time_to_self_assembly
-            ending_theme = np.where(c == 0)[0][0] if np.any(c == 0) else len(c)
+        for list in segment_data_aggregated_output:
+            x = list[0]  # mean_vec
+            y = list[1]  # std_vec
+            z = list[4]  # trend
+            w = list[2]  # skew
+            v = list[3]  # total_trajectory_time
+            c = list[6]  # time_to_self_assembly
+            ending_theme = np.where(c == 0)[0]
+            if len(ending_theme) > 0:
+                ending_theme = ending_theme[0]
+            else:
+                ending_theme = len(c)
             x = x[:ending_theme]
             y = y[:ending_theme]
             z = z[:ending_theme]
             c = c[:ending_theme]
             w = w[:ending_theme]
             v = v[:ending_theme]
-            d_reduced = np.vstack((x, y, z, w, v, c)).T
+            d_reduced = np.column_stack((x, y, z, w, v, c))
             c_reduced.append(d_reduced)
         c_reduced = np.vstack(tuple(c_reduced))
         return c_reduced
 
     @staticmethod
     def pca(c_reduced: np.array, n_components: int = 3):
-        # not checked
         data = c_reduced[:, :n_components]
         data_mean = np.mean(data, axis=0)
         data_std = np.std(data, axis=0)
@@ -212,14 +221,13 @@ class SLM_tools:
 
     @staticmethod
     def post_pca_processing(score: np.array, c_reduced: np.array, n_components: int = 3):
-        # not checked
         a_reduced = []
         if n_components == 3:
             for i in range(score.shape[0]):
                 x = score[i, 0]  # mean_vec
                 y = score[i, 1]  # std_vec
                 z = score[i, 2]  # trend
-                c = c_reduced[i, 6]  # TODO: should be 3?
+                c = c_reduced[i, 5]
                 b_reduced = list(np.array([x, y, z, c]).T)
                 a_reduced.append(b_reduced)
             # a_reduced = np.array(a_reduced)
@@ -231,10 +239,10 @@ class SLM_tools:
                 z = score[i, 4]  # trend
                 w = score[i, 2]  # skew
                 v = score[i, 3]  # total_trajectory_time
-                c = c_reduced[i, 6]  # TODO: what's in here?
-                b_reduced = list(np.array([x, y, z, w, v, c]).T)
+                c = c_reduced[i, 5]
+                b_reduced = np.array([x, y, z, w, v, c])
                 a_reduced.append(b_reduced)
-            # a_reduced = np.array(a_reduced)
+            a_reduced = np.array(a_reduced)
             return a_reduced
 
     # @staticmethod
@@ -275,7 +283,7 @@ class SLM_tools:
     def model_training_with_cv(a_reduced: np.array, n_components: int = 3, cv_num: int = 3):
         # from LogTfas....
         np.random.seed(42)
-        idn = np.where(a_reduced[:, n_components + 1] != 0)
+        idn = np.where(a_reduced[:, n_components] != 0)
         mapx = a_reduced[idn, :]
         mapx = np.hstack((mapx[:, 0:2], np.log(mapx[:, 3])))
         median_fit_vec = np.median(mapx[:, 3], axis=0)  # line 54 matlab
@@ -730,16 +738,8 @@ class SLM_tools:
         fig_2.savefig(os.path.join(save_path, 'fig_2.png'))
 
 
-# if __name__ == "__main__":
-#     data = np.loadtxt(
-#         r'C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\testing data\energy_distance_mu_0.0_run_num_1.csv',
-#         delimiter=',')
-#     energy = data[:, 0]
-#     distance = data[:, 1:]
-#     energy_length = energy.shape[0]
-#     t = np.linspace(0, energy_length - 1, energy_length // 1000, dtype=int)
-#     energy = energy[t]
-#     distance = distance[t, :]
-#     energy = np.reshape(energy, (len(energy), 1))
-#     o, cp, mean_trend = SLM_tools.beast(energy)
-#     A = SLM_tools.segment_data(energy, distance, mean_trend, cp)
+if __name__ == "__main__":
+    path = r"C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\not_used\a_reduced_mu_0.2.pkl"
+    with open(path, 'rb') as file:
+        a_reduced = pickle.load(file)
+    YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat, train_index, random_x, validation_index, median_fit_vec = SLM_tools.model_training_with_cv(a_reduced, 5, 10)
