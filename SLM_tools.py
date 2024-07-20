@@ -3,7 +3,7 @@ from datetime import datetime
 import Rbeast as rb
 import numpy as np
 import scipy.stats
-from scipy import interpolate, stats, signal, ndimage
+from scipy import interpolate, stats, signal, ndimage,linregress
 import scipy.io as sio
 import pandas as pd
 from sklearn.decomposition import PCA
@@ -57,26 +57,25 @@ class SLM_tools:
         except Exception as e:
             print(e)
 
-    @staticmethod
-    def interpolate_data_over_regular_time(data: np.array, sample_rate: int = 1):
-        # checked
-        """interpolate data over a regularly spaced time vector
-            inputs:
-                data (np.array): time series data
-                sample_rate [Hz] (int): optional
-            outputs:
-                time_vec (np.array): regularly spaced time vector
-                data_new (np.array): interpolated data over the regularly spaced time vector"""
-        try:
-            t = np.arange(0, np.shape(data)[1], 1 / sample_rate)
-            data_new = interpolate.interp1d(t, data, kind="linear")
-            return data_new.y, t
-        except Exception as e:
-            print(e)
+    # @staticmethod
+    # def interpolate_data_over_regular_time(data: np.array, sample_rate: int = 1):
+    #     # checked
+    #     """interpolate data over a regularly spaced time vector
+    #         inputs:
+    #             data (np.array): time series data
+    #             sample_rate [Hz] (int): optional
+    #         outputs:
+    #             time_vec (np.array): regularly spaced time vector
+    #             data_new (np.array): interpolated data over the regularly spaced time vector"""
+    #     try:
+    #         t = np.arange(0, np.shape(data)[1], 1 / sample_rate)
+    #         data_new = interpolate.interp1d(t, data, kind="linear")
+    #         return data_new.y, t
+    #     except Exception as e:
+    #         print(e)
 
     @staticmethod
-    def downsample(data: np.array, downsampling_factor: int, time_vec: np.array = None):
-        # checked
+    def downsample(data: np.array, distance: np.array, downsampling_factor: int):
         """downsample the data by a user input downsampling_factor
         inputs:
             data (np.array): data to downsample
@@ -85,11 +84,17 @@ class SLM_tools:
             data (np.array): downsampled data"""
 
         try:
-            downsampled_data = signal.decimate(data, downsampling_factor, ftype='fir')
-            downsampled_time = signal.decimate(time_vec, downsampling_factor, ftype='fir') if time_vec else None
-            return downsampled_data, downsampled_time if time_vec else None
+            length = data.shape[0]
+            time_vec = np.linspace(0, length - 1, length // downsampling_factor, dtype=int)
+            data = data[time_vec]
+            downsampled_distance = distance[time_vec, :]
+            downsampled_data = np.reshape(data, (len(data), 1))
+            # downsampled_data = signal.decimate(data, downsampling_factor, ftype='fir')
+            # downsampled_time = signal.decimate(time_vec, downsampling_factor, ftype='fir') if time_vec else None
+            # downsampled_distance = signal.decimate(distance, downsampling_factor, ftype='fir')
+            return downsampled_data, downsampled_distance, time_vec
         except Exception as e:
-            print(e)
+            raise e
 
     @staticmethod
     def beast(data: np.array):
@@ -232,33 +237,33 @@ class SLM_tools:
             # a_reduced = np.array(a_reduced)
             return a_reduced
 
-    @staticmethod
-    def trajectory_plot_vecs(mean_vec, std_vec, trend, time_to_self_assembly, save_path: str, bottom=0, top=3000):
-        # not checked
-        sz = 40
-        fig = plt.figure()
-        ax = fig.add_subplot(111, projection='3d')
-        ax.scatter(mean_vec.T, std_vec.T, trend.T, s=sz, c=time_to_self_assembly, cmap='jet', marker='o')
-        ax.set_xlim(bottom, top)
-        ax.set_ylim(bottom, top)
-        ax.set_zlim(bottom, top)
-        d = (np.vstack((mean_vec[1:], std_vec[1:], trend[1:])) - np.vstack(
-            (mean_vec[:-1], std_vec[:-1], trend[:-1]))) / 2
-        color_triplet = np.random.rand(1, 3)
-        ax.quiver(mean_vec[:-1], std_vec[:-1], trend[:-1], d[0], d[1], d[2], color=color_triplet, length=0.1,
-                  normalize=True)
-        ax.scatter(mean_vec[0], std_vec[0], trend[0], s=1 * sz, c=time_to_self_assembly[0], marker='^',
-                   label='Start Point')
-        ax.scatter(mean_vec[-1], std_vec[-1], trend[-1], s=1 * sz, c=time_to_self_assembly[-1], marker='d',
-                   label='Finish Point')
-        ax.legend(['Points', 'Arrows', 'Trajectory', 'Start Point', 'Finish Point'])
-        ax.set_xlabel('Mean')
-        ax.set_ylabel('Standard Deviation')
-        ax.set_zlabel('Trend')
-        ax.set_title('Object Position')
-        ax.grid(True)
-        plt.show()  # TODO: replace with plt.save()?
-        # plt.savefig(save_path, bbox_inches='tight')
+    # @staticmethod
+    # def trajectory_plot_vecs(mean_vec, std_vec, trend, time_to_self_assembly, save_path: str, bottom=0, top=3000):
+    #     # not checked
+    #     sz = 40
+    #     fig = plt.figure()
+    #     ax = fig.add_subplot(111, projection='3d')
+    #     ax.scatter(mean_vec.T, std_vec.T, trend.T, s=sz, c=time_to_self_assembly, cmap='jet', marker='o')
+    #     ax.set_xlim(bottom, top)
+    #     ax.set_ylim(bottom, top)
+    #     ax.set_zlim(bottom, top)
+    #     d = (np.vstack((mean_vec[1:], std_vec[1:], trend[1:])) - np.vstack(
+    #         (mean_vec[:-1], std_vec[:-1], trend[:-1]))) / 2
+    #     color_triplet = np.random.rand(1, 3)
+    #     ax.quiver(mean_vec[:-1], std_vec[:-1], trend[:-1], d[0], d[1], d[2], color=color_triplet, length=0.1,
+    #               normalize=True)
+    #     ax.scatter(mean_vec[0], std_vec[0], trend[0], s=1 * sz, c=time_to_self_assembly[0], marker='^',
+    #                label='Start Point')
+    #     ax.scatter(mean_vec[-1], std_vec[-1], trend[-1], s=1 * sz, c=time_to_self_assembly[-1], marker='d',
+    #                label='Finish Point')
+    #     ax.legend(['Points', 'Arrows', 'Trajectory', 'Start Point', 'Finish Point'])
+    #     ax.set_xlabel('Mean')
+    #     ax.set_ylabel('Standard Deviation')
+    #     ax.set_zlabel('Trend')
+    #     ax.set_title('Object Position')
+    #     ax.grid(True)
+    #     plt.show()
+    #     # plt.savefig(save_path, bbox_inches='tight')
 
     @staticmethod
     def replace_nan_with_rounded_mean(array):
@@ -357,17 +362,9 @@ class SLM_tools:
         return YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat, train_index, random_x, validation_index, median_fit_vec
 
     @staticmethod
-    def save_model(YI, save_path):
-        current_date = datetime.now().date()
-        sio.savemat(os.path.join(save_path, f"SLM_model_{current_date.day}_{current_date.month}.mat"), {"model": YI})
-
-    @staticmethod
-    def model_eval(tfas_predict_mat, tfas_actually_mat, train_index, save_path, cv_num: int = 3):
+    def model_eval(tfas_predict_mat, tfas_actually_mat, train_index, cv_num, save_path):
         bin_width = 0.5  # TODO: where are these values from? abs(min-max)/num_bins
         smooth_win = 0  # TODO: where are these values from? leave it
-        x_ticks = np.arange(3.5, 7.5 + 0.5, 0.5)  # TODO: where are these values from? (min, max tfas predict)
-        y_ticks = np.arange(3, 9 + 2, 2)  # TODO: where are these values from? (min, max tfas predict)
-        color_map = plt.cm.jet(np.linspace(0, 1, cv_num))
         red = len(range(1, train_index + 1))
         min_of_all = np.min(tfas_predict_mat)
         max_of_all = np.max(tfas_predict_mat)
@@ -376,12 +373,24 @@ class SLM_tools:
                                  int((np.ceil(max_of_all / bin_width) - np.floor(min_of_all / bin_width)) + 1))
         mean = np.zeros((cv_num, len(hist_space) - 1))
         std = np.zeros((cv_num, len(hist_space) - 1))
+        x_hist_space_all = np.zeros((1, cv_num))
+        color_map = plt.cm.jet(np.linspace(0, 1, cv_num))
+        fig_1 = plt.figure(1)  # grap 1
+        a = fig_1.add_subplot(2, 1, 1)  # grap 1 subplot 1
+        b = fig_1.add_subplot(2, 1, 2)  # grap 1 subplot 2
+        x_ticks = np.arange(min_of_all, max_of_all + 0.5, 0.5)
+        y_ticks = np.arange(min_of_all, max_of_all + 2, 2)
         for i in range(cv_num):
             x = np.squeeze(tfas_predict_mat[i, :])
             y = np.squeeze(tfas_actually_mat[i, :])
             sorted_indices = np.argsort(x)
             x = x[sorted_indices]
             y = y[sorted_indices]
+            a.scatter(x, y, c=color_map[i], marker='o')  # grap 1 subplot 1
+            a.set_xticks(x_ticks)
+            a.set_yticks(y_ticks)
+            a.set_xlim(x_ticks[0], x_ticks[-1])
+            a.set_ylim(y_ticks[0], y_ticks[-1])
             std_hista = np.zeros(len(hist_space) - 1)
             mean_hista = np.zeros(len(hist_space) - 1)
             for j in range(len(hist_space)):
@@ -395,6 +404,7 @@ class SLM_tools:
                     aop = int(np.ceil(0.16 * len(yo)))
                     std_hista[j] = mean_hista[j] - yo[aop]
             x_hist_space = (hist_space[1:] + hist_space[:-1]) / 2
+            x_hist_space_all[1, cv_num] = x_hist_space
             i_9 = np.where(~np.isnan(mean_hista) & (x_hist_space > 0))[0][0] if np.any(
                 ~np.isnan(mean_hista) & (x_hist_space > 0)) else len(mean_hista)
             i_2 = np.where(np.isnan(mean_hista) & (x_hist_space > 0))[0][0] if np.any(
@@ -402,19 +412,26 @@ class SLM_tools:
             i_3 = np.where(np.isnan(std_hista) & (x_hist_space > 0))[0][0] if np.any(
                 np.isnan(std_hista) & (x_hist_space > 0)) else len(mean_hista)
             i_4 = min(i_2, i_3)
+            if i_4.shape[0] == 0:
+                i_4 = len(mean_hista)
             if i_9 < i_4:
                 i_4 = min(i_2, i_3)
+                # if i_4.shape[0] == 0:
+                #     i_4 = len(mean_hista)
             else:
                 i_2 = np.where(np.isnan(mean_hista) & (x_hist_space > 0), i_9)[0][-1] if np.any(
                     np.isnan(mean_hista) & (x_hist_space > 0)) else len(mean_hista)
                 i_3 = np.where(np.isnan(std_hista) & (x_hist_space > 0), i_9)[0][-1] if np.any(
                     np.isnan(std_hista) & (x_hist_space > 0)) else len(mean_hista)
                 i_4 = min(i_2, i_3)
-            if i_4 is None:
-                i_4 = len(mean_hista)
+            # if i_4.shape[0] == 0:
+            #     i_4 = len(mean_hista)
+            i_4 = len(mean_hista)  # TODO: check in testing
+            b.scatter(x_hist_space[:i_4], mean_hista[:i_4], marker='s', c=color_map[i])  # grap 1 subplot 2
             mean[i, :len(mean_hista)] = mean_hista
             std[i, :len(std_hista)] = std_hista
             i_5 = np.argmin(np.abs(x - x_hist_space[i_4]))
+            a.scatter(x[:i_5], y[:i_5], c=color_map[i], marker='o')
         mean_vec = np.zeros(len(hist_space) - 1)
         std_vec = np.zeros(len(hist_space) - 1)
         mean[mean == 0] = np.nan
@@ -431,7 +448,11 @@ class SLM_tools:
             else:
                 mean_vec[row] = np.nan
                 std_vec[row] = np.nan
-        return mean_vec, std_vec, y_ticks, x_ticks, hist_space, x_hist_space
+        b.plot(x_hist_space[:i_4], x_hist_space[:i_4], linestyle='--', color='k')
+        b.errorbar(x_hist_space, mean_vec, yerr=std_vec, xerr=std_vec,
+                   ecolor='k')  # TODO: might crash, yerr and xerr are different in matlab
+        fig_1.savefig(os.path.join(save_path, 'fig_1.png'))
+        return mean_vec, std_vec, hist_space, x_hist_space, fig_1, a, b, x_ticks, y_ticks
 
     @staticmethod
     def train_again_on_validation_and_test(random_x, validation_index, n_components=3):
@@ -500,14 +521,84 @@ class SLM_tools:
         mean_error_mat_2 = np.abs(tfas_real - tfas_predict)
         return tfas_predict_mat_2, tfas_actually_mat_2, mean_error_mat_2
 
+    def cellboxplotchange(self,cell_data, labell, Y, legendlabel, ax):
+        data = []
+        grp = []
+
+        for i in range(len(cell_data)):
+            data.extend(cell_data[i])
+            grp.extend(np.ones(len(cell_data[i])) * i)
+
+        X = labell
+        col = np.array([255, 0, 0, 0]) / 255
+
+        self.multiple_boxplot(cell_data, ax, X, [legendlabel], np.expand_dims(col, axis=0).T)
+
     @staticmethod
-    def cv_bias_correction(tfas_predict_mat_2, tfas_actually_mat_2, hist_space, mean_vec, x_hist_space,
-                           median_fit_vec):
+    def multiple_boxplot(data, ax, xlab=None, Mlab=None, colors=None):
+        if not isinstance(data, list):
+            raise ValueError('Input data is not even a cell array!')
+        M = len(data[0])  # Number of data for the same group
+        L = len(data)  # Number of groups
+        # Check optional inputs
+        if colors is not None:
+            if colors.shape[1] != M:
+                raise ValueError('Wrong amount of colors!')
+        if xlab is not None:
+            if len(xlab) != L:
+                raise ValueError('Wrong amount of X labels given')
+        if M > 1:
+            w = 0.25
+        else:
+            w = 0.25
+        # Calculate the positions of the boxes
+        if (np.sum(np.mean(np.diff(xlab)) == np.diff(xlab)) != len(np.diff(xlab))):
+            if M > 1:
+                YY = np.sort(np.concatenate([xlab - w / 2, xlab + w / 2]))
+                positions = YY
+            else:
+                positions = xlab
+                YY = positions
+        else:
+            if M > 1:
+                positions = np.arange(1, M * L * w + 1 + w * L, w)
+                positions = positions[:M * L]  # Remove excess positions if M*L*w+1 > M*L
+                YY = xlab[0] - 1 + positions - w / 2
+            else:
+                positions = np.arange(1, M * L * w + 1 + w * L, w)
+                positions = positions[:M * L]  # Remove excess positions if M*L*w+1 > M*L
+                YY = xlab[0] - 1 + positions - w
+        x = []
+        group = []
+        for ii in range(L):
+            for jj in range(M):
+                aux = np.array(data[ii][jj])
+                x.extend(aux.flatten())
+                group.extend(np.ones(aux.size) * (jj + ii * M + 1))
+        ax.boxplot(x, positions=YY)
+        labelpos = np.sum(np.reshape(positions, (M, -1)), axis=0) / M
+        ax.set_xticks(labelpos)
+        ax.set_xticklabels(xlab if xlab is not None else [str(i) for i in range(1, L + 1)])
+        if colors is None:
+            cmap = plt.get_cmap('hsv')
+            colors = np.vstack([cmap(np.linspace(0, 1, M)), np.ones(M) * 0.5]).T
+        color = np.tile(colors, (1, L))
+        for idx, box in enumerate(ax.get_children()):
+            if isinstance(box, plt.matplotlib.patches.PathPatch):
+                box.set_facecolor(color[:3, idx])
+                box.set_edgecolor(color[:3, idx])
+                box.set_alpha(color[3, idx])
+        if Mlab is not None:
+            ax.legend(reversed(Mlab), fontsize=6, loc='upper right')
+
+    def cv_bias_correction(self,tfas_predict_mat_2, tfas_actually_mat_2, hist_space, mean_vec, x_hist_space,
+                           median_fit_vec, x_ticks, y_ticks):
+        bin_width = 0.5
         smooth_win = 0
         tfas_predict_mat_2_sorted = np.sort(tfas_predict_mat_2)
         tfas_predict_mat_2_sorted_indices = np.argsort(tfas_predict_mat_2)
         x = tfas_predict_mat_2_sorted
-        y_new = tfas_actually_mat_2[tfas_predict_mat_2_sorted_indices]
+        y = tfas_actually_mat_2[tfas_predict_mat_2_sorted_indices]
         std_hista_origin = np.full(len(hist_space) - 1, np.nan)
         mean_hista_origin = np.full(len(hist_space) - 1, np.nan)
         mean_hista_last_fig = np.full(len(hist_space) - 1, np.nan)
@@ -518,64 +609,120 @@ class SLM_tools:
         occurrence_probability = np.zeros((1, cutofflength))
         cv_offset = mean_vec - x_hist_space
         cv_offset = np.nan_to_num(cv_offset)
+        cv_corrected_x = np.zeros_like(x)
+        fig_2 = plt.figure()
+        a = fig_2.add_subplot(3, 1, 1)
+        b = fig_2.add_subplot(3, 1, 2)
+        c = fig_2.add_subplot(3, 1, 3)
+        a.scatter(x, y, color=(0.7, 0.7, 0.7))  # TODO: set marker size to 1
+        a.set_xticks(x_ticks)
+        a.set_yticks(y_ticks)
+        a.set_xlim(x_ticks[0], x_ticks[-1])
+        a.set_ylim(y_ticks[0], y_ticks[-1])
         for i in range(cutofflength):
-            Ind = np.where((hist_space[i] - smooth_win < x) and (x < hist_space[i + 1] + smooth_win))[0]
-            occurrence_probability[0, i] = len(Ind)
+            Ind = np.where((hist_space[i] - smooth_win < x) and (x < (hist_space[i + 1] + smooth_win)))[0]  # TODO: check if [0] is needed
             if len(Ind) < max(1, int(0.01 * len(x))):
                 std_hista[i] = np.nan
                 mean_hista[i] = np.nan
+                occurrence_probability[i] = len(Ind)
+                cv_corrected_x[i] = x[Ind] + cv_offset[i]
+                new_y = y[Ind]
+                a.scatter(x[Ind] + cv_offset[i], y[Ind], color='k', marker='s')
             else:
-                yo = np.sort(y_new[Ind])
-                yo_logged = yo  # TODO: should be logged
+                yo = np.sort(y[Ind])
                 aop = np.ceil(0.16 * len(yo)).astype(int)
                 aop2 = np.ceil(0.84 * len(yo)).astype(int)
-                z0 = median_fit_vec - yo  # predictor error
-                z1 = x_hist_space[i] - yo_logged + cv_offset[i]  # cv_corrected predictor error
+                z0 = -(np.exp(median_fit_vec) - yo)  # predictor error
+                z1 = x_hist_space[i] - yo + cv_offset[i]  # cv_corrected predictor error
+                z11 = np.sort(z1)
                 mean_hista[i] = np.median(z1)
-                std_hista[i] = np.sqrt(np.sum((z1 - np.median(z1)) ** 2) / len(yo_logged))
+                std_hista[i] = np.sqrt(np.sum((z1 - np.median(z1)) ** 2) / len(yo))
                 mean_hista_origin[i] = np.median(z0)
-                mean_hista_last_fig[i] = np.median(yo)
-        x_hist_space_priv = x_hist_space
-        x_hist_space_cv_corrected = x_hist_space + cv_offset
-        x_hist_space_cv_corrected_sorted = np.sort(x_hist_space_cv_corrected)
-        x_hist_space_cv_corrected_sorted_indices = np.argsort(x_hist_space_cv_corrected)
-        mean_hista_cv_corrected = mean_hista[x_hist_space_cv_corrected_sorted_indices]
-        mean_hista_origin_cv_corrected = mean_hista_origin[x_hist_space_cv_corrected_sorted_indices]
-        std_hista_cv_corrected = std_hista[x_hist_space_cv_corrected_sorted_indices]
-        std_hista_origin_cv_corrected = std_hista_origin[x_hist_space_cv_corrected_sorted_indices]
-        occurrence_probability_cv_corrected = occurrence_probability[x_hist_space_cv_corrected_sorted_indices]
-        mean_hista_last_fig_cv_corrected = mean_hista_last_fig[x_hist_space_cv_corrected_sorted_indices]
-        occurrence_probability_cv_corrected = occurrence_probability_cv_corrected / np.sum(
-            occurrence_probability_cv_corrected)
-        return x, y_new, cv_offset, occurrence_probability_cv_corrected, mean_hista_last_fig_cv_corrected, x_hist_space_cv_corrected_sorted, x_hist_space_cv_corrected_sorted_indices, mean_hista_cv_corrected, mean_hista_origin_cv_corrected, std_hista_cv_corrected, std_hista_origin_cv_corrected
+                std_hista_origin[i] = np.sqrt(np.sum((z1 - np.median(z1)) ** 2) / len(yo))
+                occurrence_probability[i] = len(Ind)
+                a.scatter(x[Ind] + cv_offset[i], y[Ind], color='k', marker='s')
+                cv_corrected_x[i] = x[Ind] + cv_offset[i]
+                new_y = y[Ind]
+                mean_hista_last_fig = np.median(yo)
+        cv_corrected_x_sorted = np.sort(cv_corrected_x)
+        sorted_indices = np.argsort(cv_corrected_x)
+        new_y_sorted = new_y[sorted_indices]
+        slope, intercept, r_value, p_value, std_err = linregress(cv_corrected_x_sorted, new_y_sorted)
+        R_x = np.array([cv_corrected_x_sorted[0], new_y_sorted[-1]])
+        R_y = intercept + slope * R_x
+        slope = round(slope, 2)
+        b_c = round(intercept, 2)
+        a.plot(R_x, R_y, color='r', linestyle='--')
+        new_x = np.array(cv_corrected_x_sorted)
+        min_of_all2 = np.min(cv_corrected_x_sorted)
+        max_of_all2 = np.max(cv_corrected_x_sorted)
+        hist_space_2 = np.linspace(bin_width * np.floor(min_of_all2 / bin_width),
+                             bin_width * np.ceil(max_of_all2 / bin_width),
+                             int(np.ceil(max_of_all2 / bin_width) - np.floor(min_of_all2 / bin_width) + 1))
+        x_hist_space_2 = (hist_space_2[1:] + hist_space_2[:-1]) / 2
+        cutofflength2 = len(hist_space_2) - 1
+        mean_hista_last_fig2 = np.full(cutofflength2, np.nan)
+        mean_histaria = np.full(cutofflength2, np.nan)
+        mean_histaria_origin = np.full(cutofflength2, np.nan)
+        mean_last_fig_histaria = np.full(cutofflength2, np.nan)
+        cutofflength2 = len(hist_space_2) - 1
+        std_histaria_origin = np.full(cutofflength2, np.nan)
+        std_histaria_origin2 = np.full(cutofflength2, np.nan)
+        std_histaria = np.full(cutofflength2, np.nan)
+        std_histaria2 = np.full(cutofflength2, np.nan)
+        occurrence_probability_r = np.full(cutofflength2, np.nan)
+        mega_kde = []
+        for i in range(cutofflength2):
+            Ind = np.where((hist_space_2[i] - smooth_win < new_x) & (new_x < (hist_space_2[i + 1]) + smooth_win))[0]
+            if len(Ind) < 5:
+                occurrence_probability_r[i] = len(Ind)
+                ok_comp = 1
+            else:
+                yo = np.sort(new_y_sorted[Ind])
+                aop = int(np.ceil(0.16 * len(yo)))
+                aop2 = int(np.ceil(0.84 * len(yo)))
+                mean_hista_last_fig2[i] = np.median(yo)
+                z0 = -(median_fit_vec - yo)
+                z1 = -((x_hist_space_2[i]) - yo)
+                mean_histaria[i] = np.median(z1)
+                mean_histaria_origin[i] = np.median(z0)
+                std_histaria_origin[i] = np.sqrt(np.sum((z0 - np.median(z0)) ** 2) / len(yo))
+                std_histaria[i] = np.sqrt(np.sum((z1 - np.median(z1)) ** 2) / len(yo))
+                occurrence_probability_r[i] = len(Ind)
+                mega_kde.append([z1, z0, yo, i])
 
-    @staticmethod
-    def plot_graphs(x, cv_offset, y_new):
-        # x_cv_corrected = x + cv_offset
-        # plt.figure(1)
-        # plt.subplots(3, 1, sharex=True)
-        # plt.scatter(x, y_new, marker='o', c=[0.7, 0.7, 0.7],edgecolors=[0.7, 0.7, 0.7], s=50)
-        # plt.xticks([])
-        # plt.yticks(ticking_bomby)
-        # plt.ylabel(r'${Y_{test}}$', fontsize=24)  # LaTeX interpreter
-        # plt.xlim([ticking_bomb[0], ticking_bomb[-1]])
-        # plt.ylim([ticking_bomby[0], ticking_bomby[-1]])
-        # plt.gca().set_box_aspect(1)  # Equivalent to 'box', 'off'
-        # plt.gca().tick_params(axis='x', which='both', bottom=False, top=False)
-        # plt.show()
-        pass
+        sorted_indices = np.argsort(x_hist_space_2)
+        x_hista = x_hist_space_2[sorted_indices]
+        mean_hista = mean_hista[sorted_indices]
+        std_hista = std_hista[sorted_indices]
+        std_hista2 = std_hista[sorted_indices]
+        mean_hista_origin = mean_hista_origin[sorted_indices]
+        std_hista_origin = std_hista_origin[sorted_indices]
+        std_hista_origin2 = std_hista_origin[sorted_indices]
+        occurrence_probability = occurrence_probability[sorted_indices]
+        mean_hista_last_fig = mean_hista_last_fig[sorted_indices]
+        occurrence_probability = occurrence_probability / np.sum(occurrence_probability)
+        occurrence_probability_r = occurrence_probability_r / np.sum(occurrence_probability_r)
+        std_histaria2 = std_histaria
+        I2 = (~np.isnan(x_hist_space_2)) & (~np.isnan(mean_hista_last_fig2))
+        self.cellboxplotchange(mega_kde, x_hist_space_2[I2], x_hist_space_2[I2], r'$\hat{Y}_{BC}$', ax=b)
+        b.plot(x_hist_space_2[I2], x_hist_space_2[I2], linestyle='--', color='k')
+        b.set_xticks(x_ticks)
+        b.set_yticks(y_ticks)
+        b.set_xlim(x_ticks[0], x_ticks[-1])
+        b.set_ylim(y_ticks[0], y_ticks[-1])
+        b.set_xticklabels(x_ticks[1:], rotation=45)
 
-
-if __name__ == "__main__":
-    data = np.loadtxt(
-        r'C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\testing data\energy_distance_mu_0.0_run_num_1.csv',
-        delimiter=',')
-    energy = data[:, 0]
-    distance = data[:, 1:]
-    energy_length = energy.shape[0]
-    t = np.linspace(0, energy_length - 1, energy_length // 1000, dtype=int)
-    energy = energy[t]
-    distance = distance[t, :]
-    energy = np.reshape(energy, (len(energy), 1))
-    o, cp, mean_trend = SLM_tools.beast(energy)
-    A = SLM_tools.segment_data(energy, distance, mean_trend, cp)
+# if __name__ == "__main__":
+#     data = np.loadtxt(
+#         r'C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\testing data\energy_distance_mu_0.0_run_num_1.csv',
+#         delimiter=',')
+#     energy = data[:, 0]
+#     distance = data[:, 1:]
+#     energy_length = energy.shape[0]
+#     t = np.linspace(0, energy_length - 1, energy_length // 1000, dtype=int)
+#     energy = energy[t]
+#     distance = distance[t, :]
+#     energy = np.reshape(energy, (len(energy), 1))
+#     o, cp, mean_trend = SLM_tools.beast(energy)
+#     A = SLM_tools.segment_data(energy, distance, mean_trend, cp)
