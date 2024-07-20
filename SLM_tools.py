@@ -34,9 +34,9 @@ class SLM_tools:
                 distance = pd.read_csv(data_path, usecols=distance_columns).to_numpy()
                 return values_vec, distance
             elif data_type == 'excel':
-                values_vec = pd.read_excel(data_path, usecols=[0]).to_numpy()
+                values_vec = pd.read_excel(data_path, usecols=[1]).to_numpy()
                 if time_vec_exists:
-                    time_vec = pd.read_excel(data_path, usecols=[1]).to_numpy()
+                    time_vec = pd.read_excel(data_path, usecols=[0]).to_numpy()
                     distance_columns = list(range(2, 2 + target_num))
                     distance = pd.read_excel(data_path, usecols=distance_columns).to_numpy()
                     return values_vec, time_vec, distance
@@ -592,7 +592,7 @@ class SLM_tools:
             ax.legend(reversed(Mlab), fontsize=6, loc='upper right')
 
     def cv_bias_correction(self,tfas_predict_mat_2, tfas_actually_mat_2, hist_space, mean_vec, x_hist_space,
-                           median_fit_vec, x_ticks, y_ticks):
+                           median_fit_vec, x_ticks, y_ticks, save_path):
         bin_width = 0.5
         smooth_win = 0
         tfas_predict_mat_2_sorted = np.sort(tfas_predict_mat_2)
@@ -711,7 +711,24 @@ class SLM_tools:
         b.set_yticks(y_ticks)
         b.set_xlim(x_ticks[0], x_ticks[-1])
         b.set_ylim(y_ticks[0], y_ticks[-1])
-        b.set_xticklabels(x_ticks[1:], rotation=45)
+        labels = [str(label) for label in x_ticks[1:]]
+        b.set_xticklabels(labels, rotation=45)
+        X = x_hist_space_2[I2]
+        col = np.array([[255, 0, 0, 0], [100, 100, 100, 0]]) / 255
+        A = np.column_stack((mega_kde[:, 1], mega_kde[:, 0]))
+        B = A.copy()
+        for i1 in range(A.shape[0]):
+            for i2 in range(A.shape[1]):
+                med = np.median(A[i1, i2])
+                if med < 0:
+                    B[i1, i2] = A[i1, i2] - 2 * med
+        self.multiple_boxplot(B, c, X, [r'$\Delta\hat{Y}_{BC}$', r'$\Delta\hat{Y}_{M}$'], col.T)
+        c.set_xlim(x_ticks[0], x_ticks[-1])
+        c.set_xticks(x_ticks[1:])
+        c.set_lables(x_ticks[1:])
+        c.set_xticklabels(labels, rotation=45)
+        fig_2.savefig(os.path.join(save_path, 'fig_2.png'))
+
 
 # if __name__ == "__main__":
 #     data = np.loadtxt(
