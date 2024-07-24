@@ -109,7 +109,7 @@ class SLM_tools:
 
         try:
             o = rb.beast(data, 0, tseg_minlength=0.1 * data.shape[0], season="none", torder_minmax=[1, 1.01],
-                         print_options=False,print_progress=False)
+                         print_options=False, print_progress=False)
             mean_trend = o.trend.Y
             cp = np.sort(o.trend.cp[0:int(o.trend.ncp_median)])
             cp = cp[~np.isnan(cp)]
@@ -138,7 +138,7 @@ class SLM_tools:
             mimic = np.where(distance[:, i] == 0)[0]
             assembly[mimic] = 1
             assembly_mat[:, i] = assembly
-
+        print(assembly_mat)
         for i in range(len_cp):
             start = cp_int[i]
             end = cp_int[i + 1]
@@ -185,6 +185,8 @@ class SLM_tools:
     def post_beast_processing(segment_data_aggregated_output: np.array):
         c_reduced = []
         for list in segment_data_aggregated_output:
+            if len(list) == 0:
+                continue
             x = list[0]  # mean_vec
             y = list[1]  # std_vec
             z = list[4]  # trend
@@ -228,10 +230,8 @@ class SLM_tools:
                 y = score[i, 1]  # std_vec
                 z = score[i, 2]  # trend
                 c = c_reduced[i, 5]
-                b_reduced = list(np.array([x, y, z, c]).T)
+                b_reduced = np.array([x, y, z, c])
                 a_reduced.append(b_reduced)
-            # a_reduced = np.array(a_reduced)
-            return a_reduced
         else:  # n_components == 5
             for i in range(score.shape[0]):
                 x = score[i, 0]  # mean_vec
@@ -242,8 +242,8 @@ class SLM_tools:
                 c = c_reduced[i, 5]
                 b_reduced = np.array([x, y, z, w, v, c])
                 a_reduced.append(b_reduced)
-            a_reduced = np.array(a_reduced)
-            return a_reduced
+        a_reduced = np.array(a_reduced)
+        return a_reduced
 
     # @staticmethod
     # def trajectory_plot_vecs(mean_vec, std_vec, trend, time_to_self_assembly, save_path: str, bottom=0, top=3000):
@@ -283,76 +283,92 @@ class SLM_tools:
     def model_training_with_cv(a_reduced: np.array, n_components: int = 3, cv_num: int = 3):
         # from LogTfas....
         np.random.seed(42)
-        idn = np.where(a_reduced[:, n_components] != 0)
+        idn = np.where(a_reduced[:, n_components] != 0)[0]
         mapx = a_reduced[idn, :]
-        mapx = np.hstack((mapx[:, 0:2], np.log(mapx[:, 3])))
-        median_fit_vec = np.median(mapx[:, 3], axis=0)  # line 54 matlab
-        min = np.min(mapx[:, 3], axis=0)
-        max = np.max(mapx[:, 3], axis=0)
-        xw = mapx[:, 3]
-        points = np.linspace(min, max, 1000)
-        f_x = scipy.stats.gaussian_kde(points)  # line 60 matlab
-        p_x = f_x[xw]
-        yo = np.sort(mapx[:, 3])
+        t_loged = np.log(mapx[:, n_components])
+        t_loged = np.reshape(t_loged, (t_loged.shape[0], 1))
+        mapx = np.hstack((mapx[:, 0:n_components], t_loged))
+        median_fit_vec = np.median(mapx[:, n_components-1], axis=0)  # line 54 matlab
+        # xw = mapx[:, n_components]
+        # points = np.linspace(min, max, 1000)
+        # f_x = scipy.stats.gaussian_kde(points)  # line 60 matlab
+        # p_x = f_x[xw]
+        yo = np.sort(mapx[:, n_components])
         aop = int(np.ceil((0.16 * len(yo)))) - 1
-        std_fit = np.median(mapx[:, 3], axis=0) - yo[aop]
+        std_fit = np.nanmedian(mapx[:, n_components], axis=0) - yo[aop]
         x = np.copy(mapx)
-        train_index = int(np.floor(0.6 * x.shape[0]))
-        validation_index = int(np.floor(0.8 * x.shape[0]))
+        train_index = int(np.floor(0.8 * x.shape[0]))
+        validation_index = int(np.floor(0.9 * x.shape[0]))
         size_validation_set = len(range(train_index, validation_index))
-        tfas_predict_mat = np.zeros((cv_num, size_validation_set))
-        tfas_actually_mat = np.zeros((cv_num, size_validation_set))
-        mean_error_mat = np.zeros((cv_num, size_validation_set))
+        tfas_predict_mat = np.zeros((5, size_validation_set))
+        tfas_actually_mat = np.zeros((5, size_validation_set))
+        mean_error_mat = np.zeros((5, size_validation_set))
         for i in range(cv_num):
             random_x = x[np.random.permutation(x.shape[0]), :]  # line 89 matlab
-            train_index = int(np.floor(0.6 * random_x.shape[0]))
-            validation_index = int(np.floor(0.8 * random_x.shape[0]))
-            training_set = random_x[:train_index - 1, :]
+            # train_index = int(np.floor(0.6 * random_x.shape[0]))
+            # validation_index = int(np.floor(0.8 * random_x.shape[0]))
+            train_index = int(np.floor(0.8 * random_x.shape[0]))
+            validation_index = int(np.floor(0.9*random_x.shape[0]))
+            training_set = random_x[:train_index, :]
             validation_set = random_x[train_index:validation_index, :]
-            min_1 = np.min(random_x[:, 0])
-            max_1 = np.max(random_x[:, 0])
-            min_2 = np.min(random_x[:, 1])
-            max_2 = np.max(random_x[:, 1])
-            min_3 = np.min(random_x[:, 2])
-            max_3 = np.max(random_x[:, 2])
+            min_1 = np.min(training_set[:, 0])
+            max_1 = np.max(training_set[:, 0])
+            min_2 = np.min(training_set[:, 1])
+            max_2 = np.max(training_set[:, 1])
+            min_3 = np.min(training_set[:, 2])
+            max_3 = np.max(training_set[:, 2])
             d1 = np.linspace(np.floor(min_1), np.ceil(max_1), 150)
             d2 = np.linspace(np.floor(min_2), np.ceil(max_2), 150)
             d3 = np.linspace(np.floor(min_3), np.ceil(max_3), 150)
             if n_components == 5:
-                min_4 = np.min(random_x[:, 3])
-                max_4 = np.max(random_x[:, 3])
-                min_5 = np.min(random_x[:, 4])
-                max_5 = np.max(random_x[:, 4])
+                min_4 = np.min(training_set[:, 3])
+                max_4 = np.max(training_set[:, 3])
+                min_5 = np.min(training_set[:, 4])
+                max_5 = np.max(training_set[:, 4])
                 d4 = np.linspace(np.floor(min_4), np.ceil(max_4), 10)
                 d5 = np.linspace(np.floor(min_5), np.ceil(max_5), 10)
                 x0, y0, z0, w0, v0 = np.meshgrid(d1, d2, d3, d4, d5, indexing='ij')
-                X = training_set[:, :4]
-                Y = training_set[:, 5]
+                X = training_set[:, 0:n_components]
+                Y = training_set[:, n_components]
                 XI = np.column_stack((x0.ravel(), y0.ravel(), z0.ravel(), w0.ravel(), v0.ravel()))
             else:
                 x0, y0, z0 = np.meshgrid(d1, d2, d3, indexing='ij')
-                X = training_set[:, :2]
+                X = training_set[:, :3]
                 Y = training_set[:, 3]
                 XI = np.column_stack((x0.ravel(), y0.ravel(), z0.ravel()))
-
+            print(f"X: {X.shape}, Y: {Y.shape}, XI: {XI.shape}")
+            print(f"x0: {x0.shape}")
             YI = scipy.interpolate.griddata(X, Y, XI, method='linear')
-            YI.reshape(x0.shape)
-            intergal_dist = 2  # TODO: maby user input
+            if np.all(np.isnan(YI)):
+                print("Warning1: YI contains all NaN values.")
+            YI = np.reshape(YI, x0.shape)
+            YI = YI.astype(float)
+            intergal_dist = 2
             k = np.ones((intergal_dist, intergal_dist)) / (intergal_dist * intergal_dist - 1)
             k[intergal_dist // 2, intergal_dist // 2] = 0
-            averageIntensities = scipy.ndimage.convolve(YI, k, mode='constant', cval=0.0)
+            averageIntensities = np.zeros_like(YI)
+            if n_components == 5:
+                for n in range(YI.shape[2]):
+                    for j in range(YI.shape[3]):
+                        for m in range(YI.shape[4]):
+                            # Apply 2D convolution on the first two dimensions
+                            averageIntensities[:, :, n, j, m] = scipy.signal.convolve2d(YI[:, :, n, j, m], k, mode='same')
+            else:
+                for n in range(YI.shape[2]):
+                    averageIntensities[:, :, n] = scipy.signal.convolve2d(YI[:, :, i], k, mode='same')
+            # averageIntensities = scipy.ndimage.convolve(YI, k, mode='constant', cval=0.0)
             YI = averageIntensities
             Ix = pd.cut(validation_set[:, 0], bins=d1, labels=False, include_lowest=True)
             Iy = pd.cut(validation_set[:, 1], bins=d2, labels=False, include_lowest=True)
             Iz = pd.cut(validation_set[:, 2], bins=d3, labels=False, include_lowest=True)
-            Ix = SLM_tools.replace_nan_with_rounded_mean(Ix.to_numpy(dtype=float))
-            Iy = SLM_tools.replace_nan_with_rounded_mean(Iy.to_numpy(dtype=float))
-            Iz = SLM_tools.replace_nan_with_rounded_mean(Iz.to_numpy(dtype=float))
+            Ix = SLM_tools.replace_nan_with_rounded_mean(Ix.astype(float))
+            Iy = SLM_tools.replace_nan_with_rounded_mean(Iy.astype(float))
+            Iz = SLM_tools.replace_nan_with_rounded_mean(Iz.astype(float))
             if n_components == 5:
                 Iw = pd.cut(validation_set[:, 3], bins=d4, labels=False, include_lowest=True)
                 Iv = pd.cut(validation_set[:, 4], bins=d5, labels=False, include_lowest=True)
-                Iw = SLM_tools.replace_nan_with_rounded_mean(Iw.to_numpy(dtype=float))
-                Iv = SLM_tools.replace_nan_with_rounded_mean(Iv.to_numpy(dtype=float))
+                Iw = SLM_tools.replace_nan_with_rounded_mean(Iw.astype(float))
+                Iv = SLM_tools.replace_nan_with_rounded_mean(Iv.astype(float))
             tfas_real = np.zeros((validation_set.shape[0], 1))
             tfas_predict = np.zeros((validation_set.shape[0], 1))
             for j in range(validation_set.shape[0]):
@@ -367,6 +383,7 @@ class SLM_tools:
             tfas_predict_mat[i, :] = tfas_predict
             tfas_actually_mat[i, :] = tfas_real
             mean_error_mat[i, :] = np.abs(tfas_real - tfas_predict)
+            print(f"finished iteration {i}/{cv_num}")
         return YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat, train_index, random_x, validation_index, median_fit_vec
 
     @staticmethod
@@ -529,7 +546,7 @@ class SLM_tools:
         mean_error_mat_2 = np.abs(tfas_real - tfas_predict)
         return tfas_predict_mat_2, tfas_actually_mat_2, mean_error_mat_2
 
-    def cellboxplotchange(self,cell_data, labell, Y, legendlabel, ax):
+    def cellboxplotchange(self, cell_data, labell, Y, legendlabel, ax):
         data = []
         grp = []
 
@@ -739,7 +756,18 @@ class SLM_tools:
 
 
 if __name__ == "__main__":
-    path = r"C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\not_used\a_reduced_mu_0.2.pkl"
-    with open(path, 'rb') as file:
-        a_reduced = pickle.load(file)
-    YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat, train_index, random_x, validation_index, median_fit_vec = SLM_tools.model_training_with_cv(a_reduced, 5, 10)
+    # with open(r'C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\not_used\a_reduced_mu_0.2.pkl', 'rb') as file:
+    #     a_reduced = pickle.load(file)
+    # YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat, train_index, random_x, validation_index, median_fit_vec \
+    #     = SLM_tools.model_training_with_cv(a_reduced, 5, 3)
+    path2 = r"C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\testing data\energy_distance_mu_0.2_run_num_2.csv"
+    data = SLM_tools.load_data(path2, 2, 'csv', False)
+    energy = data[0]
+    distance = data[1]
+    energy, distance, time_vec = SLM_tools.downsample(energy, distance, 100)
+    o, cp, mean_trend = SLM_tools.beast(energy)
+    print(f"cp_length = {len(cp)}")
+    print(cp)
+    A = SLM_tools.segment_data(energy, distance, mean_trend, cp)
+    print(A)
+    
