@@ -1,0 +1,1226 @@
+
+file 1/314  loaded: 06_30_2022_10_12_02_mu_0__0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.241 seconds
+finished segmentation(Beast), runtime: 28.134 seconds
+files_with_assembly: 1/314
+Total features_extracted: 10
+file 2/314  loaded: 06_30_2022_10_12_02_mu_0__0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.499 seconds
+finished segmentation(Beast), runtime: 23.82 seconds
+files_with_assembly: 2/314
+Total features_extracted: 20
+file 3/314  loaded: 06_30_2022_10_12_02_mu_0__0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.304 seconds
+finished segmentation(Beast), runtime: 30.742 seconds
+files_with_assembly: 3/314
+Total features_extracted: 29
+file 4/314  loaded: 06_30_2022_10_12_02_mu_0__0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.456 seconds
+finished segmentation(Beast), runtime: 27.448 seconds
+No Assembly, No features extracted
+file 5/314  loaded: 06_30_2022_10_12_02_mu_0__0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.288 seconds
+finished segmentation(Beast), runtime: 26.06 seconds
+files_with_assembly: 4/314
+Total features_extracted: 39
+file 6/314  loaded: 06_30_2022_10_12_02_mu_0__0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.143 seconds
+finished segmentation(Beast), runtime: 24.295 seconds
+files_with_assembly: 5/314
+Total features_extracted: 48
+file 7/314  loaded: 06_30_2022_10_12_02_mu_0__0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.256 seconds
+finished segmentation(Beast), runtime: 26.507 seconds
+No Assembly, No features extracted
+file 8/314  loaded: 06_30_2022_10_12_02_mu_0__0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.169 seconds
+finished segmentation(Beast), runtime: 33.689 seconds
+files_with_assembly: 6/314
+Total features_extracted: 58
+file 9/314  loaded: 06_30_2022_10_12_02_mu_0__0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.269 seconds
+finished segmentation(Beast), runtime: 25.986 seconds
+files_with_assembly: 7/314
+Total features_extracted: 67
+file 10/314  loaded: 06_30_2022_10_12_02_mu_0__0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.261 seconds
+finished segmentation(Beast), runtime: 24.264 seconds
+files_with_assembly: 8/314
+Total features_extracted: 76
+file 11/314  loaded: 06_30_2022_10_12_02_mu_0__0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.265 seconds
+finished segmentation(Beast), runtime: 24.887 seconds
+No Assembly, No features extracted
+file 12/314  loaded: 06_30_2022_10_12_02_mu_0__0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.213 seconds
+finished segmentation(Beast), runtime: 27.179 seconds
+files_with_assembly: 9/314
+Total features_extracted: 86
+file 13/314  loaded: 06_30_2022_10_12_02_mu_0__0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.235 seconds
+finished segmentation(Beast), runtime: 26.892 seconds
+files_with_assembly: 10/314
+Total features_extracted: 96
+file 14/314  loaded: 06_30_2022_10_12_02_mu_0__0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.256 seconds
+finished segmentation(Beast), runtime: 29.645 seconds
+files_with_assembly: 11/314
+Total features_extracted: 106
+file 15/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.465 seconds
+finished segmentation(Beast), runtime: 22.855 seconds
+files_with_assembly: 12/314
+Total features_extracted: 115
+file 16/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.293 seconds
+finished segmentation(Beast), runtime: 33.927 seconds
+files_with_assembly: 13/314
+Total features_extracted: 124
+file 17/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.219 seconds
+finished segmentation(Beast), runtime: 25.702 seconds
+files_with_assembly: 14/314
+Total features_extracted: 133
+file 18/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.131 seconds
+finished segmentation(Beast), runtime: 26.54 seconds
+files_with_assembly: 15/314
+Total features_extracted: 142
+file 19/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.234 seconds
+finished segmentation(Beast), runtime: 27.613 seconds
+files_with_assembly: 16/314
+Total features_extracted: 151
+file 20/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.178 seconds
+finished segmentation(Beast), runtime: 25.603 seconds
+No Assembly, No features extracted
+file 21/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.345 seconds
+finished segmentation(Beast), runtime: 26.237 seconds
+No Assembly, No features extracted
+file 22/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.151 seconds
+finished segmentation(Beast), runtime: 27.285 seconds
+files_with_assembly: 17/314
+Total features_extracted: 161
+file 23/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.227 seconds
+finished segmentation(Beast), runtime: 25.878 seconds
+files_with_assembly: 18/314
+Total features_extracted: 170
+file 24/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.224 seconds
+finished segmentation(Beast), runtime: 25.835 seconds
+files_with_assembly: 19/314
+Total features_extracted: 179
+file 25/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.437 seconds
+finished segmentation(Beast), runtime: 37.683 seconds
+No Assembly, No features extracted
+file 26/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.626 seconds
+finished segmentation(Beast), runtime: 29.707 seconds
+files_with_assembly: 20/314
+Total features_extracted: 188
+file 27/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.775 seconds
+finished segmentation(Beast), runtime: 37.856 seconds
+files_with_assembly: 21/314
+Total features_extracted: 197
+file 28/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.444 seconds
+finished segmentation(Beast), runtime: 26.294 seconds
+files_with_assembly: 22/314
+Total features_extracted: 207
+file 29/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.505 seconds
+finished segmentation(Beast), runtime: 27.897 seconds
+files_with_assembly: 23/314
+Total features_extracted: 216
+file 30/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.706 seconds
+finished segmentation(Beast), runtime: 24.092 seconds
+files_with_assembly: 24/314
+Total features_extracted: 226
+file 31/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.392 seconds
+finished segmentation(Beast), runtime: 27.444 seconds
+files_with_assembly: 25/314
+Total features_extracted: 235
+file 32/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.283 seconds
+finished segmentation(Beast), runtime: 30.934 seconds
+files_with_assembly: 26/314
+Total features_extracted: 244
+file 33/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.404 seconds
+finished segmentation(Beast), runtime: 24.017 seconds
+files_with_assembly: 27/314
+Total features_extracted: 254
+file 34/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.429 seconds
+finished segmentation(Beast), runtime: 25.492 seconds
+files_with_assembly: 28/314
+Total features_extracted: 263
+file 35/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.45 seconds
+finished segmentation(Beast), runtime: 25.858 seconds
+files_with_assembly: 29/314
+Total features_extracted: 273
+file 36/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.408 seconds
+finished segmentation(Beast), runtime: 28.738 seconds
+files_with_assembly: 30/314
+Total features_extracted: 282
+file 37/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.329 seconds
+finished segmentation(Beast), runtime: 27.814 seconds
+files_with_assembly: 31/314
+Total features_extracted: 291
+file 38/314  loaded: 07_05_2022_14_14_45_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.721 seconds
+finished segmentation(Beast), runtime: 31.933 seconds
+files_with_assembly: 32/314
+Total features_extracted: 300
+file 39/314  loaded: 07_06_2022_20_24_07_mu_0__0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.596 seconds
+finished segmentation(Beast), runtime: 29.37 seconds
+files_with_assembly: 33/314
+Total features_extracted: 309
+file 40/314  loaded: 07_06_2022_20_24_07_mu_0__0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.885 seconds
+finished segmentation(Beast), runtime: 28.046 seconds
+files_with_assembly: 34/314
+Total features_extracted: 319
+file 41/314  loaded: 07_06_2022_20_24_07_mu_0__0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.249 seconds
+finished segmentation(Beast), runtime: 24.303 seconds
+files_with_assembly: 35/314
+Total features_extracted: 328
+file 42/314  loaded: 07_06_2022_20_24_07_mu_0__0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 1.984 seconds
+finished segmentation(Beast), runtime: 25.501 seconds
+files_with_assembly: 36/314
+Total features_extracted: 337
+file 43/314  loaded: 07_06_2022_20_24_07_mu_0__0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.141 seconds
+finished segmentation(Beast), runtime: 23.13 seconds
+files_with_assembly: 37/314
+Total features_extracted: 346
+file 44/314  loaded: 07_06_2022_20_24_07_mu_0__0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.125 seconds
+finished segmentation(Beast), runtime: 30.441 seconds
+files_with_assembly: 38/314
+Total features_extracted: 355
+file 45/314  loaded: 07_06_2022_20_24_07_mu_0__0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.084 seconds
+finished segmentation(Beast), runtime: 24.652 seconds
+files_with_assembly: 39/314
+Total features_extracted: 364
+file 46/314  loaded: 07_06_2022_20_24_07_mu_0__0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.57 seconds
+finished segmentation(Beast), runtime: 26.423 seconds
+files_with_assembly: 40/314
+Total features_extracted: 373
+file 47/314  loaded: 07_06_2022_20_24_07_mu_0__0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.238 seconds
+finished segmentation(Beast), runtime: 26.915 seconds
+files_with_assembly: 41/314
+Total features_extracted: 383
+file 48/314  loaded: 07_06_2022_20_24_07_mu_0__0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.525 seconds
+finished segmentation(Beast), runtime: 23.393 seconds
+files_with_assembly: 42/314
+Total features_extracted: 393
+file 49/314  loaded: 07_06_2022_20_24_07_mu_0__0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.356 seconds
+finished segmentation(Beast), runtime: 24.338 seconds
+files_with_assembly: 43/314
+Total features_extracted: 402
+file 50/314  loaded: 07_06_2022_20_24_07_mu_0__0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.554 seconds
+finished segmentation(Beast), runtime: 29.63 seconds
+files_with_assembly: 44/314
+Total features_extracted: 411
+file 51/314  loaded: 07_06_2022_20_24_07_mu_0__0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 3.042 seconds
+finished segmentation(Beast), runtime: 26.971 seconds
+No Assembly, No features extracted
+file 52/314  loaded: 07_06_2022_20_24_07_mu_0__0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 3.323 seconds
+finished segmentation(Beast), runtime: 23.613 seconds
+files_with_assembly: 45/314
+Total features_extracted: 421
+file 53/314  loaded: 07_06_2022_20_24_07_mu_0__0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.208 seconds
+finished segmentation(Beast), runtime: 24.477 seconds
+No Assembly, No features extracted
+file 54/314  loaded: 07_06_2022_20_24_07_mu_0__0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.116 seconds
+finished segmentation(Beast), runtime: 24.474 seconds
+files_with_assembly: 46/314
+Total features_extracted: 431
+file 55/314  loaded: 07_06_2022_20_24_07_mu_0__0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.226 seconds
+finished segmentation(Beast), runtime: 21.47 seconds
+files_with_assembly: 47/314
+Total features_extracted: 441
+file 56/314  loaded: 07_06_2022_20_24_07_mu_0__0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.103 seconds
+finished segmentation(Beast), runtime: 22.779 seconds
+files_with_assembly: 48/314
+Total features_extracted: 450
+file 57/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.042 seconds
+finished segmentation(Beast), runtime: 23.397 seconds
+files_with_assembly: 49/314
+Total features_extracted: 460
+file 58/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.292 seconds
+finished segmentation(Beast), runtime: 27.765 seconds
+No Assembly, No features extracted
+file 59/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 1.992 seconds
+finished segmentation(Beast), runtime: 22.793 seconds
+files_with_assembly: 50/314
+Total features_extracted: 469
+file 60/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.187 seconds
+finished segmentation(Beast), runtime: 23.11 seconds
+files_with_assembly: 51/314
+Total features_extracted: 478
+file 61/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.078 seconds
+finished segmentation(Beast), runtime: 21.482 seconds
+files_with_assembly: 52/314
+Total features_extracted: 487
+file 62/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.137 seconds
+finished segmentation(Beast), runtime: 23.419 seconds
+files_with_assembly: 53/314
+Total features_extracted: 496
+file 63/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.132 seconds
+finished segmentation(Beast), runtime: 21.651 seconds
+files_with_assembly: 54/314
+Total features_extracted: 505
+file 64/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.197 seconds
+finished segmentation(Beast), runtime: 19.716 seconds
+files_with_assembly: 55/314
+Total features_extracted: 515
+file 65/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.153 seconds
+finished segmentation(Beast), runtime: 30.615 seconds
+files_with_assembly: 56/314
+Total features_extracted: 524
+file 66/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.127 seconds
+finished segmentation(Beast), runtime: 23.594 seconds
+files_with_assembly: 57/314
+Total features_extracted: 533
+file 67/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.104 seconds
+finished segmentation(Beast), runtime: 24.184 seconds
+files_with_assembly: 58/314
+Total features_extracted: 543
+file 68/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.381 seconds
+finished segmentation(Beast), runtime: 22.098 seconds
+No Assembly, No features extracted
+file 69/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.319 seconds
+finished segmentation(Beast), runtime: 23.814 seconds
+files_with_assembly: 59/314
+Total features_extracted: 553
+file 70/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.162 seconds
+finished segmentation(Beast), runtime: 23.542 seconds
+files_with_assembly: 60/314
+Total features_extracted: 563
+file 71/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.197 seconds
+finished segmentation(Beast), runtime: 24.754 seconds
+No Assembly, No features extracted
+file 72/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.195 seconds
+finished segmentation(Beast), runtime: 23.487 seconds
+files_with_assembly: 61/314
+Total features_extracted: 573
+file 73/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.103 seconds
+finished segmentation(Beast), runtime: 25.02 seconds
+files_with_assembly: 62/314
+Total features_extracted: 583
+file 74/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.258 seconds
+finished segmentation(Beast), runtime: 23.663 seconds
+No Assembly, No features extracted
+file 75/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.06 seconds
+finished segmentation(Beast), runtime: 22.705 seconds
+files_with_assembly: 63/314
+Total features_extracted: 592
+file 76/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.14 seconds
+finished segmentation(Beast), runtime: 21.164 seconds
+files_with_assembly: 64/314
+Total features_extracted: 602
+file 77/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.181 seconds
+finished segmentation(Beast), runtime: 26.014 seconds
+files_with_assembly: 65/314
+Total features_extracted: 612
+file 78/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 1.918 seconds
+finished segmentation(Beast), runtime: 24.969 seconds
+files_with_assembly: 66/314
+Total features_extracted: 621
+file 79/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.059 seconds
+finished segmentation(Beast), runtime: 23.015 seconds
+files_with_assembly: 67/314
+Total features_extracted: 630
+file 80/314  loaded: 07_09_2022_17_49_20_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.112 seconds
+finished segmentation(Beast), runtime: 23.716 seconds
+files_with_assembly: 68/314
+Total features_extracted: 639
+file 81/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.178 seconds
+finished segmentation(Beast), runtime: 24.222 seconds
+files_with_assembly: 69/314
+Total features_extracted: 648
+file 82/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.168 seconds
+finished segmentation(Beast), runtime: 23.93 seconds
+files_with_assembly: 70/314
+Total features_extracted: 658
+file 83/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.088 seconds
+finished segmentation(Beast), runtime: 24.412 seconds
+files_with_assembly: 71/314
+Total features_extracted: 667
+file 84/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.056 seconds
+finished segmentation(Beast), runtime: 23.862 seconds
+files_with_assembly: 72/314
+Total features_extracted: 677
+file 85/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.105 seconds
+finished segmentation(Beast), runtime: 24.304 seconds
+No Assembly, No features extracted
+file 86/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.026 seconds
+finished segmentation(Beast), runtime: 25.272 seconds
+files_with_assembly: 73/314
+Total features_extracted: 686
+file 87/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.32 seconds
+finished segmentation(Beast), runtime: 23.534 seconds
+files_with_assembly: 74/314
+Total features_extracted: 696
+file 88/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.286 seconds
+finished segmentation(Beast), runtime: 22.861 seconds
+files_with_assembly: 75/314
+Total features_extracted: 706
+file 89/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.092 seconds
+finished segmentation(Beast), runtime: 23.001 seconds
+files_with_assembly: 76/314
+Total features_extracted: 715
+file 90/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.174 seconds
+finished segmentation(Beast), runtime: 23.008 seconds
+files_with_assembly: 77/314
+Total features_extracted: 724
+file 91/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.132 seconds
+finished segmentation(Beast), runtime: 25.5 seconds
+files_with_assembly: 78/314
+Total features_extracted: 734
+file 92/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.105 seconds
+finished segmentation(Beast), runtime: 25.618 seconds
+No Assembly, No features extracted
+file 93/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 1.997 seconds
+finished segmentation(Beast), runtime: 26.191 seconds
+files_with_assembly: 79/314
+Total features_extracted: 743
+file 94/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.231 seconds
+finished segmentation(Beast), runtime: 24.069 seconds
+files_with_assembly: 80/314
+Total features_extracted: 753
+file 95/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.155 seconds
+finished segmentation(Beast), runtime: 23.717 seconds
+files_with_assembly: 81/314
+Total features_extracted: 762
+file 96/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.17 seconds
+finished segmentation(Beast), runtime: 31.049 seconds
+files_with_assembly: 82/314
+Total features_extracted: 771
+file 97/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.127 seconds
+finished segmentation(Beast), runtime: 24.124 seconds
+files_with_assembly: 83/314
+Total features_extracted: 780
+file 98/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.094 seconds
+finished segmentation(Beast), runtime: 28.822 seconds
+files_with_assembly: 84/314
+Total features_extracted: 789
+file 99/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.161 seconds
+finished segmentation(Beast), runtime: 24.025 seconds
+files_with_assembly: 85/314
+Total features_extracted: 798
+file 100/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.169 seconds
+finished segmentation(Beast), runtime: 23.459 seconds
+No Assembly, No features extracted
+file 101/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.211 seconds
+finished segmentation(Beast), runtime: 23.649 seconds
+No Assembly, No features extracted
+file 102/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.179 seconds
+finished segmentation(Beast), runtime: 25.205 seconds
+files_with_assembly: 86/314
+Total features_extracted: 808
+file 103/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.069 seconds
+finished segmentation(Beast), runtime: 23.385 seconds
+files_with_assembly: 87/314
+Total features_extracted: 817
+file 104/314  loaded: 07_14_2022_17_47_06_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.205 seconds
+finished segmentation(Beast), runtime: 24.194 seconds
+files_with_assembly: 88/314
+Total features_extracted: 827
+file 105/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.042 seconds
+finished segmentation(Beast), runtime: 26.767 seconds
+files_with_assembly: 89/314
+Total features_extracted: 837
+file 106/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.152 seconds
+finished segmentation(Beast), runtime: 24.224 seconds
+No Assembly, No features extracted
+file 107/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.019 seconds
+finished segmentation(Beast), runtime: 23.542 seconds
+files_with_assembly: 90/314
+Total features_extracted: 846
+file 108/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.014 seconds
+finished segmentation(Beast), runtime: 24.505 seconds
+files_with_assembly: 91/314
+Total features_extracted: 855
+file 109/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.069 seconds
+finished segmentation(Beast), runtime: 27.755 seconds
+files_with_assembly: 92/314
+Total features_extracted: 864
+file 110/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 1.91 seconds
+finished segmentation(Beast), runtime: 28.141 seconds
+files_with_assembly: 93/314
+Total features_extracted: 873
+file 111/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.215 seconds
+finished segmentation(Beast), runtime: 21.736 seconds
+No Assembly, No features extracted
+file 112/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.034 seconds
+finished segmentation(Beast), runtime: 28.142 seconds
+files_with_assembly: 94/314
+Total features_extracted: 882
+file 113/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.082 seconds
+finished segmentation(Beast), runtime: 24.104 seconds
+files_with_assembly: 95/314
+Total features_extracted: 891
+file 114/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.111 seconds
+finished segmentation(Beast), runtime: 27.223 seconds
+files_with_assembly: 96/314
+Total features_extracted: 900
+file 115/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.258 seconds
+finished segmentation(Beast), runtime: 26.478 seconds
+files_with_assembly: 97/314
+Total features_extracted: 909
+file 116/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.172 seconds
+finished segmentation(Beast), runtime: 24.948 seconds
+No Assembly, No features extracted
+file 117/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.18 seconds
+finished segmentation(Beast), runtime: 23.902 seconds
+files_with_assembly: 98/314
+Total features_extracted: 918
+file 118/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.172 seconds
+finished segmentation(Beast), runtime: 24.734 seconds
+files_with_assembly: 99/314
+Total features_extracted: 928
+file 119/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.123 seconds
+finished segmentation(Beast), runtime: 25.109 seconds
+files_with_assembly: 100/314
+Total features_extracted: 938
+file 120/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.118 seconds
+finished segmentation(Beast), runtime: 22.543 seconds
+files_with_assembly: 101/314
+Total features_extracted: 947
+file 121/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.091 seconds
+finished segmentation(Beast), runtime: 21.001 seconds
+files_with_assembly: 102/314
+Total features_extracted: 956
+file 122/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.013 seconds
+finished segmentation(Beast), runtime: 25.391 seconds
+files_with_assembly: 103/314
+Total features_extracted: 965
+file 123/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.132 seconds
+finished segmentation(Beast), runtime: 24.073 seconds
+files_with_assembly: 104/314
+Total features_extracted: 975
+file 124/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.187 seconds
+finished segmentation(Beast), runtime: 22.272 seconds
+No Assembly, No features extracted
+file 125/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.214 seconds
+finished segmentation(Beast), runtime: 22.231 seconds
+files_with_assembly: 105/314
+Total features_extracted: 985
+file 126/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.117 seconds
+finished segmentation(Beast), runtime: 28.006 seconds
+files_with_assembly: 106/314
+Total features_extracted: 994
+file 127/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.012 seconds
+finished segmentation(Beast), runtime: 24.865 seconds
+files_with_assembly: 107/314
+Total features_extracted: 1003
+file 128/314  loaded: 07_14_2022_17_47_09_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.107 seconds
+finished segmentation(Beast), runtime: 25.793 seconds
+files_with_assembly: 108/314
+Total features_extracted: 1012
+file 129/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.213 seconds
+finished segmentation(Beast), runtime: 27.854 seconds
+files_with_assembly: 109/314
+Total features_extracted: 1021
+file 130/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.155 seconds
+finished segmentation(Beast), runtime: 24.886 seconds
+files_with_assembly: 110/314
+Total features_extracted: 1030
+file 131/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.207 seconds
+finished segmentation(Beast), runtime: 26.106 seconds
+files_with_assembly: 111/314
+Total features_extracted: 1039
+file 132/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 1.978 seconds
+finished segmentation(Beast), runtime: 23.2 seconds
+files_with_assembly: 112/314
+Total features_extracted: 1049
+file 133/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.163 seconds
+finished segmentation(Beast), runtime: 23.785 seconds
+files_with_assembly: 113/314
+Total features_extracted: 1058
+file 134/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.192 seconds
+finished segmentation(Beast), runtime: 21.937 seconds
+files_with_assembly: 114/314
+Total features_extracted: 1067
+file 135/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.154 seconds
+finished segmentation(Beast), runtime: 23.513 seconds
+No Assembly, No features extracted
+file 136/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.04 seconds
+finished segmentation(Beast), runtime: 23.529 seconds
+files_with_assembly: 115/314
+Total features_extracted: 1076
+file 137/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.085 seconds
+finished segmentation(Beast), runtime: 26.392 seconds
+files_with_assembly: 116/314
+Total features_extracted: 1085
+file 138/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.025 seconds
+finished segmentation(Beast), runtime: 22.365 seconds
+files_with_assembly: 117/314
+Total features_extracted: 1095
+file 139/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.156 seconds
+finished segmentation(Beast), runtime: 23.202 seconds
+files_with_assembly: 118/314
+Total features_extracted: 1104
+file 140/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.057 seconds
+finished segmentation(Beast), runtime: 26.783 seconds
+files_with_assembly: 119/314
+Total features_extracted: 1113
+file 141/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.171 seconds
+finished segmentation(Beast), runtime: 22.877 seconds
+files_with_assembly: 120/314
+Total features_extracted: 1122
+file 142/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.094 seconds
+finished segmentation(Beast), runtime: 25.151 seconds
+files_with_assembly: 121/314
+Total features_extracted: 1131
+file 143/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.191 seconds
+finished segmentation(Beast), runtime: 23.412 seconds
+No Assembly, No features extracted
+file 144/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.116 seconds
+finished segmentation(Beast), runtime: 22.857 seconds
+files_with_assembly: 122/314
+Total features_extracted: 1140
+file 145/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.103 seconds
+finished segmentation(Beast), runtime: 25.056 seconds
+files_with_assembly: 123/314
+Total features_extracted: 1150
+file 146/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.149 seconds
+finished segmentation(Beast), runtime: 22.185 seconds
+files_with_assembly: 124/314
+Total features_extracted: 1160
+file 147/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.223 seconds
+finished segmentation(Beast), runtime: 24.248 seconds
+files_with_assembly: 125/314
+Total features_extracted: 1169
+file 148/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.144 seconds
+finished segmentation(Beast), runtime: 22.725 seconds
+No Assembly, No features extracted
+file 149/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.113 seconds
+finished segmentation(Beast), runtime: 21.45 seconds
+files_with_assembly: 126/314
+Total features_extracted: 1178
+file 150/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.066 seconds
+finished segmentation(Beast), runtime: 21.254 seconds
+files_with_assembly: 127/314
+Total features_extracted: 1187
+file 151/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.175 seconds
+finished segmentation(Beast), runtime: 24.681 seconds
+No Assembly, No features extracted
+file 152/314  loaded: 07_15_2022_23_31_07_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.079 seconds
+finished segmentation(Beast), runtime: 27.467 seconds
+files_with_assembly: 128/314
+Total features_extracted: 1196
+file 153/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.105 seconds
+finished segmentation(Beast), runtime: 23.239 seconds
+files_with_assembly: 129/314
+Total features_extracted: 1206
+file 154/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 1.978 seconds
+finished segmentation(Beast), runtime: 24.112 seconds
+files_with_assembly: 130/314
+Total features_extracted: 1215
+file 155/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.174 seconds
+finished segmentation(Beast), runtime: 23.613 seconds
+files_with_assembly: 131/314
+Total features_extracted: 1224
+file 156/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.036 seconds
+finished segmentation(Beast), runtime: 28.152 seconds
+files_with_assembly: 132/314
+Total features_extracted: 1234
+file 157/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.511 seconds
+finished segmentation(Beast), runtime: 25.436 seconds
+files_with_assembly: 133/314
+Total features_extracted: 1243
+file 158/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.247 seconds
+finished segmentation(Beast), runtime: 27.829 seconds
+files_with_assembly: 134/314
+Total features_extracted: 1253
+file 159/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.246 seconds
+finished segmentation(Beast), runtime: 26.926 seconds
+files_with_assembly: 135/314
+Total features_extracted: 1263
+file 160/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.274 seconds
+finished segmentation(Beast), runtime: 26.658 seconds
+files_with_assembly: 136/314
+Total features_extracted: 1273
+file 161/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.712 seconds
+finished segmentation(Beast), runtime: 27.672 seconds
+files_with_assembly: 137/314
+Total features_extracted: 1283
+file 162/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.581 seconds
+finished segmentation(Beast), runtime: 28.763 seconds
+files_with_assembly: 138/314
+Total features_extracted: 1293
+file 163/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.675 seconds
+finished segmentation(Beast), runtime: 23.957 seconds
+files_with_assembly: 139/314
+Total features_extracted: 1303
+file 164/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.162 seconds
+finished segmentation(Beast), runtime: 25.135 seconds
+files_with_assembly: 140/314
+Total features_extracted: 1312
+file 165/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.128 seconds
+finished segmentation(Beast), runtime: 30.317 seconds
+files_with_assembly: 141/314
+Total features_extracted: 1321
+file 166/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.055 seconds
+finished segmentation(Beast), runtime: 27.733 seconds
+files_with_assembly: 142/314
+Total features_extracted: 1330
+file 167/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 3.207 seconds
+finished segmentation(Beast), runtime: 24.526 seconds
+No Assembly, No features extracted
+file 168/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.226 seconds
+finished segmentation(Beast), runtime: 20.669 seconds
+files_with_assembly: 143/314
+Total features_extracted: 1339
+file 169/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.05 seconds
+finished segmentation(Beast), runtime: 28.58 seconds
+files_with_assembly: 144/314
+Total features_extracted: 1349
+file 170/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 1.988 seconds
+finished segmentation(Beast), runtime: 21.218 seconds
+files_with_assembly: 145/314
+Total features_extracted: 1359
+file 171/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.22 seconds
+finished segmentation(Beast), runtime: 35.415 seconds
+No Assembly, No features extracted
+file 172/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 6.205 seconds
+finished segmentation(Beast), runtime: 35.901 seconds
+files_with_assembly: 146/314
+Total features_extracted: 1369
+file 173/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.209 seconds
+finished segmentation(Beast), runtime: 23.711 seconds
+files_with_assembly: 147/314
+Total features_extracted: 1378
+file 174/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.144 seconds
+finished segmentation(Beast), runtime: 30.504 seconds
+files_with_assembly: 148/314
+Total features_extracted: 1387
+file 175/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.328 seconds
+finished segmentation(Beast), runtime: 24.008 seconds
+files_with_assembly: 149/314
+Total features_extracted: 1396
+file 176/314  loaded: 07_15_2022_23_48_11_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.136 seconds
+finished segmentation(Beast), runtime: 34.259 seconds
+files_with_assembly: 150/314
+Total features_extracted: 1405
+file 177/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 3.464 seconds
+finished segmentation(Beast), runtime: 45.027 seconds
+files_with_assembly: 151/314
+Total features_extracted: 1415
+file 178/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.194 seconds
+finished segmentation(Beast), runtime: 24.498 seconds
+files_with_assembly: 152/314
+Total features_extracted: 1425
+file 179/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.331 seconds
+finished segmentation(Beast), runtime: 35.698 seconds
+No Assembly, No features extracted
+file 180/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 5.317 seconds
+finished segmentation(Beast), runtime: 23.624 seconds
+No Assembly, No features extracted
+file 181/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.93 seconds
+finished segmentation(Beast), runtime: 23.633 seconds
+files_with_assembly: 153/314
+Total features_extracted: 1435
+file 182/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.163 seconds
+finished segmentation(Beast), runtime: 27.197 seconds
+files_with_assembly: 154/314
+Total features_extracted: 1444
+file 183/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.042 seconds
+finished segmentation(Beast), runtime: 28.852 seconds
+files_with_assembly: 155/314
+Total features_extracted: 1453
+file 184/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.14 seconds
+finished segmentation(Beast), runtime: 24.615 seconds
+files_with_assembly: 156/314
+Total features_extracted: 1462
+file 185/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.133 seconds
+finished segmentation(Beast), runtime: 23.659 seconds
+files_with_assembly: 157/314
+Total features_extracted: 1471
+file 186/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.076 seconds
+finished segmentation(Beast), runtime: 19.706 seconds
+files_with_assembly: 158/314
+Total features_extracted: 1481
+file 187/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.104 seconds
+finished segmentation(Beast), runtime: 24.693 seconds
+files_with_assembly: 159/314
+Total features_extracted: 1491
+file 188/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.109 seconds
+finished segmentation(Beast), runtime: 20.845 seconds
+files_with_assembly: 160/314
+Total features_extracted: 1500
+file 189/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.222 seconds
+finished segmentation(Beast), runtime: 25.752 seconds
+No Assembly, No features extracted
+file 190/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.157 seconds
+finished segmentation(Beast), runtime: 26.929 seconds
+No Assembly, No features extracted
+file 191/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.218 seconds
+finished segmentation(Beast), runtime: 28.871 seconds
+files_with_assembly: 161/314
+Total features_extracted: 1510
+file 192/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.157 seconds
+finished segmentation(Beast), runtime: 24.375 seconds
+files_with_assembly: 162/314
+Total features_extracted: 1520
+file 193/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.086 seconds
+finished segmentation(Beast), runtime: 23.113 seconds
+files_with_assembly: 163/314
+Total features_extracted: 1529
+file 194/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 1.998 seconds
+finished segmentation(Beast), runtime: 23.612 seconds
+files_with_assembly: 164/314
+Total features_extracted: 1538
+file 195/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.127 seconds
+finished segmentation(Beast), runtime: 25.482 seconds
+files_with_assembly: 165/314
+Total features_extracted: 1547
+file 196/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.161 seconds
+finished segmentation(Beast), runtime: 24.753 seconds
+No Assembly, No features extracted
+file 197/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.051 seconds
+finished segmentation(Beast), runtime: 22.568 seconds
+files_with_assembly: 166/314
+Total features_extracted: 1557
+file 198/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.115 seconds
+finished segmentation(Beast), runtime: 23.385 seconds
+files_with_assembly: 167/314
+Total features_extracted: 1567
+file 199/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.059 seconds
+finished segmentation(Beast), runtime: 22.3 seconds
+files_with_assembly: 168/314
+Total features_extracted: 1576
+file 200/314  loaded: 07_15_2022_23_55_13_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.125 seconds
+finished segmentation(Beast), runtime: 26.571 seconds
+No Assembly, No features extracted
+file 201/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.109 seconds
+finished segmentation(Beast), runtime: 22.644 seconds
+files_with_assembly: 169/314
+Total features_extracted: 1585
+file 202/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.141 seconds
+finished segmentation(Beast), runtime: 23.625 seconds
+files_with_assembly: 170/314
+Total features_extracted: 1595
+file 203/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.16 seconds
+finished segmentation(Beast), runtime: 24.465 seconds
+No Assembly, No features extracted
+file 204/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.167 seconds
+finished segmentation(Beast), runtime: 23.09 seconds
+files_with_assembly: 171/314
+Total features_extracted: 1604
+file 205/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.169 seconds
+finished segmentation(Beast), runtime: 25.35 seconds
+No Assembly, No features extracted
+file 206/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.179 seconds
+finished segmentation(Beast), runtime: 22.67 seconds
+No Assembly, No features extracted
+file 207/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.148 seconds
+finished segmentation(Beast), runtime: 26.536 seconds
+files_with_assembly: 172/314
+Total features_extracted: 1613
+file 208/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.005 seconds
+finished segmentation(Beast), runtime: 26.255 seconds
+files_with_assembly: 173/314
+Total features_extracted: 1622
+file 209/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.121 seconds
+finished segmentation(Beast), runtime: 24.726 seconds
+files_with_assembly: 174/314
+Total features_extracted: 1631
+file 210/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.061 seconds
+finished segmentation(Beast), runtime: 23.987 seconds
+files_with_assembly: 175/314
+Total features_extracted: 1640
+file 211/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.111 seconds
+finished segmentation(Beast), runtime: 21.392 seconds
+files_with_assembly: 176/314
+Total features_extracted: 1650
+file 212/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.261 seconds
+finished segmentation(Beast), runtime: 23.308 seconds
+files_with_assembly: 177/314
+Total features_extracted: 1660
+file 213/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.228 seconds
+finished segmentation(Beast), runtime: 26.465 seconds
+files_with_assembly: 178/314
+Total features_extracted: 1669
+file 214/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.195 seconds
+finished segmentation(Beast), runtime: 25.905 seconds
+files_with_assembly: 179/314
+Total features_extracted: 1679
+file 215/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.101 seconds
+finished segmentation(Beast), runtime: 21.358 seconds
+files_with_assembly: 180/314
+Total features_extracted: 1689
+file 216/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.168 seconds
+finished segmentation(Beast), runtime: 22.85 seconds
+No Assembly, No features extracted
+file 217/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.095 seconds
+finished segmentation(Beast), runtime: 24.984 seconds
+files_with_assembly: 181/314
+Total features_extracted: 1699
+file 218/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.16 seconds
+finished segmentation(Beast), runtime: 28.306 seconds
+No Assembly, No features extracted
+file 219/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.334 seconds
+finished segmentation(Beast), runtime: 22.731 seconds
+files_with_assembly: 182/314
+Total features_extracted: 1708
+file 220/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.839 seconds
+finished segmentation(Beast), runtime: 23.348 seconds
+files_with_assembly: 183/314
+Total features_extracted: 1717
+file 221/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.196 seconds
+finished segmentation(Beast), runtime: 23.085 seconds
+files_with_assembly: 184/314
+Total features_extracted: 1727
+file 222/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.145 seconds
+finished segmentation(Beast), runtime: 29.049 seconds
+files_with_assembly: 185/314
+Total features_extracted: 1736
+file 223/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.084 seconds
+finished segmentation(Beast), runtime: 23.626 seconds
+files_with_assembly: 186/314
+Total features_extracted: 1745
+file 224/314  loaded: 07_17_2022_10_56_26_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.132 seconds
+finished segmentation(Beast), runtime: 25.508 seconds
+files_with_assembly: 187/314
+Total features_extracted: 1755
+file 225/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.119 seconds
+finished segmentation(Beast), runtime: 29.225 seconds
+files_with_assembly: 188/314
+Total features_extracted: 1764
+file 226/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.229 seconds
+finished segmentation(Beast), runtime: 25.897 seconds
+files_with_assembly: 189/314
+Total features_extracted: 1773
+file 227/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.14 seconds
+finished segmentation(Beast), runtime: 23.925 seconds
+files_with_assembly: 190/314
+Total features_extracted: 1783
+file 228/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.182 seconds
+finished segmentation(Beast), runtime: 25.102 seconds
+No Assembly, No features extracted
+file 229/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.119 seconds
+finished segmentation(Beast), runtime: 25.47 seconds
+files_with_assembly: 191/314
+Total features_extracted: 1792
+file 230/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.153 seconds
+finished segmentation(Beast), runtime: 27.222 seconds
+files_with_assembly: 192/314
+Total features_extracted: 1801
+file 231/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.103 seconds
+finished segmentation(Beast), runtime: 21.711 seconds
+files_with_assembly: 193/314
+Total features_extracted: 1811
+file 232/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.124 seconds
+finished segmentation(Beast), runtime: 24.403 seconds
+files_with_assembly: 194/314
+Total features_extracted: 1821
+file 233/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.047 seconds
+finished segmentation(Beast), runtime: 27.095 seconds
+files_with_assembly: 195/314
+Total features_extracted: 1830
+file 234/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.073 seconds
+finished segmentation(Beast), runtime: 22.235 seconds
+No Assembly, No features extracted
+file 235/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.067 seconds
+finished segmentation(Beast), runtime: 21.733 seconds
+files_with_assembly: 196/314
+Total features_extracted: 1840
+file 236/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.071 seconds
+finished segmentation(Beast), runtime: 21.896 seconds
+files_with_assembly: 197/314
+Total features_extracted: 1849
+file 237/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.099 seconds
+finished segmentation(Beast), runtime: 23.823 seconds
+files_with_assembly: 198/314
+Total features_extracted: 1858
+file 238/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.078 seconds
+finished segmentation(Beast), runtime: 25.364 seconds
+files_with_assembly: 199/314
+Total features_extracted: 1868
+file 239/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.166 seconds
+finished segmentation(Beast), runtime: 25.052 seconds
+No Assembly, No features extracted
+file 240/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.116 seconds
+finished segmentation(Beast), runtime: 27.514 seconds
+files_with_assembly: 200/314
+Total features_extracted: 1877
+file 241/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 1.957 seconds
+finished segmentation(Beast), runtime: 26.106 seconds
+files_with_assembly: 201/314
+Total features_extracted: 1887
+file 242/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.137 seconds
+finished segmentation(Beast), runtime: 21.794 seconds
+files_with_assembly: 202/314
+Total features_extracted: 1897
+file 243/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.092 seconds
+finished segmentation(Beast), runtime: 28.689 seconds
+files_with_assembly: 203/314
+Total features_extracted: 1906
+file 244/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.137 seconds
+finished segmentation(Beast), runtime: 24.46 seconds
+files_with_assembly: 204/314
+Total features_extracted: 1915
+file 245/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 1.996 seconds
+finished segmentation(Beast), runtime: 24.871 seconds
+files_with_assembly: 205/314
+Total features_extracted: 1924
+file 246/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.168 seconds
+finished segmentation(Beast), runtime: 21.821 seconds
+files_with_assembly: 206/314
+Total features_extracted: 1933
+file 247/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.094 seconds
+finished segmentation(Beast), runtime: 22.272 seconds
+files_with_assembly: 207/314
+Total features_extracted: 1942
+file 248/314  loaded: 07_17_2022_10_57_23_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.184 seconds
+finished segmentation(Beast), runtime: 23.125 seconds
+No Assembly, No features extracted
+file 249/314  loaded: 07_17_2022_21_39_14_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.101 seconds
+finished segmentation(Beast), runtime: 21.73 seconds
+files_with_assembly: 208/314
+Total features_extracted: 1952
+file 250/314  loaded: 07_17_2022_21_39_14_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.086 seconds
+finished segmentation(Beast), runtime: 24.891 seconds
+files_with_assembly: 209/314
+Total features_extracted: 1962
+file 251/314  loaded: 07_17_2022_21_39_14_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.065 seconds
+finished segmentation(Beast), runtime: 22.001 seconds
+files_with_assembly: 210/314
+Total features_extracted: 1971
+file 252/314  loaded: 07_17_2022_21_39_14_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.069 seconds
+finished segmentation(Beast), runtime: 26.358 seconds
+files_with_assembly: 211/314
+Total features_extracted: 1981
+file 253/314  loaded: 07_17_2022_21_39_14_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.058 seconds
+finished segmentation(Beast), runtime: 21.921 seconds
+files_with_assembly: 212/314
+Total features_extracted: 1991
+file 254/314  loaded: 07_17_2022_21_39_14_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.064 seconds
+finished segmentation(Beast), runtime: 23.048 seconds
+files_with_assembly: 213/314
+Total features_extracted: 2000
+file 255/314  loaded: 07_17_2022_21_39_14_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.102 seconds
+finished segmentation(Beast), runtime: 23.017 seconds
+files_with_assembly: 214/314
+Total features_extracted: 2009
+file 256/314  loaded: 07_17_2022_21_39_14_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.149 seconds
+finished segmentation(Beast), runtime: 22.318 seconds
+files_with_assembly: 215/314
+Total features_extracted: 2018
+file 257/314  loaded: 07_17_2022_21_39_14_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.074 seconds
+finished segmentation(Beast), runtime: 24.168 seconds
+files_with_assembly: 216/314
+Total features_extracted: 2027
+file 258/314  loaded: 07_17_2022_21_39_14_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.194 seconds
+finished segmentation(Beast), runtime: 23.411 seconds
+No Assembly, No features extracted
+file 259/314  loaded: 07_17_2022_21_39_14_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.245 seconds
+finished segmentation(Beast), runtime: 27.322 seconds
+No Assembly, No features extracted
+file 260/314  loaded: 07_17_2022_21_39_14_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.264 seconds
+finished segmentation(Beast), runtime: 21.152 seconds
+files_with_assembly: 217/314
+Total features_extracted: 2037
+file 261/314  loaded: 07_17_2022_21_39_14_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.161 seconds
+finished segmentation(Beast), runtime: 25.661 seconds
+files_with_assembly: 218/314
+Total features_extracted: 2046
+file 262/314  loaded: 07_17_2022_21_39_14_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.033 seconds
+finished segmentation(Beast), runtime: 24.187 seconds
+files_with_assembly: 219/314
+Total features_extracted: 2056
+file 263/314  loaded: 07_17_2022_21_39_14_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.058 seconds
+finished segmentation(Beast), runtime: 26.064 seconds
+files_with_assembly: 220/314
+Total features_extracted: 2065
+file 264/314  loaded: 07_17_2022_21_39_14_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.106 seconds
+finished segmentation(Beast), runtime: 23.261 seconds
+files_with_assembly: 221/314
+Total features_extracted: 2074
+file 265/314  loaded: 07_17_2022_21_39_14_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.116 seconds
+finished segmentation(Beast), runtime: 21.847 seconds
+files_with_assembly: 222/314
+Total features_extracted: 2083
+file 266/314  loaded: 07_17_2022_21_39_14_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.181 seconds
+finished segmentation(Beast), runtime: 22.446 seconds
+files_with_assembly: 223/314
+Total features_extracted: 2092
+file 267/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.047 seconds
+finished segmentation(Beast), runtime: 22.413 seconds
+files_with_assembly: 224/314
+Total features_extracted: 2101
+file 268/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.194 seconds
+finished segmentation(Beast), runtime: 25.534 seconds
+files_with_assembly: 225/314
+Total features_extracted: 2110
+file 269/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.291 seconds
+finished segmentation(Beast), runtime: 24.497 seconds
+files_with_assembly: 226/314
+Total features_extracted: 2119
+file 270/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.119 seconds
+finished segmentation(Beast), runtime: 20.965 seconds
+files_with_assembly: 227/314
+Total features_extracted: 2129
+file 271/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.219 seconds
+finished segmentation(Beast), runtime: 23.027 seconds
+files_with_assembly: 228/314
+Total features_extracted: 2139
+file 272/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.289 seconds
+finished segmentation(Beast), runtime: 24.033 seconds
+No Assembly, No features extracted
+file 273/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.319 seconds
+finished segmentation(Beast), runtime: 23.681 seconds
+No Assembly, No features extracted
+file 274/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.03 seconds
+finished segmentation(Beast), runtime: 28.903 seconds
+files_with_assembly: 229/314
+Total features_extracted: 2148
+file 275/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.116 seconds
+finished segmentation(Beast), runtime: 21.621 seconds
+files_with_assembly: 230/314
+Total features_extracted: 2157
+file 276/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 1.997 seconds
+finished segmentation(Beast), runtime: 24.492 seconds
+files_with_assembly: 231/314
+Total features_extracted: 2166
+file 277/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.155 seconds
+finished segmentation(Beast), runtime: 25.449 seconds
+files_with_assembly: 232/314
+Total features_extracted: 2175
+file 278/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.138 seconds
+finished segmentation(Beast), runtime: 26.568 seconds
+files_with_assembly: 233/314
+Total features_extracted: 2184
+file 279/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.039 seconds
+finished segmentation(Beast), runtime: 23.418 seconds
+files_with_assembly: 234/314
+Total features_extracted: 2194
+file 280/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 1.941 seconds
+finished segmentation(Beast), runtime: 24.378 seconds
+files_with_assembly: 235/314
+Total features_extracted: 2203
+file 281/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.129 seconds
+finished segmentation(Beast), runtime: 31.091 seconds
+files_with_assembly: 236/314
+Total features_extracted: 2212
+file 282/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.061 seconds
+finished segmentation(Beast), runtime: 26.244 seconds
+files_with_assembly: 237/314
+Total features_extracted: 2221
+file 283/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.129 seconds
+finished segmentation(Beast), runtime: 21.658 seconds
+files_with_assembly: 238/314
+Total features_extracted: 2230
+file 284/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.147 seconds
+finished segmentation(Beast), runtime: 26.589 seconds
+files_with_assembly: 239/314
+Total features_extracted: 2239
+file 285/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 3.785 seconds
+finished segmentation(Beast), runtime: 25.513 seconds
+files_with_assembly: 240/314
+Total features_extracted: 2248
+file 286/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.245 seconds
+finished segmentation(Beast), runtime: 29.051 seconds
+files_with_assembly: 241/314
+Total features_extracted: 2257
+file 287/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.312 seconds
+finished segmentation(Beast), runtime: 47.362 seconds
+files_with_assembly: 242/314
+Total features_extracted: 2267
+file 288/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 3.279 seconds
+finished segmentation(Beast), runtime: 22.912 seconds
+files_with_assembly: 243/314
+Total features_extracted: 2277
+file 289/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.419 seconds
+finished segmentation(Beast), runtime: 27.213 seconds
+files_with_assembly: 244/314
+Total features_extracted: 2286
+file 290/314  loaded: 07_18_2022_10_18_08_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.331 seconds
+finished segmentation(Beast), runtime: 29.341 seconds
+files_with_assembly: 245/314
+Total features_extracted: 2295
+file 291/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.325 seconds
+finished segmentation(Beast), runtime: 26.642 seconds
+files_with_assembly: 246/314
+Total features_extracted: 2304
+file 292/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\1\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.181 seconds
+finished segmentation(Beast), runtime: 23.897 seconds
+files_with_assembly: 247/314
+Total features_extracted: 2313
+file 293/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.5 seconds
+finished segmentation(Beast), runtime: 28.187 seconds
+files_with_assembly: 248/314
+Total features_extracted: 2322
+file 294/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\10\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.261 seconds
+finished segmentation(Beast), runtime: 23.889 seconds
+files_with_assembly: 249/314
+Total features_extracted: 2331
+file 295/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.547 seconds
+finished segmentation(Beast), runtime: 24.387 seconds
+files_with_assembly: 250/314
+Total features_extracted: 2340
+file 296/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\11\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 4.038 seconds
+finished segmentation(Beast), runtime: 35.315 seconds
+files_with_assembly: 251/314
+Total features_extracted: 2350
+file 297/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.14 seconds
+finished segmentation(Beast), runtime: 23.345 seconds
+files_with_assembly: 252/314
+Total features_extracted: 2359
+file 298/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\12\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.116 seconds
+finished segmentation(Beast), runtime: 34.059 seconds
+files_with_assembly: 253/314
+Total features_extracted: 2368
+file 299/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 3.154 seconds
+finished segmentation(Beast), runtime: 43.121 seconds
+files_with_assembly: 254/314
+Total features_extracted: 2377
+file 300/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\2\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.476 seconds
+finished segmentation(Beast), runtime: 26.285 seconds
+files_with_assembly: 255/314
+Total features_extracted: 2386
+file 301/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.422 seconds
+finished segmentation(Beast), runtime: 30.375 seconds
+files_with_assembly: 256/314
+Total features_extracted: 2396
+file 302/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\3\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.662 seconds
+finished segmentation(Beast), runtime: 26.078 seconds
+files_with_assembly: 257/314
+Total features_extracted: 2405
+file 303/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.542 seconds
+finished segmentation(Beast), runtime: 27.082 seconds
+files_with_assembly: 258/314
+Total features_extracted: 2414
+file 304/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\4\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.434 seconds
+finished segmentation(Beast), runtime: 23.42 seconds
+files_with_assembly: 259/314
+Total features_extracted: 2423
+file 305/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.29 seconds
+finished segmentation(Beast), runtime: 31.513 seconds
+files_with_assembly: 260/314
+Total features_extracted: 2433
+file 306/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\5\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.099 seconds
+finished segmentation(Beast), runtime: 22.875 seconds
+files_with_assembly: 261/314
+Total features_extracted: 2442
+file 307/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.193 seconds
+finished segmentation(Beast), runtime: 28.42 seconds
+files_with_assembly: 262/314
+Total features_extracted: 2451
+file 308/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\6\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.791 seconds
+finished segmentation(Beast), runtime: 35.414 seconds
+files_with_assembly: 263/314
+Total features_extracted: 2461
+file 309/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.658 seconds
+finished segmentation(Beast), runtime: 32.865 seconds
+files_with_assembly: 264/314
+Total features_extracted: 2470
+file 310/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\7\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.518 seconds
+finished segmentation(Beast), runtime: 32.92 seconds
+files_with_assembly: 265/314
+Total features_extracted: 2479
+file 311/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 5.512 seconds
+finished segmentation(Beast), runtime: 30.849 seconds
+files_with_assembly: 266/314
+Total features_extracted: 2488
+file 312/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\8\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 4.122 seconds
+finished segmentation(Beast), runtime: 32.803 seconds
+files_with_assembly: 267/314
+Total features_extracted: 2498
+file 313/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_1_total_num_target_2.mat Loading time: 2.097 seconds
+finished segmentation(Beast), runtime: 35.332 seconds
+files_with_assembly: 268/314
+Total features_extracted: 2507
+file 314/314  loaded: 07_18_2022_13_49_34_mu_0_0_2__2_8_Js__4_0_runs_2\2\9\energy_vec_mu_0.6_energy_4.0_run_num_2_total_num_target_2.mat Loading time: 2.746 seconds
+finished segmentation(Beast), runtime: 27.035 seconds
+files_with_assembly: 269/314
+Total features_extracted: 2516
+Finished pre-pca processing,total runtime 8764.471999999998 for 314 files
+saved all processed data
+Starting PCA
+Finished PCA runtime 0.029 seconds
+saved all extracted features , total extracted features 2516 total runtime 8764.500999999998 secondsSUMMARY
+files 314 
+files_with_assembly: 269/314 
+mean extracted features 9.353159851301115 
+total extracted features 2516 
+total runtime 8764.500999999998 seconds 
+mean loading time 2.2703503184713374 
+mean segmentation time 25.634493630573246 
+mean extraction time 0.007487261146496817 
+PCA time 0.029
