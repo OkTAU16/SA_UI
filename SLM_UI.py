@@ -89,8 +89,6 @@ class IntroScreen(Screen):
             self.rect = Rectangle(size=self.size, pos=self.pos)
             self.bind(size=self._update_rect, pos=self._update_rect)
 
-        #background = Image(source=r"C:\Users\USER\Desktop\לימודים\שנה ד\חישה רציפה\MMR\SLM_logo_adjusted.png",
-        #                   allow_stretch=True, keep_ratio=False,opacity=0.85)
         background = Image(source=local_image_path, allow_stretch=True, keep_ratio=False, opacity=0.85)
 
         # Add the background image to the screen
