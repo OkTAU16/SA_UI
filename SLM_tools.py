@@ -441,7 +441,7 @@ class SLM_tools:
             # if i_4 is None:
             #     i_4 = len(mean_hista) - 1
             i_4 = len(mean_hista) - 1  # TODO: check in testing
-            b.scatter(x_hist_space[:i_4], mean_hista[:i_4], marker='s', color=color_map[i, :])  # grap 1 subplot 2
+            b.scatter(x_hist_space[:i_4], mean_hista[:i_4], marker='s', color=color_map[i, :],zorder=1)  # grap 1 subplot 2
             b.set_xticks(x_ticks)
             b.set_yticks(y_ticks)
             b.set_xlim(x_ticks[0], x_ticks[-1])
@@ -466,14 +466,13 @@ class SLM_tools:
             else:
                 mean_vec[row] = np.nan
                 std_vec[row] = np.nan
-        b.plot(x_hist_space[:i_4], x_hist_space[:i_4], linestyle='--', color='k')
-        b.errorbar(x_hist_space, mean_vec, yerr=std_vec, xerr=std_vec,
-                   ecolor='k')  # TODO: might crash, yerr and xerr are different in matlab
+        b.plot(x_hist_space[:i_4], x_hist_space[:i_4], linestyle='--', color='k', linewidth=0.5,zorder=2)
+        b.errorbar(x_hist_space, mean_vec, yerr=std_vec, ecolor='b',zorder=3)
         for k in range(1, len(x_ticks)):
             b.axvline(x_ticks[k - 1], color='k', linestyle='--', linewidth=0.5)
             x_pos = (x_ticks[k-1] + x_ticks[k])/2
             y_pos = y_ticks[0] + 2
-            b.text(x_pos, y_pos, f"Bin {k}", ha='center', va='bottom')
+            b.text(x_pos, y_pos, f"Bin {k}", ha='center', va='bottom',bbox=dict(facecolor='white', alpha=0.5), zorder=4)
         b.set_ylabel("Scatter Plot Average for each bin")
         b.set_xlabel("Center of Predictor bin")
         fig_1.savefig(os.path.join(save_path, 'fig_1.png'))
@@ -564,8 +563,6 @@ class SLM_tools:
 
     @staticmethod
     def multiple_boxplot(data, ax, xlab=None, Mlab=None, colors=None):
-        if not isinstance(data, list):
-            raise ValueError('Input data is not even a cell array!')
         M = len(data[0])  # Number of data for the same group
         L = len(data)  # Number of groups
         # Check optional inputs
