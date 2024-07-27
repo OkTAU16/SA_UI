@@ -16,6 +16,33 @@ from kivy.uix.image import Image
 from kivy.uix.popup import Popup
 from kivy.metrics import sp
 import os
+import requests
+
+#### HANDLING BACKGROUND DOWNLOAD ####
+def download_image(url, local_path):
+    if not os.path.exists(local_path):
+        response = requests.get(url)
+        if response.status_code == 200:
+            content_type = response.headers['Content-Type']
+            if 'image' in content_type:
+                with open(local_path, 'wb') as f:
+                    f.write(response.content)
+                print(f"Downloaded {local_path} successfully.")
+            else:
+                print(f"Failed to download {url}. The content is not an image.")
+        else:
+            print(f"Failed to download {url}. Status code: {response.status_code}")
+
+image_url = "https://github.com/OkTAU16/SA_UI/raw/feature/slm_ui/SLM_logo_adjusted.png"
+image_url_graphs = "https://github.com/OkTAU16/SA_UI/raw/feature/slm_ui/SLM%20_logo.png"
+# Local path to save the image
+local_image_path = "SLM_logo_adjusted.png"
+local_image_path_graphs = "SLM_logo.png"
+# Download the image
+download_image(image_url, local_image_path)
+download_image(image_url_graphs, local_image_path_graphs)
+#ggg
+
 
 
 ##### IMAGE POPPING CALSS #####
@@ -61,12 +88,10 @@ class IntroScreen(Screen):
             Color(0.2, 0.2, 0.2, 1)  # Set the desired color (R, G, B, A)
             self.rect = Rectangle(size=self.size, pos=self.pos)
             self.bind(size=self._update_rect, pos=self._update_rect)
-        # TODO: change to the git path for the background
-        #GIT_DIR = str(os.path(__file__).parent.parent)
 
-
-        background = Image(source=r"C:\Users\USER\Desktop\לימודים\שנה ד\חישה רציפה\MMR\SLM_logo_adjusted.png",
-                           allow_stretch=True, keep_ratio=False,opacity=0.85)
+        #background = Image(source=r"C:\Users\USER\Desktop\לימודים\שנה ד\חישה רציפה\MMR\SLM_logo_adjusted.png",
+        #                   allow_stretch=True, keep_ratio=False,opacity=0.85)
+        background = Image(source=local_image_path, allow_stretch=True, keep_ratio=False, opacity=0.85)
 
         # Add the background image to the screen
         self.add_widget(background)
@@ -122,9 +147,7 @@ class MainScreen(Screen):
             Color(0.2, 0.2, 0.2, 1)  # Set the desired color (R, G, B, A)
             self.rect = Rectangle(size=self.size, pos=self.pos)
             self.bind(size=self._update_rect, pos=self._update_rect)
-        #TODO: change to the git path for the background
-        background = Image(source=r"C:\Users\USER\Desktop\לימודים\שנה ד\חישה רציפה\MMR\SLM_logo_adjusted.png",
-                           allow_stretch=True, keep_ratio=False,opacity=0.9)
+        background = Image(source=local_image_path, allow_stretch=True, keep_ratio=False, opacity=0.85)
 
         # Add the background image to the screen
         self.add_widget(background)
@@ -409,8 +432,7 @@ class GraphScreen(Screen):
             Color(0.2, 0.2, 0.2, 1)  # Set the desired color (R, G, B, A)
             self.rect = Rectangle(size=self.size, pos=self.pos)
             self.bind(size=self._update_rect, pos=self._update_rect)
-        #TODO: change to the git path for the background
-        background = Image(source=r"C:\Users\USER\Desktop\לימודים\שנה ד\חישה רציפה\MMR\SLM_logo.png", allow_stretch=True, keep_ratio=False)
+        background = Image(source=local_image_path_graphs, allow_stretch=True, keep_ratio=False)
 
         # Add the background image to the screen
         self.add_widget(background)
@@ -485,10 +507,17 @@ class GuiApp(App):
         #Window.bind(on_resize=self.update_drop_area)
         # Setting the screens
         self.sm = ScreenManager(transition=FadeTransition())
+
         self.sm.add_widget(IntroScreen(name='intro'))
         self.sm.add_widget(MainScreen(name='main'))
         self.sm.add_widget(GraphScreen(name='graph'))
 
+        #sm = ScreenManager()
+        """
+        self.sm.add_widget(IntroScreen(name='intro', local_image_path=local_image_path))
+        self.sm.add_widget(MainScreen(name='main', local_image_path=local_image_path))
+        self.sm.add_widget(GraphScreen(name='graph', local_image_path=local_image_path_graphs))
+        """
         return self.sm
 
     #practicals functions
