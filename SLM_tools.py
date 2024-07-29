@@ -524,9 +524,13 @@ class SLM_tools:
             if np.isnan(tfas_predict_mat_2[j]):
                 tfas_predict_mat_2[j] = np.nanmean(Y)
         mean_error_mat_2= np.abs(tfas_actually_mat_2 - tfas_predict_mat_2)
+        tfas_predict_mat_2 = np.reshape(tfas_predict_mat_2,(len(tfas_predict_mat_2),1))
+        tfas_actually_mat_2 = np.reshape(tfas_actually_mat_2,(len(tfas_actually_mat_2),1))
+        mean_error_mat_2 = np.reshape(mean_error_mat_2,(len(mean_error_mat_2),1))
         return tfas_predict_mat_2, tfas_actually_mat_2, mean_error_mat_2
 
-    def cellboxplotchange(self, cell_data, labell, Y, legendlabel, ax):
+    @staticmethod
+    def cellboxplotchange(cell_data, labell, Y, legendlabel, ax):
         data = []
         grp = []
 
@@ -535,17 +539,17 @@ class SLM_tools:
             grp.extend(np.ones(len(cell_data[i])) * i)
 
         X = labell
-        col = np.array([255, 0, 0, 0]) / 255
+        col = np.array([255,0,0,0,0]) / 255
 
-        self.multiple_boxplot(cell_data, ax, X, [legendlabel], np.expand_dims(col, axis=0).T)
+        SLM_tools.multiple_boxplot(cell_data, ax, X, [legendlabel], np.expand_dims(col, axis=0).T)
 
     @staticmethod
     def multiple_boxplot(data, ax, xlab=None, Mlab=None, colors=None):
-        M = len(data[0])  # Number of data for the same group
+        M = len(data)  # Number of data for the same group
         L = len(data)  # Number of groups
         # Check optional inputs
         if colors is not None:
-            if colors.shape[1] != M:
+            if colors.shape[0] != M:
                 raise ValueError('Wrong amount of colors!')
         if xlab is not None:
             if len(xlab) != L:
@@ -599,10 +603,12 @@ class SLM_tools:
                             x_ticks, y_ticks, save_path):
         bin_width = 0.5
         median_fit_vec = np.nanmedian(np.nanmedian(tfas_predict_mat_2))
-        tfas_predict_mat_2_sorted = np.sort(tfas_predict_mat_2)
         tfas_predict_mat_2_sorted_indices = np.argsort(tfas_predict_mat_2)
-        x = tfas_predict_mat_2_sorted
-        y = tfas_actually_mat_2[tfas_predict_mat_2_sorted_indices]
+        x = np.squeeze(tfas_predict_mat_2)
+        y = np.squeeze(tfas_actually_mat_2)
+        tfas_predict_mat_2_sorted_indices = np.argsort(x)
+        x = x[tfas_predict_mat_2_sorted_indices]
+        y = y[tfas_predict_mat_2_sorted_indices]
         std_hista_origin = np.full(len(hist_space) - 1, np.nan)
         mean_hista_origin = np.full(len(hist_space) - 1, np.nan)
         mean_hista_last_fig = np.full(len(hist_space) - 1, np.nan)
@@ -610,15 +616,18 @@ class SLM_tools:
         mean_hista = np.full(len(hist_space) - 1, np.nan)
         mean_vec_pre = np.append(mean_vec[1:], np.nan)
         cutofflength = len(mean_vec)
-        occurrence_probability = np.zeros((1, cutofflength))
+        occurrence_probability = np.zeros((cutofflength,1))
         cv_offset = mean_vec - x_hist_space
         cv_offset = np.nan_to_num(cv_offset)
         cv_corrected_x = np.zeros_like(x)
-        fig_2 = plt.figure()
+        new_y = np.zeros(y.shape)
+        fig_2 = plt.figure(figsize=(7,10))
         a = fig_2.add_subplot(3, 1, 1)
         b = fig_2.add_subplot(3, 1, 2)
         c = fig_2.add_subplot(3, 1, 3)
-        a.scatter(x, y, color=(0.7, 0.7, 0.7))  # TODO: set marker size to 1
+        scat_1 = a.scatter(x, y, color=(0.7, 0.7, 0.7))  # TODO: set marker size to 1
+        a.set_ylabel("True Value")
+        a.set_xlabel("Predicted Value")
         a.set_xticks(x_ticks)
         a.set_yticks(y_ticks)
         a.set_xlim(x_ticks[0], x_ticks[-1])
@@ -629,9 +638,9 @@ class SLM_tools:
                 std_hista[i-1] = np.nan
                 mean_hista[i-1] = np.nan
                 occurrence_probability[i-1] = len(Ind)
-                cv_corrected_x[i-1] = x[Ind] + cv_offset[i-1]
-                new_y = y[Ind]
-                a.scatter(x[Ind] + cv_offset[i-1], y[Ind], color='k', marker='s')
+                cv_corrected_x[Ind] = x[Ind] + cv_offset[i-1]
+                new_y[Ind] = y[Ind]
+                scat_1 = a.scatter(x[Ind] + cv_offset[i-1], y[Ind], color='k', marker='s')
             else:
                 yo = np.sort(y[Ind])
                 aop = np.ceil(0.16 * len(yo)).astype(int)
@@ -644,19 +653,22 @@ class SLM_tools:
                 mean_hista_origin[i-1] = np.median(z0)
                 std_hista_origin[i-1] = np.sqrt(np.sum((z1 - np.median(z1)) ** 2) / len(yo))
                 occurrence_probability[i-1] = len(Ind)
-                a.scatter(x[Ind] + cv_offset[i-1], y[Ind], color='k', marker='s')
-                cv_corrected_x[i-1] = x[Ind] + cv_offset[i-1]
-                new_y = y[Ind]
+                scat_2 = a.scatter(x[Ind] + cv_offset[i-1], y[Ind], color='k', marker='s')
+                cv_corrected_x[Ind] = x[Ind] + cv_offset[i-1]
+                new_y[Ind] = y[Ind]
                 mean_hista_last_fig = np.median(yo)
-        cv_corrected_x_sorted = np.sort(cv_corrected_x)
         sorted_indices = np.argsort(cv_corrected_x)
         new_y_sorted = new_y[sorted_indices]
+        cv_corrected_x_sorted = cv_corrected_x[sorted_indices]
         slope, intercept, r_value, p_value, std_err = linregress(cv_corrected_x_sorted, new_y_sorted)
         R_x = np.array([cv_corrected_x_sorted[0], new_y_sorted[-1]])
         R_y = intercept + slope * R_x
         slope = round(slope, 2)
         b_c = round(intercept, 2)
-        a.plot(R_x, R_y, color='r', linestyle='--')
+        a.plot(R_x, R_y, color='r', linestyle='--',label='Linear Regression')
+        scat_1.set_label("Original Predictor")
+        scat_2.set_label("CV Bais Corrected Predictor")
+        a.legend()
         new_x = np.array(cv_corrected_x_sorted)
         min_of_all2 = np.min(cv_corrected_x_sorted)
         max_of_all2 = np.max(cv_corrected_x_sorted)
@@ -675,6 +687,7 @@ class SLM_tools:
         std_histaria = np.full(cutofflength2, np.nan)
         std_histaria2 = np.full(cutofflength2, np.nan)
         occurrence_probability_r = np.full(cutofflength2, np.nan)
+        yo_lst = []
         mega_kde = []
         for i in range(1,cutofflength2):
             Ind = np.where((hist_space_2[i-1] < x) & (x < (hist_space_2[i])))[0]
@@ -693,23 +706,23 @@ class SLM_tools:
                 std_histaria_origin[i-1] = np.sqrt(np.sum((z0 - np.median(z0)) ** 2) / len(yo))
                 std_histaria[i-1] = np.sqrt(np.sum((z1 - np.median(z1)) ** 2) / len(yo))
                 occurrence_probability_r[i-1] = len(Ind)
-                mega_kde.append([z1, z0, yo, i-1])
-
+                mega_kde.extend([z1, z0, yo, i-1])
+                yo_lst.append(yo)
         sorted_indices = np.argsort(x_hist_space_2)
-        x_hista = x_hist_space_2[sorted_indices]
-        mean_hista = mean_hista[sorted_indices]
-        std_hista = std_hista[sorted_indices]
-        std_hista2 = std_hista[sorted_indices]
-        mean_hista_origin = mean_hista_origin[sorted_indices]
-        std_hista_origin = std_hista_origin[sorted_indices]
-        std_hista_origin2 = std_hista_origin[sorted_indices]
-        occurrence_probability = occurrence_probability[sorted_indices]
-        mean_hista_last_fig = mean_hista_last_fig[sorted_indices]
-        occurrence_probability = occurrence_probability / np.sum(occurrence_probability)
-        occurrence_probability_r = occurrence_probability_r / np.sum(occurrence_probability_r)
-        std_histaria2 = std_histaria
+        # x_hista = x_hist_space_2[sorted_indices]
+        # mean_hista = mean_hista[sorted_indices]
+        # std_hista = std_hista[sorted_indices]
+        # std_hista2 = std_hista[sorted_indices]
+        # mean_hista_origin = mean_hista_origin[sorted_indices]
+        # std_hista_origin = std_hista_origin[sorted_indices]
+        # std_hista_origin2 = std_hista_origin[sorted_indices]
+        # occurrence_probability = occurrence_probability[sorted_indices]
+        # mean_hista_last_fig = mean_hista_last_fig[sorted_indices]
+        # occurrence_probability = occurrence_probability / np.sum(occurrence_probability)
+        # occurrence_probability_r = occurrence_probability_r / np.sum(occurrence_probability_r)
+        # std_histaria2 = std_histaria
         I2 = (~np.isnan(x_hist_space_2)) & (~np.isnan(mean_hista_last_fig2))
-        SLM_tools.cellboxplotchange(mega_kde, x_hist_space_2[I2], x_hist_space_2[I2], r'$\hat{Y}_{BC}$', ax=b)
+        SLM_tools.cellboxplotchange(yo_lst, x_hist_space_2[I2], x_hist_space_2[I2], r'$\hat{Y}_{BC}$', ax=b)
         b.plot(x_hist_space_2[I2], x_hist_space_2[I2], linestyle='--', color='k')
         b.set_xticks(x_ticks)
         b.set_yticks(y_ticks)
