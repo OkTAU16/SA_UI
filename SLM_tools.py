@@ -306,9 +306,6 @@ class SLM_tools:
                 XI = np.column_stack((x0.ravel(), y0.ravel(), z0.ravel()))
             if twoD_output:
                 x0, y0 = np.meshgrid(d1, d2, indexing='ij')
-                if i == 0:
-                    sio.savemat("x0_mu_1.6_2components.mat", {'x0': x0})
-                    sio.savemat("y0_mu_1.6_2components.mat", {'y0': x0})
                 X = training_set[:, :2]
                 Y = training_set[:, 3]
                 XI = np.column_stack((x0.ravel(), y0.ravel()))
@@ -360,6 +357,43 @@ class SLM_tools:
             mean_error_mat[i, :] = np.abs(tfas_real - tfas_predict)
             print(f"finished iteration {i + 1}/{cv_num}")
         return YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat, train_index, random_x, validation_index
+
+    @staticmethod
+    def build_2d_and_draw(a_reduced: np.array, save_path):
+        np.random.seed(42)
+        idn = np.where(a_reduced[:, 3] != 0)[0]
+        mapx = a_reduced[idn, :]
+        mapx[:, 3] = np.log(mapx[:, 3])
+        random_x = mapx[np.random.permutation(mapx.shape[0]), :]  # line 89 matlab
+        train_index = int(np.floor(0.6 * random_x.shape[0]))
+        validation_index = int(np.floor(0.8 * random_x.shape[0]))
+        training_set = random_x[:train_index, :]
+        validation_set = random_x[train_index:validation_index, :]
+        min_1 = np.nanmin(training_set[:, 0])
+        max_1 = np.nanmax(training_set[:, 0])
+        min_2 = np.nanmin(training_set[:, 1])
+        max_2 = np.nanmax(training_set[:, 1])
+        d1 = np.linspace(min_1, max_1, 150)
+        d2 = np.linspace(min_2, max_2, 150)
+        x0, y0 = np.meshgrid(d1, d2, indexing='ij')
+        X = training_set[:, :2]
+        Y = training_set[:, 3]
+        XI = np.column_stack((x0.ravel(), y0.ravel()))
+        YI = scipy.interpolate.griddata(X, Y, XI, method='linear')
+        YI = YI.astype(float)
+        k = np.ones((2, 2)) / (2 * 2 - 1)
+        k[1, 1] = 0
+        YI = np.reshape(YI, x0.shape)
+        YI = scipy.signal.convolve(YI, k, mode='same', method='direct')
+        YI = scipy.signal.convolve(YI, k, mode='same', method='direct')
+        YI[np.isnan(YI)] = np.log(5*10**3)
+        fig0,ax = plt.subplots()
+        ax.imshow(YI,cmap='jet')
+        fig0.colorbar(plt.cm.ScalarMappable(cmap='jet'), ax=ax)
+        ax.set_title('Predictor Space in 2D')
+        ax.set_xticks([])
+        ax.set_yticks([])
+        fig0.savefig(os.path.join(save_path, 'fig_0.png'))
 
     @staticmethod
     def model_eval(tfas_predict_mat, tfas_actually_mat, cv_num, save_path):
@@ -463,7 +497,7 @@ class SLM_tools:
         mapx = a_reduced[idn, :]
         mapx[:, n_components] = np.log(mapx[:, n_components])
         random_x = mapx[np.random.permutation(mapx.shape[0]), :]
-        validation_index = int(np.ceil(0.9*mapx.shape[0]))
+        validation_index = int(np.ceil(0.9 * mapx.shape[0]))
         training_set = random_x[:validation_index, :]
         validation_set = random_x[validation_index:, :]
         min_1 = np.nanmin(training_set[:, 0])
@@ -535,46 +569,109 @@ class SLM_tools:
         mean_error_mat_2 = np.reshape(mean_error_mat_2, (len(mean_error_mat_2), 1))
         return tfas_predict_mat_2, tfas_actually_mat_2, mean_error_mat_2
 
+
     @staticmethod
-    def multiple_boxplot(input_data, label, legend_label, ax):
-        data = []
-        grp = []
-        for i in range(len(input_data)):
-            data.extend(input_data[i])
-            grp.extend(np.ones(len(input_data[i])) * i)
-        colors = np.array([1, 0, 0, 0, 0])
-        M = 1 # Number of data for the same group
-        L = len(data) # Number of groups
-        w = 0.25
-        # Calculate the positions of the boxes
-        if (np.sum(np.mean(np.diff(label)) == np.diff(label)) != len(np.diff(label))):
-            positions = label
-            YY = positions
+    def multiple_boxplot(input_data, x_labels, legend_label, ax):
+        L = len(input_data)
+        positions = np.arange(1, L + 1)
+
+        # Create box plot
+        bp1 = ax.boxplot(input_data, positions=positions, patch_artist=True, widths=0.6)
+
+        # Set x-axis ticks and labels
+        ax.set_xticks(positions)
+        # ax.set_xticklabels([f"{x:.2f}" for x in x_labels], rotation=45, ha='right', rotation_mode='anchor')
+        ax.set_xticklabels([f"{x:.2f}" for x in x_labels])
+        ax.set_xlim(0.5, L + 0.5)
+
+        # Customize box plots
+        for element in ['whiskers', 'fliers', 'means', 'medians', 'caps']:
+            plt.setp(bp1[element], color='black')
+
+        for box in bp1['boxes']:
+            box.set(facecolor='white', edgecolor='red', linewidth=2)
+
+        for flier in bp1['fliers']:
+            flier.set(marker='o', color='red', alpha=0.7)
+
+        # Set labels and title
+        ax.set_xlabel("Predicted Value")
+        ax.set_ylabel('True Value')
+
+        # Add legend entries
+        bp1["boxes"][0].set_label(legend_label)
+        ax.plot(positions, x_labels, linestyle='--', color='k', label='Perfect Predictor')
+
+        # Add legend
+        ax.legend(loc='upper right')
+        plt.gcf().subplots_adjust(bottom=0.3)
+        # Adjust y-axis limits
+        all_values = [val for sublist in input_data for val in sublist]
+        y_min, y_max = min(all_values), max(all_values)
+        y_range = y_max - y_min
+        ax.set_ylim(y_min - 0.1 * y_range, y_max + 0.1 * y_range)
+
+    @staticmethod
+    def plot_helper(ax, data, box_positions, color, legend_label, n_boxes_last_group):
+        bp = ax.boxplot(data, positions=np.round(box_positions,2), patch_artist=True)
+        # Apply colors
+        if n_boxes_last_group > 0:
+            for i, box in enumerate(bp['boxes'][:n_boxes_last_group], start=n_boxes_last_group):
+                box.set(facecolor='white',edgecolor=color, linewidth=2)
         else:
-            positions = np.arange(1, M * L * w + 1 + w * L, w)
-            positions = positions[:M * L]  # Remove excess positions if M*L*w+1 > M*L
-            YY = label[0] - 1 + positions - w
+            for i, box in enumerate(bp['boxes']):
+                box.set(facecolor='white', edgecolor=color, linewidth=2)
+
+        for i, element in enumerate(
+                bp['medians'] + bp['whiskers'] + bp['caps']):
+            element.set_color('black')
+
+        for i, element in enumerate(bp['fliers']):
+            element.set_markeredgecolor('black')
+        bp["boxes"][n_boxes_last_group-1].set_label(legend_label)
+
+
+    @staticmethod
+    def multiple_boxplot_2(data, x_labels, legend_labels, colormap, ax,x_hist_space):
+        # Get sizes
+        M, L = len(data), len(data[0])
+        w = 0.25  # width of boxes
+        positions = np.arange(1, M * L * w + 1 + w * L, w)
+        positions = positions[:(M * L)]
+        YY = x_labels[0] - 1 + positions - w / 2
+
+        # Extract data and label it in the group correctly
         x = []
         group = []
-        for ii in range(L):
-            for jj in range(M):
-                aux = np.array(data[ii][jj])
-                x.extend(aux.flatten())
-                group.extend(np.ones(aux.size) * (jj + ii * M + 1))
-        ax.boxplot(x, positions=YY)
-        labelpos = np.sum(np.reshape(positions, (M, -1)), axis=0) / M
-        ax.set_xticks(labelpos)
-        ax.set_xticklabels(label if label is not None else [str(i) for i in range(1, L + 1)])
-        if colors is None:
-            cmap = plt.get_cmap('hsv')
-            colors = np.vstack([cmap(np.linspace(0, 1, M)), np.ones(M) * 0.5]).T
-        color = np.tile(colors, (1, L))
-        for idx, box in enumerate(ax.get_children()):
-            if isinstance(box, plt.matplotlib.patches.PathPatch):
-                box.set_facecolor(color[:3, idx])
-                box.set_edgecolor(color[:3, idx])
-                box.set_alpha(color[3, idx])
-        ax.legend(legend_label, fontsize=6, loc='upper right')
+        for i in range(M):
+            for j in range(L):
+                aux = data[i][j]
+                x.extend(aux)
+                group.extend([j + i * M] * len(aux))
+        x_lims = [np.min(YY)-0.5,np.max(YY)+0.5]
+        box_positions1 = YY[::2]
+        box_positions2 = YY[1::2]
+        data1 = data[0]
+        data2 = data[1]
+        legend_label1 = legend_labels[0]
+        legend_label2 = legend_labels[1]
+        SLM_tools.plot_helper(ax, data1, box_positions1,'red', legend_label1,0)
+        SLM_tools.plot_helper(ax, data2, box_positions2,'blue', legend_label2,len(data1))
+
+        all_values = [val for sublist in data for val in sublist][0]
+        y_min, y_max = np.min(all_values), np.max(all_values)
+        ax.set_xlabel("Predicted Value")
+        ax.set_ylabel("Predictor Error")
+        ax.axhline(y=0, linestyle='--', color='black')
+        ax.scatter(x_hist_space,np.ones(x_hist_space.shape) * (np.max(all_values)+1),color=colormap,s=100,edgecolors='black', label='Relative Weight of Bin')
+        ax.legend(loc='upper right', fontsize=6,bbox_to_anchor=(1, 0.9))
+        ax.set_xlim(x_lims)
+
+
+    @staticmethod
+    def normalize_array(arr):
+        median = np.median(arr)
+        return arr - 2 * median if median < 0 else arr
 
     @staticmethod
     def cv_bias_correction(tfas_predict_mat_2, tfas_actually_mat_2, hist_space, mean_vec, x_hist_space,
@@ -601,7 +698,7 @@ class SLM_tools:
         cv_offset[np.isnan(cv_offset)] = 0
         cv_corrected_x = np.zeros_like(x)
         new_y = np.zeros(y.shape)
-        fig_2 = plt.figure(figsize=(7, 10))
+        fig_2 = plt.figure(figsize=(7, 14))
         a = fig_2.add_subplot(3, 1, 1)
         b = fig_2.add_subplot(3, 1, 2)
         c = fig_2.add_subplot(3, 1, 3)
@@ -645,13 +742,10 @@ class SLM_tools:
         slope, intercept, r_value, p_value, std_err = linregress(cv_corrected_x_sorted, new_y_sorted)
         R_x = np.array([cv_corrected_x_sorted[0], new_y_sorted[-1]])
         R_y = intercept + slope * R_x
-        # slope = round(slope, 2)
-        # b_c = round(intercept, 2)
-        a.plot(R_x, R_y, color='r', linestyle='--', label='Linear Regression')
+        a.plot(R_x, R_y, color='b', linestyle='--', label='Linear Regression')
         scat_1.set_label("Original Predictor")
-        scat_2.set_label("CV Bais Corrected Predictor")
+        scat_2.set_label("CV Bias Corrected Predictor")
         a.legend()
-
         new_x = np.copy(cv_corrected_x_sorted)
         min_of_all2 = np.min(new_x)
         max_of_all2 = np.max(new_x)
@@ -664,19 +758,17 @@ class SLM_tools:
         mean_hista_last_fig2 = np.full(cutofflength2, np.nan)
         mean_histaria = np.full(cutofflength2, np.nan)
         mean_histaria_origin = np.full(cutofflength2, np.nan)
-        mean_last_fig_histaria = np.full(cutofflength2, np.nan)
         std_histaria_origin = np.full(cutofflength2, np.nan)
-        std_histaria_origin2 = np.full(cutofflength2, np.nan)
         std_histaria = np.full(cutofflength2, np.nan)
-        std_histaria2 = np.full(cutofflength2, np.nan)
         occurrence_probability_r = np.full(cutofflength2, np.nan)
         yo_lst = []
+        z1_lst = []
+        z0_lst = []
         mega_kde = []
-        for i in range(1, cutofflength2):
+        for i in range(1, cutofflength2+1):
             Ind = np.where((hist_space_2[i - 1] < new_x) & (new_x < (hist_space_2[i])))[0]
             if len(Ind) < 5:
                 occurrence_probability_r[i - 1] = len(Ind)
-                ok_comp = 1
             else:
                 yo = np.sort(new_y_sorted[Ind])
                 aop = np.ceil(0.16 * len(yo))
@@ -690,43 +782,82 @@ class SLM_tools:
                 std_histaria[i - 1] = np.sqrt(np.sum((z1 - np.median(z1)) ** 2) / len(yo))
                 occurrence_probability_r[i - 1] = len(Ind)
                 mega_kde.append([z1, z0, yo, i - 1])
+                z1_lst.append(z1)
+                z0_lst.append(z0)
                 yo_lst.append(yo)
         sorted_indices = np.argsort(x_hist_space_2)
-        x_hista = x_hist_space_2[sorted_indices]
-        mean_hista = mean_hista[sorted_indices]
-        std_hista = std_hista[sorted_indices]
-        std_hista2 = std_hista[sorted_indices]
-        mean_hista_origin = mean_hista_origin[sorted_indices]
-        std_hista_origin = std_hista_origin[sorted_indices]
-        std_hista_origin2 = std_hista_origin[sorted_indices]
-        occurrence_probability = occurrence_probability[sorted_indices]
-        occurrence_probability = occurrence_probability / sum(occurrence_probability)
         occurrence_probability_r = occurrence_probability_r / np.sum(occurrence_probability_r)
-        # mean_hista_last_fig = mean_hista_last_fig[sorted_indices]
-        # std_histaria2 = std_histaria
         I2 = (~np.isnan(x_hist_space_2)) & (~np.isnan(mean_hista_last_fig2))
-        SLM_tools.multiple_boxplot(data=yo_lst, label=x_hist_space_2[I2],
-                                   legend_label="CV bias corrected predictor", ax=b)
+        SLM_tools.multiple_boxplot(input_data=yo_lst, x_labels=x_hist_space_2[I2],
+                                   legend_label="CV Bias Corrected Predictor", ax=b)
+        z0_lst = [SLM_tools.normalize_array(z0) for z0 in z0_lst]
+        z1_lst = [SLM_tools.normalize_array(z1) for z1 in z1_lst]
+        data = [z0_lst, z1_lst]
+        ind = np.round(occurrence_probability_r * 1000) + 1
+        ind[ind < 1] = 1
+        ind = np.ceil(1000 * np.log(ind) / np.log(1000))
+        ind[ind < 1] = 1
+        ind = np.squeeze(ind)
+        colormap = plt.cm.get_cmap('cool')
+        colormap = colormap(np.linspace(0, 1, 1000))
+        colormap = colormap[ind.astype(int), :]
+        SLM_tools.multiple_boxplot_2(data=data,
+                                     x_labels=x_hist_space_2[I2],
+                                     legend_labels=["CV Bias Corrected Predictor Mean Error",
+                                                    "Naive (median) Predictor Mean Error"],
+                                     colormap=colormap,
+                                     ax=c,
+                                     x_hist_space = x_hist_space_2
+                                     )
+        fig_2.colorbar(plt.cm.ScalarMappable(cmap='cool'), ax=c)
+        fig_2.savefig(os.path.join(save_path, 'fig_2.png'),bbox_inches='tight')
 
-        b.plot(x_hist_space_2[I2], x_hist_space_2[I2], linestyle='--', color='k')
-        b.set_xticks(x_ticks)
-        b.set_yticks(y_ticks)
-        b.set_xlim(x_ticks[0], x_ticks[-1])
-        b.set_ylim(y_ticks[0], y_ticks[-1])
-        labels = [str(label) for label in x_ticks[1:]]
-        b.set_xticklabels(labels, rotation=45)
-        X = x_hist_space_2[I2]
-        col = np.array([[255, 0, 0, 0], [100, 100, 100, 0]]) / 255
-        A = np.column_stack((mega_kde[:, 1], mega_kde[:, 0]))
-        B = A.copy()
-        for i1 in range(A.shape[0]):
-            for i2 in range(A.shape[1]):
-                med = np.median(A[i1, i2])
-                if med < 0:
-                    B[i1, i2] = A[i1, i2] - 2 * med
-        # SLM_tools.multiple_boxplot(B, c, X, [r'$\Delta\hat{Y}_{BC}$', r'$\Delta\hat{Y}_{M}$'], col.T)
-        c.set_xlim(x_ticks[0], x_ticks[-1])
-        c.set_xticks(x_ticks[1:])
-        c.set_lables(x_ticks[1:])
-        c.set_xticklabels(labels, rotation=45)
-        fig_2.savefig(os.path.join(save_path, 'fig_2.png'))
+
+if __name__ == '__main__':
+    import os
+    import numpy as np
+    from scipy import interpolate
+    import scipy.io
+    import Rbeast as rb
+    from scipy.io import savemat
+    import pickle
+    import re
+    import time
+    import matplotlib
+
+    matplotlib.use('Agg')
+    from matplotlib import pyplot as plt
+
+    tfas_predict_mat_2 = sio.loadmat(
+        r"C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\not_used\tfas_predict_mat_2_mu_1.6_3components_new_v2.mat")[
+        "tfas_predict_mat_2"]
+    tfas_actually_mat_2 = sio.loadmat(
+        r"C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\not_used\tfas_actually_mat_2_mu_1.6_3components_new_v2.mat")[
+        "tfas_actually_mat_2"]
+    mean_vec = sio.loadmat(
+        r"C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\not_used\mean_vec_mu_1.6_3components_new_v2.mat")[
+        "mean_vec"]
+    std_vec = sio.loadmat(
+        r"C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\not_used\std_vec_mu_1.6_3components_new_v2.mat")[
+        "std_vec"]
+    hist_space = sio.loadmat(
+        r"C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\not_used\hist_space_mu_1.6_3components_new_v2.mat")[
+        "hist_space"]
+    x_hist_space = sio.loadmat(
+        r"C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\not_used\x_hist_space_mu_1.6_3components_new_v2.mat")[
+        "x_hist_space"]
+    x_ticks = sio.loadmat(
+        r"C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\not_used\x_ticks_mu_1.6_3components_new_v2.mat")[
+        "x_ticks"]
+    y_ticks = sio.loadmat(
+        r"C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\not_used\y_ticks_mu_1.6_3components_new_v2.mat")[
+        "y_ticks"]
+    path = r"C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\not_used"
+    hist_space = np.reshape(hist_space, (hist_space.shape[1], 1))
+    mean_vec = np.reshape(mean_vec, (mean_vec.shape[1], 1))
+    x_hist_space = np.reshape(x_hist_space, (x_hist_space.shape[1], 1))
+    y_ticks = np.reshape(y_ticks, (y_ticks.shape[1], 1))
+    x_ticks = np.reshape(x_ticks, (x_ticks.shape[1], 1))
+    SLM_tools.cv_bias_correction(tfas_predict_mat_2=tfas_predict_mat_2, tfas_actually_mat_2=tfas_actually_mat_2,
+                                 hist_space=hist_space, mean_vec=mean_vec, x_hist_space=x_hist_space, x_ticks=x_ticks,
+                                 y_ticks=y_ticks, save_path=path)
