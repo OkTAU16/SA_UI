@@ -861,3 +861,6 @@ if __name__ == '__main__':
     SLM_tools.cv_bias_correction(tfas_predict_mat_2=tfas_predict_mat_2, tfas_actually_mat_2=tfas_actually_mat_2,
                                  hist_space=hist_space, mean_vec=mean_vec, x_hist_space=x_hist_space, x_ticks=x_ticks,
                                  y_ticks=y_ticks, save_path=path)
+
+    def create_and_evaluate_stochastic_landscape():
+        pass
