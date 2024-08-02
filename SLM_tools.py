@@ -1,4 +1,5 @@
 import pickle
+import time
 from datetime import datetime
 
 import Rbeast as rb
@@ -15,15 +16,9 @@ import pickle as pkl
 import os
 
 
-class SLM_Manager:
-    def __init__(self, *args):  # user inputs
-        pass
-
-
 class SLM_tools:
     @staticmethod
     def load_data(data_path: str, target_num, data_type='csv', time_vec_exists=False):
-        # TODO: incomplete, try with more then two targets
         try:
             if data_type == 'csv':
                 values_vec = pd.read_csv(data_path, usecols=[0], header=None).to_numpy()
@@ -304,20 +299,12 @@ class SLM_tools:
                 X = training_set[:, :3]
                 Y = training_set[:, 3]
                 XI = np.column_stack((x0.ravel(), y0.ravel(), z0.ravel()))
-            if twoD_output:
-                x0, y0 = np.meshgrid(d1, d2, indexing='ij')
-                X = training_set[:, :2]
-                Y = training_set[:, 3]
-                XI = np.column_stack((x0.ravel(), y0.ravel()))
             YI = scipy.interpolate.griddata(X, Y, XI, method='linear')
             YI = YI.astype(float)
             if n_components == 3 and not twoD_output:
                 k = np.ones((n_components, n_components, n_components))
                 k[1, 1, 1] = 0
                 k /= k.sum()
-            elif n_components == 3 and twoD_output:
-                k = np.ones((2, 2)) / (2 * 2 - 1)
-                k[1, 1] = 0
             elif n_components == 5 and not twoD_output:
                 k = np.ones((n_components, n_components, n_components, n_components, n_components))
                 k[2, 2, 2, 2, 2] = 0
@@ -347,16 +334,13 @@ class SLM_tools:
                     tfas_predict[j] = YI[int(Ix[j]), int(Iy[j]), int(Iz[j])]
                 elif n_components == 5 and not twoD_output:
                     tfas_predict[j] = YI[int(Ix[j]), int(Iy[j]), int(Iz[j]), int(Iw[j]), int(Iv[j])]
-                if twoD_output:
-                    tfas_predict[j] = YI[int(Ix[j]), int(Iy[j])]
                 if np.isnan(tfas_predict[j]):
                     tfas_predict[j] = np.nanmean(Y)
 
             tfas_predict_mat[i, :] = tfas_predict
             tfas_actually_mat[i, :] = tfas_real
             mean_error_mat[i, :] = np.abs(tfas_real - tfas_predict)
-            print(f"finished iteration {i + 1}/{cv_num}")
-        return YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat, train_index, random_x, validation_index
+        return YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat
 
     @staticmethod
     def build_2d_and_draw(a_reduced: np.array, save_path):
@@ -386,9 +370,9 @@ class SLM_tools:
         YI = np.reshape(YI, x0.shape)
         YI = scipy.signal.convolve(YI, k, mode='same', method='direct')
         YI = scipy.signal.convolve(YI, k, mode='same', method='direct')
-        YI[np.isnan(YI)] = np.log(5*10**3)
-        fig0,ax = plt.subplots()
-        ax.imshow(YI,cmap='jet')
+        YI[np.isnan(YI)] = np.log(5 * 10 ** 3)
+        fig0, ax = plt.subplots()
+        ax.imshow(YI, cmap='jet')
         fig0.colorbar(plt.cm.ScalarMappable(cmap='jet'), ax=ax)
         ax.set_title('Predictor Space in 2D')
         ax.set_xticks([])
@@ -489,7 +473,7 @@ class SLM_tools:
         b.set_ylabel("Scatter Plot Average for each bin")
         b.set_xlabel("Center of Predictor bin")
         fig_1.savefig(os.path.join(save_path, 'fig_1.png'))
-        return mean_vec, std_vec, hist_space, x_hist_space, x_ticks, y_ticks, bin_width
+        return mean_vec, std_vec, hist_space, x_hist_space, x_ticks, y_ticks
 
     @staticmethod
     def train_again_on_validation_and_test(a_reduced, n_components=3):
@@ -569,7 +553,6 @@ class SLM_tools:
         mean_error_mat_2 = np.reshape(mean_error_mat_2, (len(mean_error_mat_2), 1))
         return tfas_predict_mat_2, tfas_actually_mat_2, mean_error_mat_2
 
-
     @staticmethod
     def multiple_boxplot(input_data, x_labels, legend_label, ax):
         L = len(input_data)
@@ -613,11 +596,11 @@ class SLM_tools:
 
     @staticmethod
     def plot_helper(ax, data, box_positions, color, legend_label, n_boxes_last_group):
-        bp = ax.boxplot(data, positions=np.round(box_positions,2), patch_artist=True)
+        bp = ax.boxplot(data, positions=np.round(box_positions, 2), patch_artist=True)
         # Apply colors
         if n_boxes_last_group > 0:
             for i, box in enumerate(bp['boxes'][:n_boxes_last_group], start=n_boxes_last_group):
-                box.set(facecolor='white',edgecolor=color, linewidth=2)
+                box.set(facecolor='white', edgecolor=color, linewidth=2)
         else:
             for i, box in enumerate(bp['boxes']):
                 box.set(facecolor='white', edgecolor=color, linewidth=2)
@@ -628,11 +611,10 @@ class SLM_tools:
 
         for i, element in enumerate(bp['fliers']):
             element.set_markeredgecolor('black')
-        bp["boxes"][n_boxes_last_group-1].set_label(legend_label)
-
+        bp["boxes"][n_boxes_last_group - 1].set_label(legend_label)
 
     @staticmethod
-    def multiple_boxplot_2(data, x_labels, legend_labels, colormap, ax,x_hist_space):
+    def multiple_boxplot_2(data, x_labels, legend_labels, colormap, ax, x_hist_space):
         # Get sizes
         M, L = len(data), len(data[0])
         w = 0.25  # width of boxes
@@ -648,25 +630,25 @@ class SLM_tools:
                 aux = data[i][j]
                 x.extend(aux)
                 group.extend([j + i * M] * len(aux))
-        x_lims = [np.min(YY)-0.5,np.max(YY)+0.5]
+        x_lims = [np.min(YY) - 0.5, np.max(YY) + 0.5]
         box_positions1 = YY[::2]
         box_positions2 = YY[1::2]
         data1 = data[0]
         data2 = data[1]
         legend_label1 = legend_labels[0]
         legend_label2 = legend_labels[1]
-        SLM_tools.plot_helper(ax, data1, box_positions1,'red', legend_label1,0)
-        SLM_tools.plot_helper(ax, data2, box_positions2,'blue', legend_label2,len(data1))
+        SLM_tools.plot_helper(ax, data1, box_positions1, 'red', legend_label1, 0)
+        SLM_tools.plot_helper(ax, data2, box_positions2, 'blue', legend_label2, len(data1))
 
         all_values = [val for sublist in data for val in sublist][0]
         y_min, y_max = np.min(all_values), np.max(all_values)
         ax.set_xlabel("Predicted Value")
         ax.set_ylabel("Predictor Error")
         ax.axhline(y=0, linestyle='--', color='black')
-        ax.scatter(x_hist_space,np.ones(x_hist_space.shape) * (np.max(all_values)+1),color=colormap,s=100,edgecolors='black', label='Relative Weight of Bin')
-        ax.legend(loc='upper right', fontsize=6,bbox_to_anchor=(1, 0.9))
+        ax.scatter(x_hist_space, np.ones(x_hist_space.shape) * (np.max(all_values) + 1), color=colormap, s=100,
+                   edgecolors='black', label='Relative Weight of Bin')
+        ax.legend(loc='upper right', fontsize=6, bbox_to_anchor=(1, 0.9))
         ax.set_xlim(x_lims)
-
 
     @staticmethod
     def normalize_array(arr):
@@ -765,7 +747,7 @@ class SLM_tools:
         z1_lst = []
         z0_lst = []
         mega_kde = []
-        for i in range(1, cutofflength2+1):
+        for i in range(1, cutofflength2 + 1):
             Ind = np.where((hist_space_2[i - 1] < new_x) & (new_x < (hist_space_2[i])))[0]
             if len(Ind) < 5:
                 occurrence_probability_r[i - 1] = len(Ind)
@@ -807,60 +789,103 @@ class SLM_tools:
                                                     "Naive (median) Predictor Mean Error"],
                                      colormap=colormap,
                                      ax=c,
-                                     x_hist_space = x_hist_space_2
+                                     x_hist_space=x_hist_space_2
                                      )
         fig_2.colorbar(plt.cm.ScalarMappable(cmap='cool'), ax=c)
-        fig_2.savefig(os.path.join(save_path, 'fig_2.png'),bbox_inches='tight')
+        fig_2.savefig(os.path.join(save_path, 'fig_2.png'), bbox_inches='tight')
 
-
-if __name__ == '__main__':
-    import os
-    import numpy as np
-    from scipy import interpolate
-    import scipy.io
-    import Rbeast as rb
-    from scipy.io import savemat
-    import pickle
-    import re
-    import time
-    import matplotlib
-
-    matplotlib.use('Agg')
-    from matplotlib import pyplot as plt
-
-    tfas_predict_mat_2 = sio.loadmat(
-        r"C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\not_used\tfas_predict_mat_2_mu_1.6_3components_new_v2.mat")[
-        "tfas_predict_mat_2"]
-    tfas_actually_mat_2 = sio.loadmat(
-        r"C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\not_used\tfas_actually_mat_2_mu_1.6_3components_new_v2.mat")[
-        "tfas_actually_mat_2"]
-    mean_vec = sio.loadmat(
-        r"C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\not_used\mean_vec_mu_1.6_3components_new_v2.mat")[
-        "mean_vec"]
-    std_vec = sio.loadmat(
-        r"C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\not_used\std_vec_mu_1.6_3components_new_v2.mat")[
-        "std_vec"]
-    hist_space = sio.loadmat(
-        r"C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\not_used\hist_space_mu_1.6_3components_new_v2.mat")[
-        "hist_space"]
-    x_hist_space = sio.loadmat(
-        r"C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\not_used\x_hist_space_mu_1.6_3components_new_v2.mat")[
-        "x_hist_space"]
-    x_ticks = sio.loadmat(
-        r"C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\not_used\x_ticks_mu_1.6_3components_new_v2.mat")[
-        "x_ticks"]
-    y_ticks = sio.loadmat(
-        r"C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\not_used\y_ticks_mu_1.6_3components_new_v2.mat")[
-        "y_ticks"]
-    path = r"C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\not_used"
-    hist_space = np.reshape(hist_space, (hist_space.shape[1], 1))
-    mean_vec = np.reshape(mean_vec, (mean_vec.shape[1], 1))
-    x_hist_space = np.reshape(x_hist_space, (x_hist_space.shape[1], 1))
-    y_ticks = np.reshape(y_ticks, (y_ticks.shape[1], 1))
-    x_ticks = np.reshape(x_ticks, (x_ticks.shape[1], 1))
-    SLM_tools.cv_bias_correction(tfas_predict_mat_2=tfas_predict_mat_2, tfas_actually_mat_2=tfas_actually_mat_2,
-                                 hist_space=hist_space, mean_vec=mean_vec, x_hist_space=x_hist_space, x_ticks=x_ticks,
-                                 y_ticks=y_ticks, save_path=path)
-
-    def create_and_evaluate_stochastic_landscape():
-        pass
+    @staticmethod
+    def create_and_evaluate_stochastic_landscape(dir_path, n_components, downsampling_factor, target_num,
+                                                 time_vec_exists,cv_num,save_path):
+        current_datetime = datetime.now().strftime("%d/%m_%H:%M")
+        total_data_files = len(os.listdir(dir_path))
+        counters = {"load": [], "extraction": [], "segmentation": [],
+                    "pca": None, "N_extracted_features": [],
+                    "features_extracted": 0, "features_selected": 0,
+                    "total_runtime": 0, "files_with_target": 0, "log": [],
+                    }
+        C = []
+        for i, file in enumerate(os.listdir(dir_path)):
+            if os.path.isfile(file):
+                file_path = os.path.abspath(os.path.join(dir_path, file))
+                file_name, file_extension = os.path.splitext(file)
+                start1 = time.time()
+                values_vec, distance = SLM_tools.load_data(file_path, target_num, file_extension, time_vec_exists)
+                values_vec, distance_data, time_vec = SLM_tools.downsample(values_vec, distance,
+                                                                           downsampling_factor)
+                loading_time = round(time.time() - start1, 3)
+                log1 = f"\nfile {i + 1}/{total_data_files}  loaded: {file_name} Loading time: {loading_time} seconds"
+                counters["log"].append(log1)
+                counters["load"].append(loading_time)
+                start2 = time.time()
+                o, cp, mean_trend = SLM_tools.beast(values_vec)
+                segmentation_time = round(time.time() - start2, 3)
+                log2 = f"\nfinished segmentation(Beast), runtime: {segmentation_time} seconds"
+                counters["log"].append(log2)
+                counters["segmentation"].append(segmentation_time)
+                start3 = time.time()
+                A = SLM_tools.segment_data(values_vec, distance_data, mean_trend, cp)
+                extraction_time = round(time.time() - start3, 3)
+                log = f"\nfinished feature extraction, runtime: {extraction_time} seconds"
+                counters["log"].append(log)
+                counters["extraction"].append(extraction_time)
+                log = f"\nTarget Reached? : {len(A) > 0}"
+                counters["log"].append(log)
+                if len(A) > 0:
+                    counters["files_with_target"] += 1
+                    counters["features_extracted"] += A[0].shape[0]
+                    counters["N_extracted_features"].append(A[0].shape[0])
+                    log3 = f"\nfiles_with_target: {counters['files_with_target']}/{total_data_files}"
+                    counters["log"].append(log3)
+                    log4 = f"\nTotal features_extracted: {counters['features_extracted']}"
+                    counters["log"].append(log4)
+                else:
+                    log5 = f"\nTarget Not Reached, No features extracted"
+                    counters["log"].append(log5)
+                C.append(A)
+                counters["total_runtime"] += (loading_time + extraction_time + segmentation_time)
+        log6 = f"\nFinished pre-pca processing,total runtime {counters['total_runtime']} for {total_data_files} files"
+        counters["log"].append(log6)
+        log7 = "\nsaved all processed data"
+        counters["log"].append(log7)
+        start_pca = time.time()
+        log8 = f"\nStarting PCA"
+        counters["log"].append(log8)
+        c_reduced = SLM_tools.post_beast_processing(C)
+        principal_components, score, latent = SLM_tools.pca(c_reduced, n_components)
+        a_reduced = SLM_tools.post_pca_processing(score, c_reduced, n_components)
+        counters["selected_features"] = a_reduced.shape[0]
+        runtime_pca = round(time.time() - start_pca, 3)
+        counters["pca"] = runtime_pca
+        counters["total_runtime"] += runtime_pca
+        log9 = f"\nFinished PCA runtime {runtime_pca} seconds"
+        counters["log"].append(log9)
+        sio.savemat(f"selected_features_{current_datetime}.mat", {'a_reduced': a_reduced})
+        log10 = (f"\nsaved all extracted features , "
+                 f"total extracted features {counters['features_extracted']} "
+                 f"total runtime {counters['total_runtime']} seconds")
+        counters["log"].append(log10)
+        counters["log"].append("SUMMARY")
+        log11 = (f"\nfiles {total_data_files} \nfiles_with_assembly: {counters['files_with_target']}"
+                 f"/{total_data_files} \nmean extracted features {np.mean(counters['extracted_features'])} "
+                 f"\ntotal extracted features {counters['features_extracted']} "
+                 f"\ntotal_selected_features {counters['selected_features']} "
+                 f"\ntotal runtime {counters['total_runtime']} seconds \nmean loading time {np.mean(counters['load'])} "
+                 f"\nmean segmentation time {np.mean(counters['segmentation'])} "
+                 f"\nmean extraction time {np.mean(counters['extraction'])} \nPCA time {counters['pca']}")
+        counters["log"].append(log11)
+        with open(f"run_log{current_datetime}.txt", 'w') as f:
+            for line in counters["log"]:
+                f.write(line)
+        YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat = SLM_tools.model_training_with_cv(a_reduced , n_components, cv_num)
+        SLM_tools.build_2d_and_draw(a_reduced, save_path)
+        mean_vec, std_vec, hist_space, x_hist_space, x_ticks, y_ticks = SLM_tools.model_eval(tfas_predict_mat,
+                                                                                             tfas_actually_mat, cv_num,
+                                                                                             save_path)
+        tfas_predict_mat_2, tfas_actually_mat_2, mean_error_mat_2 = SLM_tools.train_again_on_validation_and_test(a_reduced, n_components)
+        hist_space = np.reshape(hist_space, (hist_space.shape[1], 1))
+        mean_vec = np.reshape(mean_vec, (mean_vec.shape[1], 1))
+        x_hist_space = np.reshape(x_hist_space, (x_hist_space.shape[1], 1))
+        y_ticks = np.reshape(y_ticks, (y_ticks.shape[1], 1))
+        x_ticks = np.reshape(x_ticks, (x_ticks.shape[1], 1))
+        SLM_tools.cv_bias_correction(tfas_predict_mat_2, tfas_actually_mat_2,hist_space, mean_vec, x_hist_space,x_ticks, y_ticks, save_path)
