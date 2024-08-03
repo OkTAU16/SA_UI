@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17b92e97-7d9a-40f5-93c1-31481920e93d" name="Changes" comment="&quot;Working version 1!!!&quot;" />
+    <list default="true" id="17b92e97-7d9a-40f5-93c1-31481920e93d" name="Changes" comment="&quot;finished overall function for UI&quot;" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -409,7 +409,23 @@
       <option name="project" value="LOCAL" />
       <updated>1722689873182</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="&quot;finished overall function for UI&quot;">
+      <option name="closed" value="true" />
+      <created>1722702342138</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1722702342138</updated>
+    </task>
+    <task id="LOCAL-00027" summary="&quot;finished overall function for UI&quot;">
+      <option name="closed" value="true" />
+      <created>1722702447236</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1722702447236</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -457,9 +473,9 @@
     <MESSAGE value="&quot;fig2 graph 1 is good, boxplot doesn't work,&#10; look at michael's&quot;" />
     <MESSAGE value="&quot;finished line by line until multiple_boxplot else&quot;" />
     <MESSAGE value="&quot;done and checked, all that's left is to write the overall function&quot;" />
-    <MESSAGE value="&quot;finished overall function for UI&quot;" />
     <MESSAGE value="&quot;Working version 1!!!&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Working version 1!!!&quot;" />
+    <MESSAGE value="&quot;finished overall function for UI&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;finished overall function for UI&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
