@@ -19,7 +19,8 @@ import os
 import requests
 from kivy.animation import Animation
 from SLM_tools import *
-
+from kivy.clock import Clock
+from functools import partial
 
 #### HANDLING BACKGROUND DOWNLOAD ####
 def download_image(url, local_path):
@@ -470,15 +471,19 @@ class GraphScreen(Screen):
     def build(self):
         layout = FloatLayout()
         self.title = 'Intro'
-
-        first_graph_button = Button(text="Graph 1", font_name='times.ttf', bold=True, size_hint=(0.3, 0.3),
-                                    pos_hint={'center_x': 0.3, 'top': 0.65}, background_color=(0.25, 0.41, 0.88, 1))
-        second_graph_button = Button(text="Graph 2", font_name='times.ttf', bold=True, size_hint=(0.3, 0.3),
-                                     pos_hint={'center_x': 0.7, 'top': 0.65}, background_color=(0.25, 0.41, 0.88, 1))
+        ['Stochastic_Landscape_2D.png', 'Predictions_Scatter_and_Hist.png', 'Predictor_Eval.png']
+        first_graph_button = Button(text="'Stochastic Landscape 2D", font_name='times.ttf', bold=True, size_hint=(0.25, 0.25),
+                                    pos_hint={'center_x': 0.20, 'top': 0.65}, background_color=(0.25, 0.41, 0.88, 1))
+        second_graph_button = Button(text="Predictions_Scatter_and_Hist", font_name='times.ttf', bold=True, size_hint=(0.25, 0.25),
+                                     pos_hint={'center_x': 0.5, 'top': 0.65}, background_color=(0.25, 0.41, 0.88, 1))
+        third_graph_button = Button(text="Predictor_Eval", font_name='times.ttf', bold=True,size_hint=(0.25, 0.25),
+                                     pos_hint={'center_x': 0.8, 'top': 0.65}, background_color=(0.25, 0.41, 0.88, 1))
         layout.add_widget(first_graph_button)
         layout.add_widget(second_graph_button)
+        layout.add_widget(third_graph_button)
         first_graph_button.bind(on_release=lambda btn: self.show_image_popup(0))
         second_graph_button.bind(on_release=lambda btn: self.show_image_popup(1))
+        third_graph_button.bind(on_release=lambda btn: self.show_image_popup(2))
 
         # model_button = Button(text="SLM model", font_name='times.ttf', bold=True, size_hint=(0.36, 0.1),
         #                            pos_hint={'center_x': 0.5, 'top': 0.4})
@@ -525,7 +530,7 @@ class GuiApp(App):
         self.down_sample_factor = None
         self.particle_clusters = 3
         self.save_path = None
-        self.graph_names = ['table1.png', 'table1.png']
+        self.graph_names = ['stochastic_landscape_2d.png', 'predictions_scatter_and_hist.png','predictor_eval.png']
         #TODO: CHANGE TO REAL GRAPHS NAMES
         self.submit_flag = 0
 
@@ -751,21 +756,60 @@ class GuiApp(App):
         popup.dismiss()
         print(f"Data variable name set to: {self.mat_variable_name}")
 
+    # def submit_dropped_file(self, instance):
+    #     main_screen = self.sm.get_screen('main')
+    #     if self.submit_flag == 0:
+    #         main_screen.test_label.text = "Testing is required. \n please fill all required fields and press the test button"
+    #         main_screen.test_label.color = (1, 0, 0, 1)  # Red color for errors
+    #     elif self.submit_flag == 1:
+    #         try:
+    #             self.show_gif_popup()
+    #             SLM_tools.create_and_evaluate_stochastic_landscape(self.file_path, self.particle_clusters,
+    #                                                                self.down_sample_factor, self.target_num,
+    #                                                                self.include_time, self.CV_num, self.save_path,
+    #                                                                data_variable_name=self.mat_variable_name)
+    #             self.show_popup("Running is complete")
+    #         except Exception as e:
+    #             self.show_popup(f"An exception occurred: {e}")
+    #
+    # def show_gif_popup(self):
+    #     gif_image = Image(source='loading.gif', anim_delay=0.05)
+    #     popup = Popup(title='GIF Popup', content=gif_image, size_hint=(0.8, 0.8))
+    #     anim = Animation(duration=1)
+    #     anim.start(gif_image)
+    #     popup.open()
+
     def submit_dropped_file(self, instance):
         main_screen = self.sm.get_screen('main')
         if self.submit_flag == 0:
             main_screen.test_label.text = "Testing is required. \n please fill all required fields and press the test button"
             main_screen.test_label.color = (1, 0, 0, 1)  # Red color for errors
         elif self.submit_flag == 1:
-            try:
-                self.show_popup("Running")
-                SLM_tools.create_and_evaluate_stochastic_landscape(self.file_path, self.particle_clusters,
-                                                                   self.down_sample_factor, self.target_num,
-                                                                   self.include_time, self.CV_num, self.save_path,
-                                                                   data_variable_name=self.mat_variable_name)
-                self.show_popup("Running is complete")
-            except Exception as e:
-                self.show_popup(f"An exception occurred: {e}")
+            self.show_gif_popup(start_process=True)
+
+    def show_gif_popup(self, start_process=False):
+        gif_image = Image(source='loading.gif', anim_delay=0.05)
+        self.popup = Popup(title='Processing...', content=gif_image, size_hint=(0.8, 0.8))
+        anim = Animation(duration=0.1)
+        anim.start(gif_image)
+        self.popup.open()
+
+        if start_process:
+            Clock.schedule_once(self.start_processing, 0.2)
+
+    def start_processing(self, dt):
+        try:
+            SLM_tools.create_and_evaluate_stochastic_landscape(self.file_path, self.particle_clusters,
+                                                               self.down_sample_factor, self.target_num,
+                                                               self.include_time, self.CV_num, self.save_path,
+                                                               data_variable_name=self.mat_variable_name)
+            Clock.schedule_once(partial(self.processing_complete, "Running is complete"), 0)
+        except Exception as e:
+            Clock.schedule_once(partial(self.processing_complete, f"An exception occurred: {e}"), 0)
+
+    def processing_complete(self, message, dt):
+        self.popup.dismiss()
+        self.show_popup(message)
 
     def show_popup(self, message):
         content = BoxLayout(orientation='vertical')

@@ -359,13 +359,14 @@ class SLM_tools:
         YI = scipy.signal.convolve(YI, k, mode='same', method='direct')
         YI = scipy.signal.convolve(YI, k, mode='same', method='direct')
         YI[np.isnan(YI)] = np.log(5 * 10 ** 3)
-        fig0, ax = plt.subplots()
-        ax.imshow(YI, cmap='jet')
-        fig0.colorbar(plt.cm.ScalarMappable(cmap='jet'), ax=ax)
+        fig, ax = plt.subplots(figsize=(5, 5))
+        im = ax.imshow(YI, cmap='jet')
+        fig.colorbar(im, ax=ax)
         ax.set_title('Predictor Space in 2D')
         ax.set_xticks([])
         ax.set_yticks([])
-        fig0.savefig(os.path.join(save_path, 'stochastic_landscape_2d.png'))
+        plt.savefig(os.path.join(save_path, 'stochastic_landscape_2d.png'))
+        plt.close(fig)
 
     @staticmethod
     def model_eval(tfas_predict_mat, tfas_actually_mat, cv_num, save_path):
@@ -456,6 +457,7 @@ class SLM_tools:
         b.set_xlabel("Center of Predictor bin")
         b.legend(loc='upper right')
         fig_1.savefig(os.path.join(save_path, 'predictions_scatter_and_hist.png'))
+        plt.close(fig_1)
         return mean_vec, std_vec, hist_space, x_hist_space, x_ticks, y_ticks
 
     @staticmethod
@@ -657,7 +659,7 @@ class SLM_tools:
         cv_offset[np.isnan(cv_offset)] = 0
         cv_corrected_x = np.zeros_like(x)
         new_y = np.zeros(y.shape)
-        fig_2 = plt.figure(figsize=(7, 14))
+        fig_2 = plt.figure(2,figsize=(7, 14))
         a = fig_2.add_subplot(3, 1, 1)
         b = fig_2.add_subplot(3, 1, 2)
         c = fig_2.add_subplot(3, 1, 3)
@@ -759,7 +761,8 @@ class SLM_tools:
                                      x_hist_space=x_hist_space_2
                                      )
         fig_2.colorbar(plt.cm.ScalarMappable(cmap='cool'), ax=c)
-        fig_2.savefig(os.path.join(save_path, 'fig_2.png'), bbox_inches='tight')
+        fig_2.savefig(os.path.join(save_path, 'predictor_eval.png'), bbox_inches='tight')
+        plt.close(fig_2)
 
     @staticmethod
     def create_and_evaluate_stochastic_landscape(dir_path, n_components, downsampling_factor, target_num,
@@ -852,11 +855,14 @@ class SLM_tools:
                  f"\nTotal Runtime {counters['total_runtime']} seconds ")
         counters["log"].append(log11)
         print(log11)
-        with open(f"run_log_{current_datetime}.txt", 'w') as f:
+        log_path = os.path.join(save_path, f"preprocessing_log_{current_datetime}.txt")
+        with open(log_path, 'w') as f:
             for line in counters["log"]:
                 f.write(line)
         print("Training start")
-        YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat,random_x = SLM_tools.model_training_with_cv(a_reduced , n_components, int(cv_num))
+        YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat,random_x = SLM_tools.model_training_with_cv(a_reduced,
+                                                                                                            n_components,
+                                                                                                            int(cv_num))
         SLM_tools.draw_stochastic_landscape_2d(random_x, save_path, n_components)
         print("Eval 1 start")
         mean_vec, std_vec, hist_space, x_hist_space, x_ticks, y_ticks = SLM_tools.model_eval(tfas_predict_mat,
