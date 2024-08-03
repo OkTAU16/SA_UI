@@ -705,9 +705,19 @@ class GuiApp(App):
         elif self.submit_flag == 1:
             try:
                 SLM_tools.create_and_evaluate_stochastic_landscape(self.file_path,self.particle_clusters,self.down_sample_factor,self.target_num,self.include_time,self.CV_num,self.save_path)
+                self.show_popup("Running is complete")
             except:
                 print("An exception occurred")
 
+    def show_popup(self, message):
+        content = BoxLayout(orientation='vertical')
+        content.add_widget(Label(text=message))
+        close_button = Button(text="Close")
+        content.add_widget(close_button)
+
+        popup = Popup(title='Notification', content=content, size_hint=(0.6, 0.4))
+        close_button.bind(on_release=popup.dismiss)
+        popup.open()
 
     def fill_all_data(self):
         """
