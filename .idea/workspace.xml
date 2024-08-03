@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="17b92e97-7d9a-40f5-93c1-31481920e93d" name="Changes" comment="&quot;finished overall function for UI&quot;" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jupyter Notebook" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="version1" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;OkTAU16&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/OkTAU16/SA_UI&quot;,
+    &quot;accountId&quot;: &quot;d2c38894-1c09-4f1c-8239-de30a61eadac&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2hXnj8mn5kKXvENDFYHtvNmUski" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.SLM_UI.executor": "Run",
+    "Python.SLM_tools.executor": "Debug",
+    "Python.testing2.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/User/OneDrive - mail.tau.ac.il/Desktop",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.updates",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\OneDrive - mail.tau.ac.il\Desktop" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\testing data\mu_1_6" />
+      <recent name="C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\testing data" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.SLM_tools">
+    <configuration name="SLM_UI" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SA_UI" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SLM_UI.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SLM_tools" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SA_UI" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SLM_tools.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="testing2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SA_UI" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/not_used" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/not_used/testing2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.testing2" />
+        <item itemvalue="Python.SLM_UI" />
+        <item itemvalue="Python.SLM_tools" />
+        <item itemvalue="Python.SLM_UI" />
+        <item itemvalue="Python.SLM_tools" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PY-241.17011.127" />
+        <option value="bundled-python-sdk-48aec45f0201-7e9c3bbb6e34-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.17011.127" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="17b92e97-7d9a-40f5-93c1-31481920e93d" name="Changes" comment="&quot;completed SLM_tools.beast and started SLM_tools.segment_data &quot;" />
+      <created>1717749425444</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1717749425444</updated>
+      <workItem from="1717749427619" duration="48000" />
+      <workItem from="1717749489133" duration="49000" />
+      <workItem from="1717749748809" duration="961000" />
+      <workItem from="1717834208039" duration="8089000" />
+      <workItem from="1718108833106" duration="2605000" />
+      <workItem from="1718451168842" duration="5964000" />
+      <workItem from="1718796635386" duration="18913000" />
+      <workItem from="1719119568155" duration="6034000" />
+      <workItem from="1719401278847" duration="8646000" />
+      <workItem from="1719667830962" duration="1706000" />
+      <workItem from="1719670922031" duration="9905000" />
+      <workItem from="1719854179504" duration="1707000" />
+      <workItem from="1720610644368" duration="18899000" />
+      <workItem from="1720767112182" duration="9721000" />
+      <workItem from="1721218311104" duration="14434000" />
+      <workItem from="1721468171328" duration="13112000" />
+      <workItem from="1721806713291" duration="12564000" />
+      <workItem from="1721838323326" duration="612000" />
+      <workItem from="1721839068828" duration="1257000" />
+      <workItem from="1721842115025" duration="1131000" />
+      <workItem from="1721844647516" duration="1359000" />
+      <workItem from="1721847457149" duration="890000" />
+      <workItem from="1721848534115" duration="804000" />
+      <workItem from="1721915591502" duration="26992000" />
+      <workItem from="1722054378206" duration="62066000" />
+      <workItem from="1722227702431" duration="1403000" />
+      <workItem from="1722277469410" duration="7354000" />
+      <workItem from="1722355426988" duration="38415000" />
+      <workItem from="1722571783540" duration="35969000" />
+      <workItem from="1722673857204" duration="14170000" />
+    </task>
+    <task id="LOCAL-00001" summary="&quot;minor fixes &quot;">
+      <option name="closed" value="true" />
+      <created>1717845577000</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1717845577000</updated>
+    </task>
+    <task id="LOCAL-00002" summary="&quot;started pre_model_processing &quot;">
+      <option name="closed" value="true" />
+      <created>1717947136396</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1717947136396</updated>
+    </task>
+    <task id="LOCAL-00003" summary="&quot;finished model_training_with_cv, started model_eval&quot;">
+      <option name="closed" value="true" />
+      <created>1718805773416</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1718805773416</updated>
+    </task>
+    <task id="LOCAL-00004" summary="&quot;minor fixes&quot;">
+      <option name="closed" value="true" />
+      <created>1718806666670</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1718806666670</updated>
+    </task>
+    <task id="LOCAL-00005" summary="&quot;translated up to Line 732 Matlab&quot;">
+      <option name="closed" value="true" />
+      <created>1718968236575</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1718968236575</updated>
+    </task>
+    <task id="LOCAL-00006" summary="&quot;minor fixes&quot;">
+      <option name="closed" value="true" />
+      <created>1719064566677</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1719064566677</updated>
+    </task>
+    <task id="LOCAL-00007" summary="&quot;added save_model to SLM_tools&#10;&quot;">
+      <option name="closed" value="true" />
+      <created>1719135066026</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1719135066026</updated>
+    </task>
+    <task id="LOCAL-00008" summary="&quot;minor fixes&#10;&quot;">
+      <option name="closed" value="true" />
+      <created>1719657564470</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1719657564470</updated>
+    </task>
+    <task id="LOCAL-00009" summary="&quot;minor fixes&#10;&quot;">
+      <option name="closed" value="true" />
+      <created>1719669788930</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1719669788930</updated>
+    </task>
+    <task id="LOCAL-00010" summary="&quot;minor fixes&#10;&quot;">
+      <option name="closed" value="true" />
+      <created>1719669815032</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1719669815032</updated>
+    </task>
+    <task id="LOCAL-00011" summary="&quot;minor fixes&quot;">
+      <option name="closed" value="true" />
+      <created>1719671379660</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1719671379660</updated>
+    </task>
+    <task id="LOCAL-00012" summary="&quot;created testing data, started QA on segment_data&quot;">
+      <option name="closed" value="true" />
+      <created>1720625400668</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1720625400668</updated>
+    </task>
+    <task id="LOCAL-00013" summary="&quot;changed gitignore&quot;">
+      <option name="closed" value="true" />
+      <created>1720625558576</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1720625558576</updated>
+    </task>
+    <task id="LOCAL-00014" summary="&quot;finished figure1 and figure 2.1,2.2&quot;">
+      <option name="closed" value="true" />
+      <created>1721464223157</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1721464223157</updated>
+    </task>
+    <task id="LOCAL-00015" summary="&quot;finished figure 2.3&quot;">
+      <option name="closed" value="true" />
+      <created>1721466041724</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1721466041724</updated>
+    </task>
+    <task id="LOCAL-00016" summary="&quot;QA until training, currently YI is all nan, because X.shape[0] is way smaller then XI.shape[0]&quot;">
+      <option name="closed" value="true" />
+      <created>1721852298849</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1721852298849</updated>
+    </task>
+    <task id="LOCAL-00017" summary="&quot;finished QA and graph until model_eval,start from checking train 2 &quot;">
+      <option name="closed" value="true" />
+      <created>1722101359121</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1722101359121</updated>
+    </task>
+    <task id="LOCAL-00018" summary="&quot;minor cosmetic changes in fig1.plot2&quot;">
+      <option name="closed" value="true" />
+      <created>1722102056306</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1722102056306</updated>
+    </task>
+    <task id="LOCAL-00019" summary="&quot;working perfectly until cv_bias_correction &quot;">
+      <option name="closed" value="true" />
+      <created>1722266219088</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1722266219088</updated>
+    </task>
+    <task id="LOCAL-00020" summary="&quot;fig2 graph 1 is good, boxplot doesn't work,&#10; look at michael's&quot;">
+      <option name="closed" value="true" />
+      <created>1722283641220</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1722283641220</updated>
+    </task>
+    <task id="LOCAL-00021" summary="&quot;finished line by line until multiple_boxplot else&quot;">
+      <option name="closed" value="true" />
+      <created>1722368235064</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1722368235064</updated>
+    </task>
+    <task id="LOCAL-00022" summary="&quot;done and checked, all that's left is to write the overall function&quot;">
+      <option name="closed" value="true" />
+      <created>1722451771807</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1722451771807</updated>
+    </task>
+    <task id="LOCAL-00023" summary="&quot;done and checked, all that's left is to write the overall function&quot;">
+      <option name="closed" value="true" />
+      <created>1722451890038</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1722451890038</updated>
+    </task>
+    <task id="LOCAL-00024" summary="&quot;finished overall function for UI&quot;">
+      <option name="closed" value="true" />
+      <created>1722573931041</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1722573931041</updated>
+    </task>
+    <task id="LOCAL-00025" summary="&quot;finished overall function for UI&quot;">
+      <option name="closed" value="true" />
+      <created>1722689873182</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1722689873182</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="GitHub.CommitStatus" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="&quot;completed SLM_tools.beast and started SLM_tools.segment_data &quot;" />
+    <MESSAGE value="&quot;minor fixes &quot;" />
+    <MESSAGE value="&quot;started pre_model_processing &quot;" />
+    <MESSAGE value="&quot;finished model_training_with_cv, started model_eval&quot;" />
+    <MESSAGE value="&quot;translated up to Line 732 Matlab&quot;" />
+    <MESSAGE value="&quot;added save_model to SLM_tools&#10;&quot;" />
+    <MESSAGE value="&quot;minor fixes&#10;&quot;" />
+    <MESSAGE value="&quot;minor fixes&quot;" />
+    <MESSAGE value="&quot;created testing data, started QA on segment_data&quot;" />
+    <MESSAGE value="&quot;changed gitignore&quot;" />
+    <MESSAGE value="&quot;finished figure1 and figure 2.1,2.2&quot;" />
+    <MESSAGE value="&quot;finished figure 2.3&quot;" />
+    <MESSAGE value="&quot;QA until training, currently YI is all nan, because X.shape[0] is way smaller then XI.shape[0]&quot;" />
+    <MESSAGE value="&quot;finished QA and graph until model_eval,start from checking train 2 &quot;" />
+    <MESSAGE value="&quot;minor cosmetic changes in fig1.plot2&quot;" />
+    <MESSAGE value="&quot;working perfectly until cv_bias_correction &quot;" />
+    <MESSAGE value="&quot;fig2 graph 1 is good, boxplot doesn't work,&#10; look at michael's&quot;" />
+    <MESSAGE value="&quot;finished line by line until multiple_boxplot else&quot;" />
+    <MESSAGE value="&quot;done and checked, all that's left is to write the overall function&quot;" />
+    <MESSAGE value="&quot;finished overall function for UI&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;finished overall function for UI&quot;" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
+          <url>notebook://C:/Users/User/OneDrive - mail.tau.ac.il/Documents/SA_UI/not_used/testing.ipynb</url>
+          <line>34</line>
+          <option name="timeStamp" value="115" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SA_UI$SLM_UI.coverage" NAME="SLM_UI Coverage Results" MODIFIED="1722689982982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SLM_tools_py$tests.coverage" NAME="tests Coverage Results" MODIFIED="1713613082475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/not_used" />
+    <SUITE FILE_PATH="coverage/SLM_tools_py$SLM_tools.coverage" NAME="SLM_tools Coverage Results" MODIFIED="1709374868348" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SA_UI$SLM_tools.coverage" NAME="SLM_tools Coverage Results" MODIFIED="1722612708655" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SA_UI$testing2.coverage" NAME="testing2 Coverage Results" MODIFIED="1722413123073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/not_used" />
+  </component>
+</project>
