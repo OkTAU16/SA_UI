@@ -17,6 +17,7 @@ from kivy.uix.popup import Popup
 from kivy.metrics import sp
 import os
 import requests
+from SLM_tools import *
 
 #### HANDLING BACKGROUND DOWNLOAD ####
 def download_image(url, local_path):
@@ -33,8 +34,11 @@ def download_image(url, local_path):
         else:
             print(f"Failed to download {url}. Status code: {response.status_code}")
 
-image_url = "https://github.com/OkTAU16/SA_UI/raw/feature/slm_ui/SLM_logo_adjusted.png"
-image_url_graphs = "https://github.com/OkTAU16/SA_UI/raw/feature/slm_ui/SLM%20_logo.png"
+#image_url = "https://github.com/OkTAU16/SA_UI/raw/feature/slm_ui/SLM_logo_adjusted.png"
+image_url = "https://github.com/OkTAU16/SA_UI/raw/main/SLM_logo_adjusted.png"
+#image_url_graphs = "https://github.com/OkTAU16/SA_UI/raw/feature/slm_ui/SLM%20_logo.png"
+image_url_graphs = "https://github.com/OkTAU16/SA_UI/raw/main/SLM%20_logo.png"
+#https://github.com/OkTAU16/SA_UI/blob/main/SLM_logo_adjusted.png
 # Local path to save the image
 local_image_path = "SLM_logo_adjusted.png"
 local_image_path_graphs = "SLM_logo.png"
@@ -485,14 +489,16 @@ class GuiApp(App):
     def __init__(self, **kwargs):
         super().__init__()
         self.sm = None
+        self.include_time = False
         self.file_path = None
         self.drop_area_height = None
         self.drop_area_width = None
         self.drop_area_y = None
         self.drop_area_x = None
         self.cluster_num = None
-        self.CV_num = 3
+        self.CV_num = 10
         self.target_num = None
+        self.down_sample_factor = None
         self.particle_clusters = 3
         self.save_path = None
         self.graph_names = ['table1.png', 'table1.png']
@@ -547,14 +553,23 @@ class GuiApp(App):
         main_screen = self.sm.get_screen('main')
         user_input = main_screen.down_sample_input.text
         if user_input:
-            self.cluster_num = user_input
-            print(self.cluster_num)
+            self.down_sample_factor = user_input
+            print(self.down_sample_factor)
             main_screen.down_sample_input.foreground_color = (0, 0.6, 0, 1)  # RGBA for green
             main_screen.down_sample_input.background_color = (0.6, 1, 0.9, 1)
         else:
-            self.cluster_num = None
-            print(self.cluster_num)
+            self.down_sample_factor = None
+            print(self.down_sample_factor)
             main_screen.down_sample_input.foreground_color = (0, 0, 0, 1)  # RGBA for default color
+
+    def include_time_series(self, instance):
+        main_screen = self.sm.get_screen('main')
+        if instance ==main_screen.button_time_series_yes and instance.state == 'down':
+            self.include_time = True
+        elif instance == main_screen.button_time_series_no and instance.state == 'down':
+            self.include_time = False
+        else:
+            self.include_time = False
 
     def CV_show(self, instance):
         # Show or hide TextInput and V button based on selected radio button
@@ -596,9 +611,11 @@ class GuiApp(App):
     def particle_clusters_select(self, spinner, text):
         main_screen = self.sm.get_screen('main')
         if text == "Default":
-            main_screen.particle_clusters = 2
+            main_screen.particle_clusters = 3
+            self.particle_clusters = main_screen.particle_clusters
         else:
             main_screen.particle_clusters = int(text)
+            self.particle_clusters = main_screen.particle_clusters
         print(f"Selected number of clusters: {main_screen.particle_clusters}")
 
     def target_submit(self, instance):
@@ -686,7 +703,11 @@ class GuiApp(App):
             main_screen.test_label.text = "Testing is required. \n please fill all required fields and press the test button"
             main_screen.test_label.color = (1, 0, 0, 1)  # Red color for errors
         elif self.submit_flag == 1:
-            pass
+            try:
+                SLM_tools.create_and_evaluate_stochastic_landscape(self.file_path,self.particle_clusters,self.down_sample_factor,self.target_num,self.include_time,self.CV_num,self.save_path)
+            except:
+                print("An exception occurred")
+
 
     def fill_all_data(self):
         """
@@ -702,7 +723,7 @@ class GuiApp(App):
         # Check down_sample
         if not (main_screen.button_down_sample_yes.state == 'down' or main_screen.button_down_sample_no.state == 'down'):
             errors.append("down_sample option not selected.")
-        elif main_screen.button_down_sample_yes.state == 'down' and self.cluster_num is None:
+        elif main_screen.button_down_sample_yes.state == 'down' and self.down_sample_factor is None:
             errors.append("Number of clusters for down_sample not entered.")
 
         # Check CV
