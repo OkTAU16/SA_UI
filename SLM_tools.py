@@ -18,37 +18,43 @@ import os
 
 class SLM_tools:
     @staticmethod
-    def load_data(data_path: str,data_variable_name, target_num, data_type='csv', time_vec_exists=False):
+    def load_data(data_path: str, data_variable_name, target_num, data_type='csv', time_vec_exists=False):
         try:
             if data_type == 'csv':
-                values_vec = pd.read_csv(data_path, usecols=[1], header=None).to_numpy()
                 if time_vec_exists:
                     time_vec = pd.read_csv(data_path, usecols=[0]).to_numpy()
+                    values_vec = pd.read_csv(data_path, usecols=[1], header=None).to_numpy()
                     distance_columns = list(range(2, 2 + target_num))
                     distance = pd.read_csv(data_path, usecols=distance_columns, header=None).to_numpy()
                     return values_vec, time_vec, distance
-                distance_columns = list(range(1, 1 + target_num))
-                distance = pd.read_csv(data_path, usecols=distance_columns, header=None).to_numpy()
-                return values_vec, distance
+                else:
+                    values_vec = pd.read_csv(data_path, usecols=[0], header=None).to_numpy()
+                    distance_columns = list(range(1, 1 + target_num))
+                    distance = pd.read_csv(data_path, usecols=distance_columns, header=None).to_numpy()
+                    return values_vec, distance
             elif data_type == 'excel':
-                values_vec = pd.read_excel(data_path, usecols=[0], header=None).to_numpy()
                 if time_vec_exists:
-                    time_vec = pd.read_excel(data_path, usecols=[1], header=None).to_numpy()
+                    time_vec = pd.read_excel(data_path, usecols=[0], header=None).to_numpy()
+                    values_vec = pd.read_excel(data_path, usecols=[1], header=None).to_numpy()
                     distance_columns = list(range(2, 2 + target_num))
                     distance = pd.read_excel(data_path, usecols=distance_columns, header=None).to_numpy()
                     return values_vec, time_vec, distance
-                distance_columns = list(range(1, 1 + target_num))
-                distance = pd.read_excel(data_path, usecols=distance_columns, header=None).to_numpy()
-                return values_vec, distance
+                else:
+                    values_vec = pd.read_excel(data_path, usecols=[0], header=None).to_numpy()
+                    distance_columns = list(range(1, 1 + target_num))
+                    distance = pd.read_excel(data_path, usecols=distance_columns, header=None).to_numpy()
+                    return values_vec, distance
             elif data_type == '.mat':
                 dict_data = sio.loadmat(data_path)
-                values_vec = dict_data[data_variable_name][:, 1]
                 if time_vec_exists:
                     time_vec = dict_data[data_variable_name][:, 0]
+                    values_vec = dict_data[data_variable_name][:, 1]
                     distance = dict_data[data_variable_name][:, 2:2 + target_num]
                     return values_vec, time_vec, distance
-                distance = dict_data[data_variable_name][:, 1:1 + target_num]
-                return values_vec, distance
+                else:
+                    values_vec = dict_data[data_variable_name][:, 0]
+                    distance = dict_data[data_variable_name][:, 1:1 + target_num]
+                    return values_vec, distance
             else:
                 raise Exception("file type is not supported")
         except Exception as e:
@@ -757,7 +763,7 @@ class SLM_tools:
 
     @staticmethod
     def create_and_evaluate_stochastic_landscape(dir_path, n_components, downsampling_factor, target_num,
-                                                 time_vec_exists, cv_num, save_path):
+                                                 time_vec_exists, cv_num, save_path, data_variable_name):
         current_datetime = datetime.now().strftime("%d_%m_%H_%M")
         total_data_files = len(os.listdir(dir_path))
         counters = {"load": [], "extraction": [], "segmentation": [],
@@ -767,39 +773,47 @@ class SLM_tools:
                     }
         C = []
         for i, file in enumerate(os.listdir(dir_path)):
-            if os.path.isfile(file):
-                file_path = os.path.abspath(os.path.join(dir_path, file))
+            file_path = os.path.abspath(os.path.join(dir_path, file))
+            if os.path.isfile(file_path):
                 file_name, file_extension = os.path.splitext(file)
                 start1 = time.time()
-                values_vec, distance_data = SLM_tools.load_data(file_path, target_num, file_extension, time_vec_exists)
+                if not data_variable_name:
+                    data_variable_name = 'foo'
+                values_vec, distance_data = SLM_tools.load_data(file_path,data_variable_name, int(target_num), file_extension, time_vec_exists)
                 if downsampling_factor:
                     values_vec, distance_data, time_vec = SLM_tools.downsample(values_vec, distance_data,
                                                                                downsampling_factor)
+                values_vec = np.reshape(values_vec, (len(values_vec), 1))
+                distance_data = np.reshape(distance_data, (len(values_vec), int(target_num)))
                 loading_time = round(time.time() - start1, 3)
                 log1 = f"\nFile {file_name}, {i + 1}/{total_data_files}  loaded, Loading time: {loading_time} seconds"
                 counters["log"].append(log1)
                 counters["load"].append(loading_time)
+                print(log1)
                 start2 = time.time()
                 o, cp, mean_trend = SLM_tools.beast(values_vec)
                 segmentation_time = round(time.time() - start2, 3)
                 log2 = f"\nFinished Segmentation, runtime: {segmentation_time} seconds"
                 counters["log"].append(log2)
                 counters["segmentation"].append(segmentation_time)
+                print(log2)
                 start3 = time.time()
                 A = SLM_tools.feature_extraction(values_vec, distance_data, mean_trend, cp)
                 extraction_time = round(time.time() - start3, 3)
                 log = f"\nFinished feature extraction {file_name}, {i + 1}/{total_data_files}, runtime: {extraction_time} seconds"
                 counters["log"].append(log)
                 counters["extraction"].append(extraction_time)
+                print(log)
                 log = f"\nTarget Reached? : {len(A) > 0}"
                 counters["log"].append(log)
+                print(log)
                 if len(A) > 0:
                     counters["files_with_target"] += 1
                     counters["total_features_extracted"] += A[0].shape[0]
                     counters["N_extracted_features"].append(A[0].shape[0])
                     log3 = f"\nfiles_with_target: {counters['files_with_target']}/{total_data_files}"
                     counters["log"].append(log3)
-                    log4 = f"\nTotal features_extracted: {counters['features_extracted']}"
+                    log4 = f"\nTotal features_extracted: {counters['total_features_extracted']}"
                     counters["log"].append(log4)
                 else:
                     log5 = f"\nTarget Not Reached, No features extracted"
@@ -808,6 +822,7 @@ class SLM_tools:
                 counters["total_runtime"] += (loading_time + extraction_time + segmentation_time)
         log6 = f"\nFinished pre-processing,total runtime {counters['total_runtime']} for {total_data_files} files"
         counters["log"].append(log6)
+        print(log6)
         start_feature_selection = time.time()
         c_reduced = SLM_tools.feature_selection(C)
         principal_components, score, latent = SLM_tools.pca(c_reduced, n_components)
@@ -818,14 +833,17 @@ class SLM_tools:
         counters["total_runtime"] += runtime_feature_selection
         log9 = f"\nFinished Feature Selection runtime {runtime_feature_selection} seconds"
         counters["log"].append(log9)
-        sio.savemat(f"selected_features_{current_datetime}.mat", {'selected_features': a_reduced})
+        print(log9)
+        selected_features_path = os.path.join(save_path,f"selected_features_{current_datetime}.mat")
+        sio.savemat(selected_features_path, {'selected_features': a_reduced})
         log10 = f"\nSaved all selected_features"
+        print(log10)
         counters["log"].append(log10)
         counters["log"].append("SUMMARY")
         log11 = (f"\nFiles {total_data_files}"
                  f"\nFiles Where the Target was Reached {counters['files_with_target']}"
                  f"\nMean Extracted Features per file {np.mean(counters['N_extracted_features'])} "
-                 f"\nTotal Features Extracted {counters['features_extracted']}"
+                 f"\nTotal Features Extracted {counters['total_features_extracted']}"
                  f"\n{counters['selected_features']} Features Selected"
                  f"\nMean loading time per file {np.mean(counters['load'])} seconds"
                  f"\nMean segmentation time per file {np.mean(counters['segmentation'])} seconds"
@@ -833,13 +851,17 @@ class SLM_tools:
                  f"\nFeature selection time {counters['feature_selection']} seconds"
                  f"\nTotal Runtime {counters['total_runtime']} seconds ")
         counters["log"].append(log11)
+        print(log11)
         with open(f"run_log_{current_datetime}.txt", 'w') as f:
             for line in counters["log"]:
                 f.write(line)
-        YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat,random_x = SLM_tools.model_training_with_cv(a_reduced , n_components, cv_num)
+        print("Training start")
+        YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat,random_x = SLM_tools.model_training_with_cv(a_reduced , n_components, int(cv_num))
         SLM_tools.draw_stochastic_landscape_2d(random_x, save_path, n_components)
+        print("Eval 1 start")
         mean_vec, std_vec, hist_space, x_hist_space, x_ticks, y_ticks = SLM_tools.model_eval(tfas_predict_mat,
-                                                                                             tfas_actually_mat, cv_num,
+                                                                                             tfas_actually_mat, int(cv_num),
                                                                                              save_path)
         tfas_predict_mat_2, tfas_actually_mat_2, mean_error_mat_2 = SLM_tools.train_again_on_validation_and_test(a_reduced, n_components)
+        print("Eval 2 start")
         SLM_tools.cv_bias_correction(tfas_predict_mat_2, tfas_actually_mat_2,hist_space, mean_vec, x_hist_space,x_ticks, y_ticks, save_path)
