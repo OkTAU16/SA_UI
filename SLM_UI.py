@@ -47,8 +47,8 @@ image_url_graphs = "https://github.com/OkTAU16/SA_UI/raw/main/SLM%20_logo.png"
 local_image_path = "SLM_logo_adjusted.png"
 local_image_path_graphs = "SLM_logo.png"
 # Download the image
-download_image(image_url, local_image_path)
-download_image(image_url_graphs, local_image_path_graphs)
+# download_image(image_url, local_image_path)
+# download_image(image_url_graphs, local_image_path_graphs)
 
 
 #ggg
@@ -120,17 +120,17 @@ class IntroScreen(Screen):
 
         layout.add_widget(self.title_label)
 
-        self.instruction_label = Label(text="Welcome to the SLM algorithm! \n"
-                                            "The algorithm provides an analysis of trends in a  time series. \n"
-                                            "To use the algorithm, please upload your data as [u]'.mat'[/u], [u]'.csv'[/u] or [u]'.xslx'[/u] files.\n"
-                                            "Uploading multiple files in a folder is possible as well\n"
-                                            "The data should contain the following columns:\n"
-                                            "1. [u]Time Series[/u] (optional): time stamp for each sample.\n"
-                                            "Not needed for evenly spaced measurements.\n"
-                                            "2. [u]Total Energy[/u]: The observable variable of the experiment.\n"
-                                            "3. [u]Distance[/u]: distance from final target. At the final target, the distance should be equal to 0.\n"
-                                            "A distance column is needed for each target. \n"
-                                            "Click on the 'next' button at the bottom right corner to continue.",
+        self.instruction_label = Label(text="Welcome to the SLM algorithm!"
+                                            " \nThe algorithm provides an analysis of trends in a  time series."
+                                            " \nTo use the algorithm, please upload your data as [u]'.mat'[/u], [u]'.csv'[/u] or [u]'.xslx'[/u] files."
+                                            "\nUploading multiple files in a folder is possible as well"
+                                            "\nThe data file should contain the following columns:"
+                                            "1.\n[u]Time Series[/u] (optional): time stamp for each sample."
+                                            "\nNo need for evenly spaced measurements."
+                                            "2.\n[u]Value[/u]: The observable variable of the experiment."
+                                            "3.\n[u]Distance[/u]: distance from final target. At the final target, the distance should be equal to 0."
+                                            "\nA distance column is needed for each target."
+                                            "\nClick on the 'next' button at the bottom right corner to continue.",
                                        font_name='times.ttf', bold=True, size_hint=(None, None),
                                        font_size='18sp', markup=True,
                                        pos_hint={'center_x': 0.5, 'top': 0.65}, color=(0, 0, 0, 1), line_height=sp(0.9))
@@ -471,7 +471,6 @@ class GraphScreen(Screen):
     def build(self):
         layout = FloatLayout()
         self.title = 'Intro'
-        ['Stochastic_Landscape_2D.png', 'Predictions_Scatter_and_Hist.png', 'Predictor_Eval.png']
         first_graph_button = Button(text="'Stochastic Landscape 2D", font_name='times.ttf', bold=True, size_hint=(0.25, 0.25),
                                     pos_hint={'center_x': 0.20, 'top': 0.65}, background_color=(0.25, 0.41, 0.88, 1))
         second_graph_button = Button(text="Predictions_Scatter_and_Hist", font_name='times.ttf', bold=True, size_hint=(0.25, 0.25),
@@ -530,8 +529,7 @@ class GuiApp(App):
         self.down_sample_factor = None
         self.particle_clusters = 3
         self.save_path = None
-        self.graph_names = ['stochastic_landscape_2d.png', 'predictions_scatter_and_hist.png','predictor_eval.png']
-        #TODO: CHANGE TO REAL GRAPHS NAMES
+        self.graph_names = ['Stochastic Landscape 2D.png', 'Predictions Scatter and Histogram.png', 'Predictor Evaluation.png']
         self.submit_flag = 0
 
     def build(self):
