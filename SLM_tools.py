@@ -141,43 +141,8 @@ class SLM_tools:
         try:
             t = np.linspace(0, time[-1], len(data))
             data_new = np.interp(t, time, data)
-            # for i in range(distance.shape[1]):
-            #     distance[:, i] = np.interp(t, time, np.squeeze(distance[:, i]))
             return data_new, t
         except Exception as e:
-            raise e
-    # @staticmethod
-    # def interpolate_data_over_regular_time(data: np.array, distance: np.array, time: np.array):
-    #     """interpolate data over a regularly spaced time vector
-    #         inputs:
-    #             data (np.array): time series data
-    #             distance (np.array): distance data
-    #             time (np.array): time vector
-    #         outputs:
-    #             data_new (np.array): interpolated data over the regularly spaced time vector
-    #             distance_new (np.array): interpolated distance over the regularly spaced time vector
-    #             t (np.array): regularly spaced time vector"""
-    #     try:
-    #         t = np.linspace(0, time[-1], len(data))
-    #         data_new = np.interp(t, time, data)
-    #
-    #         distance_new = np.zeros_like(distance)
-    #         for i in range(distance.shape[1]):
-    #             # Create a mask for non-zero values
-    #             non_zero_mask = distance[:, i] != 0
-    #
-    #             # Interpolate only non-zero values
-    #             non_zero_times = time[non_zero_mask]
-    #             non_zero_distances = distance[non_zero_mask, i]
-    #
-    #             if len(non_zero_times) > 0:
-    #                 interpolated = np.interp(t, non_zero_times, non_zero_distances, left=0, right=0)
-    #
-    #                 # Apply the interpolated values only where original values were non-zero
-    #                 distance_new[:, i] = np.where(np.interp(t, time, non_zero_mask), interpolated, 0)
-    #
-    #         return data_new, distance_new, t
-    #     except Exception as e:
             raise e
 
     @staticmethod
