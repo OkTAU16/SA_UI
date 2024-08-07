@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17b92e97-7d9a-40f5-93c1-31481920e93d" name="Changes" comment="&quot;finished overall function for UI&quot;" />
+    <list default="true" id="17b92e97-7d9a-40f5-93c1-31481920e93d" name="Changes" comment="&quot;finished overall function for UI&quot;">
+      <change afterPath="$PROJECT_DIR$/loading.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SLM_UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/SLM_UI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SLM_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/SLM_tools.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,22 +64,23 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Python.SLM_UI.executor": "Run",
-    "Python.SLM_tools.executor": "Debug",
+    "Python.SLM_UI.executor": "Debug",
+    "Python.SLM_tools.executor": "Run",
     "Python.testing2.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/User/OneDrive - mail.tau.ac.il/Desktop",
+    "last_opened_file_path": "C:/Users/User/OneDrive - mail.tau.ac.il/Documents/SA_UI",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.updates",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI" />
       <recent name="C:\Users\User\OneDrive - mail.tau.ac.il\Desktop" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -82,7 +88,7 @@
       <recent name="C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\testing data" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.SLM_tools">
+  <component name="RunManager" selected="Python.SLM_UI">
     <configuration name="SLM_UI" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SA_UI" />
       <option name="ENV_FILES" value="" />
@@ -154,9 +160,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.testing2" />
         <item itemvalue="Python.SLM_UI" />
         <item itemvalue="Python.SLM_tools" />
+        <item itemvalue="Python.testing2" />
         <item itemvalue="Python.SLM_UI" />
         <item itemvalue="Python.SLM_tools" />
       </list>
@@ -208,6 +214,9 @@
       <workItem from="1722355426988" duration="38415000" />
       <workItem from="1722571783540" duration="35969000" />
       <workItem from="1722673857204" duration="14170000" />
+      <workItem from="1722748748600" duration="7051000" />
+      <workItem from="1722773830317" duration="12699000" />
+      <workItem from="1723019649720" duration="18095000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;minor fixes &quot;">
       <option name="closed" value="true" />
@@ -425,7 +434,23 @@
       <option name="project" value="LOCAL" />
       <updated>1722702447236</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="&quot;finished overall function for UI&quot;">
+      <option name="closed" value="true" />
+      <created>1722703189328</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1722703189328</updated>
+    </task>
+    <task id="LOCAL-00029" summary="&quot;finished overall function for UI&quot;">
+      <option name="closed" value="true" />
+      <created>1723020273557</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1723020273557</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -485,14 +510,29 @@
           <line>34</line>
           <option name="timeStamp" value="115" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
+          <url>notebook://C:/Users/User/OneDrive - mail.tau.ac.il/Documents/SA_UI/testing.ipynb</url>
+          <line>166</line>
+          <option name="timeStamp" value="123" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
+          <url>notebook://C:/Users/User/OneDrive - mail.tau.ac.il/Documents/SA_UI/testing.ipynb</url>
+          <line>276</line>
+          <option name="timeStamp" value="124" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SLM_tools.py</url>
+          <line>1301</line>
+          <option name="timeStamp" value="116" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SA_UI$SLM_UI.coverage" NAME="SLM_UI Coverage Results" MODIFIED="1722701941852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SA_UI$SLM_UI.coverage" NAME="SLM_UI Coverage Results" MODIFIED="1723036815832" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SLM_tools_py$tests.coverage" NAME="tests Coverage Results" MODIFIED="1713613082475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/not_used" />
     <SUITE FILE_PATH="coverage/SLM_tools_py$SLM_tools.coverage" NAME="SLM_tools Coverage Results" MODIFIED="1709374868348" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SA_UI$SLM_tools.coverage" NAME="SLM_tools Coverage Results" MODIFIED="1722612708655" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SA_UI$SLM_tools.coverage" NAME="SLM_tools Coverage Results" MODIFIED="1722768351504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SA_UI$testing2.coverage" NAME="testing2 Coverage Results" MODIFIED="1722413123073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/not_used" />
   </component>
 </project>

@@ -127,8 +127,10 @@ class IntroScreen(Screen):
                                             "\nThe data file should contain the following columns:"
                                             "1.\n[u]Time Series[/u] (optional): time stamp for each sample."
                                             "\nNo need for evenly spaced measurements."
+                                            "\nif the measurements are not evenly spaced a time vector must be supplied, "
+                                            "your data will be interpolated over an evenly spaced time vector"
                                             "2.\n[u]Value[/u]: The observable variable of the experiment."
-                                            "3.\n[u]Distance[/u]: distance from final target. At the final target, the distance should be equal to 0."
+                                            "3.\n[u]Distance[/u]: distance from final target. At the target, the distance should be equal to 0."
                                             "\nA distance column is needed for each target."
                                             "\nClick on the 'next' button at the bottom right corner to continue.",
                                        font_name='times.ttf', bold=True, size_hint=(None, None),

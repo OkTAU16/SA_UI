@@ -129,7 +129,7 @@ class SLM_tools:
     #         raise e
 
     @staticmethod
-    def interpolate_data_over_regular_time(data: np.array, distance: np.array, time: np.array):
+    def interpolate_data_over_regular_time(data: np.array, time: np.array):
         # checked
         """interpolate data over a regularly spaced time vector
             inputs:
@@ -139,13 +139,45 @@ class SLM_tools:
                 time_vec (np.array): regularly spaced time vector
                 data_new (np.array): interpolated data over the regularly spaced time vector"""
         try:
-            dt = abs(time[-1]-time[0])/len(data)
-            t = np.arange(0, np.shape(data)[0], dt)
-            data_new = interpolate.interp1d(t, data, kind="linear").y
-            for i in range(distance.shape[1]):
-                distance[i] = interpolate.interp1d(t, distance[i], kind="linear").y
-            return data_new,distance, t
+            t = np.linspace(0, time[-1], len(data))
+            data_new = np.interp(t, time, data)
+            # for i in range(distance.shape[1]):
+            #     distance[:, i] = np.interp(t, time, np.squeeze(distance[:, i]))
+            return data_new, t
         except Exception as e:
+            raise e
+    # @staticmethod
+    # def interpolate_data_over_regular_time(data: np.array, distance: np.array, time: np.array):
+    #     """interpolate data over a regularly spaced time vector
+    #         inputs:
+    #             data (np.array): time series data
+    #             distance (np.array): distance data
+    #             time (np.array): time vector
+    #         outputs:
+    #             data_new (np.array): interpolated data over the regularly spaced time vector
+    #             distance_new (np.array): interpolated distance over the regularly spaced time vector
+    #             t (np.array): regularly spaced time vector"""
+    #     try:
+    #         t = np.linspace(0, time[-1], len(data))
+    #         data_new = np.interp(t, time, data)
+    #
+    #         distance_new = np.zeros_like(distance)
+    #         for i in range(distance.shape[1]):
+    #             # Create a mask for non-zero values
+    #             non_zero_mask = distance[:, i] != 0
+    #
+    #             # Interpolate only non-zero values
+    #             non_zero_times = time[non_zero_mask]
+    #             non_zero_distances = distance[non_zero_mask, i]
+    #
+    #             if len(non_zero_times) > 0:
+    #                 interpolated = np.interp(t, non_zero_times, non_zero_distances, left=0, right=0)
+    #
+    #                 # Apply the interpolated values only where original values were non-zero
+    #                 distance_new[:, i] = np.where(np.interp(t, time, non_zero_mask), interpolated, 0)
+    #
+    #         return data_new, distance_new, t
+    #     except Exception as e:
             raise e
 
     @staticmethod
@@ -455,8 +487,8 @@ class SLM_tools:
         idn = np.where(a_reduced[:, n_components] != 0)[0]  # Identify non-zero entries in the target column
         mapx = a_reduced[idn, :]  # Filter the reduced data based on identified indices
         mapx[:, n_components] = np.log(mapx[:, n_components])  # Apply log transformation to the target column
-        train_index = int(np.floor(0.6 * mapx.shape[0]))  # Calculate the training set index
-        validation_index = int(np.floor(0.8 * mapx.shape[0]))  # Calculate the validation set index
+        train_index = int(np.floor(0.8 * mapx.shape[0]))  # Calculate the training set index
+        validation_index = int(mapx.shape[0])  # Calculate the validation set index
         size_validation_set = len(range(train_index, validation_index))  # Calculate the size of the validation set
         tfas_predict_mat = np.zeros((cv_num, size_validation_set))  # Initialize matrix for predicted values
         tfas_actually_mat = np.zeros((cv_num, size_validation_set))  # Initialize matrix for actual values
@@ -464,8 +496,8 @@ class SLM_tools:
 
         for i in range(cv_num):  # Loop over cross-validation iterations
             random_x = mapx[np.random.permutation(mapx.shape[0]), :]  # Shuffle the data
-            train_index = int(np.floor(0.6 * random_x.shape[0]))  # Recalculate the training set index
-            validation_index = int(np.floor(0.8 * random_x.shape[0]))  # Recalculate the validation set index
+            train_index = int(np.floor(0.8 * random_x.shape[0]))  # Recalculate the training set index
+            validation_index = int(random_x.shape[0])  # Recalculate the validation set index
             training_set = random_x[:train_index, :]  # Extract the training set
             validation_set = random_x[train_index:validation_index, :]  # Extract the validation set
 
@@ -708,8 +740,11 @@ class SLM_tools:
                 else:
                     yo = np.sort(y[Ind])
                     mean_hista[j - 1] = np.nanmedian(y[Ind])
-                    aop = int(np.ceil(0.16 * len(yo)))
-                    std_hista[j - 1] = mean_hista[j - 1] - yo[aop]
+                    if len(yo) > 1:
+                        aop = int(np.ceil(0.16 * len(yo)))
+                        std_hista[j - 1] = mean_hista[j - 1] - yo[aop]
+                    else:
+                        std_hista[j - 1] = mean_hista[j - 1] - yo[0]
 
             # Calculate the center of each bin
             x_hist_space = (hist_space[1:] + hist_space[:-1]) / 2
@@ -807,7 +842,7 @@ class SLM_tools:
         random_x = mapx[np.random.permutation(mapx.shape[0]), :]
 
         # Split the data into training and validation sets
-        validation_index = int(np.ceil(0.9 * mapx.shape[0]))
+        validation_index = int(np.ceil(0.8 * mapx.shape[0]))
         training_set = random_x[:validation_index, :]
         validation_set = random_x[validation_index:, :]
 
@@ -1300,7 +1335,7 @@ class SLM_tools:
                     values_vec, time_vec, distance_data = SLM_tools.load_data(file_path, data_variable_name,
                                                                               int(target_num), file_extension,
                                                                               time_vec_exists)
-                    values_vec, distance_data, time_vec = SLM_tools.interpolate_data_over_regular_time(values_vec, distance_data, time_vec)
+                    values_vec, time_vec = SLM_tools.interpolate_data_over_regular_time(values_vec, time_vec)
 
                 # Downsample the data if a downsampling factor is provided
                 if downsampling_factor:
