@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17b92e97-7d9a-40f5-93c1-31481920e93d" name="Changes" comment="&quot;finished overall function for UI&quot;">
-      <change afterPath="$PROJECT_DIR$/loading.gif" afterDir="false" />
+    <list default="true" id="17b92e97-7d9a-40f5-93c1-31481920e93d" name="Changes" comment="&quot;edited opening screen instructions and handled interpolation bug&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SLM_UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/SLM_UI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SLM_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/SLM_tools.py" afterDir="false" />
@@ -64,12 +63,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Python.SLM_UI.executor": "Debug",
+    "Python.SLM_UI.executor": "Run",
     "Python.SLM_tools.executor": "Run",
     "Python.testing2.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/User/OneDrive - mail.tau.ac.il/Documents/SA_UI",
+    "last_opened_file_path": "C:/Users/User/OneDrive - mail.tau.ac.il/Documents/Medical Image processing (2)",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -216,7 +215,9 @@
       <workItem from="1722673857204" duration="14170000" />
       <workItem from="1722748748600" duration="7051000" />
       <workItem from="1722773830317" duration="12699000" />
-      <workItem from="1723019649720" duration="18095000" />
+      <workItem from="1723019649720" duration="23774000" />
+      <workItem from="1723353139033" duration="1641000" />
+      <workItem from="1724256017420" duration="7993000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;minor fixes &quot;">
       <option name="closed" value="true" />
@@ -450,7 +451,23 @@
       <option name="project" value="LOCAL" />
       <updated>1723020273557</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="&quot;edited opening screen instructions and handled interpolation bug&quot;">
+      <option name="closed" value="true" />
+      <created>1723048616492</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1723048616492</updated>
+    </task>
+    <task id="LOCAL-00031" summary="&quot;edited opening screen instructions and handled interpolation bug&quot;">
+      <option name="closed" value="true" />
+      <created>1723050503709</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1723050503709</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -500,7 +517,8 @@
     <MESSAGE value="&quot;done and checked, all that's left is to write the overall function&quot;" />
     <MESSAGE value="&quot;Working version 1!!!&quot;" />
     <MESSAGE value="&quot;finished overall function for UI&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;finished overall function for UI&quot;" />
+    <MESSAGE value="&quot;edited opening screen instructions and handled interpolation bug&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;edited opening screen instructions and handled interpolation bug&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -512,24 +530,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
           <url>notebook://C:/Users/User/OneDrive - mail.tau.ac.il/Documents/SA_UI/testing.ipynb</url>
-          <line>166</line>
-          <option name="timeStamp" value="123" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
-          <url>notebook://C:/Users/User/OneDrive - mail.tau.ac.il/Documents/SA_UI/testing.ipynb</url>
-          <line>276</line>
-          <option name="timeStamp" value="124" />
+          <line>178</line>
+          <option name="timeStamp" value="133" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/SLM_tools.py</url>
-          <line>1301</line>
-          <option name="timeStamp" value="116" />
+          <line>1348</line>
+          <option name="timeStamp" value="125" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SA_UI$SLM_UI.coverage" NAME="SLM_UI Coverage Results" MODIFIED="1723036815832" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SA_UI$SLM_UI.coverage" NAME="SLM_UI Coverage Results" MODIFIED="1724266161033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SLM_tools_py$tests.coverage" NAME="tests Coverage Results" MODIFIED="1713613082475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/not_used" />
     <SUITE FILE_PATH="coverage/SLM_tools_py$SLM_tools.coverage" NAME="SLM_tools Coverage Results" MODIFIED="1709374868348" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SA_UI$SLM_tools.coverage" NAME="SLM_tools Coverage Results" MODIFIED="1722768351504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

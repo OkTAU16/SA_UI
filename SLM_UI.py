@@ -128,7 +128,7 @@ class IntroScreen(Screen):
                                             "1.\n[u]Time Series[/u] (optional): time stamp for each sample."
                                             "\nNo need for evenly spaced measurements."
                                             "\nif the measurements are not evenly spaced a time vector must be supplied, "
-                                            "your data will be interpolated over an evenly spaced time vector"
+                                            "\nyour data will be interpolated over an evenly spaced time vector"
                                             "2.\n[u]Value[/u]: The observable variable of the experiment."
                                             "3.\n[u]Distance[/u]: distance from final target. At the target, the distance should be equal to 0."
                                             "\nA distance column is needed for each target."
@@ -473,7 +473,7 @@ class GraphScreen(Screen):
     def build(self):
         layout = FloatLayout()
         self.title = 'Intro'
-        first_graph_button = Button(text="'Stochastic Landscape 2D", font_name='times.ttf', bold=True, size_hint=(0.25, 0.25),
+        first_graph_button = Button(text="Stochastic Landscape 2D", font_name='times.ttf', bold=True, size_hint=(0.25, 0.25),
                                     pos_hint={'center_x': 0.20, 'top': 0.65}, background_color=(0.25, 0.41, 0.88, 1))
         second_graph_button = Button(text="Predictions_Scatter_and_Hist", font_name='times.ttf', bold=True, size_hint=(0.25, 0.25),
                                      pos_hint={'center_x': 0.5, 'top': 0.65}, background_color=(0.25, 0.41, 0.88, 1))

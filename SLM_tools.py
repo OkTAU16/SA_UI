@@ -85,6 +85,7 @@ class SLM_tools:
         except Exception as e:
             # Raise any exception that occurs during data loading
             raise e
+
     # @staticmethod
     # def load_data(data_path: str, data_variable_name, target_num, data_type='csv', time_vec_exists=False):
     #     try:
@@ -198,7 +199,8 @@ class SLM_tools:
             raise e
 
     @staticmethod
-    def feature_extraction(energy: np.array, distance: np.array, mean_trend: np.array, cp: np.array, Number_of_targets=None):
+    def feature_extraction(energy: np.array, distance: np.array, mean_trend: np.array, cp: np.array,
+                           Number_of_targets=None):
 
         """
         Perform feature extraction based on the input parameters.
@@ -1011,10 +1013,22 @@ class SLM_tools:
         # Get sizes
         M, L = len(data), len(data[0])  # M is the number of groups, L is the number of boxes in each group
         w = 0.25  # width of boxes
-        positions = np.arange(1, M * L * w + 1 + w * L, w)  # Calculate positions for the boxes
-        positions = positions[:(M * L)]  # Trim positions to match the number of boxes
-        YY = x_labels[0] - 1 + positions - w / 2  # Adjust positions for x_labels
-
+        if (np.array([x_labels[i + 1] - x_labels[i] for i in range(len(x_labels) - 1)]) ==
+            np.array([x_labels[i + 1] - x_labels[i] for i in range(len(x_labels) - 1)])).all():
+            if M > 1:
+                YY = np.sort(np.concatenate((x_labels - w / 2, x_labels + w / 2)))
+            else:
+                positions = x_labels[:, 0]
+                YY = positions
+        else:
+            if M > 1:
+                positions = np.arange(1, M * L * w + 1 + w * L, w)
+                positions = positions[positions <= M * L]
+                YY = x_labels[0] - 1 + positions - w / 2
+            else:
+                positions = np.arange(1, M * L * w + 1 + w * L, w)
+                positions = positions[positions % (M + 1) != 0]
+                YY = x_labels[0] - 1 + positions - w
         # Extract data and label it in the group correctly
         x = []
         group = []
@@ -1026,10 +1040,9 @@ class SLM_tools:
 
         # Define x-axis limits
         x_lims = [np.min(YY) - 0.5, np.max(YY) + 0.5]
-
         # Define positions for the two groups of boxes
-        box_positions1 = YY[1::2]
-        box_positions2 = YY[::2]
+        box_positions1 = YY[::2]
+        box_positions2 = YY[1::2]
 
         # Extract data for the two groups
         data1 = data[0]
