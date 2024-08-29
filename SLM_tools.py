@@ -11,6 +11,8 @@ import pandas as pd
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 import os
+from matplotlib.gridspec import GridSpec
+
 
 
 class SLM_tools:
@@ -50,7 +52,7 @@ class SLM_tools:
                     distance_columns = list(range(1, 1 + target_num))
                     distance = pd.read_csv(data_path, usecols=distance_columns, header=None).to_numpy()
                     return values_vec, distance
-            elif data_type == 'excel':
+            elif data_type == 'xlsx':
                 # Load data from an Excel file
                 if time_vec_exists:
                     # Load time vector, values vector, and distance matrix
@@ -178,7 +180,8 @@ class SLM_tools:
             # Call the BEAST algorithm with specified parameters
             np.random.seed(42)
             o = rb.beast(data, 0, tseg_minlength=0.01 * data.shape[0], season="none",
-                         print_options=False, print_progress=False, tcp_minmax=[0, 10000], sorder_minmax=[1, 5])
+                         print_options=False, print_progress=False, tcp_minmax=[0, 10000], sorder_minmax=[1, 5],
+                         quiet=True, print_param=False, print_warning=False)
 
             # Extract the mean trend from the BEAST output
             mean_trend = o.trend.Y
@@ -755,7 +758,7 @@ class SLM_tools:
                label="Perfect Predictor")
 
         # Plot the mean predictor with error bars
-        b.errorbar(x_hist_space, mean_vec, yerr=std_vec, ecolor='b', zorder=3, label="Mean Predictor across iterations")
+        b.errorbar(x_hist_space, mean_vec, yerr=std_vec,color='k', ecolor='k', zorder=3, label="Mean Predictor across iterations")
 
         # Add vertical lines and bin labels to the histogram plot
         for k in range(1, len(x_ticks)):
@@ -971,7 +974,7 @@ class SLM_tools:
     @staticmethod
     def plot_helper(ax, data, box_positions, color, legend_label, n_boxes_last_group):
         # Create boxplot with specified data and positions
-        bp = ax.boxplot(data, positions=np.round(box_positions, 2), patch_artist=True)
+        bp = ax.boxplot(data, positions=np.round(box_positions, 2), patch_artist=True, widths=0.09)
 
         # Apply colors to the boxes
         if n_boxes_last_group > 0:
@@ -1131,14 +1134,16 @@ class SLM_tools:
         cv_corrected_x = np.zeros_like(x)
         new_y = np.zeros(y.shape)
 
-        # Create a figure for plotting
-        fig_2 = plt.figure(2, figsize=(7, 14))
-        a = fig_2.add_subplot(3, 1, 1)
-        b = fig_2.add_subplot(3, 1, 2)
-        c = fig_2.add_subplot(3, 1, 3)
+        fig_2 = plt.figure(figsize=(12, 16))
+        # Use GridSpec for more control over subplot layout
+        gs = GridSpec(3, 1, height_ratios=[1, 1, 1], hspace=0.3)
+        # Create subplots with shared x-axis
+        a = fig_2.add_subplot(gs[0])
+        b = fig_2.add_subplot(gs[1])
+        c = fig_2.add_subplot(gs[2])
 
         # Scatter plot of original predicted vs actual values
-        scat_1 = a.scatter(x, y, color=(0.7, 0.7, 0.7), marker='s')
+        scat_1 = a.scatter(x, y, color=(0.7, 0.7, 0.7), marker='o')
         a.set_ylabel("True Value")
         a.set_xlabel("Predicted Value")
         a.set_xticks(x_ticks)
@@ -1169,7 +1174,7 @@ class SLM_tools:
         slope, intercept, r_value, p_value, std_err = linregress(cv_corrected_x_sorted, new_y_sorted)
         R_x = np.array([cv_corrected_x_sorted[0], new_y_sorted[-1]])
         R_y = intercept + slope * R_x
-        a.plot(R_x, R_y, color='b', linestyle='--', label='Linear Regression')
+        a.plot(R_x, R_y, color='r', linestyle='--', label='Linear Regression')
 
         # Add legend to the plot
         scat_1.set_label("Original Predictor")
@@ -1244,6 +1249,13 @@ class SLM_tools:
         # Add color bar and save the figure
         fig_2.colorbar(plt.cm.ScalarMappable(cmap='cool'), ax=c)
         fig_2.savefig(os.path.join(save_path, 'Predictor Evaluation.png'), bbox_inches='tight')
+        # fig_2.subplots_adjust(left=0.15, right=0.95, top=0.95, bottom=0.05)
+        plt.subplots_adjust(left=0.15, right=0.95, top=0.95, bottom=0.05, hspace=0.3)
+        fig_2.align_ylabels([a, b, c])
+        a_pos = a.get_position()
+        b_pos = b.get_position()
+        b.set_position([a_pos.x0-2, b_pos.y0, a_pos.width, b_pos.height])
+        # b.yaxis.set_label_coords(-0.15, 0.5)
         plt.close(fig_2)
 
     @staticmethod

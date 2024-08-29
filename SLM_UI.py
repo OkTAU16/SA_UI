@@ -23,29 +23,31 @@ from kivy.clock import Clock
 from functools import partial
 
 #### HANDLING BACKGROUND DOWNLOAD ####
-def download_image(url, local_path):
-    if not os.path.exists(local_path):
-        response = requests.get(url)
-        if response.status_code == 200:
-            content_type = response.headers['Content-Type']
-            if 'image' in content_type:
-                with open(local_path, 'wb') as f:
-                    f.write(response.content)
-                print(f"Downloaded {local_path} successfully.")
-            else:
-                print(f"Failed to download {url}. The content is not an image.")
-        else:
-            print(f"Failed to download {url}. Status code: {response.status_code}")
+# def download_image(url, local_path):
+#     if not os.path.exists(local_path):
+#         response = requests.get(url)
+#         if response.status_code == 200:
+#             content_type = response.headers['Content-Type']
+#             if 'image' in content_type:
+#                 with open(local_path, 'wb') as f:
+#                     f.write(response.content)
+#                 print(f"Downloaded {local_path} successfully.")
+#             else:
+#                 print(f"Failed to download {url}. The content is not an image.")
+#         else:
+#             print(f"Failed to download {url}. Status code: {response.status_code}")
 
 
-#image_url = "https://github.com/OkTAU16/SA_UI/raw/feature/slm_ui/SLM_logo_adjusted.png"
-image_url = "https://github.com/OkTAU16/SA_UI/raw/main/SLM_logo_adjusted.png"
-#image_url_graphs = "https://github.com/OkTAU16/SA_UI/raw/feature/slm_ui/SLM%20_logo.png"
-image_url_graphs = "https://github.com/OkTAU16/SA_UI/raw/main/SLM%20_logo.png"
-#https://github.com/OkTAU16/SA_UI/blob/main/SLM_logo_adjusted.png
+# image_url = "https://github.com/OkTAU16/SA_UI/raw/feature/slm_ui/SLM_logo_adjusted.png"
+# image_url = "https://github.com/OkTAU16/SA_UI/raw/main/SLM_logo_adjusted.png"
+# image_url_graphs = "https://github.com/OkTAU16/SA_UI/raw/feature/slm_ui/SLM%20_logo.png"
+# image_url_graphs = "https://github.com/OkTAU16/SA_UI/raw/main/SLM%20_logo.png"
+# https://github.com/OkTAU16/SA_UI/blob/main/SLM_logo_adjusted.png
 # Local path to save the image
 local_image_path = "SLM_logo_adjusted.png"
 local_image_path_graphs = "SLM_logo.png"
+
+
 # Download the image
 # download_image(image_url, local_image_path)
 # download_image(image_url_graphs, local_image_path_graphs)
@@ -473,12 +475,14 @@ class GraphScreen(Screen):
     def build(self):
         layout = FloatLayout()
         self.title = 'Intro'
-        first_graph_button = Button(text="Stochastic Landscape 2D", font_name='times.ttf', bold=True, size_hint=(0.25, 0.25),
+        first_graph_button = Button(text="Stochastic Landscape 2D", font_name='times.ttf', bold=True,
+                                    size_hint=(0.25, 0.25),
                                     pos_hint={'center_x': 0.20, 'top': 0.65}, background_color=(0.25, 0.41, 0.88, 1))
-        second_graph_button = Button(text="Predictions_Scatter_and_Hist", font_name='times.ttf', bold=True, size_hint=(0.25, 0.25),
+        second_graph_button = Button(text="Predictions_Scatter_and_Hist", font_name='times.ttf', bold=True,
+                                     size_hint=(0.25, 0.25),
                                      pos_hint={'center_x': 0.5, 'top': 0.65}, background_color=(0.25, 0.41, 0.88, 1))
-        third_graph_button = Button(text="Predictor_Eval", font_name='times.ttf', bold=True,size_hint=(0.25, 0.25),
-                                     pos_hint={'center_x': 0.8, 'top': 0.65}, background_color=(0.25, 0.41, 0.88, 1))
+        third_graph_button = Button(text="Predictor_Eval", font_name='times.ttf', bold=True, size_hint=(0.25, 0.25),
+                                    pos_hint={'center_x': 0.8, 'top': 0.65}, background_color=(0.25, 0.41, 0.88, 1))
         layout.add_widget(first_graph_button)
         layout.add_widget(second_graph_button)
         layout.add_widget(third_graph_button)
@@ -531,7 +535,8 @@ class GuiApp(App):
         self.down_sample_factor = None
         self.particle_clusters = 3
         self.save_path = None
-        self.graph_names = ['Stochastic Landscape 2D.png', 'Predictions Scatter and Histogram.png', 'Predictor Evaluation.png']
+        self.graph_names = ['Stochastic Landscape 2D.png', 'Predictions Scatter and Histogram.png',
+                            'Predictor Evaluation.png']
         self.submit_flag = 0
 
     def build(self):
