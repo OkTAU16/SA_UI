@@ -14,7 +14,6 @@ import os
 from matplotlib.gridspec import GridSpec
 
 
-
 class SLM_tools:
     @staticmethod
     def load_data(data_path: str, data_variable_name, target_num, data_type='csv', time_vec_exists=False):
@@ -758,7 +757,8 @@ class SLM_tools:
                label="Perfect Predictor")
 
         # Plot the mean predictor with error bars
-        b.errorbar(x_hist_space, mean_vec, yerr=std_vec,color='k', ecolor='k', zorder=3, label="Mean Predictor across iterations")
+        b.errorbar(x_hist_space, mean_vec, yerr=std_vec, color='k', ecolor='k', zorder=3,
+                   label="Mean Predictor across iterations")
 
         # Add vertical lines and bin labels to the histogram plot
         for k in range(1, len(x_ticks)):
@@ -914,7 +914,7 @@ class SLM_tools:
         tfas_actually_mat_2 = np.reshape(tfas_actually_mat_2, (len(tfas_actually_mat_2), 1))
         mean_error_mat_2 = np.reshape(mean_error_mat_2, (len(mean_error_mat_2), 1))
 
-        return tfas_predict_mat_2, tfas_actually_mat_2, mean_error_mat_2
+        return tfas_predict_mat_2, tfas_actually_mat_2, mean_error_mat_2, YI
 
     @staticmethod
     def multiple_boxplot(input_data, x_labels, legend_label, ax):
@@ -971,31 +971,62 @@ class SLM_tools:
         y_range = y_max - y_min  # Calculate the range of y values
         ax.set_ylim(y_min - 0.1 * y_range, y_max + 0.1 * y_range)  # Set y-axis limits with some padding
 
+    # def plot_helper(ax, data, box_positions, color, legend_label, n_boxes_last_group):
+    #     # Create boxplot with specified data and positions
+    #     bp = ax.boxplot(data, positions=np.round(box_positions, 2), patch_artist=True, widths=0.09)
+    #
+    #     # Apply colors to the boxes
+    #     if n_boxes_last_group > 0:
+    #         # Apply color to the last group of boxes
+    #         for i, box in enumerate(bp['boxes'][:n_boxes_last_group], start=n_boxes_last_group):
+    #             box.set(facecolor='white', edgecolor=color, linewidth=2)
+    #     else:
+    #         # Apply color to all boxes
+    #         for i, box in enumerate(bp['boxes']):
+    #             box.set(facecolor='white', edgecolor=color, linewidth=2)
+    #
+    #     # Set color for medians, whiskers, and caps
+    #     for i, element in enumerate(bp['medians'] + bp['whiskers'] + bp['caps']):
+    #         element.set_color('black')
+    #
+    #     # Set color for fliers
+    #     for i, element in enumerate(bp['fliers']):
+    #         element.set_markeredgecolor('black')
+    #
+    #     # Set label for the last group of boxes
+    #     bp["boxes"][n_boxes_last_group - 1].set_label(legend_label)
     @staticmethod
-    def plot_helper(ax, data, box_positions, color, legend_label, n_boxes_last_group):
+    def plot_helper(ax, data, box_positions, colors, legend_labels, box_width=0.09):
         # Create boxplot with specified data and positions
-        bp = ax.boxplot(data, positions=np.round(box_positions, 2), patch_artist=True, widths=0.09)
+        box_positions1 = box_positions[::2]
+        box_positions2 = box_positions[1::2]
 
-        # Apply colors to the boxes
-        if n_boxes_last_group > 0:
-            # Apply color to the last group of boxes
-            for i, box in enumerate(bp['boxes'][:n_boxes_last_group], start=n_boxes_last_group):
-                box.set(facecolor='white', edgecolor=color, linewidth=2)
-        else:
-            # Apply color to all boxes
-            for i, box in enumerate(bp['boxes']):
-                box.set(facecolor='white', edgecolor=color, linewidth=2)
+        # Extract data for the two groups
+        data1 = data[0]
+        data2 = data[1]
 
-        # Set color for medians, whiskers, and caps
-        for i, element in enumerate(bp['medians'] + bp['whiskers'] + bp['caps']):
+        # Create boxplots for both groups
+        bp1 = ax.boxplot(data1, positions=np.round(box_positions1, 2), patch_artist=True, widths=box_width)
+        bp2 = ax.boxplot(data2, positions=np.round(box_positions2, 2), patch_artist=True, widths=box_width)
+
+        # bp = ax.boxplot(data, positions=np.round(box_positions, 2), patch_artist=True, widths=box_width)
+
+        for box in bp1['boxes']:
+            box.set(facecolor='white', edgecolor='blue', linewidth=2)
+        for box in bp2['boxes']:
+            box.set(facecolor='white', edgecolor='red', linewidth=2)
+
+            # Set color for medians, whiskers, and caps
+        for element in bp1['medians'] + bp1['whiskers'] + bp1['caps'] + bp2['medians'] + bp2['whiskers'] + bp2['caps']:
             element.set_color('black')
 
-        # Set color for fliers
-        for i, element in enumerate(bp['fliers']):
+            # Set color for fliers
+        for element in bp1['fliers'] + bp2['fliers']:
             element.set_markeredgecolor('black')
 
-        # Set label for the last group of boxes
-        bp["boxes"][n_boxes_last_group - 1].set_label(legend_label)
+            # Set legend labels
+        bp1['boxes'][0].set_label(legend_labels[0])
+        bp2['boxes'][0].set_label(legend_labels[1])
 
     @staticmethod
     def multiple_boxplot_2(data, x_labels, legend_labels, colormap, ax, x_hist_space):
@@ -1047,19 +1078,26 @@ class SLM_tools:
         box_positions1 = YY[::2]
         box_positions2 = YY[1::2]
 
-        # Extract data for the two groups
-        data1 = data[0]
-        data2 = data[1]
+        positions = np.arange(1, M * L * (0.09 + 0.1) + 1, 0.09 + 0.1)
+        positions = positions[:M * L]
+        YY = x_labels[0] - 1 + positions - (0.09 + 0.1) / 2
 
+        # Extract data for the two groups
+        # data1 = data[0]
+        # data2 = data[1]
+        # flat_data = [item for sublist in data for item in sublist]
+        colors = ['red' if i % 2 == 0 else 'blue' for i in range(M * L)]
         # Extract legend labels for the two groups
-        legend_label1 = legend_labels[0]
-        legend_label2 = legend_labels[1]
+        # legend_label1 = legend_labels[0]
+        # legend_label2 = legend_labels[1]
 
         # Plot the first group of boxes
-        SLM_tools.plot_helper(ax, data1, box_positions1, 'red', legend_label1, 0)
+        # SLM_tools.plot_helper(ax, data1, box_positions1, 'red', legend_label1, 0)
+        SLM_tools.plot_helper(ax, data, YY, colors, legend_labels * L, 0.09)
 
         # Plot the second group of boxes
-        SLM_tools.plot_helper(ax, data2, box_positions2, 'blue', legend_label2, len(data1))
+        # SLM_tools.plot_helper(ax, data2, box_positions2, 'blue', legend_label2, len(data1))
+        # SLM_tools.plot_helper(ax, data2, box_positions2, colors, legend_label2, len(data1))
 
         # Flatten all values for setting y-axis limits
         all_values = [val for sublist in data for val in sublist][0]
@@ -1134,7 +1172,7 @@ class SLM_tools:
         cv_corrected_x = np.zeros_like(x)
         new_y = np.zeros(y.shape)
 
-        fig_2 = plt.figure(figsize=(12, 16))
+        fig_2 = plt.figure(figsize=(12, 24))
         # Use GridSpec for more control over subplot layout
         gs = GridSpec(3, 1, height_ratios=[1, 1, 1], hspace=0.3)
         # Create subplots with shared x-axis
@@ -1143,7 +1181,7 @@ class SLM_tools:
         c = fig_2.add_subplot(gs[2])
 
         # Scatter plot of original predicted vs actual values
-        scat_1 = a.scatter(x, y, color=(0.7, 0.7, 0.7), marker='o')
+        scat_1 = a.scatter(x, y, color=(0.7, 0.7, 0.7), marker='o', label="Original Predictor")
         a.set_ylabel("True Value")
         a.set_xlabel("Predicted Value")
         a.set_xticks(x_ticks)
@@ -1158,7 +1196,7 @@ class SLM_tools:
                 occurrence_probability[i - 1] = len(Ind)
                 cv_corrected_x[Ind] = x[Ind] + cv_offset[i - 1]
                 new_y[Ind] = y[Ind]
-                scat_1 = a.scatter(cv_corrected_x[Ind], y[Ind], color='k', marker='s')
+                scat_2 = a.scatter(cv_corrected_x[Ind], y[Ind], color='k', marker='s')
             else:
                 occurrence_probability[i - 1] = len(Ind)
                 cv_corrected_x[Ind] = x[Ind] + cv_offset[i - 1]
@@ -1177,7 +1215,6 @@ class SLM_tools:
         a.plot(R_x, R_y, color='r', linestyle='--', label='Linear Regression')
 
         # Add legend to the plot
-        scat_1.set_label("Original Predictor")
         scat_2.set_label("CV Bias Corrected Predictor")
         a.legend()
 
@@ -1250,12 +1287,12 @@ class SLM_tools:
         fig_2.colorbar(plt.cm.ScalarMappable(cmap='cool'), ax=c)
         fig_2.savefig(os.path.join(save_path, 'Predictor Evaluation.png'), bbox_inches='tight')
         # fig_2.subplots_adjust(left=0.15, right=0.95, top=0.95, bottom=0.05)
-        plt.subplots_adjust(left=0.15, right=0.95, top=0.95, bottom=0.05, hspace=0.3)
-        fig_2.align_ylabels([a, b, c])
-        a_pos = a.get_position()
-        b_pos = b.get_position()
-        b.set_position([a_pos.x0-2, b_pos.y0, a_pos.width, b_pos.height])
-        # b.yaxis.set_label_coords(-0.15, 0.5)
+        # plt.subplots_adjust(left=0.15, right=0.95, top=0.95, bottom=0.05, hspace=0.3)
+        # fig_2.align_ylabels([a, b, c])
+        # a_pos = a.get_position()
+        # b_pos = b.get_position()
+        # b.set_position([a_pos.x0, b_pos.y0, a_pos.width, b_pos.height])
+        b.yaxis.set_label_coords(-10.5, 0.5)
         plt.close(fig_2)
 
     @staticmethod
@@ -1463,12 +1500,17 @@ class SLM_tools:
                                                                                              save_path)
 
         # Train the model again using the validation set
-        tfas_predict_mat_2, tfas_actually_mat_2, mean_error_mat_2 = SLM_tools.train_again_on_validation(a_reduced,
-                                                                                                        n_components)
+        predictions, labels, mean_error, model = SLM_tools.train_again_on_validation(a_reduced,
+                                                                                     n_components)
 
+        model_path = os.path.join(save_path, f"SLM_Model_{current_datetime}.mat")
+        sio.savemat(model_path, {'SLM': model})
+        predictions_path = os.path.join(save_path, f"Predictions_{current_datetime}.mat")
+        sio.savemat(predictions_path, {'predictions': predictions})
+        mean_error_path = os.path.join(save_path, f"Mean_Error_{current_datetime}.mat")
+        sio.savemat(mean_error_path, {'error': mean_error})
         # Log the start of the second evaluation
         logging.info("Eval 2 start")
-
         # Perform cross-validation bias correction and generate plots
-        SLM_tools.cv_bias_correction(tfas_predict_mat_2, tfas_actually_mat_2, hist_space, mean_vec, x_hist_space,
+        SLM_tools.cv_bias_correction(predictions, labels, hist_space, mean_vec, x_hist_space,
                                      x_ticks, y_ticks, save_path)

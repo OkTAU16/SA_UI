@@ -1,0 +1,1897 @@
+
+File merged_energy_distance_0_mu_1.6, 1/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 0.873 seconds
+Finished feature extraction merged_energy_distance_0_mu_1.6, 1/314, runtime: 0.01 seconds
+Target Reached? : True
+files_with_target: 1/314
+Total features_extracted: 36
+File merged_energy_distance_100_mu_1.6, 2/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 1.09 seconds
+Finished feature extraction merged_energy_distance_100_mu_1.6, 2/314, runtime: 0.011 seconds
+Target Reached? : True
+files_with_target: 2/314
+Total features_extracted: 75
+File merged_energy_distance_101_mu_1.6, 3/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 0.828 seconds
+Finished feature extraction merged_energy_distance_101_mu_1.6, 3/314, runtime: 0.009 seconds
+Target Reached? : True
+files_with_target: 3/314
+Total features_extracted: 108
+File merged_energy_distance_102_mu_1.6, 4/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 1.282 seconds
+Finished feature extraction merged_energy_distance_102_mu_1.6, 4/314, runtime: 0.012 seconds
+Target Reached? : True
+files_with_target: 4/314
+Total features_extracted: 149
+File merged_energy_distance_103_mu_1.6, 5/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 1.176 seconds
+Finished feature extraction merged_energy_distance_103_mu_1.6, 5/314, runtime: 0.012 seconds
+Target Reached? : True
+files_with_target: 5/314
+Total features_extracted: 193
+File merged_energy_distance_104_mu_1.6, 6/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 1.862 seconds
+Finished feature extraction merged_energy_distance_104_mu_1.6, 6/314, runtime: 0.043 seconds
+Target Reached? : True
+files_with_target: 6/314
+Total features_extracted: 237
+File merged_energy_distance_105_mu_1.6, 7/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 4.01 seconds
+Finished feature extraction merged_energy_distance_105_mu_1.6, 7/314, runtime: 0.048 seconds
+Target Reached? : True
+files_with_target: 7/314
+Total features_extracted: 284
+File merged_energy_distance_106_mu_1.6, 8/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 2.712 seconds
+Finished feature extraction merged_energy_distance_106_mu_1.6, 8/314, runtime: 0.039 seconds
+Target Reached? : True
+files_with_target: 8/314
+Total features_extracted: 322
+File merged_energy_distance_107_mu_1.6, 9/314  loaded, Loading time: 0.003 seconds
+Finished Segmentation, runtime: 3.341 seconds
+Finished feature extraction merged_energy_distance_107_mu_1.6, 9/314, runtime: 0.052 seconds
+Target Reached? : True
+files_with_target: 9/314
+Total features_extracted: 366
+File merged_energy_distance_108_mu_1.6, 10/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.361 seconds
+Finished feature extraction merged_energy_distance_108_mu_1.6, 10/314, runtime: 0.042 seconds
+Target Reached? : True
+files_with_target: 10/314
+Total features_extracted: 408
+File merged_energy_distance_109_mu_1.6, 11/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 2.96 seconds
+Finished feature extraction merged_energy_distance_109_mu_1.6, 11/314, runtime: 0.038 seconds
+Target Reached? : True
+files_with_target: 11/314
+Total features_extracted: 447
+File merged_energy_distance_10_mu_1.6, 12/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 2.685 seconds
+Finished feature extraction merged_energy_distance_10_mu_1.6, 12/314, runtime: 0.036 seconds
+Target Reached? : True
+files_with_target: 12/314
+Total features_extracted: 485
+File merged_energy_distance_110_mu_1.6, 13/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.798 seconds
+Finished feature extraction merged_energy_distance_110_mu_1.6, 13/314, runtime: 0.054 seconds
+Target Reached? : True
+files_with_target: 13/314
+Total features_extracted: 533
+File merged_energy_distance_111_mu_1.6, 14/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 5.349 seconds
+Finished feature extraction merged_energy_distance_111_mu_1.6, 14/314, runtime: 0.055 seconds
+Target Reached? : True
+files_with_target: 14/314
+Total features_extracted: 587
+File merged_energy_distance_112_mu_1.6, 15/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 2.794 seconds
+Finished feature extraction merged_energy_distance_112_mu_1.6, 15/314, runtime: 0.035 seconds
+Target Reached? : True
+files_with_target: 15/314
+Total features_extracted: 624
+File merged_energy_distance_113_mu_1.6, 16/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.196 seconds
+Finished feature extraction merged_energy_distance_113_mu_1.6, 16/314, runtime: 0.051 seconds
+Target Reached? : True
+files_with_target: 16/314
+Total features_extracted: 664
+File merged_energy_distance_114_mu_1.6, 17/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.247 seconds
+Finished feature extraction merged_energy_distance_114_mu_1.6, 17/314, runtime: 0.038 seconds
+Target Reached? : True
+files_with_target: 17/314
+Total features_extracted: 706
+File merged_energy_distance_115_mu_1.6, 18/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.209 seconds
+Finished feature extraction merged_energy_distance_115_mu_1.6, 18/314, runtime: 0.049 seconds
+Target Reached? : True
+files_with_target: 18/314
+Total features_extracted: 748
+File merged_energy_distance_116_mu_1.6, 19/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.165 seconds
+Finished feature extraction merged_energy_distance_116_mu_1.6, 19/314, runtime: 0.05 seconds
+Target Reached? : True
+files_with_target: 19/314
+Total features_extracted: 790
+File merged_energy_distance_117_mu_1.6, 20/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.134 seconds
+Finished feature extraction merged_energy_distance_117_mu_1.6, 20/314, runtime: 0.037 seconds
+Target Reached? : True
+files_with_target: 20/314
+Total features_extracted: 832
+File merged_energy_distance_118_mu_1.6, 21/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.208 seconds
+Finished feature extraction merged_energy_distance_118_mu_1.6, 21/314, runtime: 0.038 seconds
+Target Reached? : True
+files_with_target: 21/314
+Total features_extracted: 873
+File merged_energy_distance_119_mu_1.6, 22/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.413 seconds
+Finished feature extraction merged_energy_distance_119_mu_1.6, 22/314, runtime: 0.041 seconds
+Target Reached? : True
+files_with_target: 22/314
+Total features_extracted: 917
+File merged_energy_distance_11_mu_1.6, 23/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.915 seconds
+Finished feature extraction merged_energy_distance_11_mu_1.6, 23/314, runtime: 0.049 seconds
+Target Reached? : True
+files_with_target: 23/314
+Total features_extracted: 967
+File merged_energy_distance_120_mu_1.6, 24/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.36 seconds
+Finished feature extraction merged_energy_distance_120_mu_1.6, 24/314, runtime: 0.038 seconds
+Target Reached? : True
+files_with_target: 24/314
+Total features_extracted: 1008
+File merged_energy_distance_121_mu_1.6, 25/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.185 seconds
+Finished feature extraction merged_energy_distance_121_mu_1.6, 25/314, runtime: 0.032 seconds
+Target Reached? : True
+files_with_target: 25/314
+Total features_extracted: 1048
+File merged_energy_distance_122_mu_1.6, 26/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.726 seconds
+Finished feature extraction merged_energy_distance_122_mu_1.6, 26/314, runtime: 0.035 seconds
+Target Reached? : True
+files_with_target: 26/314
+Total features_extracted: 1087
+File merged_energy_distance_123_mu_1.6, 27/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.219 seconds
+Finished feature extraction merged_energy_distance_123_mu_1.6, 27/314, runtime: 0.046 seconds
+Target Reached? : True
+files_with_target: 27/314
+Total features_extracted: 1131
+File merged_energy_distance_124_mu_1.6, 28/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.126 seconds
+Finished feature extraction merged_energy_distance_124_mu_1.6, 28/314, runtime: 0.045 seconds
+Target Reached? : True
+files_with_target: 28/314
+Total features_extracted: 1174
+File merged_energy_distance_125_mu_1.6, 29/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 2.98 seconds
+Finished feature extraction merged_energy_distance_125_mu_1.6, 29/314, runtime: 0.042 seconds
+Target Reached? : True
+files_with_target: 29/314
+Total features_extracted: 1216
+File merged_energy_distance_126_mu_1.6, 30/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 2.776 seconds
+Finished feature extraction merged_energy_distance_126_mu_1.6, 30/314, runtime: 0.042 seconds
+Target Reached? : True
+files_with_target: 30/314
+Total features_extracted: 1257
+File merged_energy_distance_127_mu_1.6, 31/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.145 seconds
+Finished feature extraction merged_energy_distance_127_mu_1.6, 31/314, runtime: 0.038 seconds
+Target Reached? : True
+files_with_target: 31/314
+Total features_extracted: 1299
+File merged_energy_distance_128_mu_1.6, 32/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.634 seconds
+Finished feature extraction merged_energy_distance_128_mu_1.6, 32/314, runtime: 0.049 seconds
+Target Reached? : True
+files_with_target: 32/314
+Total features_extracted: 1347
+File merged_energy_distance_129_mu_1.6, 33/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.941 seconds
+Finished feature extraction merged_energy_distance_129_mu_1.6, 33/314, runtime: 0.039 seconds
+Target Reached? : True
+files_with_target: 33/314
+Total features_extracted: 1394
+File merged_energy_distance_12_mu_1.6, 34/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.75 seconds
+Finished feature extraction merged_energy_distance_12_mu_1.6, 34/314, runtime: 0.06 seconds
+Target Reached? : True
+files_with_target: 34/314
+Total features_extracted: 1439
+File merged_energy_distance_130_mu_1.6, 35/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.064 seconds
+Finished feature extraction merged_energy_distance_130_mu_1.6, 35/314, runtime: 0.029 seconds
+Target Reached? : True
+files_with_target: 35/314
+Total features_extracted: 1479
+File merged_energy_distance_131_mu_1.6, 36/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.009 seconds
+Finished feature extraction merged_energy_distance_131_mu_1.6, 36/314, runtime: 0.057 seconds
+Target Reached? : True
+files_with_target: 36/314
+Total features_extracted: 1522
+File merged_energy_distance_132_mu_1.6, 37/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.446 seconds
+Finished feature extraction merged_energy_distance_132_mu_1.6, 37/314, runtime: 0.025 seconds
+Target Reached? : True
+files_with_target: 37/314
+Total features_extracted: 1568
+File merged_energy_distance_133_mu_1.6, 38/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.083 seconds
+Finished feature extraction merged_energy_distance_133_mu_1.6, 38/314, runtime: 0.053 seconds
+Target Reached? : True
+files_with_target: 38/314
+Total features_extracted: 1613
+File merged_energy_distance_134_mu_1.6, 39/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.56 seconds
+Finished feature extraction merged_energy_distance_134_mu_1.6, 39/314, runtime: 0.041 seconds
+Target Reached? : True
+files_with_target: 39/314
+Total features_extracted: 1656
+File merged_energy_distance_135_mu_1.6, 40/314  loaded, Loading time: 0.003 seconds
+Finished Segmentation, runtime: 2.776 seconds
+Finished feature extraction merged_energy_distance_135_mu_1.6, 40/314, runtime: 0.037 seconds
+Target Reached? : True
+files_with_target: 40/314
+Total features_extracted: 1692
+File merged_energy_distance_136_mu_1.6, 41/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 4.368 seconds
+Finished feature extraction merged_energy_distance_136_mu_1.6, 41/314, runtime: 0.049 seconds
+Target Reached? : True
+files_with_target: 41/314
+Total features_extracted: 1740
+File merged_energy_distance_137_mu_1.6, 42/314  loaded, Loading time: 0.003 seconds
+Finished Segmentation, runtime: 4.041 seconds
+Finished feature extraction merged_energy_distance_137_mu_1.6, 42/314, runtime: 0.045 seconds
+Target Reached? : True
+files_with_target: 42/314
+Total features_extracted: 1783
+File merged_energy_distance_138_mu_1.6, 43/314  loaded, Loading time: 0.003 seconds
+Finished Segmentation, runtime: 2.935 seconds
+Finished feature extraction merged_energy_distance_138_mu_1.6, 43/314, runtime: 0.043 seconds
+Target Reached? : True
+files_with_target: 43/314
+Total features_extracted: 1821
+File merged_energy_distance_139_mu_1.6, 44/314  loaded, Loading time: 0.004 seconds
+Finished Segmentation, runtime: 3.159 seconds
+Finished feature extraction merged_energy_distance_139_mu_1.6, 44/314, runtime: 0.041 seconds
+Target Reached? : True
+files_with_target: 44/314
+Total features_extracted: 1861
+File merged_energy_distance_13_mu_1.6, 45/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.104 seconds
+Finished feature extraction merged_energy_distance_13_mu_1.6, 45/314, runtime: 0.036 seconds
+Target Reached? : True
+files_with_target: 45/314
+Total features_extracted: 1902
+File merged_energy_distance_140_mu_1.6, 46/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 2.652 seconds
+Finished feature extraction merged_energy_distance_140_mu_1.6, 46/314, runtime: 0.038 seconds
+Target Reached? : True
+files_with_target: 46/314
+Total features_extracted: 1936
+File merged_energy_distance_141_mu_1.6, 47/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.982 seconds
+Finished feature extraction merged_energy_distance_141_mu_1.6, 47/314, runtime: 0.05 seconds
+Target Reached? : True
+files_with_target: 47/314
+Total features_extracted: 1984
+File merged_energy_distance_142_mu_1.6, 48/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.15 seconds
+Finished feature extraction merged_energy_distance_142_mu_1.6, 48/314, runtime: 0.036 seconds
+Target Reached? : True
+files_with_target: 48/314
+Total features_extracted: 2021
+File merged_energy_distance_143_mu_1.6, 49/314  loaded, Loading time: 0.003 seconds
+Finished Segmentation, runtime: 3.492 seconds
+Finished feature extraction merged_energy_distance_143_mu_1.6, 49/314, runtime: 0.045 seconds
+Target Reached? : True
+files_with_target: 49/314
+Total features_extracted: 2064
+File merged_energy_distance_144_mu_1.6, 50/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 4.769 seconds
+Finished feature extraction merged_energy_distance_144_mu_1.6, 50/314, runtime: 0.059 seconds
+Target Reached? : True
+files_with_target: 50/314
+Total features_extracted: 2114
+File merged_energy_distance_145_mu_1.6, 51/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.769 seconds
+Finished feature extraction merged_energy_distance_145_mu_1.6, 51/314, runtime: 0.048 seconds
+Target Reached? : True
+files_with_target: 51/314
+Total features_extracted: 2162
+File merged_energy_distance_146_mu_1.6, 52/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.679 seconds
+Finished feature extraction merged_energy_distance_146_mu_1.6, 52/314, runtime: 0.045 seconds
+Target Reached? : True
+files_with_target: 52/314
+Total features_extracted: 2208
+File merged_energy_distance_147_mu_1.6, 53/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.269 seconds
+Finished feature extraction merged_energy_distance_147_mu_1.6, 53/314, runtime: 0.041 seconds
+Target Reached? : True
+files_with_target: 53/314
+Total features_extracted: 2248
+File merged_energy_distance_148_mu_1.6, 54/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.916 seconds
+Finished feature extraction merged_energy_distance_148_mu_1.6, 54/314, runtime: 0.047 seconds
+Target Reached? : True
+files_with_target: 54/314
+Total features_extracted: 2291
+File merged_energy_distance_149_mu_1.6, 55/314  loaded, Loading time: 0.003 seconds
+Finished Segmentation, runtime: 2.574 seconds
+Finished feature extraction merged_energy_distance_149_mu_1.6, 55/314, runtime: 0.041 seconds
+Target Reached? : True
+files_with_target: 55/314
+Total features_extracted: 2324
+File merged_energy_distance_14_mu_1.6, 56/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 2.378 seconds
+Finished feature extraction merged_energy_distance_14_mu_1.6, 56/314, runtime: 0.036 seconds
+Target Reached? : True
+files_with_target: 56/314
+Total features_extracted: 2355
+File merged_energy_distance_150_mu_1.6, 57/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 4.279 seconds
+Finished feature extraction merged_energy_distance_150_mu_1.6, 57/314, runtime: 0.037 seconds
+Target Reached? : True
+files_with_target: 57/314
+Total features_extracted: 2400
+File merged_energy_distance_151_mu_1.6, 58/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.81 seconds
+Finished feature extraction merged_energy_distance_151_mu_1.6, 58/314, runtime: 0.038 seconds
+Target Reached? : True
+files_with_target: 58/314
+Total features_extracted: 2436
+File merged_energy_distance_152_mu_1.6, 59/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.948 seconds
+Finished feature extraction merged_energy_distance_152_mu_1.6, 59/314, runtime: 0.047 seconds
+Target Reached? : True
+files_with_target: 59/314
+Total features_extracted: 2484
+File merged_energy_distance_153_mu_1.6, 60/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 2.886 seconds
+Finished feature extraction merged_energy_distance_153_mu_1.6, 60/314, runtime: 0.035 seconds
+Target Reached? : True
+files_with_target: 60/314
+Total features_extracted: 2522
+File merged_energy_distance_154_mu_1.6, 61/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.851 seconds
+Finished feature extraction merged_energy_distance_154_mu_1.6, 61/314, runtime: 0.046 seconds
+Target Reached? : True
+files_with_target: 61/314
+Total features_extracted: 2569
+File merged_energy_distance_155_mu_1.6, 62/314  loaded, Loading time: 0.004 seconds
+Finished Segmentation, runtime: 3.445 seconds
+Finished feature extraction merged_energy_distance_155_mu_1.6, 62/314, runtime: 0.048 seconds
+Target Reached? : True
+files_with_target: 62/314
+Total features_extracted: 2612
+File merged_energy_distance_156_mu_1.6, 63/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.483 seconds
+Finished feature extraction merged_energy_distance_156_mu_1.6, 63/314, runtime: 0.043 seconds
+Target Reached? : True
+files_with_target: 63/314
+Total features_extracted: 2656
+File merged_energy_distance_157_mu_1.6, 64/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 4.221 seconds
+Finished feature extraction merged_energy_distance_157_mu_1.6, 64/314, runtime: 0.044 seconds
+Target Reached? : True
+files_with_target: 64/314
+Total features_extracted: 2703
+File merged_energy_distance_158_mu_1.6, 65/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.835 seconds
+Finished feature extraction merged_energy_distance_158_mu_1.6, 65/314, runtime: 0.049 seconds
+Target Reached? : True
+files_with_target: 65/314
+Total features_extracted: 2749
+File merged_energy_distance_159_mu_1.6, 66/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.799 seconds
+Finished feature extraction merged_energy_distance_159_mu_1.6, 66/314, runtime: 0.058 seconds
+Target Reached? : True
+files_with_target: 66/314
+Total features_extracted: 2794
+File merged_energy_distance_15_mu_1.6, 67/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.259 seconds
+Finished feature extraction merged_energy_distance_15_mu_1.6, 67/314, runtime: 0.038 seconds
+Target Reached? : True
+files_with_target: 67/314
+Total features_extracted: 2834
+File merged_energy_distance_160_mu_1.6, 68/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.236 seconds
+Finished feature extraction merged_energy_distance_160_mu_1.6, 68/314, runtime: 0.039 seconds
+Target Reached? : True
+files_with_target: 68/314
+Total features_extracted: 2874
+File merged_energy_distance_161_mu_1.6, 69/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.178 seconds
+Finished feature extraction merged_energy_distance_161_mu_1.6, 69/314, runtime: 0.038 seconds
+Target Reached? : True
+files_with_target: 69/314
+Total features_extracted: 2914
+File merged_energy_distance_162_mu_1.6, 70/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.361 seconds
+Finished feature extraction merged_energy_distance_162_mu_1.6, 70/314, runtime: 0.039 seconds
+Target Reached? : True
+files_with_target: 70/314
+Total features_extracted: 2954
+File merged_energy_distance_163_mu_1.6, 71/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 2.658 seconds
+Finished feature extraction merged_energy_distance_163_mu_1.6, 71/314, runtime: 0.035 seconds
+Target Reached? : True
+files_with_target: 71/314
+Total features_extracted: 2989
+File merged_energy_distance_164_mu_1.6, 72/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.369 seconds
+Finished feature extraction merged_energy_distance_164_mu_1.6, 72/314, runtime: 0.048 seconds
+Target Reached? : True
+files_with_target: 72/314
+Total features_extracted: 3031
+File merged_energy_distance_165_mu_1.6, 73/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.211 seconds
+Finished feature extraction merged_energy_distance_165_mu_1.6, 73/314, runtime: 0.05 seconds
+Target Reached? : True
+files_with_target: 73/314
+Total features_extracted: 3073
+File merged_energy_distance_166_mu_1.6, 74/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.686 seconds
+Finished feature extraction merged_energy_distance_166_mu_1.6, 74/314, runtime: 0.047 seconds
+Target Reached? : True
+files_with_target: 74/314
+Total features_extracted: 3123
+File merged_energy_distance_167_mu_1.6, 75/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.242 seconds
+Finished feature extraction merged_energy_distance_167_mu_1.6, 75/314, runtime: 0.042 seconds
+Target Reached? : True
+files_with_target: 75/314
+Total features_extracted: 3165
+File merged_energy_distance_168_mu_1.6, 76/314  loaded, Loading time: 0.004 seconds
+Finished Segmentation, runtime: 3.953 seconds
+Finished feature extraction merged_energy_distance_168_mu_1.6, 76/314, runtime: 0.045 seconds
+Target Reached? : True
+files_with_target: 76/314
+Total features_extracted: 3212
+File merged_energy_distance_169_mu_1.6, 77/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.05 seconds
+Finished feature extraction merged_energy_distance_169_mu_1.6, 77/314, runtime: 0.037 seconds
+Target Reached? : True
+files_with_target: 77/314
+Total features_extracted: 3252
+File merged_energy_distance_16_mu_1.6, 78/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.106 seconds
+Finished feature extraction merged_energy_distance_16_mu_1.6, 78/314, runtime: 0.044 seconds
+Target Reached? : True
+files_with_target: 78/314
+Total features_extracted: 3291
+File merged_energy_distance_170_mu_1.6, 79/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.625 seconds
+Finished feature extraction merged_energy_distance_170_mu_1.6, 79/314, runtime: 0.042 seconds
+Target Reached? : True
+files_with_target: 79/314
+Total features_extracted: 3335
+File merged_energy_distance_171_mu_1.6, 80/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 4.02 seconds
+Finished feature extraction merged_energy_distance_171_mu_1.6, 80/314, runtime: 0.045 seconds
+Target Reached? : True
+files_with_target: 80/314
+Total features_extracted: 3386
+File merged_energy_distance_172_mu_1.6, 81/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 2.895 seconds
+Finished feature extraction merged_energy_distance_172_mu_1.6, 81/314, runtime: 0.043 seconds
+Target Reached? : True
+files_with_target: 81/314
+Total features_extracted: 3425
+File merged_energy_distance_173_mu_1.6, 82/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.19 seconds
+Finished feature extraction merged_energy_distance_173_mu_1.6, 82/314, runtime: 0.045 seconds
+Target Reached? : True
+files_with_target: 82/314
+Total features_extracted: 3469
+File merged_energy_distance_174_mu_1.6, 83/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.791 seconds
+Finished feature extraction merged_energy_distance_174_mu_1.6, 83/314, runtime: 0.049 seconds
+Target Reached? : True
+files_with_target: 83/314
+Total features_extracted: 3516
+File merged_energy_distance_175_mu_1.6, 84/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.699 seconds
+Finished feature extraction merged_energy_distance_175_mu_1.6, 84/314, runtime: 0.044 seconds
+Target Reached? : True
+files_with_target: 84/314
+Total features_extracted: 3564
+File merged_energy_distance_176_mu_1.6, 85/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.679 seconds
+Finished feature extraction merged_energy_distance_176_mu_1.6, 85/314, runtime: 0.027 seconds
+Target Reached? : True
+files_with_target: 85/314
+Total features_extracted: 3600
+File merged_energy_distance_177_mu_1.6, 86/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 4.021 seconds
+Finished feature extraction merged_energy_distance_177_mu_1.6, 86/314, runtime: 0.044 seconds
+Target Reached? : True
+files_with_target: 86/314
+Total features_extracted: 3647
+File merged_energy_distance_178_mu_1.6, 87/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.6 seconds
+Finished feature extraction merged_energy_distance_178_mu_1.6, 87/314, runtime: 0.034 seconds
+Target Reached? : True
+files_with_target: 87/314
+Total features_extracted: 3682
+File merged_energy_distance_179_mu_1.6, 88/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.841 seconds
+Finished feature extraction merged_energy_distance_179_mu_1.6, 88/314, runtime: 0.043 seconds
+Target Reached? : True
+files_with_target: 88/314
+Total features_extracted: 3722
+File merged_energy_distance_17_mu_1.6, 89/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.57 seconds
+Finished feature extraction merged_energy_distance_17_mu_1.6, 89/314, runtime: 0.037 seconds
+Target Reached? : True
+files_with_target: 89/314
+Total features_extracted: 3764
+File merged_energy_distance_180_mu_1.6, 90/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.859 seconds
+Finished feature extraction merged_energy_distance_180_mu_1.6, 90/314, runtime: 0.045 seconds
+Target Reached? : True
+files_with_target: 90/314
+Total features_extracted: 3810
+File merged_energy_distance_181_mu_1.6, 91/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 2.593 seconds
+Finished feature extraction merged_energy_distance_181_mu_1.6, 91/314, runtime: 0.035 seconds
+Target Reached? : True
+files_with_target: 91/314
+Total features_extracted: 3848
+File merged_energy_distance_182_mu_1.6, 92/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.021 seconds
+Finished feature extraction merged_energy_distance_182_mu_1.6, 92/314, runtime: 0.039 seconds
+Target Reached? : True
+files_with_target: 92/314
+Total features_extracted: 3892
+File merged_energy_distance_183_mu_1.6, 93/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 2.547 seconds
+Finished feature extraction merged_energy_distance_183_mu_1.6, 93/314, runtime: 0.036 seconds
+Target Reached? : True
+files_with_target: 93/314
+Total features_extracted: 3928
+File merged_energy_distance_184_mu_1.6, 94/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 2.276 seconds
+Finished feature extraction merged_energy_distance_184_mu_1.6, 94/314, runtime: 0.023 seconds
+Target Reached? : True
+files_with_target: 94/314
+Total features_extracted: 3955
+File merged_energy_distance_185_mu_1.6, 95/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 4.281 seconds
+Finished feature extraction merged_energy_distance_185_mu_1.6, 95/314, runtime: 0.049 seconds
+Target Reached? : True
+files_with_target: 95/314
+Total features_extracted: 4004
+File merged_energy_distance_186_mu_1.6, 96/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.821 seconds
+Finished feature extraction merged_energy_distance_186_mu_1.6, 96/314, runtime: 0.019 seconds
+Target Reached? : True
+files_with_target: 96/314
+Total features_extracted: 4044
+File merged_energy_distance_187_mu_1.6, 97/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.282 seconds
+Finished feature extraction merged_energy_distance_187_mu_1.6, 97/314, runtime: 0.048 seconds
+Target Reached? : True
+files_with_target: 97/314
+Total features_extracted: 4090
+File merged_energy_distance_188_mu_1.6, 98/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.635 seconds
+Finished feature extraction merged_energy_distance_188_mu_1.6, 98/314, runtime: 0.056 seconds
+Target Reached? : True
+files_with_target: 98/314
+Total features_extracted: 4137
+File merged_energy_distance_189_mu_1.6, 99/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.536 seconds
+Finished feature extraction merged_energy_distance_189_mu_1.6, 99/314, runtime: 0.044 seconds
+Target Reached? : True
+files_with_target: 99/314
+Total features_extracted: 4181
+File merged_energy_distance_18_mu_1.6, 100/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.276 seconds
+Finished feature extraction merged_energy_distance_18_mu_1.6, 100/314, runtime: 0.047 seconds
+Target Reached? : True
+files_with_target: 100/314
+Total features_extracted: 4218
+File merged_energy_distance_190_mu_1.6, 101/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.697 seconds
+Finished feature extraction merged_energy_distance_190_mu_1.6, 101/314, runtime: 0.041 seconds
+Target Reached? : True
+files_with_target: 101/314
+Total features_extracted: 4259
+File merged_energy_distance_191_mu_1.6, 102/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 4.291 seconds
+Finished feature extraction merged_energy_distance_191_mu_1.6, 102/314, runtime: 0.045 seconds
+Target Reached? : True
+files_with_target: 102/314
+Total features_extracted: 4304
+File merged_energy_distance_192_mu_1.6, 103/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 2.967 seconds
+Finished feature extraction merged_energy_distance_192_mu_1.6, 103/314, runtime: 0.041 seconds
+Target Reached? : True
+files_with_target: 103/314
+Total features_extracted: 4342
+File merged_energy_distance_193_mu_1.6, 104/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.655 seconds
+Finished feature extraction merged_energy_distance_193_mu_1.6, 104/314, runtime: 0.043 seconds
+Target Reached? : True
+files_with_target: 104/314
+Total features_extracted: 4384
+File merged_energy_distance_194_mu_1.6, 105/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.227 seconds
+Finished feature extraction merged_energy_distance_194_mu_1.6, 105/314, runtime: 0.038 seconds
+Target Reached? : True
+files_with_target: 105/314
+Total features_extracted: 4423
+File merged_energy_distance_195_mu_1.6, 106/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 4.129 seconds
+Finished feature extraction merged_energy_distance_195_mu_1.6, 106/314, runtime: 0.043 seconds
+Target Reached? : True
+files_with_target: 106/314
+Total features_extracted: 4469
+File merged_energy_distance_196_mu_1.6, 107/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.859 seconds
+Finished feature extraction merged_energy_distance_196_mu_1.6, 107/314, runtime: 0.046 seconds
+Target Reached? : True
+files_with_target: 107/314
+Total features_extracted: 4513
+File merged_energy_distance_197_mu_1.6, 108/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.018 seconds
+Finished feature extraction merged_energy_distance_197_mu_1.6, 108/314, runtime: 0.038 seconds
+Target Reached? : True
+files_with_target: 108/314
+Total features_extracted: 4553
+File merged_energy_distance_198_mu_1.6, 109/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.2 seconds
+Finished feature extraction merged_energy_distance_198_mu_1.6, 109/314, runtime: 0.042 seconds
+Target Reached? : True
+files_with_target: 109/314
+Total features_extracted: 4590
+File merged_energy_distance_199_mu_1.6, 110/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.95 seconds
+Finished feature extraction merged_energy_distance_199_mu_1.6, 110/314, runtime: 0.046 seconds
+Target Reached? : True
+files_with_target: 110/314
+Total features_extracted: 4635
+File merged_energy_distance_19_mu_1.6, 111/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 2.777 seconds
+Finished feature extraction merged_energy_distance_19_mu_1.6, 111/314, runtime: 0.034 seconds
+Target Reached? : True
+files_with_target: 111/314
+Total features_extracted: 4671
+File merged_energy_distance_1_mu_1.6, 112/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 2.252 seconds
+Finished feature extraction merged_energy_distance_1_mu_1.6, 112/314, runtime: 0.03 seconds
+Target Reached? : True
+files_with_target: 112/314
+Total features_extracted: 4699
+File merged_energy_distance_200_mu_1.6, 113/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.732 seconds
+Finished feature extraction merged_energy_distance_200_mu_1.6, 113/314, runtime: 0.048 seconds
+Target Reached? : True
+files_with_target: 113/314
+Total features_extracted: 4743
+File merged_energy_distance_201_mu_1.6, 114/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.727 seconds
+Finished feature extraction merged_energy_distance_201_mu_1.6, 114/314, runtime: 0.045 seconds
+Target Reached? : True
+files_with_target: 114/314
+Total features_extracted: 4786
+File merged_energy_distance_202_mu_1.6, 115/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.695 seconds
+Finished feature extraction merged_energy_distance_202_mu_1.6, 115/314, runtime: 0.045 seconds
+Target Reached? : True
+files_with_target: 115/314
+Total features_extracted: 4828
+File merged_energy_distance_203_mu_1.6, 116/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 4.133 seconds
+Finished feature extraction merged_energy_distance_203_mu_1.6, 116/314, runtime: 0.047 seconds
+Target Reached? : True
+files_with_target: 116/314
+Total features_extracted: 4876
+File merged_energy_distance_204_mu_1.6, 117/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.713 seconds
+Finished feature extraction merged_energy_distance_204_mu_1.6, 117/314, runtime: 0.035 seconds
+Target Reached? : True
+files_with_target: 117/314
+Total features_extracted: 4909
+File merged_energy_distance_205_mu_1.6, 118/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.956 seconds
+Finished feature extraction merged_energy_distance_205_mu_1.6, 118/314, runtime: 0.05 seconds
+Target Reached? : True
+files_with_target: 118/314
+Total features_extracted: 4955
+File merged_energy_distance_206_mu_1.6, 119/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 4.116 seconds
+Finished feature extraction merged_energy_distance_206_mu_1.6, 119/314, runtime: 0.053 seconds
+Target Reached? : True
+files_with_target: 119/314
+Total features_extracted: 5000
+File merged_energy_distance_207_mu_1.6, 120/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.295 seconds
+Finished feature extraction merged_energy_distance_207_mu_1.6, 120/314, runtime: 0.052 seconds
+Target Reached? : True
+files_with_target: 120/314
+Total features_extracted: 5039
+File merged_energy_distance_208_mu_1.6, 121/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.342 seconds
+Finished feature extraction merged_energy_distance_208_mu_1.6, 121/314, runtime: 0.04 seconds
+Target Reached? : True
+files_with_target: 121/314
+Total features_extracted: 5080
+File merged_energy_distance_209_mu_1.6, 122/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.767 seconds
+Finished feature extraction merged_energy_distance_209_mu_1.6, 122/314, runtime: 0.038 seconds
+Target Reached? : True
+files_with_target: 122/314
+Total features_extracted: 5114
+File merged_energy_distance_20_mu_1.6, 123/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.366 seconds
+Finished feature extraction merged_energy_distance_20_mu_1.6, 123/314, runtime: 0.039 seconds
+Target Reached? : True
+files_with_target: 123/314
+Total features_extracted: 5155
+File merged_energy_distance_210_mu_1.6, 124/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.686 seconds
+Finished feature extraction merged_energy_distance_210_mu_1.6, 124/314, runtime: 0.05 seconds
+Target Reached? : True
+files_with_target: 124/314
+Total features_extracted: 5200
+File merged_energy_distance_211_mu_1.6, 125/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.259 seconds
+Finished feature extraction merged_energy_distance_211_mu_1.6, 125/314, runtime: 0.048 seconds
+Target Reached? : True
+files_with_target: 125/314
+Total features_extracted: 5240
+File merged_energy_distance_212_mu_1.6, 126/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 2.876 seconds
+Finished feature extraction merged_energy_distance_212_mu_1.6, 126/314, runtime: 0.041 seconds
+Target Reached? : True
+files_with_target: 126/314
+Total features_extracted: 5279
+File merged_energy_distance_213_mu_1.6, 127/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 4.629 seconds
+Finished feature extraction merged_energy_distance_213_mu_1.6, 127/314, runtime: 0.02 seconds
+Target Reached? : True
+files_with_target: 127/314
+Total features_extracted: 5329
+File merged_energy_distance_214_mu_1.6, 128/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.564 seconds
+Finished feature extraction merged_energy_distance_214_mu_1.6, 128/314, runtime: 0.035 seconds
+Target Reached? : True
+files_with_target: 128/314
+Total features_extracted: 5369
+File merged_energy_distance_215_mu_1.6, 129/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.175 seconds
+Finished feature extraction merged_energy_distance_215_mu_1.6, 129/314, runtime: 0.052 seconds
+Target Reached? : True
+files_with_target: 129/314
+Total features_extracted: 5407
+File merged_energy_distance_216_mu_1.6, 130/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 4.101 seconds
+Finished feature extraction merged_energy_distance_216_mu_1.6, 130/314, runtime: 0.057 seconds
+Target Reached? : True
+files_with_target: 130/314
+Total features_extracted: 5453
+File merged_energy_distance_217_mu_1.6, 131/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 4.612 seconds
+Finished feature extraction merged_energy_distance_217_mu_1.6, 131/314, runtime: 0.048 seconds
+Target Reached? : True
+files_with_target: 131/314
+Total features_extracted: 5499
+File merged_energy_distance_218_mu_1.6, 132/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 4.128 seconds
+Finished feature extraction merged_energy_distance_218_mu_1.6, 132/314, runtime: 0.049 seconds
+Target Reached? : True
+files_with_target: 132/314
+Total features_extracted: 5547
+File merged_energy_distance_219_mu_1.6, 133/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.937 seconds
+Finished feature extraction merged_energy_distance_219_mu_1.6, 133/314, runtime: 0.041 seconds
+Target Reached? : True
+files_with_target: 133/314
+Total features_extracted: 5584
+File merged_energy_distance_21_mu_1.6, 134/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.007 seconds
+Finished feature extraction merged_energy_distance_21_mu_1.6, 134/314, runtime: 0.04 seconds
+Target Reached? : True
+files_with_target: 134/314
+Total features_extracted: 5621
+File merged_energy_distance_220_mu_1.6, 135/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.971 seconds
+Finished feature extraction merged_energy_distance_220_mu_1.6, 135/314, runtime: 0.046 seconds
+Target Reached? : True
+files_with_target: 135/314
+Total features_extracted: 5668
+File merged_energy_distance_221_mu_1.6, 136/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 4.687 seconds
+Finished feature extraction merged_energy_distance_221_mu_1.6, 136/314, runtime: 0.051 seconds
+Target Reached? : True
+files_with_target: 136/314
+Total features_extracted: 5716
+File merged_energy_distance_222_mu_1.6, 137/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.268 seconds
+Finished feature extraction merged_energy_distance_222_mu_1.6, 137/314, runtime: 0.042 seconds
+Target Reached? : True
+files_with_target: 137/314
+Total features_extracted: 5755
+File merged_energy_distance_223_mu_1.6, 138/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.59 seconds
+Finished feature extraction merged_energy_distance_223_mu_1.6, 138/314, runtime: 0.056 seconds
+Target Reached? : True
+files_with_target: 138/314
+Total features_extracted: 5800
+File merged_energy_distance_224_mu_1.6, 139/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.155 seconds
+Finished feature extraction merged_energy_distance_224_mu_1.6, 139/314, runtime: 0.037 seconds
+Target Reached? : True
+files_with_target: 139/314
+Total features_extracted: 5840
+File merged_energy_distance_225_mu_1.6, 140/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 4.186 seconds
+Finished feature extraction merged_energy_distance_225_mu_1.6, 140/314, runtime: 0.058 seconds
+Target Reached? : True
+files_with_target: 140/314
+Total features_extracted: 5889
+File merged_energy_distance_226_mu_1.6, 141/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.397 seconds
+Finished feature extraction merged_energy_distance_226_mu_1.6, 141/314, runtime: 0.04 seconds
+Target Reached? : True
+files_with_target: 141/314
+Total features_extracted: 5930
+File merged_energy_distance_227_mu_1.6, 142/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 4.639 seconds
+Finished feature extraction merged_energy_distance_227_mu_1.6, 142/314, runtime: 0.056 seconds
+Target Reached? : True
+files_with_target: 142/314
+Total features_extracted: 5974
+File merged_energy_distance_228_mu_1.6, 143/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.004 seconds
+Finished feature extraction merged_energy_distance_228_mu_1.6, 143/314, runtime: 0.041 seconds
+Target Reached? : True
+files_with_target: 143/314
+Total features_extracted: 6010
+File merged_energy_distance_229_mu_1.6, 144/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 4.158 seconds
+Finished feature extraction merged_energy_distance_229_mu_1.6, 144/314, runtime: 0.058 seconds
+Target Reached? : True
+files_with_target: 144/314
+Total features_extracted: 6058
+File merged_energy_distance_22_mu_1.6, 145/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.334 seconds
+Finished feature extraction merged_energy_distance_22_mu_1.6, 145/314, runtime: 0.077 seconds
+Target Reached? : True
+files_with_target: 145/314
+Total features_extracted: 6098
+File merged_energy_distance_230_mu_1.6, 146/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.047 seconds
+Finished feature extraction merged_energy_distance_230_mu_1.6, 146/314, runtime: 0.041 seconds
+Target Reached? : True
+files_with_target: 146/314
+Total features_extracted: 6135
+File merged_energy_distance_231_mu_1.6, 147/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.986 seconds
+Finished feature extraction merged_energy_distance_231_mu_1.6, 147/314, runtime: 0.046 seconds
+Target Reached? : True
+files_with_target: 147/314
+Total features_extracted: 6180
+File merged_energy_distance_232_mu_1.6, 148/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.508 seconds
+Finished feature extraction merged_energy_distance_232_mu_1.6, 148/314, runtime: 0.044 seconds
+Target Reached? : True
+files_with_target: 148/314
+Total features_extracted: 6223
+File merged_energy_distance_233_mu_1.6, 149/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.644 seconds
+Finished feature extraction merged_energy_distance_233_mu_1.6, 149/314, runtime: 0.046 seconds
+Target Reached? : True
+files_with_target: 149/314
+Total features_extracted: 6265
+File merged_energy_distance_234_mu_1.6, 150/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 4.77 seconds
+Finished feature extraction merged_energy_distance_234_mu_1.6, 150/314, runtime: 0.049 seconds
+Target Reached? : True
+files_with_target: 150/314
+Total features_extracted: 6312
+File merged_energy_distance_235_mu_1.6, 151/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.215 seconds
+Finished feature extraction merged_energy_distance_235_mu_1.6, 151/314, runtime: 0.04 seconds
+Target Reached? : True
+files_with_target: 151/314
+Total features_extracted: 6353
+File merged_energy_distance_236_mu_1.6, 152/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 4.047 seconds
+Finished feature extraction merged_energy_distance_236_mu_1.6, 152/314, runtime: 0.053 seconds
+Target Reached? : True
+files_with_target: 152/314
+Total features_extracted: 6398
+File merged_energy_distance_237_mu_1.6, 153/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.546 seconds
+Finished feature extraction merged_energy_distance_237_mu_1.6, 153/314, runtime: 0.056 seconds
+Target Reached? : True
+files_with_target: 153/314
+Total features_extracted: 6442
+File merged_energy_distance_238_mu_1.6, 154/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 4.566 seconds
+Finished feature extraction merged_energy_distance_238_mu_1.6, 154/314, runtime: 0.044 seconds
+Target Reached? : True
+files_with_target: 154/314
+Total features_extracted: 6491
+File merged_energy_distance_239_mu_1.6, 155/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.223 seconds
+Finished feature extraction merged_energy_distance_239_mu_1.6, 155/314, runtime: 0.04 seconds
+Target Reached? : True
+files_with_target: 155/314
+Total features_extracted: 6532
+File merged_energy_distance_23_mu_1.6, 156/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.069 seconds
+Finished feature extraction merged_energy_distance_23_mu_1.6, 156/314, runtime: 0.039 seconds
+Target Reached? : True
+files_with_target: 156/314
+Total features_extracted: 6573
+File merged_energy_distance_240_mu_1.6, 157/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.297 seconds
+Finished feature extraction merged_energy_distance_240_mu_1.6, 157/314, runtime: 0.043 seconds
+Target Reached? : True
+files_with_target: 157/314
+Total features_extracted: 6613
+File merged_energy_distance_241_mu_1.6, 158/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.79 seconds
+Finished feature extraction merged_energy_distance_241_mu_1.6, 158/314, runtime: 0.045 seconds
+Target Reached? : True
+files_with_target: 158/314
+Total features_extracted: 6658
+File merged_energy_distance_242_mu_1.6, 159/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 4.797 seconds
+Finished feature extraction merged_energy_distance_242_mu_1.6, 159/314, runtime: 0.052 seconds
+Target Reached? : True
+files_with_target: 159/314
+Total features_extracted: 6707
+File merged_energy_distance_243_mu_1.6, 160/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 4.173 seconds
+Finished feature extraction merged_energy_distance_243_mu_1.6, 160/314, runtime: 0.048 seconds
+Target Reached? : True
+files_with_target: 160/314
+Total features_extracted: 6756
+File merged_energy_distance_244_mu_1.6, 161/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.8 seconds
+Finished feature extraction merged_energy_distance_244_mu_1.6, 161/314, runtime: 0.03 seconds
+Target Reached? : True
+files_with_target: 161/314
+Total features_extracted: 6802
+File merged_energy_distance_245_mu_1.6, 162/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.843 seconds
+Finished feature extraction merged_energy_distance_245_mu_1.6, 162/314, runtime: 0.047 seconds
+Target Reached? : True
+files_with_target: 162/314
+Total features_extracted: 6848
+File merged_energy_distance_246_mu_1.6, 163/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.628 seconds
+Finished feature extraction merged_energy_distance_246_mu_1.6, 163/314, runtime: 0.049 seconds
+Target Reached? : True
+files_with_target: 163/314
+Total features_extracted: 6894
+File merged_energy_distance_247_mu_1.6, 164/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.268 seconds
+Finished feature extraction merged_energy_distance_247_mu_1.6, 164/314, runtime: 0.037 seconds
+Target Reached? : True
+files_with_target: 164/314
+Total features_extracted: 6935
+File merged_energy_distance_248_mu_1.6, 165/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.271 seconds
+Finished feature extraction merged_energy_distance_248_mu_1.6, 165/314, runtime: 0.04 seconds
+Target Reached? : True
+files_with_target: 165/314
+Total features_extracted: 6977
+File merged_energy_distance_249_mu_1.6, 166/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 2.767 seconds
+Finished feature extraction merged_energy_distance_249_mu_1.6, 166/314, runtime: 0.042 seconds
+Target Reached? : True
+files_with_target: 166/314
+Total features_extracted: 7013
+File merged_energy_distance_24_mu_1.6, 167/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.239 seconds
+Finished feature extraction merged_energy_distance_24_mu_1.6, 167/314, runtime: 0.044 seconds
+Target Reached? : True
+files_with_target: 167/314
+Total features_extracted: 7057
+File merged_energy_distance_250_mu_1.6, 168/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.809 seconds
+Finished feature extraction merged_energy_distance_250_mu_1.6, 168/314, runtime: 0.037 seconds
+Target Reached? : True
+files_with_target: 168/314
+Total features_extracted: 7094
+File merged_energy_distance_251_mu_1.6, 169/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 2.896 seconds
+Finished feature extraction merged_energy_distance_251_mu_1.6, 169/314, runtime: 0.044 seconds
+Target Reached? : True
+files_with_target: 169/314
+Total features_extracted: 7132
+File merged_energy_distance_252_mu_1.6, 170/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.488 seconds
+Finished feature extraction merged_energy_distance_252_mu_1.6, 170/314, runtime: 0.048 seconds
+Target Reached? : True
+files_with_target: 170/314
+Total features_extracted: 7176
+File merged_energy_distance_253_mu_1.6, 171/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.935 seconds
+Finished feature extraction merged_energy_distance_253_mu_1.6, 171/314, runtime: 0.058 seconds
+Target Reached? : True
+files_with_target: 171/314
+Total features_extracted: 7226
+File merged_energy_distance_254_mu_1.6, 172/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.292 seconds
+Finished feature extraction merged_energy_distance_254_mu_1.6, 172/314, runtime: 0.039 seconds
+Target Reached? : True
+files_with_target: 172/314
+Total features_extracted: 7271
+File merged_energy_distance_255_mu_1.6, 173/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.686 seconds
+Finished feature extraction merged_energy_distance_255_mu_1.6, 173/314, runtime: 0.019 seconds
+Target Reached? : True
+files_with_target: 173/314
+Total features_extracted: 7306
+File merged_energy_distance_256_mu_1.6, 174/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.657 seconds
+Finished feature extraction merged_energy_distance_256_mu_1.6, 174/314, runtime: 0.019 seconds
+Target Reached? : True
+files_with_target: 174/314
+Total features_extracted: 7346
+File merged_energy_distance_257_mu_1.6, 175/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 2.051 seconds
+Finished feature extraction merged_energy_distance_257_mu_1.6, 175/314, runtime: 0.041 seconds
+Target Reached? : True
+files_with_target: 175/314
+Total features_extracted: 7388
+File merged_energy_distance_258_mu_1.6, 176/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.977 seconds
+Finished feature extraction merged_energy_distance_258_mu_1.6, 176/314, runtime: 0.022 seconds
+Target Reached? : True
+files_with_target: 176/314
+Total features_extracted: 7434
+File merged_energy_distance_259_mu_1.6, 177/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.259 seconds
+Finished feature extraction merged_energy_distance_259_mu_1.6, 177/314, runtime: 0.046 seconds
+Target Reached? : True
+files_with_target: 177/314
+Total features_extracted: 7474
+File merged_energy_distance_25_mu_1.6, 178/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.589 seconds
+Finished feature extraction merged_energy_distance_25_mu_1.6, 178/314, runtime: 0.034 seconds
+Target Reached? : True
+files_with_target: 178/314
+Total features_extracted: 7517
+File merged_energy_distance_260_mu_1.6, 179/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.76 seconds
+Finished feature extraction merged_energy_distance_260_mu_1.6, 179/314, runtime: 0.044 seconds
+Target Reached? : True
+files_with_target: 179/314
+Total features_extracted: 7558
+File merged_energy_distance_261_mu_1.6, 180/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 4.548 seconds
+Finished feature extraction merged_energy_distance_261_mu_1.6, 180/314, runtime: 0.05 seconds
+Target Reached? : True
+files_with_target: 180/314
+Total features_extracted: 7605
+File merged_energy_distance_262_mu_1.6, 181/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.32 seconds
+Finished feature extraction merged_energy_distance_262_mu_1.6, 181/314, runtime: 0.046 seconds
+Target Reached? : True
+files_with_target: 181/314
+Total features_extracted: 7647
+File merged_energy_distance_263_mu_1.6, 182/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.451 seconds
+Finished feature extraction merged_energy_distance_263_mu_1.6, 182/314, runtime: 0.044 seconds
+Target Reached? : True
+files_with_target: 182/314
+Total features_extracted: 7687
+File merged_energy_distance_264_mu_1.6, 183/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.461 seconds
+Finished feature extraction merged_energy_distance_264_mu_1.6, 183/314, runtime: 0.052 seconds
+Target Reached? : True
+files_with_target: 183/314
+Total features_extracted: 7729
+File merged_energy_distance_265_mu_1.6, 184/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.533 seconds
+Finished feature extraction merged_energy_distance_265_mu_1.6, 184/314, runtime: 0.044 seconds
+Target Reached? : True
+files_with_target: 184/314
+Total features_extracted: 7769
+File merged_energy_distance_266_mu_1.6, 185/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.441 seconds
+Finished feature extraction merged_energy_distance_266_mu_1.6, 185/314, runtime: 0.042 seconds
+Target Reached? : True
+files_with_target: 185/314
+Total features_extracted: 7811
+File merged_energy_distance_267_mu_1.6, 186/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.604 seconds
+Finished feature extraction merged_energy_distance_267_mu_1.6, 186/314, runtime: 0.049 seconds
+Target Reached? : True
+files_with_target: 186/314
+Total features_extracted: 7855
+File merged_energy_distance_268_mu_1.6, 187/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 4.04 seconds
+Finished feature extraction merged_energy_distance_268_mu_1.6, 187/314, runtime: 0.045 seconds
+Target Reached? : True
+files_with_target: 187/314
+Total features_extracted: 7901
+File merged_energy_distance_269_mu_1.6, 188/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.031 seconds
+Finished feature extraction merged_energy_distance_269_mu_1.6, 188/314, runtime: 0.034 seconds
+Target Reached? : True
+files_with_target: 188/314
+Total features_extracted: 7937
+File merged_energy_distance_26_mu_1.6, 189/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.405 seconds
+Finished feature extraction merged_energy_distance_26_mu_1.6, 189/314, runtime: 0.02 seconds
+Target Reached? : True
+files_with_target: 189/314
+Total features_extracted: 7981
+File merged_energy_distance_270_mu_1.6, 190/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 2.967 seconds
+Finished feature extraction merged_energy_distance_270_mu_1.6, 190/314, runtime: 0.046 seconds
+Target Reached? : True
+files_with_target: 190/314
+Total features_extracted: 8018
+File merged_energy_distance_271_mu_1.6, 191/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.278 seconds
+Finished feature extraction merged_energy_distance_271_mu_1.6, 191/314, runtime: 0.042 seconds
+Target Reached? : True
+files_with_target: 191/314
+Total features_extracted: 8056
+File merged_energy_distance_272_mu_1.6, 192/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.95 seconds
+Finished feature extraction merged_energy_distance_272_mu_1.6, 192/314, runtime: 0.037 seconds
+Target Reached? : True
+files_with_target: 192/314
+Total features_extracted: 8098
+File merged_energy_distance_273_mu_1.6, 193/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.808 seconds
+Finished feature extraction merged_energy_distance_273_mu_1.6, 193/314, runtime: 0.051 seconds
+Target Reached? : True
+files_with_target: 193/314
+Total features_extracted: 8141
+File merged_energy_distance_274_mu_1.6, 194/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 2.896 seconds
+Finished feature extraction merged_energy_distance_274_mu_1.6, 194/314, runtime: 0.034 seconds
+Target Reached? : True
+files_with_target: 194/314
+Total features_extracted: 8178
+File merged_energy_distance_275_mu_1.6, 195/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.079 seconds
+Finished feature extraction merged_energy_distance_275_mu_1.6, 195/314, runtime: 0.042 seconds
+Target Reached? : True
+files_with_target: 195/314
+Total features_extracted: 8218
+File merged_energy_distance_276_mu_1.6, 196/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.296 seconds
+Finished feature extraction merged_energy_distance_276_mu_1.6, 196/314, runtime: 0.033 seconds
+Target Reached? : True
+files_with_target: 196/314
+Total features_extracted: 8251
+File merged_energy_distance_277_mu_1.6, 197/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 4.021 seconds
+Finished feature extraction merged_energy_distance_277_mu_1.6, 197/314, runtime: 0.046 seconds
+Target Reached? : True
+files_with_target: 197/314
+Total features_extracted: 8298
+File merged_energy_distance_278_mu_1.6, 198/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 5.156 seconds
+Finished feature extraction merged_energy_distance_278_mu_1.6, 198/314, runtime: 0.05 seconds
+Target Reached? : True
+files_with_target: 198/314
+Total features_extracted: 8347
+File merged_energy_distance_279_mu_1.6, 199/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.523 seconds
+Finished feature extraction merged_energy_distance_279_mu_1.6, 199/314, runtime: 0.045 seconds
+Target Reached? : True
+files_with_target: 199/314
+Total features_extracted: 8392
+File merged_energy_distance_27_mu_1.6, 200/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.586 seconds
+Finished feature extraction merged_energy_distance_27_mu_1.6, 200/314, runtime: 0.042 seconds
+Target Reached? : True
+files_with_target: 200/314
+Total features_extracted: 8435
+File merged_energy_distance_280_mu_1.6, 201/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.541 seconds
+Finished feature extraction merged_energy_distance_280_mu_1.6, 201/314, runtime: 0.034 seconds
+Target Reached? : True
+files_with_target: 201/314
+Total features_extracted: 8470
+File merged_energy_distance_281_mu_1.6, 202/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 4.148 seconds
+Finished feature extraction merged_energy_distance_281_mu_1.6, 202/314, runtime: 0.043 seconds
+Target Reached? : True
+files_with_target: 202/314
+Total features_extracted: 8518
+File merged_energy_distance_282_mu_1.6, 203/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.289 seconds
+Finished feature extraction merged_energy_distance_282_mu_1.6, 203/314, runtime: 0.057 seconds
+Target Reached? : True
+files_with_target: 203/314
+Total features_extracted: 8560
+File merged_energy_distance_283_mu_1.6, 204/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.041 seconds
+Finished feature extraction merged_energy_distance_283_mu_1.6, 204/314, runtime: 0.024 seconds
+Target Reached? : True
+files_with_target: 204/314
+Total features_extracted: 8597
+File merged_energy_distance_284_mu_1.6, 205/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.215 seconds
+Finished feature extraction merged_energy_distance_284_mu_1.6, 205/314, runtime: 0.034 seconds
+Target Reached? : True
+files_with_target: 205/314
+Total features_extracted: 8640
+File merged_energy_distance_285_mu_1.6, 206/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.86 seconds
+Finished feature extraction merged_energy_distance_285_mu_1.6, 206/314, runtime: 0.05 seconds
+Target Reached? : True
+files_with_target: 206/314
+Total features_extracted: 8688
+File merged_energy_distance_286_mu_1.6, 207/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.892 seconds
+Finished feature extraction merged_energy_distance_286_mu_1.6, 207/314, runtime: 0.021 seconds
+Target Reached? : True
+files_with_target: 207/314
+Total features_extracted: 8733
+File merged_energy_distance_287_mu_1.6, 208/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.054 seconds
+Finished feature extraction merged_energy_distance_287_mu_1.6, 208/314, runtime: 0.021 seconds
+Target Reached? : True
+files_with_target: 208/314
+Total features_extracted: 8775
+File merged_energy_distance_288_mu_1.6, 209/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.123 seconds
+Finished feature extraction merged_energy_distance_288_mu_1.6, 209/314, runtime: 0.051 seconds
+Target Reached? : True
+files_with_target: 209/314
+Total features_extracted: 8818
+File merged_energy_distance_289_mu_1.6, 210/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.753 seconds
+Finished feature extraction merged_energy_distance_289_mu_1.6, 210/314, runtime: 0.05 seconds
+Target Reached? : True
+files_with_target: 210/314
+Total features_extracted: 8853
+File merged_energy_distance_28_mu_1.6, 211/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.188 seconds
+Finished feature extraction merged_energy_distance_28_mu_1.6, 211/314, runtime: 0.04 seconds
+Target Reached? : True
+files_with_target: 211/314
+Total features_extracted: 8893
+File merged_energy_distance_290_mu_1.6, 212/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 4.061 seconds
+Finished feature extraction merged_energy_distance_290_mu_1.6, 212/314, runtime: 0.057 seconds
+Target Reached? : True
+files_with_target: 212/314
+Total features_extracted: 8939
+File merged_energy_distance_291_mu_1.6, 213/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 4.684 seconds
+Finished feature extraction merged_energy_distance_291_mu_1.6, 213/314, runtime: 0.058 seconds
+Target Reached? : True
+files_with_target: 213/314
+Total features_extracted: 8985
+File merged_energy_distance_292_mu_1.6, 214/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.69 seconds
+Finished feature extraction merged_energy_distance_292_mu_1.6, 214/314, runtime: 0.048 seconds
+Target Reached? : True
+files_with_target: 214/314
+Total features_extracted: 9029
+File merged_energy_distance_293_mu_1.6, 215/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.305 seconds
+Finished feature extraction merged_energy_distance_293_mu_1.6, 215/314, runtime: 0.04 seconds
+Target Reached? : True
+files_with_target: 215/314
+Total features_extracted: 9069
+File merged_energy_distance_294_mu_1.6, 216/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 4.046 seconds
+Finished feature extraction merged_energy_distance_294_mu_1.6, 216/314, runtime: 0.064 seconds
+Target Reached? : True
+files_with_target: 216/314
+Total features_extracted: 9121
+File merged_energy_distance_295_mu_1.6, 217/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.659 seconds
+Finished feature extraction merged_energy_distance_295_mu_1.6, 217/314, runtime: 0.043 seconds
+Target Reached? : True
+files_with_target: 217/314
+Total features_extracted: 9162
+File merged_energy_distance_296_mu_1.6, 218/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.703 seconds
+Finished feature extraction merged_energy_distance_296_mu_1.6, 218/314, runtime: 0.036 seconds
+Target Reached? : True
+files_with_target: 218/314
+Total features_extracted: 9199
+File merged_energy_distance_297_mu_1.6, 219/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 4.196 seconds
+Finished feature extraction merged_energy_distance_297_mu_1.6, 219/314, runtime: 0.059 seconds
+Target Reached? : True
+files_with_target: 219/314
+Total features_extracted: 9247
+File merged_energy_distance_298_mu_1.6, 220/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 4.167 seconds
+Finished feature extraction merged_energy_distance_298_mu_1.6, 220/314, runtime: 0.053 seconds
+Target Reached? : True
+files_with_target: 220/314
+Total features_extracted: 9291
+File merged_energy_distance_299_mu_1.6, 221/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 4.162 seconds
+Finished feature extraction merged_energy_distance_299_mu_1.6, 221/314, runtime: 0.041 seconds
+Target Reached? : True
+files_with_target: 221/314
+Total features_extracted: 9338
+File merged_energy_distance_29_mu_1.6, 222/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.814 seconds
+Finished feature extraction merged_energy_distance_29_mu_1.6, 222/314, runtime: 0.049 seconds
+Target Reached? : True
+files_with_target: 222/314
+Total features_extracted: 9381
+File merged_energy_distance_2_mu_1.6, 223/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.752 seconds
+Finished feature extraction merged_energy_distance_2_mu_1.6, 223/314, runtime: 0.046 seconds
+Target Reached? : True
+files_with_target: 223/314
+Total features_extracted: 9427
+File merged_energy_distance_300_mu_1.6, 224/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.76 seconds
+Finished feature extraction merged_energy_distance_300_mu_1.6, 224/314, runtime: 0.044 seconds
+Target Reached? : True
+files_with_target: 224/314
+Total features_extracted: 9470
+File merged_energy_distance_301_mu_1.6, 225/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 2.877 seconds
+Finished feature extraction merged_energy_distance_301_mu_1.6, 225/314, runtime: 0.037 seconds
+Target Reached? : True
+files_with_target: 225/314
+Total features_extracted: 9508
+File merged_energy_distance_302_mu_1.6, 226/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.983 seconds
+Finished feature extraction merged_energy_distance_302_mu_1.6, 226/314, runtime: 0.04 seconds
+Target Reached? : True
+files_with_target: 226/314
+Total features_extracted: 9547
+File merged_energy_distance_303_mu_1.6, 227/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.054 seconds
+Finished feature extraction merged_energy_distance_303_mu_1.6, 227/314, runtime: 0.036 seconds
+Target Reached? : True
+files_with_target: 227/314
+Total features_extracted: 9586
+File merged_energy_distance_304_mu_1.6, 228/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 4.654 seconds
+Finished feature extraction merged_energy_distance_304_mu_1.6, 228/314, runtime: 0.046 seconds
+Target Reached? : True
+files_with_target: 228/314
+Total features_extracted: 9633
+File merged_energy_distance_305_mu_1.6, 229/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.88 seconds
+Finished feature extraction merged_energy_distance_305_mu_1.6, 229/314, runtime: 0.043 seconds
+Target Reached? : True
+files_with_target: 229/314
+Total features_extracted: 9680
+File merged_energy_distance_306_mu_1.6, 230/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.248 seconds
+Finished feature extraction merged_energy_distance_306_mu_1.6, 230/314, runtime: 0.038 seconds
+Target Reached? : True
+files_with_target: 230/314
+Total features_extracted: 9718
+File merged_energy_distance_307_mu_1.6, 231/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.877 seconds
+Finished feature extraction merged_energy_distance_307_mu_1.6, 231/314, runtime: 0.052 seconds
+Target Reached? : True
+files_with_target: 231/314
+Total features_extracted: 9762
+File merged_energy_distance_308_mu_1.6, 232/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.717 seconds
+Finished feature extraction merged_energy_distance_308_mu_1.6, 232/314, runtime: 0.048 seconds
+Target Reached? : True
+files_with_target: 232/314
+Total features_extracted: 9807
+File merged_energy_distance_309_mu_1.6, 233/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.672 seconds
+Finished feature extraction merged_energy_distance_309_mu_1.6, 233/314, runtime: 0.045 seconds
+Target Reached? : True
+files_with_target: 233/314
+Total features_extracted: 9851
+File merged_energy_distance_30_mu_1.6, 234/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 2.813 seconds
+Finished feature extraction merged_energy_distance_30_mu_1.6, 234/314, runtime: 0.037 seconds
+Target Reached? : True
+files_with_target: 234/314
+Total features_extracted: 9886
+File merged_energy_distance_310_mu_1.6, 235/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 4.341 seconds
+Finished feature extraction merged_energy_distance_310_mu_1.6, 235/314, runtime: 0.051 seconds
+Target Reached? : True
+files_with_target: 235/314
+Total features_extracted: 9933
+File merged_energy_distance_311_mu_1.6, 236/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.659 seconds
+Finished feature extraction merged_energy_distance_311_mu_1.6, 236/314, runtime: 0.04 seconds
+Target Reached? : True
+files_with_target: 236/314
+Total features_extracted: 9977
+File merged_energy_distance_312_mu_1.6, 237/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.857 seconds
+Finished feature extraction merged_energy_distance_312_mu_1.6, 237/314, runtime: 0.05 seconds
+Target Reached? : True
+files_with_target: 237/314
+Total features_extracted: 10021
+File merged_energy_distance_313_mu_1.6, 238/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.297 seconds
+Finished feature extraction merged_energy_distance_313_mu_1.6, 238/314, runtime: 0.028 seconds
+Target Reached? : True
+files_with_target: 238/314
+Total features_extracted: 10059
+File merged_energy_distance_31_mu_1.6, 239/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 2.643 seconds
+Finished feature extraction merged_energy_distance_31_mu_1.6, 239/314, runtime: 0.014 seconds
+Target Reached? : True
+files_with_target: 239/314
+Total features_extracted: 10103
+File merged_energy_distance_32_mu_1.6, 240/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.43 seconds
+Finished feature extraction merged_energy_distance_32_mu_1.6, 240/314, runtime: 0.038 seconds
+Target Reached? : True
+files_with_target: 240/314
+Total features_extracted: 10145
+File merged_energy_distance_33_mu_1.6, 241/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 2.734 seconds
+Finished feature extraction merged_energy_distance_33_mu_1.6, 241/314, runtime: 0.039 seconds
+Target Reached? : True
+files_with_target: 241/314
+Total features_extracted: 10185
+File merged_energy_distance_34_mu_1.6, 242/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 2.786 seconds
+Finished feature extraction merged_energy_distance_34_mu_1.6, 242/314, runtime: 0.042 seconds
+Target Reached? : True
+files_with_target: 242/314
+Total features_extracted: 10225
+File merged_energy_distance_35_mu_1.6, 243/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.459 seconds
+Finished feature extraction merged_energy_distance_35_mu_1.6, 243/314, runtime: 0.043 seconds
+Target Reached? : True
+files_with_target: 243/314
+Total features_extracted: 10270
+File merged_energy_distance_36_mu_1.6, 244/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.659 seconds
+Finished feature extraction merged_energy_distance_36_mu_1.6, 244/314, runtime: 0.051 seconds
+Target Reached? : True
+files_with_target: 244/314
+Total features_extracted: 10319
+File merged_energy_distance_37_mu_1.6, 245/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.385 seconds
+Finished feature extraction merged_energy_distance_37_mu_1.6, 245/314, runtime: 0.043 seconds
+Target Reached? : True
+files_with_target: 245/314
+Total features_extracted: 10359
+File merged_energy_distance_38_mu_1.6, 246/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.47 seconds
+Finished feature extraction merged_energy_distance_38_mu_1.6, 246/314, runtime: 0.043 seconds
+Target Reached? : True
+files_with_target: 246/314
+Total features_extracted: 10406
+File merged_energy_distance_39_mu_1.6, 247/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.832 seconds
+Finished feature extraction merged_energy_distance_39_mu_1.6, 247/314, runtime: 0.042 seconds
+Target Reached? : True
+files_with_target: 247/314
+Total features_extracted: 10447
+File merged_energy_distance_3_mu_1.6, 248/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.111 seconds
+Finished feature extraction merged_energy_distance_3_mu_1.6, 248/314, runtime: 0.038 seconds
+Target Reached? : True
+files_with_target: 248/314
+Total features_extracted: 10488
+File merged_energy_distance_40_mu_1.6, 249/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.617 seconds
+Finished feature extraction merged_energy_distance_40_mu_1.6, 249/314, runtime: 0.042 seconds
+Target Reached? : False
+Target Not Reached, No features extracted
+File merged_energy_distance_41_mu_1.6, 250/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.31 seconds
+Finished feature extraction merged_energy_distance_41_mu_1.6, 250/314, runtime: 0.049 seconds
+Target Reached? : True
+files_with_target: 249/314
+Total features_extracted: 10533
+File merged_energy_distance_42_mu_1.6, 251/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.064 seconds
+Finished feature extraction merged_energy_distance_42_mu_1.6, 251/314, runtime: 0.043 seconds
+Target Reached? : True
+files_with_target: 250/314
+Total features_extracted: 10573
+File merged_energy_distance_43_mu_1.6, 252/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.884 seconds
+Finished feature extraction merged_energy_distance_43_mu_1.6, 252/314, runtime: 0.043 seconds
+Target Reached? : True
+files_with_target: 251/314
+Total features_extracted: 10613
+File merged_energy_distance_44_mu_1.6, 253/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.363 seconds
+Finished feature extraction merged_energy_distance_44_mu_1.6, 253/314, runtime: 0.034 seconds
+Target Reached? : True
+files_with_target: 252/314
+Total features_extracted: 10655
+File merged_energy_distance_45_mu_1.6, 254/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 2.87 seconds
+Finished feature extraction merged_energy_distance_45_mu_1.6, 254/314, runtime: 0.05 seconds
+Target Reached? : True
+files_with_target: 253/314
+Total features_extracted: 10693
+File merged_energy_distance_46_mu_1.6, 255/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 4.679 seconds
+Finished feature extraction merged_energy_distance_46_mu_1.6, 255/314, runtime: 0.05 seconds
+Target Reached? : True
+files_with_target: 254/314
+Total features_extracted: 10741
+File merged_energy_distance_47_mu_1.6, 256/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.576 seconds
+Finished feature extraction merged_energy_distance_47_mu_1.6, 256/314, runtime: 0.049 seconds
+Target Reached? : True
+files_with_target: 255/314
+Total features_extracted: 10784
+File merged_energy_distance_48_mu_1.6, 257/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.359 seconds
+Finished feature extraction merged_energy_distance_48_mu_1.6, 257/314, runtime: 0.047 seconds
+Target Reached? : True
+files_with_target: 256/314
+Total features_extracted: 10827
+File merged_energy_distance_49_mu_1.6, 258/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.922 seconds
+Finished feature extraction merged_energy_distance_49_mu_1.6, 258/314, runtime: 0.05 seconds
+Target Reached? : True
+files_with_target: 257/314
+Total features_extracted: 10872
+File merged_energy_distance_4_mu_1.6, 259/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 4.249 seconds
+Finished feature extraction merged_energy_distance_4_mu_1.6, 259/314, runtime: 0.047 seconds
+Target Reached? : True
+files_with_target: 258/314
+Total features_extracted: 10922
+File merged_energy_distance_50_mu_1.6, 260/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.82 seconds
+Finished feature extraction merged_energy_distance_50_mu_1.6, 260/314, runtime: 0.045 seconds
+Target Reached? : True
+files_with_target: 259/314
+Total features_extracted: 10966
+File merged_energy_distance_51_mu_1.6, 261/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.66 seconds
+Finished feature extraction merged_energy_distance_51_mu_1.6, 261/314, runtime: 0.045 seconds
+Target Reached? : True
+files_with_target: 260/314
+Total features_extracted: 11010
+File merged_energy_distance_52_mu_1.6, 262/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.429 seconds
+Finished feature extraction merged_energy_distance_52_mu_1.6, 262/314, runtime: 0.046 seconds
+Target Reached? : True
+files_with_target: 261/314
+Total features_extracted: 11051
+File merged_energy_distance_53_mu_1.6, 263/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.479 seconds
+Finished feature extraction merged_energy_distance_53_mu_1.6, 263/314, runtime: 0.051 seconds
+Target Reached? : True
+files_with_target: 262/314
+Total features_extracted: 11094
+File merged_energy_distance_54_mu_1.6, 264/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 2.594 seconds
+Finished feature extraction merged_energy_distance_54_mu_1.6, 264/314, runtime: 0.036 seconds
+Target Reached? : True
+files_with_target: 263/314
+Total features_extracted: 11127
+File merged_energy_distance_55_mu_1.6, 265/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 4.413 seconds
+Finished feature extraction merged_energy_distance_55_mu_1.6, 265/314, runtime: 0.049 seconds
+Target Reached? : True
+files_with_target: 264/314
+Total features_extracted: 11176
+File merged_energy_distance_56_mu_1.6, 266/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.235 seconds
+Finished feature extraction merged_energy_distance_56_mu_1.6, 266/314, runtime: 0.043 seconds
+Target Reached? : True
+files_with_target: 265/314
+Total features_extracted: 11218
+File merged_energy_distance_57_mu_1.6, 267/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 4.002 seconds
+Finished feature extraction merged_energy_distance_57_mu_1.6, 267/314, runtime: 0.053 seconds
+Target Reached? : True
+files_with_target: 266/314
+Total features_extracted: 11266
+File merged_energy_distance_58_mu_1.6, 268/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.296 seconds
+Finished feature extraction merged_energy_distance_58_mu_1.6, 268/314, runtime: 0.051 seconds
+Target Reached? : True
+files_with_target: 267/314
+Total features_extracted: 11308
+File merged_energy_distance_59_mu_1.6, 269/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.745 seconds
+Finished feature extraction merged_energy_distance_59_mu_1.6, 269/314, runtime: 0.044 seconds
+Target Reached? : True
+files_with_target: 268/314
+Total features_extracted: 11345
+File merged_energy_distance_5_mu_1.6, 270/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.33 seconds
+Finished feature extraction merged_energy_distance_5_mu_1.6, 270/314, runtime: 0.054 seconds
+Target Reached? : True
+files_with_target: 269/314
+Total features_extracted: 11387
+File merged_energy_distance_60_mu_1.6, 271/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 4.476 seconds
+Finished feature extraction merged_energy_distance_60_mu_1.6, 271/314, runtime: 0.047 seconds
+Target Reached? : True
+files_with_target: 270/314
+Total features_extracted: 11435
+File merged_energy_distance_61_mu_1.6, 272/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 2.695 seconds
+Finished feature extraction merged_energy_distance_61_mu_1.6, 272/314, runtime: 0.032 seconds
+Target Reached? : True
+files_with_target: 271/314
+Total features_extracted: 11470
+File merged_energy_distance_62_mu_1.6, 273/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 3.082 seconds
+Finished feature extraction merged_energy_distance_62_mu_1.6, 273/314, runtime: 0.039 seconds
+Target Reached? : True
+files_with_target: 272/314
+Total features_extracted: 11509
+File merged_energy_distance_63_mu_1.6, 274/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.605 seconds
+Finished feature extraction merged_energy_distance_63_mu_1.6, 274/314, runtime: 0.045 seconds
+Target Reached? : True
+files_with_target: 273/314
+Total features_extracted: 11552
+File merged_energy_distance_64_mu_1.6, 275/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.835 seconds
+Finished feature extraction merged_energy_distance_64_mu_1.6, 275/314, runtime: 0.048 seconds
+Target Reached? : True
+files_with_target: 274/314
+Total features_extracted: 11596
+File merged_energy_distance_65_mu_1.6, 276/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 4.435 seconds
+Finished feature extraction merged_energy_distance_65_mu_1.6, 276/314, runtime: 0.055 seconds
+Target Reached? : True
+files_with_target: 275/314
+Total features_extracted: 11644
+File merged_energy_distance_66_mu_1.6, 277/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 4.096 seconds
+Finished feature extraction merged_energy_distance_66_mu_1.6, 277/314, runtime: 0.053 seconds
+Target Reached? : True
+files_with_target: 276/314
+Total features_extracted: 11693
+File merged_energy_distance_67_mu_1.6, 278/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.195 seconds
+Finished feature extraction merged_energy_distance_67_mu_1.6, 278/314, runtime: 0.04 seconds
+Target Reached? : True
+files_with_target: 277/314
+Total features_extracted: 11731
+File merged_energy_distance_68_mu_1.6, 279/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.445 seconds
+Finished feature extraction merged_energy_distance_68_mu_1.6, 279/314, runtime: 0.054 seconds
+Target Reached? : True
+files_with_target: 278/314
+Total features_extracted: 11771
+File merged_energy_distance_69_mu_1.6, 280/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 4.157 seconds
+Finished feature extraction merged_energy_distance_69_mu_1.6, 280/314, runtime: 0.044 seconds
+Target Reached? : True
+files_with_target: 279/314
+Total features_extracted: 11814
+File merged_energy_distance_6_mu_1.6, 281/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 4.18 seconds
+Finished feature extraction merged_energy_distance_6_mu_1.6, 281/314, runtime: 0.024 seconds
+Target Reached? : True
+files_with_target: 280/314
+Total features_extracted: 11861
+File merged_energy_distance_70_mu_1.6, 282/314  loaded, Loading time: 0.002 seconds
+Finished Segmentation, runtime: 2.075 seconds
+Finished feature extraction merged_energy_distance_70_mu_1.6, 282/314, runtime: 0.019 seconds
+Target Reached? : True
+files_with_target: 281/314
+Total features_extracted: 11905
+File merged_energy_distance_71_mu_1.6, 283/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.797 seconds
+Finished feature extraction merged_energy_distance_71_mu_1.6, 283/314, runtime: 0.043 seconds
+Target Reached? : True
+files_with_target: 282/314
+Total features_extracted: 11956
+File merged_energy_distance_72_mu_1.6, 284/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 2.665 seconds
+Finished feature extraction merged_energy_distance_72_mu_1.6, 284/314, runtime: 0.035 seconds
+Target Reached? : True
+files_with_target: 283/314
+Total features_extracted: 11996
+File merged_energy_distance_73_mu_1.6, 285/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 2.55 seconds
+Finished feature extraction merged_energy_distance_73_mu_1.6, 285/314, runtime: 0.04 seconds
+Target Reached? : True
+files_with_target: 284/314
+Total features_extracted: 12035
+File merged_energy_distance_74_mu_1.6, 286/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.203 seconds
+Finished feature extraction merged_energy_distance_74_mu_1.6, 286/314, runtime: 0.029 seconds
+Target Reached? : True
+files_with_target: 285/314
+Total features_extracted: 12067
+File merged_energy_distance_75_mu_1.6, 287/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.485 seconds
+Finished feature extraction merged_energy_distance_75_mu_1.6, 287/314, runtime: 0.039 seconds
+Target Reached? : True
+files_with_target: 286/314
+Total features_extracted: 12101
+File merged_energy_distance_76_mu_1.6, 288/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.718 seconds
+Finished feature extraction merged_energy_distance_76_mu_1.6, 288/314, runtime: 0.039 seconds
+Target Reached? : True
+files_with_target: 287/314
+Total features_extracted: 12147
+File merged_energy_distance_77_mu_1.6, 289/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 4.175 seconds
+Finished feature extraction merged_energy_distance_77_mu_1.6, 289/314, runtime: 0.042 seconds
+Target Reached? : True
+files_with_target: 288/314
+Total features_extracted: 12196
+File merged_energy_distance_78_mu_1.6, 290/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.118 seconds
+Finished feature extraction merged_energy_distance_78_mu_1.6, 290/314, runtime: 0.041 seconds
+Target Reached? : True
+files_with_target: 289/314
+Total features_extracted: 12239
+File merged_energy_distance_79_mu_1.6, 291/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.074 seconds
+Finished feature extraction merged_energy_distance_79_mu_1.6, 291/314, runtime: 0.042 seconds
+Target Reached? : True
+files_with_target: 290/314
+Total features_extracted: 12281
+File merged_energy_distance_7_mu_1.6, 292/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.75 seconds
+Finished feature extraction merged_energy_distance_7_mu_1.6, 292/314, runtime: 0.039 seconds
+Target Reached? : True
+files_with_target: 291/314
+Total features_extracted: 12324
+File merged_energy_distance_80_mu_1.6, 293/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.493 seconds
+Finished feature extraction merged_energy_distance_80_mu_1.6, 293/314, runtime: 0.043 seconds
+Target Reached? : True
+files_with_target: 292/314
+Total features_extracted: 12372
+File merged_energy_distance_81_mu_1.6, 294/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.414 seconds
+Finished feature extraction merged_energy_distance_81_mu_1.6, 294/314, runtime: 0.041 seconds
+Target Reached? : True
+files_with_target: 293/314
+Total features_extracted: 12417
+File merged_energy_distance_82_mu_1.6, 295/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.503 seconds
+Finished feature extraction merged_energy_distance_82_mu_1.6, 295/314, runtime: 0.059 seconds
+Target Reached? : True
+files_with_target: 294/314
+Total features_extracted: 12464
+File merged_energy_distance_83_mu_1.6, 296/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.77 seconds
+Finished feature extraction merged_energy_distance_83_mu_1.6, 296/314, runtime: 0.035 seconds
+Target Reached? : True
+files_with_target: 295/314
+Total features_extracted: 12499
+File merged_energy_distance_84_mu_1.6, 297/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.777 seconds
+Finished feature extraction merged_energy_distance_84_mu_1.6, 297/314, runtime: 0.05 seconds
+Target Reached? : True
+files_with_target: 296/314
+Total features_extracted: 12547
+File merged_energy_distance_85_mu_1.6, 298/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.3 seconds
+Finished feature extraction merged_energy_distance_85_mu_1.6, 298/314, runtime: 0.041 seconds
+Target Reached? : True
+files_with_target: 297/314
+Total features_extracted: 12592
+File merged_energy_distance_86_mu_1.6, 299/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.807 seconds
+Finished feature extraction merged_energy_distance_86_mu_1.6, 299/314, runtime: 0.037 seconds
+Target Reached? : True
+files_with_target: 298/314
+Total features_extracted: 12630
+File merged_energy_distance_87_mu_1.6, 300/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.993 seconds
+Finished feature extraction merged_energy_distance_87_mu_1.6, 300/314, runtime: 0.04 seconds
+Target Reached? : True
+files_with_target: 299/314
+Total features_extracted: 12675
+File merged_energy_distance_88_mu_1.6, 301/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.706 seconds
+Finished feature extraction merged_energy_distance_88_mu_1.6, 301/314, runtime: 0.045 seconds
+Target Reached? : True
+files_with_target: 300/314
+Total features_extracted: 12722
+File merged_energy_distance_89_mu_1.6, 302/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.892 seconds
+Finished feature extraction merged_energy_distance_89_mu_1.6, 302/314, runtime: 0.038 seconds
+Target Reached? : True
+files_with_target: 301/314
+Total features_extracted: 12761
+File merged_energy_distance_8_mu_1.6, 303/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.218 seconds
+Finished feature extraction merged_energy_distance_8_mu_1.6, 303/314, runtime: 0.041 seconds
+Target Reached? : True
+files_with_target: 302/314
+Total features_extracted: 12805
+File merged_energy_distance_90_mu_1.6, 304/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.758 seconds
+Finished feature extraction merged_energy_distance_90_mu_1.6, 304/314, runtime: 0.048 seconds
+Target Reached? : True
+files_with_target: 303/314
+Total features_extracted: 12854
+File merged_energy_distance_91_mu_1.6, 305/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.9 seconds
+Finished feature extraction merged_energy_distance_91_mu_1.6, 305/314, runtime: 0.038 seconds
+Target Reached? : True
+files_with_target: 304/314
+Total features_extracted: 12896
+File merged_energy_distance_92_mu_1.6, 306/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.492 seconds
+Finished feature extraction merged_energy_distance_92_mu_1.6, 306/314, runtime: 0.042 seconds
+Target Reached? : True
+files_with_target: 305/314
+Total features_extracted: 12942
+File merged_energy_distance_93_mu_1.6, 307/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 2.969 seconds
+Finished feature extraction merged_energy_distance_93_mu_1.6, 307/314, runtime: 0.044 seconds
+Target Reached? : True
+files_with_target: 306/314
+Total features_extracted: 12985
+File merged_energy_distance_94_mu_1.6, 308/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 4.021 seconds
+Finished feature extraction merged_energy_distance_94_mu_1.6, 308/314, runtime: 0.044 seconds
+Target Reached? : True
+files_with_target: 307/314
+Total features_extracted: 13033
+File merged_energy_distance_95_mu_1.6, 309/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.576 seconds
+Finished feature extraction merged_energy_distance_95_mu_1.6, 309/314, runtime: 0.046 seconds
+Target Reached? : True
+files_with_target: 308/314
+Total features_extracted: 13080
+File merged_energy_distance_96_mu_1.6, 310/314  loaded, Loading time: 0.0 seconds
+Finished Segmentation, runtime: 3.152 seconds
+Finished feature extraction merged_energy_distance_96_mu_1.6, 310/314, runtime: 0.041 seconds
+Target Reached? : True
+files_with_target: 309/314
+Total features_extracted: 13125
+File merged_energy_distance_97_mu_1.6, 311/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.353 seconds
+Finished feature extraction merged_energy_distance_97_mu_1.6, 311/314, runtime: 0.035 seconds
+Target Reached? : True
+files_with_target: 310/314
+Total features_extracted: 13160
+File merged_energy_distance_98_mu_1.6, 312/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 2.918 seconds
+Finished feature extraction merged_energy_distance_98_mu_1.6, 312/314, runtime: 0.037 seconds
+Target Reached? : True
+files_with_target: 311/314
+Total features_extracted: 13202
+File merged_energy_distance_99_mu_1.6, 313/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.165 seconds
+Finished feature extraction merged_energy_distance_99_mu_1.6, 313/314, runtime: 0.055 seconds
+Target Reached? : True
+files_with_target: 312/314
+Total features_extracted: 13245
+File merged_energy_distance_9_mu_1.6, 314/314  loaded, Loading time: 0.001 seconds
+Finished Segmentation, runtime: 3.572 seconds
+Finished feature extraction merged_energy_distance_9_mu_1.6, 314/314, runtime: 0.04 seconds
+Target Reached? : True
+files_with_target: 313/314
+Total features_extracted: 13289
+Finished pre-processing,total runtime 1080.7240000000004 for 314 files
+Finished Feature Selection runtime 0.013 seconds
+Saved all selected_featuresSUMMARY
+Files 314
+Files Where the Target was Reached 313
+Mean Extracted Features per file 42.456869009584665 
+Total Features Extracted 13289
+2606 Features Selected
+Mean loading time per file nan seconds
+Mean segmentation time per file nan seconds
+Mean feature extraction time per file nan seconds
+Feature selection time 0.013 seconds
+Total Runtime 1080.7370000000003 seconds 
