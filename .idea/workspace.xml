@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17b92e97-7d9a-40f5-93c1-31481920e93d" name="Changes" comment="&quot;edited opening screen instructions and handled interpolation bug&quot;">
+    <list default="true" id="17b92e97-7d9a-40f5-93c1-31481920e93d" name="Changes" comment="&quot;version 1.1 with executable&quot;">
+      <change afterPath="$PROJECT_DIR$/.idea/SA_UI.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SLM_UI_V2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SLM_UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/SLM_UI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SLM_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/SLM_tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jupyter Notebook" />
         <option value="Python Script" />
+        <option value="Jupyter Notebook" />
       </list>
     </option>
   </component>
@@ -36,7 +39,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="version1" />
+        <entry key="$PROJECT_DIR$" value="version_1_1_backup" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -67,22 +70,27 @@
     "Python.SLM_tools.executor": "Run",
     "Python.testing2.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/User/OneDrive - mail.tau.ac.il/Documents/Medical Image processing (2)",
+    "last_opened_file_path": "C:/Users/Omri.k/Desktop/temp/SA_UI",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "settings.editor.selected.configurable": "preferences.updates",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Omri.k\Desktop\temp\SA_UI" />
       <recent name="C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI" />
       <recent name="C:\Users\User\OneDrive - mail.tau.ac.il\Desktop" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Omri.k\Desktop\temp\SA_UI\dist" />
+      <recent name="C:\Users\Omri.k\Desktop\temp\SA_UI\example_output" />
+      <recent name="C:\Users\Omri.k\Desktop\temp\SA_UI" />
       <recent name="C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\testing data\mu_1_6" />
       <recent name="C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\testing data" />
     </key>
@@ -159,9 +167,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.testing2" />
         <item itemvalue="Python.SLM_UI" />
         <item itemvalue="Python.SLM_tools" />
-        <item itemvalue="Python.testing2" />
         <item itemvalue="Python.SLM_UI" />
         <item itemvalue="Python.SLM_tools" />
       </list>
@@ -170,8 +178,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PY-241.17011.127" />
-        <option value="bundled-python-sdk-48aec45f0201-7e9c3bbb6e34-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.17011.127" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PY-242.23339.19" />
+        <option value="bundled-python-sdk-0029f7779945-399fe30bd8c1-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.23339.19" />
       </set>
     </attachedChunks>
   </component>
@@ -218,6 +226,8 @@
       <workItem from="1723019649720" duration="23774000" />
       <workItem from="1723353139033" duration="1641000" />
       <workItem from="1724256017420" duration="7993000" />
+      <workItem from="1724908089410" duration="18717000" />
+      <workItem from="1727853983695" duration="339000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;minor fixes &quot;">
       <option name="closed" value="true" />
@@ -467,7 +477,31 @@
       <option name="project" value="LOCAL" />
       <updated>1723050503709</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="&quot;bug fixes, added example data, README and venv&quot;">
+      <option name="closed" value="true" />
+      <created>1724923022850</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1724923022850</updated>
+    </task>
+    <task id="LOCAL-00033" summary="&quot;version 1.1&quot;">
+      <option name="closed" value="true" />
+      <created>1724940078815</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1724940078815</updated>
+    </task>
+    <task id="LOCAL-00034" summary="&quot;version 1.1 with executable&quot;">
+      <option name="closed" value="true" />
+      <created>1724940813112</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1724940813112</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -518,7 +552,10 @@
     <MESSAGE value="&quot;Working version 1!!!&quot;" />
     <MESSAGE value="&quot;finished overall function for UI&quot;" />
     <MESSAGE value="&quot;edited opening screen instructions and handled interpolation bug&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;edited opening screen instructions and handled interpolation bug&quot;" />
+    <MESSAGE value="&quot;bug fixes, added example data, README and venv&quot;" />
+    <MESSAGE value="&quot;version 1.1&quot;" />
+    <MESSAGE value="&quot;version 1.1 with executable&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;version 1.1 with executable&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -535,17 +572,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/SLM_tools.py</url>
-          <line>1348</line>
+          <line>1391</line>
           <option name="timeStamp" value="125" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SA_UI$SLM_UI.coverage" NAME="SLM_UI Coverage Results" MODIFIED="1724266161033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SLM_tools_py$tests.coverage" NAME="tests Coverage Results" MODIFIED="1713613082475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/not_used" />
-    <SUITE FILE_PATH="coverage/SLM_tools_py$SLM_tools.coverage" NAME="SLM_tools Coverage Results" MODIFIED="1709374868348" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SA_UI$SLM_tools.coverage" NAME="SLM_tools Coverage Results" MODIFIED="1722768351504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SLM_tools_py$SLM_tools.coverage" NAME="SLM_tools Coverage Results" MODIFIED="1709374868348" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SLM_tools_py$tests.coverage" NAME="tests Coverage Results" MODIFIED="1713613082475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/not_used" />
     <SUITE FILE_PATH="coverage/SA_UI$testing2.coverage" NAME="testing2 Coverage Results" MODIFIED="1722413123073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/not_used" />
+    <SUITE FILE_PATH="coverage/SA_UI$SLM_UI.coverage" NAME="SLM_UI Coverage Results" MODIFIED="1724938718008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
