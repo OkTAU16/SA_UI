@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17b92e97-7d9a-40f5-93c1-31481920e93d" name="Changes" comment="&quot;version 1.1 with executable&quot;">
-      <change afterPath="$PROJECT_DIR$/.idea/SA_UI.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SLM_UI_V2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="17b92e97-7d9a-40f5-93c1-31481920e93d" name="Changes" comment="&quot;started working on integration of UI version 2&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SLM_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/SLM_tools.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,7 +223,7 @@
       <workItem from="1723353139033" duration="1641000" />
       <workItem from="1724256017420" duration="7993000" />
       <workItem from="1724908089410" duration="18717000" />
-      <workItem from="1727853983695" duration="339000" />
+      <workItem from="1727853983695" duration="2607000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;minor fixes &quot;">
       <option name="closed" value="true" />
@@ -501,7 +497,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724940813112</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="&quot;started working on integration of UI version 2&quot;">
+      <option name="closed" value="true" />
+      <created>1727854462334</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1727854462334</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -530,7 +534,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="&quot;completed SLM_tools.beast and started SLM_tools.segment_data &quot;" />
     <MESSAGE value="&quot;minor fixes &quot;" />
     <MESSAGE value="&quot;started pre_model_processing &quot;" />
     <MESSAGE value="&quot;finished model_training_with_cv, started model_eval&quot;" />
@@ -555,7 +558,8 @@
     <MESSAGE value="&quot;bug fixes, added example data, README and venv&quot;" />
     <MESSAGE value="&quot;version 1.1&quot;" />
     <MESSAGE value="&quot;version 1.1 with executable&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;version 1.1 with executable&quot;" />
+    <MESSAGE value="&quot;started working on integration of UI version 2&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;started working on integration of UI version 2&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -569,11 +573,6 @@
           <url>notebook://C:/Users/User/OneDrive - mail.tau.ac.il/Documents/SA_UI/testing.ipynb</url>
           <line>178</line>
           <option name="timeStamp" value="133" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/SLM_tools.py</url>
-          <line>1391</line>
-          <option name="timeStamp" value="125" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

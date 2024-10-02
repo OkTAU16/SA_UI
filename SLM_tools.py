@@ -1327,6 +1327,14 @@ class SLM_tools:
         """
         # Get the current date and time for logging purposes
         current_datetime = datetime.now().strftime("%d_%m_%H_%M")
+        logger = logging.getLogger("SLM_Log")
+        logger.setLevel(logging.DEBUG)
+        stream_handler = logging.StreamHandler()
+        file_handler = logging.FileHandler(os.path.join(save_path, 'logs', 'SLM_' + current_datetime + '.log'))
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        file_handler.setFormatter(formatter)
+        logger.addHandler(file_handler)
+        logger.addHandler(stream_handler)
 
         # Get the total number of data files in the directory
         total_data_files = len(os.listdir(dir_path))
@@ -1335,8 +1343,7 @@ class SLM_tools:
         counters = {"load": [], "extraction": [], "segmentation": [],
                     "feature_selection": 0, "N_extracted_features": [],
                     "total_features_extracted": 0, "features_selected": 0,
-                    "total_runtime": 0, "files_with_target": 0, "log": [],
-                    }
+                    "total_runtime": 0, "files_with_target": 0}
 
         # Initialize a list to store extracted features
         C = []
@@ -1375,9 +1382,8 @@ class SLM_tools:
 
                 # Calculate and log the loading time
                 loading_time = round(time.time() - start1, 3)
-                log1 = f"\nFile {file_name}, {i + 1}/{total_data_files}  loaded, Loading time: {loading_time} seconds"
-                counters["log"].append(log1)
-                logging.info(log1)
+                log1 = f"File {file_name}, {i + 1}/{total_data_files}  loaded, Loading time: {loading_time} seconds"
+                logger.info(log1)
 
                 # Start timing the segmentation process
                 start2 = time.time()
@@ -1387,9 +1393,8 @@ class SLM_tools:
 
                 # Calculate and log the segmentation time
                 segmentation_time = round(time.time() - start2, 3)
-                log2 = f"\nFinished Segmentation, runtime: {segmentation_time} seconds"
-                counters["log"].append(log2)
-                logging.info(log2)
+                log2 = f"Finished Segmentation, runtime: {segmentation_time} seconds"
+                logger.info(log2)
 
                 # Start timing the feature extraction process
                 start3 = time.time()
@@ -1399,28 +1404,25 @@ class SLM_tools:
 
                 # Calculate and log the feature extraction time
                 extraction_time = round(time.time() - start3, 3)
-                log = f"\nFinished feature extraction {file_name}, {i + 1}/{total_data_files}, runtime: {extraction_time} seconds"
-                counters["log"].append(log)
-                logging.info(log)
+                log = f"Finished feature extraction {file_name}, {i + 1}/{total_data_files}, runtime: {extraction_time} seconds"
+                logger.info(log)
 
                 # Log whether the target was reached
-                log = f"\nTarget Reached? : {len(A) > 0}"
-                counters["log"].append(log)
-                logging.info(log)
+                log = f"Target Reached? : {len(A) > 0}"
+                logger.info(log)
 
                 # Update counters if features were extracted
                 if len(A) > 0:
                     counters["files_with_target"] += 1
                     counters["total_features_extracted"] += A[0].shape[0]
                     counters["N_extracted_features"].append(A[0].shape[0])
-                    log3 = f"\nfiles_with_target: {counters['files_with_target']}/{total_data_files}"
-                    counters["log"].append(log3)
-                    log4 = f"\nTotal features_extracted: {counters['total_features_extracted']}"
-                    counters["log"].append(log4)
+                    log3 = f"files_with_target: {counters['files_with_target']}/{total_data_files}"
+                    logger.info(log3)
+                    log4 = f"Total features_extracted: {counters['total_features_extracted']}"
+                    logger.info(log4)
                 else:
-                    log5 = f"\nTarget Not Reached, No features extracted"
-                    counters["log"].append(log5)
-
+                    log5 = f"Target Not Reached, No features extracted"
+                    logger.info(log5)
                 # Append extracted features to the list
                 C.append(A)
 
@@ -1429,8 +1431,7 @@ class SLM_tools:
 
         # Log the total preprocessing time
         log6 = f"\nFinished pre-processing,total runtime {counters['total_runtime']} for {total_data_files} files"
-        counters["log"].append(log6)
-        logging.info(log6)
+        logger.info(log6)
 
         # Start timing the feature selection process
         start_feature_selection = time.time()
@@ -1447,40 +1448,30 @@ class SLM_tools:
         counters["total_runtime"] += runtime_feature_selection
 
         # Log the feature selection time
-        log9 = f"\nFinished Feature Selection runtime {runtime_feature_selection} seconds"
-        counters["log"].append(log9)
-        logging.info(log9)
+        log9 = f"Finished Feature Selection runtime {runtime_feature_selection} seconds"
+        logger.info(log9)
 
         # Save the selected features to a .mat file
         selected_features_path = os.path.join(save_path, f"selected_features_{current_datetime}.mat")
         sio.savemat(selected_features_path, {'selected_features': a_reduced})
-        log10 = f"\nSaved all selected_features"
-        logging.info(log10)
-        counters["log"].append(log10)
+        log10 = f"Saved all selected_features"
+        logger.info(log10)
 
         # Log a summary of the preprocessing steps
-        counters["log"].append("SUMMARY")
-        log11 = (f"\nFiles {total_data_files}"
-                 f"\nFiles Where the Target was Reached {counters['files_with_target']}"
-                 f"\nMean Extracted Features per file {np.mean(counters['N_extracted_features'])} "
-                 f"\nTotal Features Extracted {counters['total_features_extracted']}"
-                 f"\n{counters['selected_features']} Features Selected"
-                 f"\nMean loading time per file {np.mean(counters['load'])} seconds"
-                 f"\nMean segmentation time per file {np.mean(counters['segmentation'])} seconds"
-                 f"\nMean feature extraction time per file {np.mean(counters['extraction'])} seconds"
-                 f"\nFeature selection time {counters['feature_selection']} seconds"
-                 f"\nTotal Runtime {counters['total_runtime']} seconds ")
-        counters["log"].append(log11)
-        logging.info(log11)
-
-        # Save the preprocessing log to a text file
-        log_path = os.path.join(save_path, f"preprocessing_log_{current_datetime}.txt")
-        with open(log_path, 'w') as f:
-            for line in counters["log"]:
-                f.write(line)
+        logger.info("SUMMARY")
+        logger.info(f"Files {total_data_files}")
+        logger.info(f"Files Where the Target was Reached {counters['files_with_target']}")
+        logger.info(f"Mean Extracted Features per file {np.mean(counters['N_extracted_features'])}")
+        logger.info(f"Total Features Extracted {counters['total_features_extracted']}")
+        logger.info(f"{counters['selected_features']} Features Selected")
+        logger.info(f"Mean loading time per file {np.mean(counters['load'])} seconds")
+        logger.info(f"Mean segmentation time per file {np.mean(counters['segmentation'])} seconds")
+        logger.info(f"Mean feature extraction time per file {np.mean(counters['extraction'])} seconds")
+        logger.info(f"Feature selection time {counters['feature_selection']} seconds")
+        logger.info(f"Total Runtime {counters['total_runtime']} seconds ")
 
         # Log the start of model training
-        logging.info("Training start")
+        logger.info("Training start")
 
         # Train the model using cross-validation
         YI, tfas_predict_mat, tfas_actually_mat, mean_error_mat, random_x = SLM_tools.model_training_with_cv(a_reduced,
@@ -1491,7 +1482,7 @@ class SLM_tools:
         SLM_tools.draw_stochastic_landscape_2d(random_x, save_path, n_components)
 
         # Log the start of the first evaluation
-        logging.info("Eval 1 start")
+        logger.info("Eval 1 start")
 
         # Evaluate the model and generate plots
         mean_vec, std_vec, hist_space, x_hist_space, x_ticks, y_ticks = SLM_tools.model_eval(tfas_predict_mat,
@@ -1510,7 +1501,9 @@ class SLM_tools:
         mean_error_path = os.path.join(save_path, f"Mean_Error_{current_datetime}.mat")
         sio.savemat(mean_error_path, {'error': mean_error})
         # Log the start of the second evaluation
-        logging.info("Eval 2 start")
+        logger.info("Eval 2 start")
         # Perform cross-validation bias correction and generate plots
         SLM_tools.cv_bias_correction(predictions, labels, hist_space, mean_vec, x_hist_space,
                                      x_ticks, y_ticks, save_path)
+
+
