@@ -887,7 +887,9 @@ class GuiApp(App):
             SLM_tools.create_and_evaluate_stochastic_landscape(self.file_path, self.particle_clusters,
                                                                self.down_sample_factor, self.target_num,
                                                                self.include_time, self.CV_num, self.save_path,
-                                                               data_variable_name=self.mat_variable_name)
+                                                               data_variable_name=self.mat_variable_name,
+                                                               distance_threshold=self.Distance_threshold,
+                                                               is_distance_vector=self.is_Distance_vector)
             Clock.schedule_once(partial(self.processing_complete, "Running is complete"), 0)
         except Exception as e:
             Clock.schedule_once(partial(self.processing_complete, f"An exception occurred: {e}"), 0)

@@ -16,7 +16,7 @@ from matplotlib.gridspec import GridSpec
 
 class SLM_tools:
     @staticmethod
-    def load_data(data_path: str, data_variable_name, target_num, data_type='csv', time_vec_exists=False):
+    def load_data(data_path: str, data_variable_name, target_num,is_distance_vector,distance_thresh=0, data_type='csv', time_vec_exists=False):
         """
         Load data from a specified file path and return the relevant vectors.
 
@@ -42,30 +42,46 @@ class SLM_tools:
                     # Load time vector, values vector, and distance matrix
                     time_vec = pd.read_csv(data_path, usecols=[0]).to_numpy()
                     values_vec = pd.read_csv(data_path, usecols=[1], header=None).to_numpy()
-                    distance_columns = list(range(2, 2 + target_num))
-                    distance = pd.read_csv(data_path, usecols=distance_columns, header=None).to_numpy()
-                    return values_vec, time_vec, distance
+                    if is_distance_vector:
+                        distance_columns = list(range(2, 2 + target_num))
+                        distance = pd.read_csv(data_path, usecols=distance_columns, header=None).to_numpy()
+                        return values_vec, time_vec, distance
+                    else:
+                        distance = (values_vec != distance_thresh).astype(int)
+                        return values_vec, time_vec, distance
                 else:
                     # Load values vector and distance matrix
                     values_vec = pd.read_csv(data_path, usecols=[0], header=None).to_numpy()
-                    distance_columns = list(range(1, 1 + target_num))
-                    distance = pd.read_csv(data_path, usecols=distance_columns, header=None).to_numpy()
-                    return values_vec, distance
+                    if is_distance_vector:
+                        distance_columns = list(range(1, 1 + target_num))
+                        distance = pd.read_csv(data_path, usecols=distance_columns, header=None).to_numpy()
+                        return values_vec, distance
+                    else:
+                        distance = (values_vec != distance_thresh).astype(int)
+                        return values_vec, distance
             elif data_type == 'xlsx':
                 # Load data from an Excel file
                 if time_vec_exists:
                     # Load time vector, values vector, and distance matrix
                     time_vec = pd.read_excel(data_path, usecols=[0], header=None).to_numpy()
                     values_vec = pd.read_excel(data_path, usecols=[1], header=None).to_numpy()
-                    distance_columns = list(range(2, 2 + target_num))
-                    distance = pd.read_excel(data_path, usecols=distance_columns, header=None).to_numpy()
-                    return values_vec, time_vec, distance
+                    if is_distance_vector:
+                        distance_columns = list(range(2, 2 + target_num))
+                        distance = pd.read_excel(data_path, usecols=distance_columns, header=None).to_numpy()
+                        return values_vec, time_vec, distance
+                    else:
+                        distance = (values_vec != distance_thresh).astype(int)
+                        return values_vec, time_vec, distance
                 else:
                     # Load values vector and distance matrix
                     values_vec = pd.read_excel(data_path, usecols=[0], header=None).to_numpy()
-                    distance_columns = list(range(1, 1 + target_num))
-                    distance = pd.read_excel(data_path, usecols=distance_columns, header=None).to_numpy()
-                    return values_vec, distance
+                    if is_distance_vector:
+                        distance_columns = list(range(1, 1 + target_num))
+                        distance = pd.read_excel(data_path, usecols=distance_columns, header=None).to_numpy()
+                        return values_vec, distance
+                    else:
+                        distance = (values_vec != distance_thresh).astype(int)
+                        return values_vec, distance
             elif data_type == '.mat':
                 # Load data from a .mat file
                 dict_data = sio.loadmat(data_path)
@@ -73,13 +89,21 @@ class SLM_tools:
                     # Load time vector, values vector, and distance matrix
                     time_vec = dict_data[data_variable_name][:, 0]
                     values_vec = dict_data[data_variable_name][:, 1]
-                    distance = dict_data[data_variable_name][:, 2:2 + target_num]
-                    return values_vec, time_vec, distance
+                    if is_distance_vector:
+                        distance = dict_data[data_variable_name][:, 2:2 + target_num]
+                        return values_vec, time_vec, distance
+                    else:
+                        distance = (values_vec != distance_thresh).astype(int)
+                        return values_vec, time_vec, distance
                 else:
                     # Load values vector and distance matrix
                     values_vec = dict_data[data_variable_name][:, 0]
-                    distance = dict_data[data_variable_name][:, 1:1 + target_num]
-                    return values_vec, distance
+                    if is_distance_vector:
+                        distance = dict_data[data_variable_name][:, 1:1 + target_num]
+                        return values_vec, distance
+                    else:
+                        distance = (values_vec != distance_thresh).astype(int)
+                        return values_vec, distance
             else:
                 # Raise an exception if the file type is not supported
                 raise Exception("file type is not supported")
@@ -202,7 +226,7 @@ class SLM_tools:
 
     @staticmethod
     def feature_extraction(energy: np.array, distance: np.array, mean_trend: np.array, cp: np.array,
-                           Number_of_targets=None):
+                           distance_thresh, Number_of_targets=None):
 
         """
         Perform feature extraction based on the input parameters.
@@ -1297,7 +1321,8 @@ class SLM_tools:
 
     @staticmethod
     def create_and_evaluate_stochastic_landscape(dir_path, n_components, downsampling_factor, target_num,
-                                                 time_vec_exists, cv_num, save_path, data_variable_name):
+                                                 time_vec_exists, cv_num, save_path, data_variable_name,
+                                                 is_distance_vector, distance_threshold=0):
         """
                 Create and evaluate a stochastic landscape based on the provided data.
 
@@ -1364,10 +1389,13 @@ class SLM_tools:
                 # Load data based on whether a time vector exists
                 if not time_vec_exists:
                     values_vec, distance_data = SLM_tools.load_data(file_path, data_variable_name, int(target_num),
+                                                                    is_distance_vector, distance_threshold,
                                                                     file_extension, time_vec_exists)
                 else:
                     values_vec, time_vec, distance_data = SLM_tools.load_data(file_path, data_variable_name,
-                                                                              int(target_num), file_extension,
+                                                                              int(target_num), is_distance_vector,
+                                                                              distance_threshold,
+                                                                              file_extension,
                                                                               time_vec_exists)
                     values_vec, time_vec = SLM_tools.interpolate_data_over_regular_time(values_vec, time_vec)
 
@@ -1400,7 +1428,7 @@ class SLM_tools:
                 start3 = time.time()
 
                 # Extract features from the segmented data
-                A = SLM_tools.feature_extraction(values_vec, distance_data, mean_trend, cp)
+                A = SLM_tools.feature_extraction(values_vec, distance_data, mean_trend, cp, distance_threshold)
 
                 # Calculate and log the feature extraction time
                 extraction_time = round(time.time() - start3, 3)
