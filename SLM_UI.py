@@ -227,14 +227,14 @@ class MainScreen(Screen):
 
         #Cross validation labels and buttons
         self.label_CV = Label(text="CV", font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
-                              pos_hint={'center_x': 0.7, 'center_y': 0.68}, color=(0.2, 0.2, 0.2, 1))
+                              pos_hint={'center_x': 0.7, 'center_y': 0.69}, color=(0.2, 0.2, 0.2, 1))
         layout.add_widget(self.label_CV)
 
         self.button_CV_yes = ColorCheckBox(group='CV', size_hint=(None, None), color=(0.13, 0.55, 0.13, 1),
                                            size=(50, 50),
-                                           pos_hint={'x': 0.63, 'top': 0.64})
+                                           pos_hint={'x': 0.63, 'top': 0.67})
         self.button_CV_no = ColorCheckBox(group='CV', size_hint=(None, None), size=(50, 50),
-                                          pos_hint={'x': 0.73, 'top': 0.64})
+                                          pos_hint={'x': 0.73, 'top': 0.67})
         layout.add_widget(self.button_CV_yes)
         layout.add_widget(self.button_CV_no)
         self.button_CV_yes.bind(on_press=self.CV_show)
@@ -243,9 +243,9 @@ class MainScreen(Screen):
         self.CV_input = TextInput(hint_text="Enter number of cross validation", font_name='times.ttf', font_size=16,
                                   input_filter='int',
                                   multiline=True,
-                                  size_hint=(0.1, 0.06), pos_hint={'x': 0.79, 'top': 0.64})
+                                  size_hint=(0.1, 0.06), pos_hint={'x': 0.79, 'top': 0.67})
         self.button_CV_submit = Button(text="✓", size_hint=(None, None), font_name='DejaVuSans.ttf', size=(53, 53),
-                                       pos_hint={'x': 0.9, 'top': 0.64}, background_color=(0.25, 0.41, 0.88, 1))
+                                       pos_hint={'x': 0.9, 'top': 0.67}, background_color=(0.25, 0.41, 0.88, 1))
         layout.add_widget(self.CV_input)
         layout.add_widget(self.button_CV_submit)
         self.CV_input.opacity = 0
@@ -253,16 +253,46 @@ class MainScreen(Screen):
         self.button_CV_submit.bind(on_press=self.CV_submit)
         self.CV_input.bind(text=self.text_size_change)
 
+        # Distance Vector labels and buttons
+        self.label_Distance = Label(text="Distance Vector", font_name='times.ttf', bold=True, underline=True, size_hint=(None, None),
+                              pos_hint={'center_x': 0.7, 'center_y': 0.59}, color=(0.2, 0.2, 0.2, 1))
+        layout.add_widget(self.label_Distance)
+
+        self.button_Distance_yes = ColorCheckBox(group='Distance', size_hint=(None, None), color=(0.13, 0.55, 0.13, 1),
+                                           size=(50, 50),
+                                           pos_hint={'x': 0.63, 'top': 0.56})
+        self.button_Distance_no = ColorCheckBox(group='Distance', size_hint=(None, None), size=(50, 50),
+                                          pos_hint={'x': 0.73, 'top': 0.56})
+        layout.add_widget(self.button_Distance_yes)
+        layout.add_widget(self.button_Distance_no)
+        self.button_Distance_yes.bind(on_press=self.Distance_show)
+        self.button_Distance_no.bind(on_press=self.Distance_show)
+
+        self.Distance_input = TextInput(hint_text="Enter energy threshold", font_name='times.ttf', font_size=16,
+                                  input_filter='int',
+                                  multiline=True,
+                                  size_hint=(0.1, 0.06), pos_hint={'x': 0.79, 'top': 0.56})
+        self.button_Distance_submit = Button(text="✓", size_hint=(None, None), font_name='DejaVuSans.ttf', size=(53, 53),
+                                       pos_hint={'x': 0.9, 'top': 0.56}, background_color=(0.25, 0.41, 0.88, 1))
+        layout.add_widget(self.Distance_input)
+        layout.add_widget(self.button_Distance_submit)
+        self.Distance_input.opacity = 0
+        self.button_Distance_submit.opacity = 0
+        self.button_Distance_submit.bind(on_press=self.Distance_submit)
+        self.Distance_input.bind(text=self.text_size_change)
+
+
+
         # particle clusters labels and buttons
         self.label_particle_clusters = Label(text="Number of particle Clusters:", font_name='times.ttf', bold=True,
                                              underline=True, size_hint=(None, None),
-                                             pos_hint={'center_x': 0.67, 'center_y': 0.52}, color=(0.2, 0.2, 0.2, 1))
+                                             pos_hint={'center_x': 0.67, 'center_y': 0.47}, color=(0.2, 0.2, 0.2, 1))
         layout.add_widget(self.label_particle_clusters)
         self.spinner_particle_clusters = Spinner(
             text='Default',
             values=('3', '5'),
             size_hint=(0.08, 0.05),
-            pos_hint={'x': 0.79, 'top': 0.54},
+            pos_hint={'x': 0.79, 'top': 0.49},
             font_name='times.ttf',
             background_color=(0.25, 0.41, 0.88, 1)
         )
@@ -272,14 +302,14 @@ class MainScreen(Screen):
         # Targets labels and buttons
         self.label_targets = Label(text="Number of targets", font_name='times.ttf', bold=True, underline=True,
                                    size_hint=(None, None),
-                                   pos_hint={'center_x': 0.7, 'center_y': 0.46}, color=(0.2, 0.2, 0.2, 1))
+                                   pos_hint={'center_x': 0.7, 'center_y': 0.42}, color=(0.2, 0.2, 0.2, 1))
         layout.add_widget(self.label_targets)
         self.target_input = TextInput(hint_text="Enter number of parameters", font_name='times.ttf', font_size=15,
                                       input_filter='int',
                                       multiline=True,
-                                      size_hint=(0.09, 0.06), pos_hint={'x': 0.63, 'top': 0.42})
+                                      size_hint=(0.09, 0.06), pos_hint={'x': 0.63, 'top': 0.38})
         self.button_targets_submit = Button(text="✓", size_hint=(None, None), font_name='DejaVuSans.ttf', size=(53, 53),
-                                            pos_hint={'x': 0.73, 'top': 0.42}, background_color=(0.25, 0.41, 0.88, 1))
+                                            pos_hint={'x': 0.73, 'top': 0.38}, background_color=(0.25, 0.41, 0.88, 1))
         layout.add_widget(self.target_input)
         layout.add_widget(self.button_targets_submit)
         self.target_input.bind(text=self.text_size_change)
@@ -287,14 +317,14 @@ class MainScreen(Screen):
 
         self.label_save_path = Label(text="Output directory path", font_name='times.ttf', bold=True, underline=True,
                                      size_hint=(None, None),
-                                     pos_hint={'center_x': 0.7, 'center_y': 0.32}, color=(0.2, 0.2, 0.2, 1))
+                                     pos_hint={'center_x': 0.7, 'center_y': 0.28}, color=(0.2, 0.2, 0.2, 1))
         layout.add_widget(self.label_save_path)
         self.save_input = TextInput(hint_text="Enter Output directory path here:", font_name='times.ttf', font_size=22,
                                     input_filter=None,
                                     multiline=True,
-                                    size_hint=(0.3, 0.06), pos_hint={'x': 0.55, 'top': 0.28})
+                                    size_hint=(0.3, 0.06), pos_hint={'x': 0.55, 'top': 0.24})
         self.button_save_submit = Button(text="✓", size_hint=(None, None), font_name='DejaVuSans.ttf', size=(53, 53),
-                                         pos_hint={'x': 0.86, 'top': 0.279}, background_color=(0.25, 0.41, 0.88, 1))
+                                         pos_hint={'x': 0.86, 'top': 0.239}, background_color=(0.25, 0.41, 0.88, 1))
         layout.add_widget(self.save_input)
         layout.add_widget(self.button_save_submit)
         self.save_input.bind(text=self.text_size_change_for_path)
@@ -387,6 +417,14 @@ class MainScreen(Screen):
     def CV_submit(self, instance):
         app = App.get_running_app()
         app.CV_submit(instance)
+
+    def Distance_show(self, instance):
+        app = App.get_running_app()
+        app.Distance_show(instance)
+
+    def Distance_submit(self, instance):
+        app = App.get_running_app()
+        app.Distance_submit(instance)
 
     def particle_clusters_select(self, spinner, text):
         app = App.get_running_app()
@@ -522,6 +560,8 @@ class GraphScreen(Screen):
 class GuiApp(App):
     def __init__(self, **kwargs):
         super().__init__()
+        self.Distance_threshold = 0
+        self.is_Distance_vector = True
         self.sm = None
         self.include_time = False
         self.file_path = None
@@ -641,6 +681,46 @@ class GuiApp(App):
             print(self.CV_num)
             main_screen.CV_input.foreground_color = (0, 0, 0, 1)  # RGBA for default color
             main_screen.CV_input.background_color = (1, 1, 1, 1)
+
+    def Distance_show(self, instance):
+        # Show or hide TextInput and V button based on selected radio button
+        main_screen = self.sm.get_screen('main')
+        if instance == main_screen.button_Distance_yes and instance.state == 'down':
+            main_screen.Distance_input.opacity = 1
+            main_screen.button_Distance_submit.opacity = 1
+            self.is_Distance_vector = True
+        elif instance == main_screen.button_Distance_no and instance.state == 'down':
+            main_screen.Distance_input.opacity = 1
+            main_screen.button_Distance_submit.opacity = 1
+            main_screen.Distance_threshold = 0
+            self.is_Distance_vector = False
+            main_screen.Distance_input.foreground_color = (0, 0, 0, 1)  # RGBA for default color
+            main_screen.Distance_input.background_color = (1, 1, 1, 1)
+            main_screen.Distance_input.text = ''
+            main_screen.Distance_input.font_size = 16
+        else:
+            main_screen.Distance_input.opacity = 0
+            main_screen.button_Distance_submit.opacity = 0
+            self.Distance_threshold = 0
+            self.is_Distance_vector = True
+            main_screen.Distance_input.foreground_color = (0, 0, 0, 1)  # RGBA for default color
+            main_screen.Distance_input.background_color = (1, 1, 1, 1)
+            main_screen.Distance_input.text = ''
+            main_screen.Distance_input.font_size = 16
+
+    def Distance_submit(self, instance):
+        main_screen = self.sm.get_screen('main')
+        user_input = main_screen.Distance_input.text
+        if user_input:
+            self.Distance_threshold = user_input
+            print(self.Distance_threshold)
+            main_screen.Distance_input.foreground_color = (0, 0.6, 0, 1)  # RGBA for green
+            main_screen.Distance_input.background_color = (0.6, 1, 0.9, 1)
+        else:
+            self.Distance_threshold = 0
+            print(self.Distance_threshold)
+            main_screen.Distance_input.foreground_color = (0, 0, 0, 1)  # RGBA for default color
+            main_screen.Distance_input.background_color = (1, 1, 1, 1)
 
     def particle_clusters_select(self, spinner, text):
         main_screen = self.sm.get_screen('main')
@@ -807,7 +887,9 @@ class GuiApp(App):
             SLM_tools.create_and_evaluate_stochastic_landscape(self.file_path, self.particle_clusters,
                                                                self.down_sample_factor, self.target_num,
                                                                self.include_time, self.CV_num, self.save_path,
-                                                               data_variable_name=self.mat_variable_name)
+                                                               data_variable_name=self.mat_variable_name,
+                                                               distance_threshold=self.Distance_threshold,
+                                                               is_distance_vector=self.is_Distance_vector)
             Clock.schedule_once(partial(self.processing_complete, "Running is complete"), 0)
         except Exception as e:
             Clock.schedule_once(partial(self.processing_complete, f"An exception occurred: {e}"), 0)

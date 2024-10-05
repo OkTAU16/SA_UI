@@ -4,10 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17b92e97-7d9a-40f5-93c1-31481920e93d" name="Changes" comment="&quot;replaced logging method to logging.log&quot;">
+    <list default="true" id="17b92e97-7d9a-40f5-93c1-31481920e93d" name="Changes" comment="&quot;finished integrating new config&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SLM_UI_V2.py" beforeDir="false" afterPath="$PROJECT_DIR$/SLM_UI_V2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SLM_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/SLM_tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SLM_UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/SLM_UI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SLM_UI.spec" beforeDir="false" afterPath="$PROJECT_DIR$/SLM_UI.spec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SLM_UI_V2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/SLM_UI/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/SLM_UI/Analysis-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/SLM_UI/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/SLM_UI/EXE-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/SLM_UI/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/SLM_UI/PKG-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/SLM_UI/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/build/SLM_UI/PYZ-00.pyz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/SLM_UI/SLM_UI.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/build/SLM_UI/SLM_UI.pkg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/SLM_UI/graph-SLM_UI.dot" beforeDir="false" afterPath="$PROJECT_DIR$/build/SLM_UI/graph-SLM_UI.dot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/SLM_UI/warn-SLM_UI.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/SLM_UI/warn-SLM_UI.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,23 +69,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.SLM_UI.executor&quot;: &quot;Run&quot;,
-    &quot;Python.SLM_tools.executor&quot;: &quot;Run&quot;,
-    &quot;Python.testing2.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Omri.k/Desktop/temp/SA_UI&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.updates&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.SLM_UI.executor": "Run",
+    "Python.SLM_UI_V2.executor": "Run",
+    "Python.SLM_tools.executor": "Run",
+    "Python.testing2.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/Omri.k/Desktop/temp/SA_UI",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.updates",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Omri.k\Desktop\temp\SA_UI" />
@@ -92,7 +101,7 @@
       <recent name="C:\Users\User\OneDrive - mail.tau.ac.il\Documents\SA_UI\testing data" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.SLM_UI">
+  <component name="RunManager" selected="Python.SLM_UI_V2">
     <configuration name="SLM_UI" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SA_UI" />
       <option name="ENV_FILES" value="" />
@@ -108,6 +117,29 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SLM_UI.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SLM_UI" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SA_UI" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Omri.k\Desktop\temp\SA_UI\SLM_UI.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -164,11 +196,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.SLM_UI_V2" />
         <item itemvalue="Python.testing2" />
         <item itemvalue="Python.SLM_UI" />
         <item itemvalue="Python.SLM_tools" />
         <item itemvalue="Python.SLM_UI" />
-        <item itemvalue="Python.SLM_tools" />
       </list>
     </recent_temporary>
   </component>
@@ -225,7 +257,8 @@
       <workItem from="1724256017420" duration="7993000" />
       <workItem from="1724908089410" duration="18717000" />
       <workItem from="1727853983695" duration="3969000" />
-      <workItem from="1728027090998" duration="1972000" />
+      <workItem from="1728027090998" duration="2439000" />
+      <workItem from="1728117813172" duration="2479000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;minor fixes &quot;">
       <option name="closed" value="true" />
@@ -515,7 +548,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727863463035</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="&quot;finished integrating new config&quot;">
+      <option name="closed" value="true" />
+      <created>1728029908731</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1728029908731</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -544,7 +585,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="&quot;started pre_model_processing &quot;" />
     <MESSAGE value="&quot;finished model_training_with_cv, started model_eval&quot;" />
     <MESSAGE value="&quot;translated up to Line 732 Matlab&quot;" />
     <MESSAGE value="&quot;added save_model to SLM_tools&#10;&quot;" />
@@ -569,7 +609,8 @@
     <MESSAGE value="&quot;version 1.1 with executable&quot;" />
     <MESSAGE value="&quot;started working on integration of UI version 2&quot;" />
     <MESSAGE value="&quot;replaced logging method to logging.log&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;replaced logging method to logging.log&quot;" />
+    <MESSAGE value="&quot;finished integrating new config&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;finished integrating new config&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -588,10 +629,11 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SA_UI$SLM_UI_V2.coverage" NAME="SLM_UI_V2 Coverage Results" MODIFIED="1728119378960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SA_UI$SLM_UI.coverage" NAME="SLM_UI Coverage Results" MODIFIED="1724938718008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SA_UI$testing2.coverage" NAME="testing2 Coverage Results" MODIFIED="1722413123073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/not_used" />
     <SUITE FILE_PATH="coverage/SA_UI$SLM_tools.coverage" NAME="SLM_tools Coverage Results" MODIFIED="1722768351504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SLM_tools_py$SLM_tools.coverage" NAME="SLM_tools Coverage Results" MODIFIED="1709374868348" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SLM_tools_py$tests.coverage" NAME="tests Coverage Results" MODIFIED="1713613082475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/not_used" />
-    <SUITE FILE_PATH="coverage/SA_UI$testing2.coverage" NAME="testing2 Coverage Results" MODIFIED="1722413123073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/not_used" />
-    <SUITE FILE_PATH="coverage/SA_UI$SLM_UI.coverage" NAME="SLM_UI Coverage Results" MODIFIED="1724938718008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
