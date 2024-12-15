@@ -16,7 +16,7 @@ from matplotlib.gridspec import GridSpec
 
 class SLM_tools:
     @staticmethod
-    def load_data(data_path: str, data_variable_name, target_num,is_distance_vector,distance_thresh=0, data_type='csv', time_vec_exists=False):
+    def load_data(data_path: str, data_variable_name, target_num, is_distance_vector, distance_thresh, data_type='csv', time_vec_exists=False):
         """
         Load data from a specified file path and return the relevant vectors.
 
