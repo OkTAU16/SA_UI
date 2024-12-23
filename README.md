@@ -36,6 +36,14 @@ The inputs to the algorithm is time series data, distance data, and sample time 
 (N,M) Numeric containing the distance from the target (by whatever metric), distance at target should be 0.
 M represents the Number of Targets.
 
+If your distance vector doesn't reach 0:
+1. set distance vector toggle to True
+2. Enter an energy threshold: the value of the measured parameter which represent that the target has been reached. 
+
+**If you have no distance vector**:
+1. Set distance vector toggle to false
+2. Enter an energy threshold: the value of the measured parameter which represent that the target has been reached. 
+
 **The permitted file formats are: .csv,.mat,.xlsx**
 
 ******Outputs:******
@@ -68,5 +76,11 @@ The middle plot is a box plot of the CV-corrected predictor separated into histo
 The lower plot shows the mean error of the CV-corrected predictor when compared to a naïve predictor in each bin. The color bar represents the relative weight of the data in each bin. The dashed line is the perfect predictor with zero error.
 
 **Running Example data**
-
+set Added Time Series To True
+Set Down Sample to False
+set CV to True With 10 Itterations
+set Number of particle clusters to 3
+set Number Of Targets To 2
+set distance vector to true and leave the energy threshold unfilled
+you will be asked a variable name fo the .mat file
 variable name for example data: energy_distance
